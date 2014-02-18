@@ -1,16 +1,12 @@
 package com.team5.exercise;
 
-import com.team5.mentalhealthapp.R;
-
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+
+import com.team5.pat.R;
 
 public class animationCanvas extends View
 {

@@ -1,20 +1,14 @@
 package com.team5.exercise;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-import com.team5.mentalhealthapp.R;
-
 import android.app.Activity;
-import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.team5.pat.R;
 
 public class BreathingExercise extends Activity
 {

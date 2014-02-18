@@ -72,6 +72,12 @@
     <string name="seriousness_heading">How serious is the situation?</string>
     <string name="anxiety_heading">How anxious do you feel?</string>
     <string name="save_button_text">Save</string>
+    <!--  Breathing Exercise  -->
+    <string name="breathEx">Breathing Exercise</string>
+    <string name="seconds">Seconds:</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="exerciseDefaultDuration">60</string>
 
     <!-- Start of calm down text -->
     <string name="CalmDown">Being patient is key. Take a couple seconds to cool down.
