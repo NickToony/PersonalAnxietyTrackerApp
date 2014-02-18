@@ -1,0 +1,27 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    tools:context=".MenuActivity"
+    android:orientation="vertical" >
+    
+	<com.team5.menu.HexagonView
+		android:id="@+id/myHexagon"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_above="@+id/text"
+		
+		/>
+	
+	<TextView
+        android:id="@+id/text"
+	    android:layout_width="fill_parent"
+	    android:layout_height="60dp"
+	    android:text="@string/below_menu"
+	    android:gravity="center"
+	    android:layout_alignParentBottom="true"
+	     />
+	
+	
+
+</RelativeLayout>

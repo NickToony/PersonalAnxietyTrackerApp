@@ -1,0 +1,127 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/SeekBarLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_margin="0dp"
+    android:background="@color/backgroundColorSeekBar" >
+
+    <TextView
+        android:id="@+id/seriousnessHeading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:gravity="center_horizontal"
+        android:paddingTop="80dp"
+        android:text="@string/seriousness_heading"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/seekBarHeadingColor"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <SeekBar
+        android:id="@+id/seriousnessSeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/seriousnessHeading"
+        android:max="10"
+        android:maxHeight="12dp"
+        android:progress="0"
+        android:progressDrawable="@drawable/seekbarprogress"
+        android:thumb="@drawable/circlebutton"
+        android:thumbOffset="10dp" />
+
+    <TextView
+        android:id="@+id/scaleEnd1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/scaleBeginning"
+        android:layout_alignRight="@+id/seriousnessSeekBar"
+        android:paddingRight="19dp"
+        android:text="@string/scale_end"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/scaleBeginning1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/scaleBeginning"
+        android:layout_below="@+id/anxietySeekBar"
+        android:text="@string/scale_beginning"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <SeekBar
+        android:id="@+id/anxietySeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/anxietyHeading"
+        android:max="10"
+        android:maxHeight="12dp"
+        android:progress="0"
+        android:progressDrawable="@drawable/seekbarprogress"
+        android:thumb="@drawable/circlebutton"
+        android:thumbOffset="10dp" />
+
+    <TextView
+        android:id="@+id/scaleBeginning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/seriousnessSeekBar"
+        android:paddingLeft="19dp"
+        android:text="@string/scale_beginning"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/scaleEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/scaleBeginning1"
+        android:layout_alignBottom="@+id/scaleBeginning1"
+        android:layout_alignLeft="@+id/scaleEnd1"
+        android:text="@string/scale_end"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/anxietyHeading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/seriousnessSeekBar"
+        android:gravity="center_horizontal"
+        android:paddingTop="40dp"
+        android:text="@string/anxiety_heading"
+        android:textColor="@color/seekBarHeadingColor"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/commentsEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scaleEnd"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"
+        android:background="@drawable/commenttextfield"
+        android:ems="10"
+        android:hint="@string/thoughts_hint"
+        android:minHeight="140dp"
+        android:minWidth="290dp" >
+    </EditText>
+
+    <Button
+        android:id="@+id/seekBarSubmitButton"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/commentsEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/commenttextfield"
+        android:gravity="center"
+        android:text="@string/save_button_text"
+        android:textColor="@color/seekBarHeadingColor"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#79b1c0"
+    android:paddingTop="15dp"
+    android:id="@+id/quickPanicActivity">
+
+    <TextView
+        android:layout_width="350dp"
+        android:layout_height="120dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/CalmDown"
+        android:id="@+id/textView"
+        android:autoText="true"
+        android:background="@drawable/rounded_edges"
+        android:radius="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:padding="5dp" />
+
+    <TextView
+        android:layout_width="350dp"
+        android:layout_height="120dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="To be  completed"
+        android:id="@+id/textView2"
+        android:autoText="true"
+        android:background="@drawable/rounded_edges"
+        android:radius="5dp"
+        android:padding="5dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

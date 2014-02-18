@@ -1,0 +1,52 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory
+        android:key="pref_key_personalise"
+        android:title="@string/pref_category_personalise" >
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="pref_key_lockscreen"
+            android:summary="@string/pref_lockscreen_summ"
+            android:title="@string/pref_lockscreen_title" >
+        </CheckBoxPreference>
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_night_mode"
+            android:summary="@string/pref_night_mode_summ"
+            android:title="@string/pref_night_mode_title" >
+        </CheckBoxPreference>
+
+        <EditTextPreference
+            android:defaultValue="1234"
+            android:hint="@string/pin_hint"
+            android:inputType="number"
+            android:key="pref_key_pin"
+            android:maxLength="8"
+            android:title="@string/pref_pin_title" >
+        </EditTextPreference>
+
+        <ListPreference
+            android:defaultValue="en"
+            android:entries="@array/pref_language_list_options"
+            android:entryValues="@array/pref_language_list_values"
+            android:key="pref_language"
+            android:title="@string/pref_language_title" />
+
+        <Preference
+            android:key="pref_key_notification"
+            android:summary="@string/pref_notification_summ"
+            android:title="@string/pref_notification_title" >
+        </Preference>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="pref_key_pat"
+        android:title="@string/pref_category_pat" >
+        <Preference
+            android:key="pref_key_about_us"
+            android:summary="@string/pref_about_us_summ"
+            android:title="@string/pref_about_us_title" >
+        </Preference>
+    </PreferenceCategory>
+
+</PreferenceScreen>

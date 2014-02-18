@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">傻逼小夥伴</string>
+    <string name="action_settings">設置</string>
+    <string name="action_feedback">反饋</string>
+    <string name="Yaxis">Y</string>
+    <string name="Xaxis">X</string>
+    <string name="red_line">紅線</string>
+    <string name="blue_line">藍線</string>
+    <string name="below_menu">Sub-Menu will go here!</string>
+    <string name="submit">提交</string>
+    <string name="Sub_menu">二級菜單</string>
+    <string name="language">翻譯</string>
+    <string name="string_choice">選擇</string>
+
+    <string-array name="nav_list_icons">
+        <item>@drawable/ic_day</item>
+        <item>@drawable/ic_week</item>
+        <item>@drawable/ic_month</item>
+        <item>@drawable/ic_year</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_day</item>
+        <item>@drawable/ic_week</item>
+        <item>@drawable/ic_month</item>
+        <item>@drawable/ic_year</item>
+        <item>@drawable/ic_launcher</item>
+    </string-array>
+    <string-array name="nav_list_titles">
+        <item>線形圖</item>
+        <item>圓形圖</item>
+        <item>棒形圖</item>
+        <item>圓形菜單</item>
+        <item>六邊形菜單</item>
+        <item>拖動條</item>
+        <item>記錄圖表</item>
+    </string-array>
+    <string-array name="spinner_list_items">
+        <item>日</item>
+        <item>周</item>
+        <item>月</item>
+        <item>年</item>
+        <item>年曆表</item>
+    </string-array>
+
+    <string name="drawer_open">開</string>
+    <string name="drawer_close">關</string>
+
+    <!-- Activities label -->
+    <string name="title_activity_nav_list">主界面</string>
+    <string name="title_activity_settings">設置</string>
+    <string name="title_activity_graph">圖標</string>
+
+    <!-- Dialog box -->
+    <string name="dialog_title">未命名標題</string>
+    <string name="dialog_message">爸爸去哪兒</string>
+    <string name="dialog_button_message">按此看到對話框</string>
+    <string name="dialog_accpet">接受</string>
+    <string name="dialog_cancel">取消</string>
+    <string name="brightness">亮度</string>
+    <string name="network">網絡</string>
+    <string name="sound">聲音</string>
+    <string name="keyboard">鍵盤</string>
+    <string name="kiss_me">錫淡</string>
+
+    <!-- Seek bar -->
+    <string name="scale_beginning">0</string>
+    <string name="scale_end">10</string>
+    <string name="thoughts_hint">你諗緊乜嘢呢？</string>
+    <string name="seriousness_heading">你個病有幾嚴重？</string>
+    <string name="anxiety_heading">你有幾焦慮呢？</string>
+    <string name="save_button_text">儲存</string>
+
+    <!-- Start of calm down text -->
+    <string name="CalmDown">忍一時風平浪靜，退一步海闊天空。每日暫停三分鐘，細聽少年心底夢。</string>
+    <string name="title_activity_quickPanic">慌張</string>
+    <string name="title_activity_record_graph">健康記錄</string>
+
+    <!-- Settings Preference -->
+    <string name="pref_category_personalise">個人化</string>
+    <string name="pref_category_pat">傻逼小夥伴</string>
+    <string name="pref_notification_title">提醒</string>
+    <string name="pref_language_title">語言</string>
+    <string name="pref_update_title">檢查更新</string>
+    <string name="pref_about_us_title">關於我們</string>
+    <string name="pref_night_mode_title">夜間模式</string>
+    <string name="pref_notification_summ">每日提醒你好唔好？</string>
+    <string name="pref_update_summ">每日提醒你好唔好？</string>
+    <string name="pref_about_us_summ">紐卡斯爾大學</string>
+    <string name="pref_night_mode_summ">夜間模式有助保護視力</string>
+
+    <string-array name="pref_language_list_options">
+        <item>English</item>
+        <item>Chinese</item>
+    </string-array>
+    <string-array name="pref_language_list_values">
+        <item>en</item>
+        <item>zh</item>
+    </string-array>
+
+    <string name="hello_world">Hello world!</string>
+
+    <!-- Splash -->
+    <string-array name="button_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>0</item>
+        <item>DEL</item>
+    </string-array>
+
+    <string name="seriousness">嚴重程度</string>
+    <string name="anxiety">憂慮指數</string>
+    <string name="Ref_seriousness">個人評分\n嚴重程度</string>
+    <string name="Ref_anxiety">個人評分\n憂慮指數</string>
+    <string name="rating">評分</string>
+    <string name="time">時間</string>
+
+</resources>

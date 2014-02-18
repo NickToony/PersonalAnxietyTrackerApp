@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PAT</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_feedback">Feedback</string>
+    <string name="Yaxis">Y</string>
+    <string name="Xaxis">X</string>
+    <string name="red_line">Red Line</string>
+    <string name="blue_line">Blue Line</string>
+    <string name="below_menu">Sub-Menu will go here!</string>
+    <string name="submit">Submit</string>
+    <string name="Sub_menu">SubMenu</string>
+    <string name="language">Translate</string>
+    <string name="string_choice">Choice</string>
+
+    <string-array name="nav_list_icons">
+        <item>@drawable/ic_day</item>
+        <item>@drawable/ic_week</item>
+        <item>@drawable/ic_month</item>
+        <item>@drawable/ic_year</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_day</item>
+        <item>@drawable/ic_week</item>
+        <item>@drawable/ic_month</item>
+        <item>@drawable/ic_year</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+    </string-array>
+    <string-array name="nav_list_titles">
+        <item>Line Graph</item>
+        <item>Pie Chart</item>
+        <item>Bar Chart</item>
+        <item>Menu (circle)</item>
+        <item>Menu (hexagon)</item>
+        <item>Slider test</item>
+        <item>Record Graph</item>
+        <item>Social</item>
+    </string-array>
+    <string-array name="spinner_list_items">
+        <item>Day</item>
+        <item>Week</item>
+        <item>Month</item>
+        <item>Year</item>
+        <item>Agenda</item>
+    </string-array>
+
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+
+    <!-- Activities label -->
+    <string name="title_activity_nav_list">NavListActivity</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_graph">Graph</string>
+
+    <!-- Dialog box -->
+    <string name="dialog_title">I am Milton Li</string>
+    <string name="dialog_message">I want to kiss you</string>
+    <string name="dialog_button_message">Click me to see a dialog box</string>
+    <string name="dialog_accpet">Accept</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="brightness">Brightness</string>
+    <string name="network">Network</string>
+    <string name="sound">Sound</string>
+    <string name="keyboard">Keyboard</string>
+    <string name="kiss_me">Kiss me baby</string>
+
+    <!-- Seek bar -->
+    <string name="scale_beginning">0</string>
+    <string name="scale_end">10</string>
+    <string name="thoughts_hint">What are your thoughts?..</string>
+    <string name="seriousness_heading">How serious is the situation?</string>
+    <string name="anxiety_heading">How anxious do you feel?</string>
+    <string name="save_button_text">Save</string>
+
+    <!-- Start of calm down text -->
+    <string name="CalmDown">Being patient is key. Take a couple seconds to cool down.
+    Slowly  take deep breaths in and deep breaths out and let it all out.</string>
+
+    <!-- Settings Preference -->
+    <string name="pin_hint">Digits with max 8 characters</string>
+    <string name="pref_category_personalise">Personalise</string>
+    <string name="pref_category_pat">Personal Anxiety Tracker</string>
+    <string name="pref_notification_title">Notification</string>
+    <string name="pref_language_title">Language</string>
+    <string name="pref_lockscreen_title">Show lockscreen</string>
+    <string name="pref_pin_title">Lockscreen pin number</string>
+    <string name="pref_about_us_title">About Us</string>
+    <string name="pref_night_mode_title">Night Mode</string>
+    <string name="pref_notification_summ">Notification on everyday?</string>
+    <string name="pref_lockscreen_summ">Show lockscreen on startup</string>
+    <string name="pref_about_us_summ">Newcastle University</string>
+    <string name="pref_night_mode_summ">Night Mode helps protect your eyes</string>
+
+    <string-array name="pref_language_list_options">
+        <item>English</item>
+        <item>Chinese</item>
+    </string-array>
+    <string-array name="pref_language_list_values">
+        <item>en</item>
+        <item>zh</item>
+    </string-array>
+
+    <string name="hello_world">Hello world!</string>
+
+    <!-- Splash -->
+    <string-array name="button_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>0</item>
+        <item>DEL</item>
+    </string-array>
+
+    <string name="seriousness">Seriousness</string>
+    <string name="anxiety">Anxiety</string>
+    <string name="Ref_seriousness">Reflected\nSeriousness</string>
+    <string name="Ref_anxiety">Reflected\nAnxiety</string>
+    <string name="rating">Rating</string>
+    <string name="time">Time</string>
+    <string name="title_activity_social">SocialActivity</string>
+
+</resources>

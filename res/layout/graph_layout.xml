@@ -1,0 +1,97 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".GraphActivity" >
+
+    <!-- android:background="#8fffd7" -->
+
+    <com.team5.graph.LineGraphView
+        android:id="@+id/myLineGraph"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginLeft="30dp"
+        android:background="#58BDE2" >
+    </com.team5.graph.LineGraphView>
+
+    <com.team5.graph.PieChartView
+        android:id="@+id/myPieChart"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true" >
+    </com.team5.graph.PieChartView>
+
+    <com.team5.graph.BarChartView
+        android:id="@+id/myBarChart"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true" >
+    </com.team5.graph.BarChartView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="200dp"
+        android:gravity="center"
+        android:rotation="270"
+        android:text="@string/rating"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/myLineGraph"
+        android:layout_marginLeft="200dp"
+        android:text="@string/time"
+        android:textStyle="bold" />
+
+    <CheckBox
+        android:id="@+id/seriousnessCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/myLineGraph"
+        android:layout_alignStart="@+id/myLineGraph"
+        android:layout_below="@+id/textView"
+        android:background="#5970ff"
+        android:checked="true"
+        android:text="@string/seriousness" />
+
+    <CheckBox
+        android:id="@+id/AnxietyCheckBox"
+        android:layout_width="104dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView"
+        android:layout_below="@+id/textView"
+        android:background="#1f4aff"
+        android:checked="true"
+        android:text="@string/anxiety" />
+
+    <CheckBox
+        android:id="@+id/ref_seriousnessCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/seriousnessCheckBox"
+        android:layout_alignStart="@+id/seriousnessCheckBox"
+        android:layout_below="@+id/seriousnessCheckBox"
+        android:background="#5dff9c"
+        android:checked="true"
+        android:text="@string/Ref_seriousness" />
+
+    <CheckBox
+        android:id="@+id/ref_anxietyCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/AnxietyCheckBox"
+        android:layout_alignStart="@+id/AnxietyCheckBox"
+        android:layout_below="@+id/seriousnessCheckBox"
+        android:background="#ff3d3f"
+        android:checked="true"
+        android:text="@string/Ref_anxiety" />
+
+</RelativeLayout>
