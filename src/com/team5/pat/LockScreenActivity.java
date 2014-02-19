@@ -58,13 +58,12 @@ public class LockScreenActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_lock_screen);
 		getActionBar().hide();
+		mLogo = (ImageView) findViewById(R.id.logo);
+		mText = (TextView) findViewById(R.id.keypadInput);
 
 		preference = PreferenceManager
 				.getDefaultSharedPreferences(getApplicationContext());
 		if (preference.getBoolean("pref_key_lockscreen", true) == true) {
-			mLogo = (ImageView) findViewById(R.id.logo);
-			mText = (TextView) findViewById(R.id.keypadInput);
-
 			setUpKeyPadButtons();
 
 			// Reset the handler
@@ -135,8 +134,8 @@ public class LockScreenActivity extends Activity implements OnClickListener {
 					deletePreviousCharacter();
 				} // Start this application if input matches
 				else if (input.length() >= PASS_LENTH) {
-					String correctPin = preference.getString(
-							"pref_key_pin", "1234");
+					String correctPin = preference.getString("pref_key_pin",
+							"1234");
 					if (input.contentEquals(correctPin)) {
 						mText.setText(SUCCESS_TEXT);
 						Intent intent = new Intent(this, HomeActivity.class);

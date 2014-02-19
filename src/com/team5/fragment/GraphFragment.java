@@ -20,7 +20,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.SpinnerAdapter;
-import android.widget.Toast;
 
 import com.team5.graph.BarChartView;
 import com.team5.graph.LineGraphView;
@@ -88,21 +87,22 @@ public class GraphFragment extends Fragment implements OnTouchListener {
 			FragmentTransaction transaction = manager.beginTransaction();
 			for (Point p : lineGraph.getLineGraphPointCordinates()) {
 				int distance = userTouch.getTolerance(p);
+
+				// If a point is touched in the graph, either pop up a box
+				// showing the related figures or navigate to SeekBarFragment
 				if (distance < lineGraph.getTouchTolerance()) {
 					if (p.getRecorded()) {
-
 						ReflectionFragment frag = new ReflectionFragment();
 						frag.setSer(p.getX());
 						frag.setAnx(p.getY());
 						frag.setThought(p.getInformation());
-
 						transaction.add(android.R.id.content, frag).commit();
 						break;
 					} else {
 						transaction.remove(this);
 						transaction.replace(R.id.content_frame,
 								new SeekBarFragment()).commit();
-						
+
 						break;
 					}
 
@@ -156,12 +156,7 @@ public class GraphFragment extends Fragment implements OnTouchListener {
 			if (lineGraph != null) {
 
 				int myLine = lineGraph.addLine(Color.rgb(255, 204, 2));
-				for (int i = 0; i < 8; i++) { // testing to see if the points
-												// will take the user to the
-												// right
-					// activity, either the sliders to fill information in or it
-					// will take
-					// them to reflection fragment
+				for (int i = 0; i < 8; i++) {
 					if (i % 2 == 1) {
 						length = randNumbers.nextInt(100 - 0 + 1) + 0;
 
@@ -207,29 +202,6 @@ public class GraphFragment extends Fragment implements OnTouchListener {
 					}
 
 				}
-
-				// int myLine;
-
-				// myLine = lineGraph.addLine(Color.RED);
-				// lineGraph.addPoint(myLine, 0, 10);
-				// lineGraph.addPoint(myLine, 1, 30);
-				// lineGraph.addPoint(myLine, 2, 100);
-				// lineGraph.addPoint(myLine, 3, 50);
-				// lineGraph.addPoint(myLine, 4, 15);
-				// lineGraph.addPoint(myLine, 5, 80);
-				// lineGraph.addPoint(myLine, 6, 90);
-				// lineGraph.addPoint(myLine, 7, 10);
-				// lineGraph.addPoint(myLine, 8, 0);
-				//
-				// myLine = lineGraph.addLine(Color.BLUE);
-				// lineGraph.addPoint(myLine, 0, 150);
-				// lineGraph.addPoint(myLine, 1, 60);
-				// lineGraph.addPoint(myLine, 2, 50);
-				// lineGraph.addPoint(myLine, 3, 75);
-				// lineGraph.addPoint(myLine, 4, 95);
-				// lineGraph.addPoint(myLine, 5, 30);
-				// lineGraph.addPoint(myLine, 6, 10);
-				// lineGraph.addPoint(myLine, 7, 90);
 			}
 		}
 	}
@@ -305,16 +277,6 @@ public class GraphFragment extends Fragment implements OnTouchListener {
 						lineGraph.addPoint(myLine, i, length, randomString());
 
 					}
-					// int myLine = lineGraph.addLine(Color.rgb(255, 204, 2));
-					// lineGraph.addPoint(myLine, 0, 10);
-					// lineGraph.addPoint(myLine, 1, 100);
-					// lineGraph.addPoint(myLine, 2, 100);
-					// lineGraph.addPoint(myLine, 3, 90);
-					// lineGraph.addPoint(myLine, 4, 70);
-					// lineGraph.addPoint(myLine, 5, 60);
-					// lineGraph.addPoint(myLine, 6, 90);
-					// lineGraph.addPoint(myLine, 7, 100);
-					// lineGraph.addPoint(myLine, 8, 100);
 					lineGraph.invalidate();
 
 				}

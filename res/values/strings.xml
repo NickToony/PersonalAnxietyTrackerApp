@@ -36,6 +36,7 @@
         <item>Slider test</item>
         <item>Record Graph</item>
         <item>Social</item>
+        <item>Breath Exercise</item>
     </string-array>
     <string-array name="spinner_list_items">
         <item>Day</item>

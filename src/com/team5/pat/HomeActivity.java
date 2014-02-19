@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import com.team5.fragment.BreathFragment;
 import com.team5.fragment.GraphFragment;
 import com.team5.fragment.MenuFragment;
 import com.team5.fragment.MenuHexagonFragment;
@@ -40,8 +41,6 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
 	private SharedPreferences preference;
-
-	// private CharSequence mDrawerTitle;
 	private CharSequence mTitle;
 	private String[] mTitles;
 
@@ -140,12 +139,15 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		case 7:
 			fragment = new SocialFragment();
 			break;
+		case 8:
+			fragment = new BreathFragment();
+			break;
 		default:
 			break;
 		}
 
 		// Replace the frame with another fragment
-		if ((pos >= 0) && (pos <= 7)) {
+		if ((pos >= 0) && (pos <= 8)) {
 			actionBar.setTitle(mTitle);
 			transaction.replace(R.id.content_frame, fragment).commit();
 			fragment.setArguments(args);
@@ -188,7 +190,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 
 	private void furtherProcess() {
 		// Make drawer list responsive
-		mDrawerList.setAdapter(new NavListAdapter(this, R.layout.sub_menu_row,
+		mDrawerList.setAdapter(new NavListAdapter(this, R.layout.nav_list_row,
 				items));
 		mDrawerList.setOnItemClickListener(this);
 

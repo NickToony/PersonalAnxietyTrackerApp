@@ -23,7 +23,7 @@ public class SubMenuFragment extends ListFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.sub_menu_layout, container, false);
+		return inflater.inflate(R.layout.nav_list_layout, container, false);
 	}
 
 	@Override
@@ -33,7 +33,7 @@ public class SubMenuFragment extends ListFragment {
 		addItemsToSubMenuList();
 
 		SubMenuListAdapter adapter = new SubMenuListAdapter(getActivity(),
-				R.layout.sub_menu_row, list);
+				R.layout.nav_list_row, list);
 		setListAdapter(adapter);
 	}
 
@@ -136,7 +136,7 @@ class SubMenuListAdapter extends ArrayAdapter<SubMenuItem> {
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
 		if (row == null) {
-			row = inflater.inflate(R.layout.sub_menu_row, parent, false);
+			row = inflater.inflate(R.layout.nav_list_row, parent, false);
 		}
 
 		image = (ImageView) row.findViewById(R.id.rowImage);

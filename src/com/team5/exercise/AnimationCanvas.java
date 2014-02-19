@@ -8,21 +8,21 @@ import android.view.View;
 
 import com.team5.pat.R;
 
-public class animationCanvas extends View
+public class AnimationCanvas extends View
 {
-	public animationCanvas(Context context)
+	public AnimationCanvas(Context context)
 	{
 		super(context);
 		// TODO Auto-generated constructor stub
 	}
 
-	public animationCanvas(Context context, AttributeSet attrs)
+	public AnimationCanvas(Context context, AttributeSet attrs)
 	{
 		super(context, attrs);
 		// TODO Auto-generated constructor stub
 	}
 
-	public animationCanvas(Context context, AttributeSet attrs, int defStyleAttr)
+	public AnimationCanvas(Context context, AttributeSet attrs, int defStyleAttr)
 	{
 		super(context, attrs, defStyleAttr);
 		// TODO Auto-generated constructor stub
