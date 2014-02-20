@@ -16,11 +16,16 @@ public final class R {
         /**  Splash 
  Splash 
          */
-        public static final int button_array=0x7f080005;
+        public static final int button_array=0x7f080008;
+        public static final int contact_icons=0x7f080004;
+        /**  Contact 
+         */
+        public static final int contact_name=0x7f080003;
+        public static final int contact_phone_number=0x7f080005;
         public static final int nav_list_icons=0x7f080000;
         public static final int nav_list_titles=0x7f080001;
-        public static final int pref_language_list_options=0x7f080003;
-        public static final int pref_language_list_values=0x7f080004;
+        public static final int pref_language_list_options=0x7f080006;
+        public static final int pref_language_list_values=0x7f080007;
         public static final int spinner_list_items=0x7f080002;
     }
     public static final class attr {
@@ -59,16 +64,22 @@ public final class R {
         public static final int ic_drawer=0x7f020004;
         public static final int ic_launcher=0x7f020005;
         public static final int ic_logo=0x7f020006;
-        public static final int ic_milton=0x7f020007;
-        public static final int ic_month=0x7f020008;
-        public static final int ic_week=0x7f020009;
-        public static final int ic_year=0x7f02000a;
-        public static final int logo=0x7f02000b;
-        public static final int rounded_edges=0x7f02000c;
-        public static final int seekbarprogress=0x7f02000d;
-        public static final int wallpaper_01=0x7f02000e;
-        public static final int wallpaper_02=0x7f02000f;
-        public static final int wallpaper_03=0x7f020010;
+        public static final int ic_milton1=0x7f020007;
+        public static final int ic_milton2=0x7f020008;
+        public static final int ic_milton3=0x7f020009;
+        public static final int ic_milton4=0x7f02000a;
+        public static final int ic_milton5=0x7f02000b;
+        public static final int ic_milton6=0x7f02000c;
+        public static final int ic_milton7=0x7f02000d;
+        public static final int ic_month=0x7f02000e;
+        public static final int ic_week=0x7f02000f;
+        public static final int ic_year=0x7f020010;
+        public static final int logo=0x7f020011;
+        public static final int rounded_edges=0x7f020012;
+        public static final int seekbarprogress=0x7f020013;
+        public static final int wallpaper_01=0x7f020014;
+        public static final int wallpaper_02=0x7f020015;
+        public static final int wallpaper_03=0x7f020016;
     }
     public static final class id {
         public static final int AnxietyCheckBox=0x7f0c002f;
@@ -203,7 +214,7 @@ public final class R {
         public static final int app_name=0x7f070000;
         public static final int below_menu=0x7f070008;
         public static final int blue_line=0x7f070007;
-        /**   Breathing Exercise  
+        /**  Breathing Exercise 
          */
         public static final int breathEx=0x7f070023;
         public static final int brightness=0x7f070018;
