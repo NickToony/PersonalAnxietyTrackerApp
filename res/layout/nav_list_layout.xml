@@ -4,7 +4,7 @@
     android:layout_height="match_parent" >
 
     <ListView
-        android:id="@android:id/list"
+        android:id="@+id/tempList"
         android:layout_width="@dimen/sub_menu_list_width"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"

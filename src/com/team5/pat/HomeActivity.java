@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import com.team5.fragment.BreathFragment;
+import com.team5.fragment.BreathExerciseFragment;
 import com.team5.fragment.GraphFragment;
 import com.team5.fragment.MenuFragment;
 import com.team5.fragment.MenuHexagonFragment;
@@ -96,6 +96,10 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 			Toast.makeText(getApplicationContext(), "Feedback",
 					Toast.LENGTH_SHORT).show();
 			return true;
+		case R.id.action_contact:
+			intent = new Intent(this, ContactActivity.class);
+			startActivity(intent);
+			return true;
 		}
 		return super.onOptionsItemSelected(item);
 
@@ -140,7 +144,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 			fragment = new SocialFragment();
 			break;
 		case 8:
-			fragment = new BreathFragment();
+			fragment = new BreathExerciseFragment();
 			break;
 		default:
 			break;
