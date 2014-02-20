@@ -11,10 +11,16 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.SearchManager;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.widget.SearchView;
 
 public class ContactActivity extends Activity implements TabListener,
 		OnPageChangeListener {
@@ -25,6 +31,7 @@ public class ContactActivity extends Activity implements TabListener,
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_contact);
+		handleIntent(getIntent());
 		actionBar = getActionBar();
 
 		addTabsToActionBar();
@@ -33,6 +40,27 @@ public class ContactActivity extends Activity implements TabListener,
 		FragmentManager fm = getFragmentManager();
 		viewPager.setAdapter(new ContactAdapter(fm));
 		viewPager.setOnPageChangeListener(this);
+	}
+
+	@Override
+	protected void onNewIntent(Intent intent) {
+		super.onNewIntent(intent);
+		handleIntent(intent);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.contact, menu);
+
+		// Associate searching configuration with the SearchView
+		SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+		SearchView searchView = (SearchView) menu.findItem(R.id.action_search)
+				.getActionView();
+		searchView.setSearchableInfo(searchManager
+				.getSearchableInfo(getComponentName()));
+
+		return super.onCreateOptionsMenu(menu);
 	}
 
 	@Override
@@ -86,6 +114,14 @@ public class ContactActivity extends Activity implements TabListener,
 		actionBar.addTab(tabGroup, 0);
 		actionBar.addTab(tabMap, 1);
 		actionBar.addTab(tabFavourite, 2);
+	}
+
+	private void handleIntent(Intent intent) {
+		if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+			String query = intent.getStringExtra(SearchManager.QUERY);
+//			Toast.makeText(getApplicationContext(), query, Toast.LENGTH_SHORT)
+//					.show();
+		}
 	}
 }
 

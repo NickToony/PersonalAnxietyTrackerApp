@@ -43,6 +43,13 @@
             android:name="com.team5.pat.ContactActivity"
             android:label="@string/title_activity_contact"
             android:parentActivityName="com.team5.pat.HomeActivity" >
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
         </activity>
     </application>
 
