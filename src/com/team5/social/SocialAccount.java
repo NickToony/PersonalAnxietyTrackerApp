@@ -18,8 +18,8 @@ import android.os.AsyncTask;
 import android.os.Handler;
 
 public class SocialAccount {
-	private Context myContext;
-	private int myStatus = 1;
+	/*private Context myContext;
+	private int myStatus = STATUS_IDLE;
 	
 	public final static int STATUS_IDLE = 1; // safe to make a new request
 	public final static int STATUS_BUSY = 2; // executing - can't do anymore
@@ -29,10 +29,13 @@ public class SocialAccount {
 	private String urlParameters;
 	private Response requestResponse;
 	
-	private Handler myHandler;
+	private Handler myHandler = new Handler();
 	private Runnable myTick = new Runnable() {
+		@Override
 		public void run() {
-			//requestResponse = handleRequest();
+			android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);
+			myStatus = STATUS_RESPONSE;
+			requestResponse = handleRequest();
 		}
 	};
 	
@@ -45,14 +48,14 @@ public class SocialAccount {
 		// If not doing anything
 		if (myStatus == STATUS_IDLE)	{
 			// Take the request information
-			this.urlString = urlString;
-			this.urlParameters = urlParameters;
+			//this.urlString = urlString;
+			//this.urlParameters = urlParameters;
 			// Set status to busy
 			myStatus = STATUS_BUSY;
 			// Make a new response object to use
 			requestResponse = new Response();
 			// Start the thread
-			myHandler.postDelayed(myTick, 1); // execute ASAP
+			myHandler.post(myTick); // execute ASAP
 			// Request started
 			return true;
 		}	else	{
@@ -72,29 +75,32 @@ public class SocialAccount {
 		}
 	}
 	
-	private Document handleRequest() {
+	private Response handleRequest() {
 		// Get a new document builder factory
 		DocumentBuilderFactory documentBuilder = DocumentBuilderFactory.newInstance();
 		
 		// Have the factory create a new document
-		DocumentBuilder document;
+		DocumentBuilder myDocBuilder;
 		try {
-			document = documentBuilder.newDocumentBuilder();
+			myDocBuilder = documentBuilder.newDocumentBuilder();
 		} catch (ParserConfigurationException e) {
-			return null;
+			requestResponse.set(false, "Failed to configure parser.", null);
+			return requestResponse;
 		}
 		
 		URL url;
 		try {
 			url = new URL(urlString);
 		} catch (MalformedURLException e2) {
-			return null;
+			requestResponse.set(false, "Malformed URL.", null);
+			return requestResponse;
 		}
 		HttpURLConnection connection;
 		try {
 			connection = (HttpURLConnection) url.openConnection();
 		} catch (IOException e2) {
-			return null;
+			requestResponse.set(false, "Failed to setup connection.", null);
+			return requestResponse;
 		}
 		connection.setDoOutput(true);
 		connection.setDoInput(true);
@@ -102,7 +108,8 @@ public class SocialAccount {
 		try {
 			connection.setRequestMethod("POST");
 		} catch (ProtocolException e1) {
-			return null;
+			requestResponse.set(false, "Failed to initiate protocols.", null);
+			return requestResponse;
 		}
 		connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded"); 
 		connection.setRequestProperty("charset", "utf-8");
@@ -110,15 +117,18 @@ public class SocialAccount {
 		connection.setUseCaches (false);
 		
 		// Attempt to get the XML and parse it
+		Document doc;
 		try {
-			return document.parse(new URL(urlString).openStream());
-		} catch (MalformedURLException e) {
-			return null;
+			doc = myDocBuilder.parse(url.openStream());
+			requestResponse.set(true, "Response fetched successfully.", doc);
+			return requestResponse;
 		} catch (SAXException e) {
-			return null;
+			requestResponse.set(false, "XML parsing failure.", null);
+			return requestResponse;
 		} catch (IOException e) {
-			return null;
+			requestResponse.set(false, "Connection failure.", null);
+			return requestResponse;
 		}
-	}
+	}*/
 
 }

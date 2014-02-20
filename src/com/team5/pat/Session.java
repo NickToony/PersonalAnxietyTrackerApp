@@ -16,7 +16,7 @@ public class Session extends Application {
 		myContext = c;
 		
 		myUserAccount = new UserAccount(myContext);
-		mySocialAccount = new SocialAccount(myContext);
+		//mySocialAccount = new SocialAccount(myContext);
 		
 		setup = true;
 	}
