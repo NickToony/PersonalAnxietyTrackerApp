@@ -21,31 +21,25 @@ import android.util.Log;
 public class Request {
 	private String myUrl;
 	private String myUrlParameters;
-	private boolean requestDone = false;
-	Response myResponse = new Response();
+	private NetworkInterface myTarget;
+	private Request myObject = this;
 	
-	public Request(String myUrl, String myUrlParameters)	{
+	public Request(NetworkInterface myTarget, String myUrl, String myUrlParameters)	{
 		this.myUrl = myUrl;
 		this.myUrlParameters = myUrlParameters;
+		this.myTarget = myTarget;
 		
 		new RequestTask().execute();
 	}
 	
-	public boolean isRequestDone()	{
-		return requestDone;
-	}
 	
-	public Response getResponse()	{
-		if (requestDone)
-			return myResponse;
-		else
-			return null;
-	}
 	
-	private class RequestTask  extends AsyncTask<Void, Void, Void>	{
+	private class RequestTask  extends AsyncTask<Void, Void, Response>	{
 		@Override
-		protected Void doInBackground(Void... params) {
+		protected Response doInBackground(Void... params) {
 			Log.i("Request", "Request.doInBackground() — making a request ");
+			
+			Response myResponse = new Response();
 			
 			// Get a new document builder factory
 			DocumentBuilderFactory documentBuilder = DocumentBuilderFactory.newInstance();
@@ -56,7 +50,6 @@ public class Request {
 				myDocBuilder = documentBuilder.newDocumentBuilder();
 			} catch (ParserConfigurationException e) {
 				myResponse.set(false, "Failed to configure parser.", null);
-				requestDone = true;
 				return null;
 			}
 			
@@ -65,16 +58,14 @@ public class Request {
 				url = new URL(myUrl);
 			} catch (MalformedURLException e2) {
 				myResponse.set(false, "Malformed URL.", null);
-				requestDone = true;
-				return null;
+				return myResponse;
 			}
 			HttpURLConnection connection;
 			try {
 				connection = (HttpURLConnection) url.openConnection();
 			} catch (IOException e2) {
 				myResponse.set(false, "Failed to setup connection.", null);
-				requestDone = true;
-				return null;
+				return myResponse;
 			}
 			connection.setDoOutput(true);
 			connection.setDoInput(true);
@@ -83,8 +74,7 @@ public class Request {
 				connection.setRequestMethod("POST");
 			} catch (ProtocolException e1) {
 				myResponse.set(false, "Failed to initiate protocols.", null);
-				requestDone = true;
-				return null;
+				return myResponse;
 			}
 			connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded"); 
 			connection.setRequestProperty("charset", "utf-8");
@@ -96,17 +86,18 @@ public class Request {
 			try {
 				doc = myDocBuilder.parse(url.openStream());
 				myResponse.set(true, "Response fetched successfully.", doc);
-				requestDone = true;
-				return null;
+				return myResponse;
 			} catch (SAXException e) {
 				myResponse.set(false, "XML parsing failure.", null);
-				requestDone = true;
-				return null;
+				return myResponse;
 			} catch (IOException e) {
 				myResponse.set(false, "Connection failure.", null);
-				requestDone = true;
-				return null;
+				return myResponse;
 			}
+		}
+		
+		protected void onPostExecute(Response response)	{
+			myTarget.eventNetworkResponse(myObject, response);
 		}
 	}
 }
