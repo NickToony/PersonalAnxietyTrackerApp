@@ -37,8 +37,8 @@ public class ContactGroupFragment extends ListFragment {
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		Intent intent = new Intent(getActivity(), ContactDetailsActivity.class);
-		startActivity(intent);
+		// Intent intent = new Intent(getActivity(), ContactDetailsActivity.class);
+		// startActivity(intent);
 	}
 
 	private void addItemsToTheList() {
