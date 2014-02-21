@@ -1,5 +1,6 @@
 package com.team5.social;
 
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -77,14 +78,27 @@ public class Request {
 				return myResponse;
 			}
 			connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded"); 
-			connection.setRequestProperty("charset", "utf-8");
+			connection.setRequestProperty("charset", "utf-8"); 
 			connection.setRequestProperty("Content-Length", "" + Integer.toString(myUrlParameters.getBytes().length));
 			connection.setUseCaches (false);
+			
+			DataOutputStream wr;
+			try {
+				wr = new DataOutputStream(connection.getOutputStream());
+				wr.writeBytes(myUrlParameters);
+				wr.flush();
+				wr.close();
+				Log.i("Request", "Request.doInBackground() — wrote parameters: " + myUrlParameters);
+			} catch (IOException e1) {
+				myResponse.set(false, "Failing to attach parameters.", null);
+				e1.printStackTrace();
+				return myResponse;
+			}
 			
 			// Attempt to get the XML and parse it
 			Document doc;
 			try {
-				doc = myDocBuilder.parse(url.openStream());
+				doc = myDocBuilder.parse(connection.getInputStream());
 				myResponse.set(true, "Response fetched successfully.", doc);
 				return myResponse;
 			} catch (SAXException e) {

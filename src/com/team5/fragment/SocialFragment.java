@@ -1,5 +1,15 @@
 package com.team5.fragment;
 
+import java.io.StringWriter;
+
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
 import com.team5.pat.R;
 import com.team5.pat.Session;
 import com.team5.pat.R.layout;
@@ -17,6 +27,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SocialFragment extends Fragment implements NetworkInterface {		
@@ -28,19 +39,18 @@ public class SocialFragment extends Fragment implements NetworkInterface {
 	
 	private int myState = STATE_IDLE;
 	private Request myRequest;
-	
-	
+	private View myView;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
 		super.onCreate(savedInstanceState);
-		View view = inflater.inflate(R.layout.activity_social, container, false);
+		myView = inflater.inflate(R.layout.activity_social, container, false);
 		
 		// Begin step events
-		myRequest = new Request(this, "http://193.35.58.219/PAT/android/login.php", "");
+		myRequest = new Request(this, "http://193.35.58.219/PAT/android/login.php", "email=Nick&pass=Pass");
 		myState = STATE_REQUESTING;
 		
-		return view;
+		return myView;
 	}
 
 	@Override
@@ -49,13 +59,41 @@ public class SocialFragment extends Fragment implements NetworkInterface {
 		if (response.isSuccess())	{
 			output = "Successful.";
 		}	else	{
-			output = "Not successful.";
+			output = "Not successful: " + response.getMessage();
 		}
 		
 		Toast.makeText(getActivity().getApplicationContext(), output, 
 				   Toast.LENGTH_LONG).show();
 		
 		myState = STATE_FATAL;
+		
+		TextView myText = (TextView) myView.findViewById(R.id.output);
+		
+		if (!response.isSuccess())	{
+			return;
+		}
+		
+		TransformerFactory tf = TransformerFactory.newInstance();
+		Transformer transformer;
+		try {
+			transformer = tf.newTransformer();
+		} catch (TransformerConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return;
+		}
+		transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+		StringWriter writer = new StringWriter();
+		try {
+			transformer.transform(new DOMSource(response.getDocument()), new StreamResult(writer));
+		} catch (TransformerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return;
+		}
+		String dd = writer.getBuffer().toString().replaceAll("\n|\r", "");
+		
+		myText.setText(dd);
 	}
 
 }
