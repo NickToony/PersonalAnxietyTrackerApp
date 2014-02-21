@@ -14,21 +14,24 @@
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_marginLeft="30dp"
-        android:background="#58BDE2" >
+        android:background="#58BDE2"
+        android:visibility="invisible" >
     </com.team5.graph.LineGraphView>
 
     <com.team5.graph.PieChartView
         android:id="@+id/myPieChart"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_centerInParent="true" >
+        android:layout_centerInParent="true"
+        android:visibility="invisible" >
     </com.team5.graph.PieChartView>
 
     <com.team5.graph.BarChartView
         android:id="@+id/myBarChart"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_centerInParent="true" >
+        android:layout_centerInParent="true"
+        android:visibility="invisible" >
     </com.team5.graph.BarChartView>
 
     <TextView

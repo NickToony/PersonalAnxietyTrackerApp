@@ -6,11 +6,13 @@ import java.util.List;
 import com.team5.pat.R;
 
 import android.app.ListFragment;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 public class ContactGroupFragment extends ListFragment {
 	private List<GroupItem> items;
@@ -31,6 +33,12 @@ public class ContactGroupFragment extends ListFragment {
 		setListAdapter(adapter);
 
 		return view;
+	}
+
+	@Override
+	public void onListItemClick(ListView l, View v, int position, long id) {
+		Intent intent = new Intent(getActivity(), ContactDetailsActivity.class);
+		startActivity(intent);
 	}
 
 	private void addItemsToTheList() {

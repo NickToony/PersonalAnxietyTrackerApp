@@ -56,7 +56,6 @@ public class GraphFragment extends Fragment implements OnTouchListener {
 
 		initialiseGraphs();
 		addPointsToGraphs();
-		setGraphsInvisible();
 
 		// Setting up checkBox and adding listener to them!
 		initializeAndAddListnerCheckBoxes();
@@ -92,20 +91,20 @@ public class GraphFragment extends Fragment implements OnTouchListener {
 				// showing the related figures or navigate to SeekBarFragment
 				if (distance < lineGraph.getTouchTolerance()) {
 					if (p.getRecorded()) {
-						ReflectionFragment frag = new ReflectionFragment();
-						frag.setSer(p.getX());
-						frag.setAnx(p.getY());
-						frag.setThought(p.getInformation());
-						transaction.add(android.R.id.content, frag).commit();
+						ReflectionFragment fragment = new ReflectionFragment();
+						fragment.setSer(p.getX());
+						fragment.setAnx(p.getY());
+						fragment.setThought(p.getInformation());
+						transaction.add(android.R.id.content, fragment);
+						transaction.commit();
 						break;
 					} else {
-						transaction.remove(this);
+						// Allow user to navigate backward
+						transaction.addToBackStack(null);
 						transaction.replace(R.id.content_frame,
 								new SeekBarFragment()).commit();
-
 						break;
 					}
-
 				}
 			}
 		}
@@ -227,12 +226,6 @@ public class GraphFragment extends Fragment implements OnTouchListener {
 			barChart.addBar(Color.YELLOW, 50);
 			barChart.addBar(Color.CYAN, 100);
 		}
-	}
-
-	private void setGraphsInvisible() {
-		pieChart.setVisibility(View.GONE);
-		lineGraph.setVisibility(View.GONE);
-		barChart.setVisibility(View.GONE);
 	}
 
 	// use the list to check which is checked on un-checked

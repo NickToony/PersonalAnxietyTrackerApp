@@ -21,18 +21,20 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 public class ContactActivity extends Activity implements TabListener,
 		OnPageChangeListener {
 	private ActionBar actionBar;
+
 	private ViewPager viewPager;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_contact);
-		handleIntent(getIntent());
 		actionBar = getActionBar();
+		handleIntent(getIntent());
 
 		addTabsToActionBar();
 
@@ -119,8 +121,8 @@ public class ContactActivity extends Activity implements TabListener,
 	private void handleIntent(Intent intent) {
 		if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
 			String query = intent.getStringExtra(SearchManager.QUERY);
-//			Toast.makeText(getApplicationContext(), query, Toast.LENGTH_SHORT)
-//					.show();
+			Toast.makeText(getApplicationContext(), query, Toast.LENGTH_SHORT)
+					.show();
 		}
 	}
 }
