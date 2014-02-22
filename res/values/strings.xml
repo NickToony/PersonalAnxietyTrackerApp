@@ -8,27 +8,21 @@
     <string name="blue_line">Blue Line</string>
     <string name="below_menu">Sub-Menu will go here!</string>
     <string name="submit">Submit</string>
-    <string name="Sub_menu">SubMenu</string>
     <string name="language">Translate</string>
     <string name="string_choice">Choice</string>
+    <string name="image_content_description">Image</string>
 
     <string-array name="nav_list_icons">
-        <item>@drawable/ic_day</item>
-        <item>@drawable/ic_week</item>
-        <item>@drawable/ic_month</item>
-        <item>@drawable/ic_year</item>
         <item>@drawable/ic_launcher</item>
         <item>@drawable/ic_day</item>
         <item>@drawable/ic_week</item>
         <item>@drawable/ic_month</item>
-        <item>@drawable/ic_year</item>
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_tracker</item>
+        <item>@drawable/ic_social</item>
+        <item>@drawable/ic_exercises</item>
     </string-array>
     <string-array name="nav_list_titles">
         <item>Line Graph</item>
-        <item>Pie Chart</item>
-        <item>Bar Chart</item>
         <item>Menu (circle)</item>
         <item>Menu (hexagon)</item>
         <item>Slider test</item>
@@ -153,8 +147,6 @@
         <item>en</item>
         <item>zh</item>
     </string-array>
-
-    <string name="hello_world">Hello world!</string>
 
     <!-- Splash -->
     <string-array name="button_array">

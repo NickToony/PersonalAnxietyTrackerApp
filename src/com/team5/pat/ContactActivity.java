@@ -52,7 +52,7 @@ public class ContactActivity extends Activity implements TabListener,
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		/* MenuInflater inflater = getMenuInflater();
+		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.contact, menu);
 
 		// Associate searching configuration with the SearchView
@@ -61,7 +61,6 @@ public class ContactActivity extends Activity implements TabListener,
 				.getActionView();
 		searchView.setSearchableInfo(searchManager
 				.getSearchableInfo(getComponentName()));
-		*/
 
 		return super.onCreateOptionsMenu(menu);
 	}

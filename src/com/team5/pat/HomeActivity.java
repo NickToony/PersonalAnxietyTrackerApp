@@ -26,6 +26,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
@@ -123,27 +124,21 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 			fragment = new GraphFragment();
 			break;
 		case 1:
-			fragment = new GraphFragment();
-			break;
-		case 2:
-			fragment = new GraphFragment();
-			break;
-		case 3:
 			fragment = new MenuFragment();
 			break;
-		case 4:
+		case 2:
 			fragment = new MenuHexagonFragment();
 			break;
-		case 5:
+		case 3:
 			fragment = new SeekBarFragment();
 			break;
-		case 6:
+		case 4:
 			fragment = new RecordGraphFragment();
 			break;
-		case 7:
+		case 5:
 			fragment = new SocialFragment();
 			break;
-		case 8:
+		case 6:
 			fragment = new BreathExerciseFragment();
 			break;
 		default:
@@ -151,7 +146,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		}
 
 		// Replace the frame with another fragment
-		if ((pos >= 0) && (pos <= 8)) {
+		if ((pos >= 0) && (pos <= 6)) {
 			actionBar.setTitle(mTitle);
 			transaction.replace(R.id.content_frame, fragment).commit();
 			fragment.setArguments(args);
@@ -194,6 +189,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 
 	private void furtherProcess() {
 		// Make drawer list responsive
+		mDrawerList.setBackgroundColor(Color.LTGRAY);
 		mDrawerList.setAdapter(new NavListAdapter(this, R.layout.nav_list_row,
 				items));
 		mDrawerList.setOnItemClickListener(this);

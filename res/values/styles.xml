@@ -20,6 +20,7 @@
     <style name="HoloTheme" parent="@android:style/Theme.Holo.Light">
     </style>
 
+    <color name="grey">#C0C0C0</color>
     <color name="hintTextColor">#6B6B6B</color>
     <color name="seekBarHeadingColor">#2E4FBE</color>
     <color name="backgroundColorSeekBar">#c2e4f2</color>
