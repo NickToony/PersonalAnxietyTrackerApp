@@ -1,5 +1,8 @@
 package com.team5.fragment;
 
+import java.util.Date;
+
+import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
 import com.team5.pat.Session;
 import com.team5.user.UserRecord;
@@ -32,12 +35,16 @@ public class SeekBarFragment extends Fragment implements OnClickListener {
 	private SeekBar anxietySeekBar;
 	private SeekBar seriousnessSeekBar;
 	private EditText commentsTextField;
-	private View view;
+
+	private View myView;
+	private HomeActivity myActivity;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		view = inflater.inflate(R.layout.seek_bar_layout, container, false);
+		myView = inflater.inflate(R.layout.seek_bar_layout, container, false);
+		myActivity = (HomeActivity) getActivity();
+		myActivity.setTitle("Log");
 
 		// If just started initialize to 0
 		if (savedInstanceState == null) {
@@ -57,7 +64,7 @@ public class SeekBarFragment extends Fragment implements OnClickListener {
 			@Override
 			public void onClick(View v) {
 				// get the date
-				long theDate = 100;
+				long theDate = new Date().getTime();
 
 				// Create the record
 				UserRecord currentUR = new UserRecord(theDate, anxietyState,
@@ -114,7 +121,7 @@ public class SeekBarFragment extends Fragment implements OnClickListener {
 						anxietyState = anxietySeekBar.getProgress();
 					}
 				});
-		return view;
+		return myView;
 
 	}
 
@@ -137,17 +144,17 @@ public class SeekBarFragment extends Fragment implements OnClickListener {
 
 	private void initialiseSeekBarComponents() {
 
-		anxietySeekBar = (SeekBar) view.findViewById(R.id.anxietySeekBar);
+		anxietySeekBar = (SeekBar) myView.findViewById(R.id.anxietySeekBar);
 		anxietySeekBar.setProgress(anxietyState);
 
-		seriousnessSeekBar = (SeekBar) view
+		seriousnessSeekBar = (SeekBar) myView
 				.findViewById(R.id.seriousnessSeekBar);
 		seriousnessSeekBar.setProgress(seriousnessState);
 
-		commentsTextField = (EditText) view.findViewById(R.id.commentsEditText);
+		commentsTextField = (EditText) myView.findViewById(R.id.commentsEditText);
 		commentsTextField.setText(comments);
 
-		seekBarSubmitButton = (Button) view
+		seekBarSubmitButton = (Button) myView
 				.findViewById(R.id.seekBarSubmitButton);
 	}
 }

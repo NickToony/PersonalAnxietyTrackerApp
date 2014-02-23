@@ -15,7 +15,7 @@
     <string-array name="nav_list_icons">
         <item>@drawable/ic_day</item>
         <item>@drawable/ic_week</item>
-        <item>@drawable/ic_month</item>
+        <item>@drawable/ic_exercises</item>
         <item>@drawable/ic_year</item>
         <item>@drawable/ic_launcher</item>
         <item>@drawable/ic_day</item>
@@ -23,7 +23,7 @@
         <item>@drawable/ic_month</item>
         <item>@drawable/ic_year</item>
         <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_exercises</item>
     </string-array>
     <string-array name="nav_list_titles">
         <item>Line Graph</item>

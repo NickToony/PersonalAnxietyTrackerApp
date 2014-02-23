@@ -3,6 +3,7 @@ package com.team5.fragment;
 import java.util.List;
 
 import com.team5.graph.LineGraphView;
+import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
 import com.team5.pat.Session;
 import com.team5.user.UserRecord;
@@ -15,15 +16,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class RecordGraphFragment extends Fragment {
-	private View view;
+	private View myView;
+	private HomeActivity myActivity;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		view = inflater.inflate(R.layout.record_graph_layout, container, false);
+		myView = inflater.inflate(R.layout.record_graph_layout, container, false);
+		myActivity = (HomeActivity) getActivity();
+		myActivity.setTitle("Graph Test");
 
 		// Fill the line graph
-		LineGraphView mLineGraph = (LineGraphView) view
+		LineGraphView mLineGraph = (LineGraphView) myView
 				.findViewById(R.id.myLineGraph);
 		// Add a line
 		int mRedLine = mLineGraph.addLine(Color.RED);
@@ -44,6 +48,6 @@ public class RecordGraphFragment extends Fragment {
 		// Make it visible
 		mLineGraph.setVisibility(View.VISIBLE);
 
-		return view;
+		return myView;
 	}
 }

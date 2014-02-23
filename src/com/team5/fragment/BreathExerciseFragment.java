@@ -1,6 +1,7 @@
 package com.team5.fragment;
 
 import com.team5.exercise.AnimationCanvas;
+import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
 
 import android.app.Fragment;
@@ -17,7 +18,8 @@ public class BreathExerciseFragment extends Fragment implements OnClickListener 
 	private AnimationCanvas animCanvas;
 	private Button startButton;
 	private Button stopButton;
-	private View view;
+	private View myView;
+	private HomeActivity myActivity;
 	private Handler mHandler;
 	private Runnable reDrawInhale;
 	private Runnable reDrawExhale;
@@ -31,14 +33,16 @@ public class BreathExerciseFragment extends Fragment implements OnClickListener 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		view = inflater.inflate(R.layout.breath_exercise_layout, container,
+		myView = inflater.inflate(R.layout.breath_exercise_layout, container,
 				false);
+		myActivity = (HomeActivity) getActivity();
+		myActivity.setTitle("Breathing");
 
 		initialiseComponents();
 		startButton.setOnClickListener(this);
 		stopButton.setOnClickListener(this);
 
-		return view;
+		return myView;
 	}
 
 	@Override
@@ -56,9 +60,9 @@ public class BreathExerciseFragment extends Fragment implements OnClickListener 
 	}
 
 	private void initialiseComponents() {
-		startButton = (Button) view.findViewById(R.id.startButton);
-		stopButton = (Button) view.findViewById(R.id.stopButton);
-		animCanvas = (AnimationCanvas) view.findViewById(R.id.animationCanvas);
+		startButton = (Button) myView.findViewById(R.id.startButton);
+		stopButton = (Button) myView.findViewById(R.id.stopButton);
+		animCanvas = (AnimationCanvas) myView.findViewById(R.id.animationCanvas);
 		mHandler = new Handler();
 		reDrawInhale = new Runnable() {
 			public void run() {

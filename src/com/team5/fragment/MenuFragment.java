@@ -1,6 +1,7 @@
 package com.team5.fragment;
 
 import com.team5.menu.CircleView;
+import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
 
 import android.app.Fragment;
@@ -23,13 +24,18 @@ public class MenuFragment extends Fragment implements OnClickListener {
 	private static final int FLING_MIN_SPEED = 200;
 	private GestureDetector mDetector;
 	private View.OnTouchListener mListener;
+	
+	private View myView;
+	private HomeActivity myActivity;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.menu_layout, container, false);
+		myView = inflater.inflate(R.layout.menu_layout, container, false);
 
-		mCircle = (CircleView) view.findViewById(R.id.myHexagon);
+		mCircle = (CircleView) myView.findViewById(R.id.myHexagon);
+		myActivity = (HomeActivity) getActivity();
+		myActivity.setTitle("Rainbow Menu");
 
 		// Create a gesture detector
 		mDetector = new GestureDetector(getActivity(), new LongPressDetector());
@@ -52,7 +58,7 @@ public class MenuFragment extends Fragment implements OnClickListener {
 		mCircle.addItem("Test 4", Color.rgb(246, 58, 58));
 		mCircle.addItem("Test 5", Color.rgb(233, 224, 73));
 
-		return view;
+		return myView;
 	}
 
 	@Override

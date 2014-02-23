@@ -23,25 +23,16 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
@@ -51,13 +42,21 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
 	private SharedPreferences preference;
-	private CharSequence mTitle;
+
 	private String[] mTitles;
 
 	private List<NavListItem> items;
 	private ActionBar actionBar;
 	
-	private GridView myIconGrid;
+	private class NavItem	{
+		public int drawable;
+		public String label;
+		
+		public NavItem(int drawable, String label)	{
+			this.drawable = drawable;
+			this.label = label;
+		}
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -123,10 +122,10 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		FragmentManager manager = getFragmentManager();
 		FragmentTransaction transaction = manager.beginTransaction();
 
-		// Replace the frame with another fragment
-		transaction.replace(R.id.content_frame, fragment).commit();
 		// Close drawer
 		mDrawerLayout.closeDrawer(mDrawerList);
+		// Replace the frame with another fragment
+		transaction.replace(R.id.content_frame, fragment).commit();
 	}
 
 	@Override
@@ -137,9 +136,8 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		actionBar.setDisplayShowTitleEnabled(true);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 
-		mTitle = getResources().getStringArray(R.array.nav_list_titles)[pos];
 		// Create the respective fragment used to replace the current one
-		Fragment fragment = null;
+		Fragment fragment;
 		switch (pos) {
 		case 0:
 			fragment = new GraphFragment();
@@ -163,15 +161,14 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 			fragment = new BreathExerciseFragment();
 			break;
 		default:
+			fragment = null;
 			break;
 		}
 
 		// Replace the frame with another fragment
-		if ((pos >= 0) && (pos <= 6)) {
-			actionBar.setTitle(mTitle);
+		if (fragment != null) {
 			changeFragment(fragment);
 			fragment.setArguments(args);
-			mDrawerLayout.closeDrawer(mDrawerList);
 		}
 	}
 
@@ -236,5 +233,9 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		getBaseContext().getResources().updateConfiguration(config,
 				getBaseContext().getResources().getDisplayMetrics());
 
+	}
+	
+	public void setTitle(String title)	{
+		actionBar.setTitle("PAT: " + title);
 	}
 }

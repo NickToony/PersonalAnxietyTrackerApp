@@ -1,6 +1,7 @@
 package com.team5.fragment;
 
 import com.team5.menu.HexagonView;
+import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
 
 import android.app.Fragment;
@@ -20,15 +21,20 @@ public class MenuHexagonFragment extends Fragment implements OnClickListener {
 	private static final int FLING_MIN_SPEED = 150;
 	private GestureDetector myDetector;
 	private View.OnTouchListener myListener;
+	
+	private View myView;
+	private HomeActivity myActivity;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.hexagon_layout, container,
+		myView = inflater.inflate(R.layout.hexagon_layout, container,
 				false);
+		myActivity = (HomeActivity) getActivity();
+		myActivity.setTitle("Wheel Menu");
 
 		// Find the hexagon view
-		myHexagon = (HexagonView) view.findViewById(R.id.myHexagon);
+		myHexagon = (HexagonView) myView.findViewById(R.id.myHexagon);
 
 		// Create a gesture detector
 		myDetector = new GestureDetector(getActivity(), new MyGestureDetector());
@@ -46,7 +52,7 @@ public class MenuHexagonFragment extends Fragment implements OnClickListener {
 		// Forward any touch events on to the listener
 		myHexagon.setOnTouchListener(myListener);
 
-		return view;
+		return myView;
 	}
 
 	// This is the gesture detector

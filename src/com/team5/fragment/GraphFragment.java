@@ -26,6 +26,7 @@ import com.team5.graph.LineGraphView;
 import com.team5.graph.PieChartView;
 import com.team5.graph.Point;
 import com.team5.graph.ReflectionFragment;
+import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
 
 public class GraphFragment extends Fragment implements OnTouchListener {
@@ -34,15 +35,18 @@ public class GraphFragment extends Fragment implements OnTouchListener {
 	private BarChartView barChart;
 	private CheckBox seriousness;
 	private CheckBox anxiety;
-	private View view;
 	private CheckBox ref_anxiety;
 	private CheckBox ref_seriousness;
 	private Random randNumbers = new Random();
+	
+	private View myView;
+	private HomeActivity myActivity;
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		view = inflater.inflate(R.layout.graph_layout, container, false);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		myView = inflater.inflate(R.layout.graph_layout, container, false);
+		myActivity = (HomeActivity) getActivity();
+		myActivity.setTitle("Tracker");
 
 		SpinnerAdapter adapter = ArrayAdapter.createFromResource(getActivity(),
 				R.array.spinner_list_items, R.layout.spinner_list);
@@ -62,7 +66,7 @@ public class GraphFragment extends Fragment implements OnTouchListener {
 		lineGraph.setOnTouchListener(this);
 		lineGraph.setVisibility(View.VISIBLE);
 
-		return view;
+		return myView;
 	}
 
 	@Override
@@ -138,9 +142,9 @@ public class GraphFragment extends Fragment implements OnTouchListener {
 	}
 
 	private void initialiseGraphs() {
-		lineGraph = (LineGraphView) view.findViewById(R.id.myLineGraph);
-		pieChart = (PieChartView) view.findViewById(R.id.myPieChart);
-		barChart = (BarChartView) view.findViewById(R.id.myBarChart);
+		lineGraph = (LineGraphView) myView.findViewById(R.id.myLineGraph);
+		pieChart = (PieChartView) myView.findViewById(R.id.myPieChart);
+		barChart = (BarChartView) myView.findViewById(R.id.myBarChart);
 	}
 
 	private void addPointsToGraphs() {
@@ -234,10 +238,10 @@ public class GraphFragment extends Fragment implements OnTouchListener {
 	// Initialize checkboxes
 	private void initializeAndAddListnerCheckBoxes() {
 
-		seriousness = (CheckBox) view.findViewById(R.id.seriousnessCheckBox);
-		anxiety = (CheckBox) view.findViewById(R.id.AnxietyCheckBox);
-		ref_anxiety = (CheckBox) view.findViewById(R.id.ref_anxietyCheckBox);
-		ref_seriousness = (CheckBox) view
+		seriousness = (CheckBox) myView.findViewById(R.id.seriousnessCheckBox);
+		anxiety = (CheckBox) myView.findViewById(R.id.AnxietyCheckBox);
+		ref_anxiety = (CheckBox) myView.findViewById(R.id.ref_anxietyCheckBox);
+		ref_seriousness = (CheckBox) myView
 				.findViewById(R.id.ref_seriousnessCheckBox);
 		// adding the checkboxes to the list
 		nodes.add(seriousness);
