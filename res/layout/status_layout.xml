@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="350dp"
+    android:background="#ABCDEF" >
+
+    <Button
+        android:id="@+id/statusExitButton"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/status_exit" />
+
+    <Button
+        android:id="@+id/statusSaveButton"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/status_save" />
+
+    <TextView
+        android:id="@+id/newSeriousnessHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/statusExitButton"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:text="@string/seriousness_heading"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/seekBarHeadingColor" />
+
+    <SeekBar
+        android:id="@+id/newSeriousnessSeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/newSeriousnessHeading"
+        android:max="10"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:progress="5" />
+
+    <TextView
+        android:id="@+id/newAnxietyHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/newSeriousnessSeekBar"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:text="@string/anxiety_heading"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/seekBarHeadingColor" />
+
+    <SeekBar
+        android:id="@+id/newAnxietySeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/newAnxietyHeading"
+        android:max="10"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:progress="5" />
+
+    <EditText
+        android:id="@+id/summaryEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/newAnxietySeekBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:ems="15"
+        android:hint="@string/status_summary_hint" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/commentEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/summaryEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:ems="15"
+        android:hint="@string/status_comment_hint"
+        android:lines="5"
+        android:maxLength="200" >
+    </EditText>
+
+</RelativeLayout>

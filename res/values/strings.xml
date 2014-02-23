@@ -11,6 +11,7 @@
     <string name="language">Translate</string>
     <string name="string_choice">Choice</string>
     <string name="image_content_description">Image</string>
+    <string name="lock_screen_information">Enter PIN number</string>
 
     <string-array name="nav_list_icons">
         <item>@drawable/ic_day</item>
@@ -59,6 +60,7 @@
     <string name="action_search">Search</string>
     <string name="search_title">Search</string>
     <string name="search_hint">Enter phone number</string>
+    <string name="action_status">Status</string>
 
     <!-- Contact -->
     <string-array name="contact_name">
@@ -117,6 +119,11 @@
     <string name="seriousness_heading">How serious is the situation?</string>
     <string name="anxiety_heading">How anxious do you feel?</string>
     <string name="save_button_text">Save</string>
+    <string name="status_save">Save</string>
+    <string name="status_exit">Exit</string>
+    <string name="status_summary_hint">Summary</string>
+    <string name="status_comment_hint">Comment</string>
+
     <!-- Breathing Exercise -->
     <string name="breathEx">Breathing Exercise</string>
     <string name="seconds">Seconds:</string>

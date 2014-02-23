@@ -11,65 +11,60 @@ import android.content.SharedPreferences;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class LockScreenActivity extends Activity implements OnClickListener {
-	// Constants
-	private int stage = 0;
+	// Normal constants
 	private final int NUM_BUTTONS = 11;
-	private final int KEYPAD_SIZE = 300;
-	private final int KEYPAD_MARGIN = 100;
-	private final int MOVE_SPEED = 5;
-	private final int WAIT_TIME = 60; // 1 second
 	private final int PASS_LENTH = 4;
-	private final String DEFAULT_TEXT = "Enter Passkey";
+	private final long DURATION = 1500; // 1.5 second
+	private final Handler mHandler = new Handler();
 	private final String FAIL_TEXT = "Incorrect key. Try again.";
-	private final String SUCCESS_TEXT = "Success";
 	private final int[] KEYPAD_BUTTON = { R.id.button1, R.id.button2,
 			R.id.button3, R.id.button4, R.id.button5, R.id.button6,
 			R.id.button7, R.id.button8, R.id.button9, R.id.button0,
 			R.id.buttonDelete };
+	private final Runnable mRunnable = new Runnable() {
+		@Override
+		public void run() {
+			showTextAndButtons();
+		}
+	};
+
+	// Coordinates for animation
+	private final float FROM_X = 5;
+	private final float TO_X = 5;
+	private final float FROM_Y = 200;
+	private final float TO_Y = 20;
 
 	// Variables
-	private int position = 0;
 	private String currentInput;
 	private String input = "";
 	private String inputLast = input;
 	private SharedPreferences preference;
+	private TranslateAnimation animation;
 
 	// Views
 	private ImageView mLogo;
 	private TextView mText;
+	private TextView mInformation;
 	private Button[] mButtons = new Button[NUM_BUTTONS];
-
-	// Tick event
-	private Handler mHandler = new Handler();
-	private Runnable mTick = new Runnable() {
-		public void run() {
-			tickEvent();
-			mHandler.postDelayed(this, 20); // 60fps
-		}
-	};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_lock_screen);
-		getActionBar().hide();
-		mLogo = (ImageView) findViewById(R.id.logo);
-		mText = (TextView) findViewById(R.id.keypadInput);
 
-		preference = PreferenceManager
-				.getDefaultSharedPreferences(getApplicationContext());
+		initialiseComponentsAndSetUpAnimation();
+
 		if (preference.getBoolean("pref_key_lockscreen", true) == true) {
 			setUpKeyPadButtons();
-
-			// Reset the handler
-			mHandler.removeCallbacks(mTick);
-			// Give it the task
-			mHandler.post(mTick);
+			mLogo.setAnimation(animation);
+			mHandler.postDelayed(mRunnable, DURATION);
 		} else {
 			Intent intent = new Intent(this, HomeActivity.class);
 			startActivity(intent);
@@ -97,62 +92,57 @@ public class LockScreenActivity extends Activity implements OnClickListener {
 		} else if (input.length() < PASS_LENTH) {
 			input += currentInput;
 		}
+		handleInputPinNumber();
 	}
 
-	private void tickEvent() {
-		switch (stage) {
-		case 0:
-			if (position >= WAIT_TIME) {
-				stage++;
-				position = 0;
-			} else {
-				position++;
-			}
-			break;
-		case 1:
-			if (position >= (KEYPAD_SIZE + KEYPAD_MARGIN) / 2) {
-				stage++;
-				position = 0;
-				for (int i = 0; i < 9; i++) {
-					mButtons[i].setVisibility(View.VISIBLE);
-					mText.setVisibility(View.VISIBLE);
-				}
-			} else {
-				position += MOVE_SPEED;
-				mLogo.setTranslationY(-position);
-			}
-			break;
+	private void showTextAndButtons() {
+		mLogo.setVisibility(View.VISIBLE);
+		mInformation.setVisibility(View.VISIBLE);
+		mText.setVisibility(View.VISIBLE);
 
-		case 2: // awaiting input
-			if (!input.contentEquals(inputLast)) {
-				clearTextIfUserTypeAgain();
-
-				// The user has not yet typed a word
-				if (input.length() == 0) {
-					mText.setText(DEFAULT_TEXT);
-				} else if (currentInput.equals("DEL")) {
-					deletePreviousCharacter();
-				} // Start this application if input matches
-				else if (input.length() >= PASS_LENTH) {
-					String correctPin = preference.getString("pref_key_pin",
-							"1234");
-					if (input.contentEquals(correctPin)) {
-						mText.setText(SUCCESS_TEXT);
-						Intent intent = new Intent(this, HomeActivity.class);
-						startActivity(intent);
-						finish();
-					} else {
-						mText.setText(FAIL_TEXT);
-					}
-					input = "";
-				} else {
-					mText.setText(mText.getText() + "*");
-				}
-				inputLast = input;
-			}
-			break;
-
+		for (int i = 0; i < NUM_BUTTONS; i++) {
+			mButtons[i].setVisibility(View.VISIBLE);
 		}
+	}
+
+	private void handleInputPinNumber() {
+		if (!input.contentEquals(inputLast)) {
+			if (currentInput.equals("DEL")) {
+				deletePreviousCharacter();
+			} // Start this application if input matches
+			else if (input.length() == PASS_LENTH) {
+				String correctPin = preference
+						.getString("pref_key_pin", "1234");
+				if (input.contentEquals(correctPin)) {
+					mText.setText(null);
+					Intent intent = new Intent(this, HomeActivity.class);
+					startActivity(intent);
+					finish();
+				} else {
+					Toast.makeText(getApplicationContext(), FAIL_TEXT,
+							Toast.LENGTH_SHORT).show();
+					mText.setText(null);
+				}
+				input = "";
+			} else {
+				mText.setText(mText.getText() + "*");
+			}
+			inputLast = input;
+		}
+	}
+
+	private void initialiseComponentsAndSetUpAnimation() {
+		getActionBar().hide();
+
+		animation = new TranslateAnimation(FROM_X, TO_X, FROM_Y, TO_Y);
+		animation.setDuration(DURATION);
+		animation.setFillAfter(true);
+
+		mLogo = (ImageView) findViewById(R.id.logo);
+		mText = (TextView) findViewById(R.id.keypadInput);
+		mInformation = (TextView) findViewById(R.id.keypadInformation);
+		preference = PreferenceManager
+				.getDefaultSharedPreferences(getApplicationContext());
 	}
 
 	private void setUpKeyPadButtons() {
@@ -163,14 +153,6 @@ public class LockScreenActivity extends Activity implements OnClickListener {
 					R.array.button_array)[pos]);
 			mButtons[pos].setOnClickListener(this);
 			pos++;
-		}
-	}
-
-	private void clearTextIfUserTypeAgain() {
-		if ((mText.getText().equals(DEFAULT_TEXT))
-				|| (mText.getText().equals(FAIL_TEXT))
-				|| (mText.getText().equals(SUCCESS_TEXT))) {
-			mText.setText(null);
 		}
 	}
 

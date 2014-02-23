@@ -7,6 +7,7 @@ import com.team5.fragment.GraphFragment;
 import com.team5.fragment.MainMenuFragment;
 import com.team5.fragment.SeekBarFragment;
 import com.team5.fragment.SocialFragment;
+import com.team5.fragment.StatusFragment;
 import com.team5.navigationlist.NavListAdapter;
 import com.team5.pat.R;
 
@@ -36,7 +37,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 	private ListView myDrawerList;
 	private ActionBarDrawerToggle myDrawerToggle;
 	private ActionBar myActionBar;
-	
+
 	private SharedPreferences preference;
 
 	@Override
@@ -50,7 +51,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		preference = PreferenceManager
 				.getDefaultSharedPreferences(getApplicationContext());
 		setLocale();
-		
+
 		// Enable ActionBar app icon to behave as action to toggle nav drawer
 		myActionBar = getActionBar();
 		myActionBar.setDisplayHomeAsUpEnabled(true);
@@ -60,7 +61,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		initialiseDrawerComponents();
 		furtherProcess();
 		addItemsToNavList();
-		
+
 		changeFragment(new MainMenuFragment());
 	}
 
@@ -94,12 +95,16 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 			intent = new Intent(this, ContactActivity.class);
 			startActivity(intent);
 			return true;
+		case R.id.action_status:
+			getFragmentManager().beginTransaction()
+					.replace(R.id.content_frame, new StatusFragment()).commit();
+			return true;
 		}
 		return super.onOptionsItemSelected(item);
 
 	}
-	
-	public void changeFragment(Fragment fragment)	{
+
+	public void changeFragment(Fragment fragment) {
 		FragmentManager manager = getFragmentManager();
 		FragmentTransaction transaction = manager.beginTransaction();
 
@@ -113,7 +118,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
-		switch (pos)	{
+		switch (pos) {
 		case 0: // Home
 			changeFragment(new MainMenuFragment());
 			break;
@@ -139,7 +144,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 			finish();
 		}
 	}
-	
+
 	private void addItemsToNavList() {
 		NavListAdapter adapter = (NavListAdapter) myDrawerList.getAdapter();
 		adapter.addItem(R.drawable.ic_log_off, "Home"); // 0
@@ -151,7 +156,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		adapter.addItem(R.drawable.ic_find_help, "Find Help"); // 6
 		adapter.addItem(R.drawable.ic_report_issue, "Report Issue"); // 7
 		adapter.addItem(R.drawable.ic_log_off, "Log Off"); // 8
-		
+
 	}
 
 	/** Sync the toggle state after onRestoreInstanceState has occurred **/
@@ -175,7 +180,8 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 
 	private void furtherProcess() {
 		// Make drawer list responsive
-		myDrawerList.setAdapter(new NavListAdapter(this, R.layout.nav_list_row));
+		myDrawerList
+				.setAdapter(new NavListAdapter(this, R.layout.nav_list_row));
 		myDrawerList.setOnItemClickListener(this);
 		myDrawerList.setBackgroundColor(Color.LTGRAY);
 
@@ -195,8 +201,8 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 				getBaseContext().getResources().getDisplayMetrics());
 
 	}
-	
-	public void setTitle(String title)	{
+
+	public void setTitle(String title) {
 		myActionBar.setTitle("PAT - " + title);
 	}
 }
