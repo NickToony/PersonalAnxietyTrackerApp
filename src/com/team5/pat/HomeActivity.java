@@ -1,19 +1,13 @@
 package com.team5.pat;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 import com.team5.fragment.BreathExerciseFragment;
 import com.team5.fragment.GraphFragment;
 import com.team5.fragment.MainMenuFragment;
-import com.team5.fragment.MenuFragment;
-import com.team5.fragment.MenuHexagonFragment;
-import com.team5.fragment.RecordGraphFragment;
 import com.team5.fragment.SeekBarFragment;
 import com.team5.fragment.SocialFragment;
 import com.team5.navigationlist.NavListAdapter;
-import com.team5.navigationlist.NavListItem;
 import com.team5.pat.R;
 
 import android.os.Bundle;
@@ -26,7 +20,6 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.content.res.TypedArray;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
