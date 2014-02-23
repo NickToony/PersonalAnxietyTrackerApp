@@ -38,25 +38,12 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 public class HomeActivity extends Activity implements OnItemClickListener {
-	private DrawerLayout mDrawerLayout;
-	private ListView mDrawerList;
-	private ActionBarDrawerToggle mDrawerToggle;
-	private SharedPreferences preference;
-
-	private String[] mTitles;
-
-	private List<NavListItem> items;
-	private ActionBar actionBar;
+	private DrawerLayout myDrawerLayout;
+	private ListView myDrawerList;
+	private ActionBarDrawerToggle myDrawerToggle;
+	private ActionBar myActionBar;
 	
-	private class NavItem	{
-		public int drawable;
-		public String label;
-		
-		public NavItem(int drawable, String label)	{
-			this.drawable = drawable;
-			this.label = label;
-		}
-	}
+	private SharedPreferences preference;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -71,14 +58,14 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		setLocale();
 		
 		// Enable ActionBar app icon to behave as action to toggle nav drawer
-		actionBar = getActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(true);
-		actionBar.setHomeButtonEnabled(true);
-		actionBar.setTitle(R.string.app_name);
+		myActionBar = getActionBar();
+		myActionBar.setDisplayHomeAsUpEnabled(true);
+		myActionBar.setHomeButtonEnabled(true);
+		myActionBar.setTitle(R.string.app_name);
 
 		initialiseDrawerComponents();
-		addItemsToNavList();
 		furtherProcess();
+		addItemsToNavList();
 		
 		changeFragment(new MainMenuFragment());
 	}
@@ -94,7 +81,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// The action bar home/up action should open or close the drawer.
 		// ActionBarDrawerToggle will take care of this.
-		if (mDrawerToggle.onOptionsItemSelected(item)) {
+		if (myDrawerToggle.onOptionsItemSelected(item)) {
 			return true;
 		}
 
@@ -122,96 +109,83 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		FragmentManager manager = getFragmentManager();
 		FragmentTransaction transaction = manager.beginTransaction();
 
+		// Get rid of any additions to action bar
+		myActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 		// Close drawer
-		mDrawerLayout.closeDrawer(mDrawerList);
+		myDrawerLayout.closeDrawer(myDrawerList);
 		// Replace the frame with another fragment
 		transaction.replace(R.id.content_frame, fragment).commit();
 	}
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
-		Bundle args = new Bundle();
-		args.putInt(getResources().getString(R.string.string_choice), pos);
-
-		actionBar.setDisplayShowTitleEnabled(true);
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-
-		// Create the respective fragment used to replace the current one
-		Fragment fragment;
-		switch (pos) {
-		case 0:
-			fragment = new GraphFragment();
+		switch (pos)	{
+		case 0: // Home
+			changeFragment(new MainMenuFragment());
 			break;
 		case 1:
-			fragment = new MenuFragment();
+			changeFragment(new SeekBarFragment());
 			break;
-		case 2:
-			fragment = new MenuHexagonFragment();
+		case 2: // Log
+			changeFragment(new GraphFragment());
 			break;
-		case 3:
-			fragment = new SeekBarFragment();
+		case 3: // Exercises
+			changeFragment(new BreathExerciseFragment());
 			break;
-		case 4:
-			fragment = new RecordGraphFragment();
+		case 4: // Discussion
+			changeFragment(new SocialFragment());
 			break;
-		case 5:
-			fragment = new SocialFragment();
+		case 5: // My Account
 			break;
-		case 6:
-			fragment = new BreathExerciseFragment();
+		case 6: // Find Help
 			break;
-		default:
-			fragment = null;
+		case 7: // Report issues
+			break;
+		case 8: // Log out
+			finish();
 			break;
 		}
-
-		// Replace the frame with another fragment
-		if (fragment != null) {
-			changeFragment(fragment);
-			fragment.setArguments(args);
-		}
+	}
+	
+	private void addItemsToNavList() {
+		NavListAdapter adapter = (NavListAdapter) myDrawerList.getAdapter();
+		adapter.addItem(R.drawable.ic_log_off, "Home"); // 0
+		adapter.addItem(R.drawable.ic_log, "Log"); // 1
+		adapter.addItem(R.drawable.ic_tracker, "Tracker"); // 2
+		adapter.addItem(R.drawable.ic_exercises, "Exercises"); // 3
+		adapter.addItem(R.drawable.ic_forums2, "Discussion"); // 4
+		adapter.addItem(R.drawable.ic_my_account, "My Account"); // 5
+		adapter.addItem(R.drawable.ic_find_help, "Find Help"); // 6
+		adapter.addItem(R.drawable.ic_report_issue, "Report Issue"); // 7
+		adapter.addItem(R.drawable.ic_log_off, "Log Off"); // 8
+		
 	}
 
 	/** Sync the toggle state after onRestoreInstanceState has occurred **/
 	@Override
 	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
-		mDrawerToggle.syncState();
+		myDrawerToggle.syncState();
 	}
 
 	/** Pass any configuration change to the drawer toggles **/
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
-		mDrawerToggle.onConfigurationChanged(newConfig);
+		myDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
 	private void initialiseDrawerComponents() {
-		// mTitle = mDrawerTitle = getTitle();
-		mTitles = getResources().getStringArray(R.array.nav_list_titles);
-		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-		mDrawerList = (ListView) findViewById(R.id.drawer_list);
-	}
-
-	private void addItemsToNavList() {
-		items = new ArrayList<NavListItem>();
-		TypedArray icons = getResources().obtainTypedArray(
-				R.array.nav_list_icons);
-
-		int size = mTitles.length;
-		for (int i = 0; i < size; i++) {
-			items.add(new NavListItem(mTitles[i], icons.getDrawable(i)));
-		}
-		icons.recycle();
+		myDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		myDrawerList = (ListView) findViewById(R.id.drawer_list);
 	}
 
 	private void furtherProcess() {
 		// Make drawer list responsive
-		mDrawerList.setAdapter(new NavListAdapter(this, R.layout.nav_list_row,
-				items));
-		mDrawerList.setOnItemClickListener(this);
+		myDrawerList.setAdapter(new NavListAdapter(this, R.layout.nav_list_row));
+		myDrawerList.setOnItemClickListener(this);
 
-		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
+		myDrawerToggle = new ActionBarDrawerToggle(this, myDrawerLayout,
 				R.drawable.ic_drawer, // nav drawer image to replace 'Up' caret
 				R.string.drawer_open, R.string.drawer_close);
 		// public void onDrawerClosed(View view) {
@@ -221,7 +195,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		// public void onDrawerOpened(View drawerView) {
 		// actionBar.setTitle("Close");
 		// }
-		mDrawerLayout.setDrawerListener(mDrawerToggle);
+		myDrawerLayout.setDrawerListener(myDrawerToggle);
 	}
 
 	private void setLocale() {
@@ -236,6 +210,6 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 	}
 	
 	public void setTitle(String title)	{
-		actionBar.setTitle("PAT: " + title);
+		myActionBar.setTitle("PAT - " + title);
 	}
 }
