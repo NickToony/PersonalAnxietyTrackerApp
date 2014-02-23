@@ -14,7 +14,8 @@
         android:title="@string/action_contact"/>
     <item
         android:id="@+id/action_status"
-        android:showAsAction="never"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/ic_expand"
         android:title="@string/action_status"/>
 
 </menu>

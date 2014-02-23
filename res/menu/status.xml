@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_exit"
+        android:layout_gravity="left"
+        android:icon="@drawable/ic_collapse"
+        android:showAsAction="ifRoom"
+        android:title="@string/status_exit"/>
+    <item
+        android:id="@+id/action_save"
+        android:layout_gravity="right"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/ic_save"
+        android:title="@string/status_save"/>
+
+</menu>

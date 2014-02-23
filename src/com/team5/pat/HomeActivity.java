@@ -96,8 +96,9 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 			startActivity(intent);
 			return true;
 		case R.id.action_status:
-			getFragmentManager().beginTransaction()
-					.replace(R.id.content_frame, new StatusFragment()).commit();
+			FragmentTransaction ft = getFragmentManager().beginTransaction();
+			ft.addToBackStack(null);
+			ft.add(R.id.content_frame, new StatusFragment()).commit();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

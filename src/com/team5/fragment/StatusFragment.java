@@ -7,8 +7,10 @@ import com.team5.user.UserRecord;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,8 +18,7 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Toast;
 
-public class StatusFragment extends Fragment implements OnClickListener,
-		OnSeekBarChangeListener {
+public class StatusFragment extends Fragment implements OnSeekBarChangeListener {
 	// Constants that save the state if this application is closed
 	private final String SERIOUSNESS_STATE = "serious";
 	private final String ANXIETY_STATE = "anxiety";
@@ -40,10 +41,48 @@ public class StatusFragment extends Fragment implements OnClickListener,
 	private EditText commentText;
 
 	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setHasOptionsMenu(true);
+	}
+
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		super.onCreateOptionsMenu(menu, inflater);
+		menu.clear();
+		inflater.inflate(R.menu.status, menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.action_save:
+			UserRecord currentUR = new UserRecord(100, anxiety, seriousness,
+					comment);
+
+			if (((Session) getActivity().getApplication()).getUserAccount()
+					.addRecord(currentUR)) {
+				Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG)
+						.show();
+			} else {
+				Toast.makeText(getActivity(), "Failure to store record",
+						Toast.LENGTH_LONG).show();
+			}
+		case R.id.action_exit:
+			getActivity().getActionBar().setDisplayShowHomeEnabled(true);
+			getActivity().getActionBar().setDisplayShowTitleEnabled(true);
+			getFragmentManager().beginTransaction().remove(this).commit();
+
+		}
+		return true;
+	}
+
+	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.status_layout, container, false);
-
+		getActivity().getActionBar().setDisplayShowHomeEnabled(false);
+		getActivity().getActionBar().setDisplayShowTitleEnabled(false);
 		initialiseComponentsAndSetListeners();
 
 		if (savedInstanceState == null) {
@@ -56,7 +95,7 @@ public class StatusFragment extends Fragment implements OnClickListener,
 			anxiety = savedInstanceState.getInt(ANXIETY_STATE);
 			comment = savedInstanceState.getString(COMMENT_STATE);
 		}
-		
+
 		return view;
 	}
 
@@ -69,28 +108,6 @@ public class StatusFragment extends Fragment implements OnClickListener,
 		outState.putInt(ANXIETY_STATE, anxiety);
 		outState.putString(SUMMARY_STATE, summary);
 		outState.putString(COMMENT_STATE, comment);
-	}
-
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.statusSaveButton:
-			UserRecord currentUR = new UserRecord(100, anxiety, seriousness,
-					comment);
-
-			if (((Session) getActivity().getApplication()).getUserAccount()
-					.addRecord(currentUR)) {
-				Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG)
-						.show();
-			} else {
-				Toast.makeText(getActivity(), "Failure to store record",
-						Toast.LENGTH_LONG).show();
-			}
-
-		case R.id.statusExitButton:
-			getActivity().getActionBar().show();
-			getFragmentManager().beginTransaction().remove(this).commit();
-		}
 	}
 
 	@Override
@@ -116,17 +133,13 @@ public class StatusFragment extends Fragment implements OnClickListener,
 			break;
 		}
 	}
-
+	
 	private void initialiseComponentsAndSetListeners() {
-		save = (Button) view.findViewById(R.id.statusSaveButton);
-		exit = (Button) view.findViewById(R.id.statusExitButton);
 		seriousnessBar = (SeekBar) view.findViewById(R.id.newAnxietySeekBar);
 		anxietyBar = (SeekBar) view.findViewById(R.id.newSeriousnessSeekBar);
 		summaryText = (EditText) view.findViewById(R.id.summaryEditText);
 		commentText = (EditText) view.findViewById(R.id.commentEditText);
 
-		save.setOnClickListener(this);
-		exit.setOnClickListener(this);
 		seriousnessBar.setOnSeekBarChangeListener(this);
 		anxietyBar.setOnSeekBarChangeListener(this);
 	}
