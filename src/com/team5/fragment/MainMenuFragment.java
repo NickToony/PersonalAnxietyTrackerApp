@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
+import com.team5.pat.ContactActivity;
 import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
 
@@ -69,7 +71,7 @@ public class MainMenuFragment extends Fragment {
 		case 4: // My Account
 			break;
 		case 5: // Find Help
-			
+			startActivity(new Intent(myActivity, ContactActivity.class));
 			break;
 		case 6: // Report issues
 			

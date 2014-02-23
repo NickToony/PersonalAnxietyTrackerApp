@@ -131,6 +131,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		case 5: // My Account
 			break;
 		case 6: // Find Help
+			startActivity(new Intent(this, ContactActivity.class));
 			break;
 		case 7: // Report issues
 			break;
