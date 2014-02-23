@@ -127,7 +127,6 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 			break;
 		case 4: // Discussion
 			changeFragment(new SocialFragment());
-			break;
 		case 5: // My Account
 			break;
 		case 6: // Find Help
@@ -136,7 +135,6 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 			break;
 		case 8: // Log out
 			finish();
-			break;
 		}
 	}
 	
