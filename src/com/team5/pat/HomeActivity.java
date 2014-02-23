@@ -20,6 +20,7 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
@@ -175,17 +176,11 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		// Make drawer list responsive
 		myDrawerList.setAdapter(new NavListAdapter(this, R.layout.nav_list_row));
 		myDrawerList.setOnItemClickListener(this);
+		myDrawerList.setBackgroundColor(Color.LTGRAY);
 
 		myDrawerToggle = new ActionBarDrawerToggle(this, myDrawerLayout,
 				R.drawable.ic_drawer, // nav drawer image to replace 'Up' caret
 				R.string.drawer_open, R.string.drawer_close);
-		// public void onDrawerClosed(View view) {
-		// actionBar.setTitle("Open");
-		// }
-		//
-		// public void onDrawerOpened(View drawerView) {
-		// actionBar.setTitle("Close");
-		// }
 		myDrawerLayout.setDrawerListener(myDrawerToggle);
 	}
 
