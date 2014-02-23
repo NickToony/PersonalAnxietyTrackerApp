@@ -6,6 +6,7 @@ import java.util.Locale;
 
 import com.team5.fragment.BreathExerciseFragment;
 import com.team5.fragment.GraphFragment;
+import com.team5.fragment.MainMenuFragment;
 import com.team5.fragment.MenuFragment;
 import com.team5.fragment.MenuHexagonFragment;
 import com.team5.fragment.RecordGraphFragment;
@@ -22,16 +23,25 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
@@ -46,6 +56,8 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 
 	private List<NavListItem> items;
 	private ActionBar actionBar;
+	
+	private GridView myIconGrid;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +70,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		preference = PreferenceManager
 				.getDefaultSharedPreferences(getApplicationContext());
 		setLocale();
-
+		
 		// Enable ActionBar app icon to behave as action to toggle nav drawer
 		actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
@@ -68,6 +80,8 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		initialiseDrawerComponents();
 		addItemsToNavList();
 		furtherProcess();
+		
+		changeFragment(new MainMenuFragment());
 	}
 
 	@Override
@@ -104,12 +118,19 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		return super.onOptionsItemSelected(item);
 
 	}
+	
+	public void changeFragment(Fragment fragment)	{
+		FragmentManager manager = getFragmentManager();
+		FragmentTransaction transaction = manager.beginTransaction();
+
+		// Replace the frame with another fragment
+		transaction.replace(R.id.content_frame, fragment).commit();
+		// Close drawer
+		mDrawerLayout.closeDrawer(mDrawerList);
+	}
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
-		Fragment fragment = null;
-		FragmentManager manager = getFragmentManager();
-		FragmentTransaction transaction = manager.beginTransaction();
 		Bundle args = new Bundle();
 		args.putInt(getResources().getString(R.string.string_choice), pos);
 
@@ -118,32 +139,27 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 
 		mTitle = getResources().getStringArray(R.array.nav_list_titles)[pos];
 		// Create the respective fragment used to replace the current one
+		Fragment fragment = null;
 		switch (pos) {
 		case 0:
 			fragment = new GraphFragment();
 			break;
 		case 1:
-			fragment = new GraphFragment();
-			break;
-		case 2:
-			fragment = new GraphFragment();
-			break;
-		case 3:
 			fragment = new MenuFragment();
 			break;
-		case 4:
+		case 2:
 			fragment = new MenuHexagonFragment();
 			break;
-		case 5:
+		case 3:
 			fragment = new SeekBarFragment();
 			break;
-		case 6:
+		case 4:
 			fragment = new RecordGraphFragment();
 			break;
-		case 7:
+		case 5:
 			fragment = new SocialFragment();
 			break;
-		case 8:
+		case 6:
 			fragment = new BreathExerciseFragment();
 			break;
 		default:
@@ -151,9 +167,9 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		}
 
 		// Replace the frame with another fragment
-		if ((pos >= 0) && (pos <= 8)) {
+		if ((pos >= 0) && (pos <= 6)) {
 			actionBar.setTitle(mTitle);
-			transaction.replace(R.id.content_frame, fragment).commit();
+			changeFragment(fragment);
 			fragment.setArguments(args);
 			mDrawerLayout.closeDrawer(mDrawerList);
 		}
