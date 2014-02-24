@@ -1,7 +1,7 @@
 package com.team5.pat;
 
 import com.team5.user.UserAccount;
-import com.team5.social.SocialAccount;
+import com.team5.social.NetworkInterface;
 
 import android.app.Application;
 import android.content.Context;
@@ -9,14 +9,14 @@ import android.content.Context;
 public class Session extends Application {
 	private Context myContext;
 	private UserAccount myUserAccount;
-	private SocialAccount mySocialAccount;
+	private NetworkInterface mySocialAccount;
 	private boolean setup = false;
 	
 	public void initiate(Context c)	{
 		myContext = c;
 		
 		myUserAccount = new UserAccount(myContext);
-		mySocialAccount = new SocialAccount(myContext);
+		//mySocialAccount = new SocialAccount(myContext);
 		
 		setup = true;
 	}
@@ -25,7 +25,7 @@ public class Session extends Application {
 		return myUserAccount;
 	}
 	
-	public SocialAccount getSocialAccount()	{
+	public NetworkInterface getSocialAccount()	{
 		return mySocialAccount;
 	}
 	
