@@ -12,7 +12,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
@@ -33,8 +32,6 @@ public class StatusFragment extends Fragment implements OnSeekBarChangeListener 
 
 	// Widgets
 	private View view;
-	private Button save;
-	private Button exit;
 	private SeekBar seriousnessBar;
 	private SeekBar anxietyBar;
 	private EditText summaryText;
@@ -44,6 +41,37 @@ public class StatusFragment extends Fragment implements OnSeekBarChangeListener 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
+	}
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		view = inflater.inflate(R.layout.status_layout, container, false);
+		getActivity().getActionBar().setDisplayShowHomeEnabled(false);
+		getActivity().getActionBar().setDisplayShowTitleEnabled(false);
+		initialiseComponentsAndSetListeners();
+
+		if (savedInstanceState == null) {
+			seriousness = 0;
+			anxiety = 0;
+			summary = null;
+			comment = null;
+		} else { // Initialized to saved variables
+			seriousness = savedInstanceState.getInt(SERIOUSNESS_STATE);
+			anxiety = savedInstanceState.getInt(ANXIETY_STATE);
+			comment = savedInstanceState.getString(COMMENT_STATE);
+		}
+
+		return view;
+	}
+
+	/** Restore the original menu on action bar when this fragment is removed **/
+	@Override
+	public void onDestroyView() {
+		super.onDestroyView();
+		getActivity().getActionBar().setDisplayShowHomeEnabled(true);
+		getActivity().getActionBar().setDisplayShowTitleEnabled(true);
+
 	}
 
 	@Override
@@ -69,34 +97,10 @@ public class StatusFragment extends Fragment implements OnSeekBarChangeListener 
 						Toast.LENGTH_LONG).show();
 			}
 		case R.id.action_exit:
-			getActivity().getActionBar().setDisplayShowHomeEnabled(true);
-			getActivity().getActionBar().setDisplayShowTitleEnabled(true);
 			getFragmentManager().beginTransaction().remove(this).commit();
-
+			getFragmentManager().popBackStack();
 		}
 		return true;
-	}
-
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		view = inflater.inflate(R.layout.status_layout, container, false);
-		getActivity().getActionBar().setDisplayShowHomeEnabled(false);
-		getActivity().getActionBar().setDisplayShowTitleEnabled(false);
-		initialiseComponentsAndSetListeners();
-
-		if (savedInstanceState == null) {
-			seriousness = 0;
-			anxiety = 0;
-			summary = null;
-			comment = null;
-		} else { // Initialized to saved variables
-			seriousness = savedInstanceState.getInt(SERIOUSNESS_STATE);
-			anxiety = savedInstanceState.getInt(ANXIETY_STATE);
-			comment = savedInstanceState.getString(COMMENT_STATE);
-		}
-
-		return view;
 	}
 
 	/** Saves all data on a device state change **/
@@ -133,7 +137,7 @@ public class StatusFragment extends Fragment implements OnSeekBarChangeListener 
 			break;
 		}
 	}
-	
+
 	private void initialiseComponentsAndSetListeners() {
 		seriousnessBar = (SeekBar) view.findViewById(R.id.newAnxietySeekBar);
 		anxietyBar = (SeekBar) view.findViewById(R.id.newSeriousnessSeekBar);
