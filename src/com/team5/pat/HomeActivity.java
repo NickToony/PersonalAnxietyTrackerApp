@@ -9,6 +9,7 @@ import com.team5.fragment.SeekBarFragment;
 import com.team5.fragment.SocialFragment;
 import com.team5.fragment.StatusFragment;
 import com.team5.navigationlist.NavListAdapter;
+import com.team5.navigationlist.NavListItem;
 import com.team5.pat.R;
 
 import android.os.Bundle;
@@ -105,7 +106,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 
 	}
 
-	public void changeFragment(Fragment fragment) {
+	private void changeFragment(Fragment fragment) {
 		FragmentManager manager = getFragmentManager();
 		FragmentTransaction transaction = manager.beginTransaction();
 
@@ -116,39 +117,41 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		// Replace the frame with another fragment
 		transaction.replace(R.id.content_frame, fragment).commit();
 	}
+	
+	public void doNavigation(int theItem)	{
+		switch (theItem)	{
+		case NavListAdapter.navigationHome:
+			changeFragment(new MainMenuFragment());
+			break;
+		case NavListAdapter.navigationLog:
+			changeFragment(new SeekBarFragment());
+			break;
+		case NavListAdapter.navigationTracker:
+			changeFragment(new GraphFragment());
+			break;
+		case NavListAdapter.navigationExercises:
+			changeFragment(new BreathExerciseFragment());
+			break;
+		case NavListAdapter.navigationDiscussion:
+			changeFragment(new SocialFragment());
+			break;
+		case NavListAdapter.navigationContact:
+			startActivity(new Intent(this, ContactActivity.class));
+			break;
+		case NavListAdapter.navigationLogOff:
+			finish();
+			break;
+		}
+	}
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
-		switch (pos) {
-		case 0: // Home
-			changeFragment(new MainMenuFragment());
-			break;
-		case 1:
-			changeFragment(new SeekBarFragment());
-			break;
-		case 2: // Log
-			changeFragment(new GraphFragment());
-			break;
-		case 3: // Exercises
-			changeFragment(new BreathExerciseFragment());
-			break;
-		case 4: // Discussion
-			changeFragment(new SocialFragment());
-		case 5: // My Account
-			break;
-		case 6: // Find Help
-			startActivity(new Intent(this, ContactActivity.class));
-			break;
-		case 7: // Report issues
-			break;
-		case 8: // Log out
-			finish();
-		}
+		doNavigation( (int) myDrawerList.getItemIdAtPosition(pos) );
 	}
 
 	private void addItemsToNavList() {
 		NavListAdapter adapter = (NavListAdapter) myDrawerList.getAdapter();
-		adapter.addItem(R.drawable.ic_log_off, "Home"); // 0
+		/*adapter.addItem(R.drawable.ic_log_off, "Home"); // 0
 		adapter.addItem(R.drawable.ic_log, "Log"); // 1
 		adapter.addItem(R.drawable.ic_tracker, "Tracker"); // 2
 		adapter.addItem(R.drawable.ic_exercises, "Exercises"); // 3
@@ -156,8 +159,16 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		adapter.addItem(R.drawable.ic_my_account, "My Account"); // 5
 		adapter.addItem(R.drawable.ic_find_help, "Find Help"); // 6
 		adapter.addItem(R.drawable.ic_report_issue, "Report Issue"); // 7
-		adapter.addItem(R.drawable.ic_log_off, "Log Off"); // 8
-
+		adapter.addItem(R.drawable.ic_log_off, "Log Off"); // 8*/
+		adapter.addItem(NavListAdapter.navigationHome);
+		adapter.addItem(NavListAdapter.navigationLog);
+		adapter.addItem(NavListAdapter.navigationTracker);
+		adapter.addItem(NavListAdapter.navigationExercises);
+		adapter.addItem(NavListAdapter.navigationDiscussion);
+		adapter.addItem(NavListAdapter.navigationAccount);
+		adapter.addItem(NavListAdapter.navigationContact);
+		adapter.addItem(NavListAdapter.navigationReport);
+		adapter.addItem(NavListAdapter.navigationLogOff);
 	}
 
 	/** Sync the toggle state after onRestoreInstanceState has occurred **/

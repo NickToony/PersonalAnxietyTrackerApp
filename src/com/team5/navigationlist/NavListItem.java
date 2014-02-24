@@ -3,19 +3,19 @@ package com.team5.navigationlist;
 import android.graphics.drawable.Drawable;
 
 public class NavListItem	{
-	public Drawable myDrawable;
-	public String myLabel;
+	public int myDrawable;
+	public int myLabel;
 	
-	public NavListItem(Drawable drawable, String label)	{
+	public NavListItem(int drawable, int label)	{
 		this.myDrawable = drawable;
 		this.myLabel = label;
 	}
 
-	public Drawable getImage() {
+	public int getImage() {
 		return myDrawable;
 	}
 
-	public String getLabel() {
+	public int getLabel() {
 		return myLabel;
 	}
 	

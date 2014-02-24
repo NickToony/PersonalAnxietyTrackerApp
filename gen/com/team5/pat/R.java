@@ -16,17 +16,17 @@ public final class R {
         /**  Splash 
  Splash 
          */
-        public static final int button_array=0x7f080008;
-        public static final int contact_icons=0x7f080004;
+        public static final int button_array=0x7f080006;
+        public static final int contact_icons=0x7f080002;
         /**  Contact 
          */
-        public static final int contact_name=0x7f080003;
-        public static final int contact_phone_number=0x7f080005;
-        public static final int nav_list_icons=0x7f080000;
-        public static final int nav_list_titles=0x7f080001;
-        public static final int pref_language_list_options=0x7f080006;
-        public static final int pref_language_list_values=0x7f080007;
-        public static final int spinner_list_items=0x7f080002;
+        public static final int contact_name=0x7f080001;
+        public static final int contact_phone_number=0x7f080003;
+        public static final int nav_list_icons=0x7f080007;
+        public static final int nav_list_titles=0x7f080008;
+        public static final int pref_language_list_options=0x7f080004;
+        public static final int pref_language_list_values=0x7f080005;
+        public static final int spinner_list_items=0x7f080000;
     }
     public static final class attr {
     }
@@ -237,102 +237,113 @@ public final class R {
         /**  Start of calm down text 
  Start of calm down text 
          */
-        public static final int CalmDown=0x7f070034;
-        public static final int Ref_anxiety=0x7f070045;
-        public static final int Ref_seriousness=0x7f070044;
-        public static final int Sub_menu=0x7f070049;
+        public static final int CalmDown=0x7f07003d;
+        public static final int Ref_anxiety=0x7f07004e;
+        public static final int Ref_seriousness=0x7f07004d;
+        public static final int Sub_menu=0x7f070052;
         public static final int Xaxis=0x7f070002;
         public static final int Yaxis=0x7f070001;
-        public static final int action_contact=0x7f070014;
-        public static final int action_exit=0x7f07001a;
-        public static final int action_feedback=0x7f070013;
-        public static final int action_save=0x7f070019;
-        public static final int action_search=0x7f070015;
+        public static final int action_contact=0x7f07001d;
+        public static final int action_exit=0x7f070023;
+        public static final int action_feedback=0x7f07001c;
+        public static final int action_save=0x7f070022;
+        public static final int action_search=0x7f07001e;
         /**  Action bar 
          */
-        public static final int action_settings=0x7f070012;
-        public static final int action_status=0x7f070018;
-        public static final int anxiety=0x7f070043;
-        public static final int anxiety_heading=0x7f070029;
+        public static final int action_settings=0x7f07001b;
+        public static final int action_status=0x7f070021;
+        public static final int anxiety=0x7f07004c;
+        public static final int anxiety_heading=0x7f070032;
         public static final int app_name=0x7f070000;
         public static final int below_menu=0x7f070005;
         public static final int blue_line=0x7f070004;
         /**  Breathing Exercise 
          */
-        public static final int breathEx=0x7f07002f;
-        public static final int brightness=0x7f070020;
-        public static final int dialog_accpet=0x7f07001e;
-        public static final int dialog_button_message=0x7f07001d;
-        public static final int dialog_cancel=0x7f07001f;
-        public static final int dialog_message=0x7f07001c;
+        public static final int breathEx=0x7f070038;
+        public static final int brightness=0x7f070029;
+        public static final int dialog_accpet=0x7f070027;
+        public static final int dialog_button_message=0x7f070026;
+        public static final int dialog_cancel=0x7f070028;
+        public static final int dialog_message=0x7f070025;
         /**  Dialog box 
  Dialog box 
          */
-        public static final int dialog_title=0x7f07001b;
-        public static final int drawer_close=0x7f07000c;
-        public static final int drawer_open=0x7f07000b;
-        public static final int exerciseDefaultDuration=0x7f070033;
-        public static final int hello_world=0x7f07004e;
+        public static final int dialog_title=0x7f070024;
+        public static final int drawer_close=0x7f070015;
+        public static final int drawer_open=0x7f070014;
+        public static final int exerciseDefaultDuration=0x7f07003c;
+        public static final int hello_world=0x7f070057;
         public static final int image_content_description=0x7f070009;
-        public static final int keyboard=0x7f070023;
-        public static final int kiss_me=0x7f070024;
+        public static final int keyboard=0x7f07002c;
+        public static final int kiss_me=0x7f07002d;
         public static final int language=0x7f070007;
         public static final int lock_screen_information=0x7f07000a;
-        public static final int network=0x7f070021;
+        public static final int navigation_account=0x7f070010;
+        public static final int navigation_contact=0x7f070011;
+        public static final int navigation_discussion=0x7f07000f;
+        public static final int navigation_exercises=0x7f07000e;
+        /**  Navigation labels 
+         */
+        public static final int navigation_home=0x7f07000b;
+        public static final int navigation_log=0x7f07000c;
+        public static final int navigation_logoff=0x7f070013;
+        public static final int navigation_report=0x7f070012;
+        public static final int navigation_tracker=0x7f07000d;
+        public static final int network=0x7f07002a;
         /**  Settings Preference 
          */
-        public static final int pin_hint=0x7f070035;
-        public static final int pref_about_us_summ=0x7f070040;
-        public static final int pref_about_us_title=0x7f07003c;
-        public static final int pref_category_pat=0x7f070037;
+        public static final int pin_hint=0x7f07003e;
+        public static final int pref_about_us_summ=0x7f070049;
+        public static final int pref_about_us_title=0x7f070045;
+        public static final int pref_category_pat=0x7f070040;
         /**  Settings Preference 
          */
-        public static final int pref_category_personalise=0x7f070036;
-        public static final int pref_language_title=0x7f070039;
-        public static final int pref_lockscreen_summ=0x7f07003f;
-        public static final int pref_lockscreen_title=0x7f07003a;
-        public static final int pref_night_mode_summ=0x7f070041;
-        public static final int pref_night_mode_title=0x7f07003d;
-        public static final int pref_notification_summ=0x7f07003e;
-        public static final int pref_notification_title=0x7f070038;
-        public static final int pref_pin_title=0x7f07003b;
-        public static final int pref_update_summ=0x7f07004d;
-        public static final int pref_update_title=0x7f07004c;
-        public static final int rating=0x7f070046;
+        public static final int pref_category_personalise=0x7f07003f;
+        public static final int pref_language_title=0x7f070042;
+        public static final int pref_lockscreen_summ=0x7f070048;
+        public static final int pref_lockscreen_title=0x7f070043;
+        public static final int pref_night_mode_summ=0x7f07004a;
+        public static final int pref_night_mode_title=0x7f070046;
+        public static final int pref_notification_summ=0x7f070047;
+        public static final int pref_notification_title=0x7f070041;
+        public static final int pref_pin_title=0x7f070044;
+        public static final int pref_update_summ=0x7f070056;
+        public static final int pref_update_title=0x7f070055;
+        public static final int rating=0x7f07004f;
         public static final int red_line=0x7f070003;
-        public static final int save_button_text=0x7f07002a;
+        public static final int save_button_text=0x7f070033;
         /**  Seek bar 
  Seek bar 
          */
-        public static final int scale_beginning=0x7f070025;
-        public static final int scale_end=0x7f070026;
-        public static final int search_hint=0x7f070017;
-        public static final int search_title=0x7f070016;
-        public static final int seconds=0x7f070030;
-        public static final int seriousness=0x7f070042;
-        public static final int seriousness_heading=0x7f070028;
-        public static final int sound=0x7f070022;
-        public static final int start=0x7f070031;
-        public static final int status_comment_hint=0x7f07002e;
-        public static final int status_exit=0x7f07002c;
-        public static final int status_save=0x7f07002b;
-        public static final int status_summary_hint=0x7f07002d;
-        public static final int stop=0x7f070032;
+        public static final int scale_beginning=0x7f07002e;
+        public static final int scale_end=0x7f07002f;
+        public static final int search_hint=0x7f070020;
+        public static final int search_title=0x7f07001f;
+        public static final int seconds=0x7f070039;
+        public static final int seriousness=0x7f07004b;
+        public static final int seriousness_heading=0x7f070031;
+        public static final int sound=0x7f07002b;
+        public static final int start=0x7f07003a;
+        public static final int status_comment_hint=0x7f070037;
+        public static final int status_exit=0x7f070035;
+        public static final int status_save=0x7f070034;
+        public static final int status_summary_hint=0x7f070036;
+        public static final int stop=0x7f07003b;
         public static final int string_choice=0x7f070008;
         public static final int submit=0x7f070006;
-        public static final int thoughts_hint=0x7f070027;
-        public static final int time=0x7f070047;
-        public static final int title_activity_contact=0x7f070010;
-        public static final int title_activity_contact_details=0x7f070011;
-        public static final int title_activity_graph=0x7f07000f;
+        public static final int thoughts_hint=0x7f070030;
+        public static final int time=0x7f070050;
+        public static final int title_activity_contact=0x7f070019;
+        public static final int title_activity_contact_details=0x7f07001a;
+        public static final int title_activity_graph=0x7f070018;
         /**  Activities label 
  Activities label 
          */
-        public static final int title_activity_nav_list=0x7f07000d;
-        public static final int title_activity_quickPanic=0x7f07004a;
-        public static final int title_activity_record_graph=0x7f07004b;
-        public static final int title_activity_settings=0x7f07000e;
-        public static final int title_activity_social=0x7f070048;
+        public static final int title_activity_nav_list=0x7f070016;
+        public static final int title_activity_quickPanic=0x7f070053;
+        public static final int title_activity_record_graph=0x7f070054;
+        public static final int title_activity_settings=0x7f070017;
+        public static final int title_activity_social=0x7f070051;
     }
     public static final class style {
         /** 
