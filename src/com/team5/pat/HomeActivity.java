@@ -33,11 +33,13 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 public class HomeActivity extends Activity implements OnItemClickListener {
+	private final long BACK_PRESS_DURATION = 1000;
+	private long previousPress = 0;
+
 	private DrawerLayout myDrawerLayout;
 	private ListView myDrawerList;
 	private ActionBarDrawerToggle myDrawerToggle;
 	private ActionBar actionBar;
-
 	private SharedPreferences preference;
 
 	@Override
@@ -107,6 +109,42 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 
 	}
 
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
+		doNavigation((int) myDrawerList.getItemIdAtPosition(pos));
+	}
+
+	/** Show a message to confirm the user really wants to exit this application **/
+	@Override
+	public void onBackPressed() {
+		long currentPress = System.currentTimeMillis();
+
+		// User presses back for the first time
+		if (currentPress - previousPress > BACK_PRESS_DURATION) {
+			previousPress = currentPress;
+			getFragmentManager().popBackStack();
+			Toast.makeText(getApplicationContext(), "Press to exit",
+					Toast.LENGTH_SHORT).show();
+		} // Exit this application when user presses back for the second time
+		else {
+			super.onBackPressed();
+		}
+	}
+
+	/** Sync the toggle state after onRestoreInstanceState has occurred **/
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		myDrawerToggle.syncState();
+	}
+
+	/** Pass any configuration change to the drawer toggles **/
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		myDrawerToggle.onConfigurationChanged(newConfig);
+	}
+
 	private void changeFragment(Fragment fragment) {
 		myDrawerLayout.closeDrawer(myDrawerList);
 
@@ -142,11 +180,6 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		}
 	}
 
-	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
-		doNavigation((int) myDrawerList.getItemIdAtPosition(pos));
-	}
-
 	private void addItemsToNavList() {
 		NavListAdapter adapter = (NavListAdapter) myDrawerList.getAdapter();
 		/*
@@ -169,20 +202,6 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		adapter.addItem(NavListAdapter.navigationContact);
 		adapter.addItem(NavListAdapter.navigationReport);
 		adapter.addItem(NavListAdapter.navigationLogOff);
-	}
-
-	/** Sync the toggle state after onRestoreInstanceState has occurred **/
-	@Override
-	protected void onPostCreate(Bundle savedInstanceState) {
-		super.onPostCreate(savedInstanceState);
-		myDrawerToggle.syncState();
-	}
-
-	/** Pass any configuration change to the drawer toggles **/
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		super.onConfigurationChanged(newConfig);
-		myDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
 	private void createDrawerListAndAddListener() {
