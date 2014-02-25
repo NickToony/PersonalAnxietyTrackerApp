@@ -46,7 +46,6 @@
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
-
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
@@ -55,6 +54,11 @@
             android:name="com.team5.contact.ContactDetailsActivity"
             android:label="@string/title_activity_contact_details"
             android:parentActivityName="com.team5.pat.ContactActivity" >
+        </activity>
+        <activity
+            android:name="com.team5.social.SocialActivity"
+            android:label="@string/title_activity_social"
+            android:parentActivityName="com.team5.pat.HomeActivity" >
         </activity>
     </application>
 

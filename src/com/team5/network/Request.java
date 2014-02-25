@@ -1,4 +1,4 @@
-package com.team5.social;
+package com.team5.network;
 
 import java.io.DataOutputStream;
 import java.io.IOException;

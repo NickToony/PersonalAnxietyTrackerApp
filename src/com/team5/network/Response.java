@@ -1,4 +1,4 @@
-package com.team5.social;
+package com.team5.network;
 
 import org.w3c.dom.Document;
 

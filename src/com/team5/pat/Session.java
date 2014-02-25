@@ -1,7 +1,7 @@
 package com.team5.pat;
 
 import com.team5.user.UserAccount;
-import com.team5.social.NetworkInterface;
+import com.team5.network.NetworkInterface;
 
 import android.app.Application;
 import android.content.Context;

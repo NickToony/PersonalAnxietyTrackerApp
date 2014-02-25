@@ -11,10 +11,10 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import com.team5.network.NetworkInterface;
+import com.team5.network.Request;
+import com.team5.network.Response;
 import com.team5.pat.R;
-import com.team5.social.Request;
-import com.team5.social.Response;
-import com.team5.social.NetworkInterface;
 
 import android.os.Bundle;
 import android.app.Fragment;
