@@ -10,6 +10,7 @@ import com.team5.fragment.SocialFragment;
 import com.team5.fragment.StatusFragment;
 import com.team5.navigationlist.NavListAdapter;
 import com.team5.pat.R;
+import com.team5.pat.R.id;
 
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -97,6 +98,10 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 			return true;
 		case R.id.action_contact:
 			intent = new Intent(this, ContactActivity.class);
+			startActivity(intent);
+			return true;
+		case R.id.action_map:
+			intent = new Intent(this, MapActivity.class);
 			startActivity(intent);
 			return true;
 		case R.id.action_status:

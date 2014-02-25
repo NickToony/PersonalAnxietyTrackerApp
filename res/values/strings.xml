@@ -53,6 +53,7 @@
     <string name="action_status">Status</string>
     <string name="action_save">Save</string>
     <string name="action_exit">Exit</string>
+    <string name="action_map">Map</string>
 
     <!-- Contact -->
     <string-array name="contact_name">

@@ -8,7 +8,16 @@
         android:minSdkVersion="16"
         android:targetSdkVersion="19" />
 
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:name="com.team5.pat.Session"
@@ -16,6 +25,13 @@
         android:icon="@drawable/ic_logo"
         android:label="@string/app_name"
         android:theme="@style/HoloTheme" >
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyAiy08alPJ5NaH-zdNyg6fJ6i0rmfeg9Ec" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="4242000" />
+
         <activity
             android:name="com.team5.pat.LockScreenActivity"
             android:label="@string/app_name" >
@@ -55,6 +71,11 @@
             android:name="com.team5.contact.ContactDetailsActivity"
             android:label="@string/title_activity_contact_details"
             android:parentActivityName="com.team5.pat.ContactActivity" >
+        </activity>
+        <activity
+            android:name="com.team5.pat.MapActivity"
+            android:label="map"
+            android:parentActivityName="com.team5.pat.HomeActivity" >
         </activity>
     </application>
 
