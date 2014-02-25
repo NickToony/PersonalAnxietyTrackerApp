@@ -10,6 +10,7 @@ import com.team5.fragment.SocialFragment;
 import com.team5.fragment.StatusFragment;
 import com.team5.navigationlist.NavListAdapter;
 import com.team5.pat.R;
+import com.team5.social.SocialActivity;
 
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -169,7 +170,8 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 			changeFragment(new BreathExerciseFragment());
 			break;
 		case NavListAdapter.navigationDiscussion:
-			changeFragment(new SocialFragment());
+			//changeFragment(new SocialFragment());
+			startActivity(new Intent(this, SocialActivity.class));
 			break;
 		case NavListAdapter.navigationContact:
 			startActivity(new Intent(this, ContactActivity.class));
