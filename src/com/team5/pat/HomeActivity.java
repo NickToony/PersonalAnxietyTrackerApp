@@ -6,11 +6,11 @@ import com.team5.fragment.BreathExerciseFragment;
 import com.team5.fragment.GraphFragment;
 import com.team5.fragment.HomeFragment;
 import com.team5.fragment.SeekBarFragment;
-import com.team5.fragment.SocialFragment;
 import com.team5.fragment.StatusFragment;
 import com.team5.navigationlist.NavListAdapter;
 import com.team5.pat.R;
 import com.team5.social.SocialActivity;
+import com.team5.social.SocialFragment;
 
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -153,6 +153,12 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		FragmentManager manager = getFragmentManager();
 		FragmentTransaction transaction = manager.beginTransaction();
 		transaction.replace(R.id.content_frame, fragment).commit();
+		
+		// Reset action bar
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+		actionBar.setDisplayHomeAsUpEnabled(true);
+		actionBar.setHomeButtonEnabled(true);
+		actionBar.removeAllTabs(); // get rid of all tabs - they're maintained across fragments!!
 	}
 
 	public void doNavigation(int theItem) {
@@ -170,8 +176,8 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 			changeFragment(new BreathExerciseFragment());
 			break;
 		case NavListAdapter.navigationDiscussion:
-			//changeFragment(new SocialFragment());
-			startActivity(new Intent(this, SocialActivity.class));
+			changeFragment(new SocialFragment());
+			//startActivity(new Intent(this, SocialActivity.class));
 			break;
 		case NavListAdapter.navigationContact:
 			startActivity(new Intent(this, ContactActivity.class));

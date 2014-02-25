@@ -173,5 +173,13 @@
     <string name="rating">Rating</string>
     <string name="time">Time</string>
     <string name="title_activity_social">SocialActivity</string>
+    
+    <!-- Social Features -->
+    <string name="social_fragment_signin_loginText">Sign In to Your Account</string>
+    <string name="social_fragment_signin_email">\@Newcastle.ac.uk</string>
+    <string name="social_fragment_signin_buttonText">Sign In</string>
+    <string name="social_fragment_signup_loginText">Create a new account</string>
+    <string name="social_fragment_signup_email">\@Newcastle.ac.uk</string>
+    <string name="social_fragment_signup_buttonText">Sign Up</string>
 
 </resources>

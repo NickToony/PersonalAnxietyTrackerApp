@@ -1,5 +1,5 @@
 
-package com.team5.fragment;
+package com.team5.social;
 
 import java.io.StringWriter;
 
@@ -11,13 +11,17 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import com.team5.fragment.SeekBarFragment;
 import com.team5.network.NetworkInterface;
 import com.team5.network.Request;
 import com.team5.network.Response;
+import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
 
 import android.os.Bundle;
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,26 +29,30 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class SocialFragment extends Fragment implements NetworkInterface {	
-	// WORK IN PROGRESS - Nick
-	// private static final int STATE_IDLE = 0;
-	// private static final int STATE_REQUESTING = 1;
-	// private static final int STATE_FATAL = 2;
-	
-	// private final int LAYOUT_REQUESTING = R.layout.activity_social;
-	
-	// private int myState = STATE_IDLE;
-	// private Request myRequest; // If you're dealing with multiple requests, you can store its object to keep track
 	private View myView;
+	private HomeActivity myActivity;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
 		super.onCreate(savedInstanceState);
-		myView = inflater.inflate(R.layout.activity_social, container, false);
+		myView = inflater.inflate(R.layout.social_fragment, container, false);
+		myActivity = (HomeActivity) getActivity();
+		myActivity.setTitle("Discussion");
 		
 		// Make a request
-		new Request(this, "http://193.35.58.219/PAT/android/login.php", "email=Nick&pass=Pass");
+		//new Request(this, "http://193.35.58.219/PAT/android/login.php", "email=Nick&pass=Pass");
+
+		// Replace the frame with another fragment
+		changeFragment(new LoginFragment().setParentFragment(this));
 		
 		return myView;
+	}
+	
+	public void changeFragment(Fragment theFrag)	{
+		// Replace the frame with another fragment
+		FragmentManager manager = getFragmentManager();
+		FragmentTransaction transaction = manager.beginTransaction();
+		transaction.replace(R.id.social_fragment_frame, theFrag).commit();
 	}
 
 	@Override
@@ -64,7 +72,7 @@ public class SocialFragment extends Fragment implements NetworkInterface {
 				   Toast.LENGTH_LONG).show();
 		
 		// Find the TextView
-		TextView myText = (TextView) myView.findViewById(R.id.output);
+		//TextView myText = (TextView) myView.findViewById(R.id.social_fragment_output);  -- FIX
 		
 		// Don't continue if connection failed
 		if (!response.isSuccess())	{
@@ -99,7 +107,7 @@ public class SocialFragment extends Fragment implements NetworkInterface {
 		theOutput = theWriter.getBuffer().toString();
 		
 		// Put that string into the text view
-		myText.setText(theOutput);
+		//myText.setText(theOutput); -- FIX
 	}
 
 }
