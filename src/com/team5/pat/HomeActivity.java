@@ -100,11 +100,6 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 			intent = new Intent(this, ContactActivity.class);
 			startActivity(intent);
 			return true;
-		case R.id.action_status:
-			FragmentTransaction ft = getFragmentManager().beginTransaction();
-			ft.addToBackStack(null);
-			ft.add(R.id.content_frame, new StatusFragment()).commit();
-			return true;
 		}
 		return super.onOptionsItemSelected(item);
 

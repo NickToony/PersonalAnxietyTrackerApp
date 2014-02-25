@@ -17,7 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class LoginFragment extends Fragment implements SocialFragmentInterface, TabListener, OnPageChangeListener  {
+public class ListFragment extends Fragment implements SocialFragmentInterface, TabListener, OnPageChangeListener  {
 	private View myView;
 	private HomeActivity myActivity;
 	private SocialFragment myParent;
@@ -37,14 +37,16 @@ public class LoginFragment extends Fragment implements SocialFragmentInterface, 
 		myActionBar.setHomeButtonEnabled(true);
 		myActionBar.removeAllTabs();
 
-		ActionBar.Tab tabSignIn = myActionBar.newTab().setText("Sign In").setTabListener(this);
-		ActionBar.Tab tabSignUp = myActionBar.newTab().setText("Sign Up").setTabListener(this);
+		ActionBar.Tab tabTop = myActionBar.newTab().setText("Top").setTabListener(this);
+		ActionBar.Tab tabNew = myActionBar.newTab().setText("New").setTabListener(this);
+		ActionBar.Tab tabMine = myActionBar.newTab().setText("Mine").setTabListener(this);
 
-		myActionBar.addTab(tabSignIn, 0);
-		myActionBar.addTab(tabSignUp, 1);
+		myActionBar.addTab(tabTop, 0);
+		myActionBar.addTab(tabNew, 1);
+		myActionBar.addTab(tabMine, 2);
 		
 		myPager = (ViewPager) myView.findViewById(R.id.social_fragment_login_pager);
-		myPager.setAdapter(new PagerAdapter(getFragmentManager(), this));
+		myPager.setAdapter(new PagerAdapter(getFragmentManager()));
 		myPager.setOnPageChangeListener(this);
 		
 		return myView;
@@ -92,11 +94,9 @@ public class LoginFragment extends Fragment implements SocialFragmentInterface, 
 	}
 	
 	private class PagerAdapter extends FragmentStatePagerAdapter {
-		private LoginFragment parent;
-		
-		public PagerAdapter(FragmentManager fm, LoginFragment parent) {
+
+		public PagerAdapter(FragmentManager fm) {
 			super(fm);
-			this.parent = parent;
 		}
 
 		@Override
@@ -104,10 +104,13 @@ public class LoginFragment extends Fragment implements SocialFragmentInterface, 
 			Fragment fragment = null;
 			switch (position) {
 			case 0:
-				fragment = new SigninFragment().setParentFragment(parent);
+				fragment = new SigninFragment();
 				break;
 			case 1:
-				fragment = new SignupFragment().setParentFragment(parent);
+				fragment = new SignupFragment();
+				break;
+			case 2:
+				fragment = new SigninFragment();
 				break;
 			}
 			return fragment;
@@ -115,11 +118,7 @@ public class LoginFragment extends Fragment implements SocialFragmentInterface, 
 
 		@Override
 		public int getCount() {
-			return 2;
+			return 3;
 		}
-	}
-
-	public void logIn() {
-		myParent.changeFragment(new ListFragment().setParentFragment(myParent));
 	}
 }
