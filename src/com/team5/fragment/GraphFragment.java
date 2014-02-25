@@ -41,6 +41,7 @@ public class GraphFragment extends Fragment implements OnTouchListener {
 	
 	private View myView;
 	private HomeActivity myActivity;
+	private ActionBar actionBar;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -52,7 +53,7 @@ public class GraphFragment extends Fragment implements OnTouchListener {
 				R.array.spinner_list_items, R.layout.spinner_list);
 
 		// Action bar settings
-		ActionBar actionBar = getActivity().getActionBar();
+		actionBar = getActivity().getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		// actionBar.setDisplayShowTitleEnabled(false);
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
@@ -69,6 +70,13 @@ public class GraphFragment extends Fragment implements OnTouchListener {
 		return myView;
 	}
 
+	/** Remove drop down list when this fragment is removed **/
+	@Override
+	public void onDestroyView() {
+		super.onDestroyView();
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+	}
+	
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
 		// int scaleDownX = 90;

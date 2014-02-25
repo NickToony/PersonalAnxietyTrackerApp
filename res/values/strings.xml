@@ -13,28 +13,18 @@
     <string name="image_content_description">Image</string>
     <string name="lock_screen_information">Enter PIN number</string>
 
-    <string-array name="nav_list_icons">
-        <item>@drawable/ic_day</item>
-        <item>@drawable/ic_week</item>
-        <item>@drawable/ic_exercises</item>
-        <item>@drawable/ic_year</item>
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_day</item>
-        <item>@drawable/ic_week</item>
-        <item>@drawable/ic_month</item>
-        <item>@drawable/ic_year</item>
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_exercises</item>
-    </string-array>
-    <string-array name="nav_list_titles">
-        <item>Line Graph</item>
-        <item>Menu (circle)</item>
-        <item>Menu (hexagon)</item>
-        <item>Slider test</item>
-        <item>Record Graph</item>
-        <item>Social</item>
-        <item>Breath Exercise</item>
-    </string-array>
+    <!-- Navigation labels -->
+    <string name="navigation_home">Home</string>
+    <string name="navigation_log">Log</string>
+    <string name="navigation_tracker">Tracker</string>
+    <string name="navigation_exercises">Exercises</string>
+    <string name="navigation_discussion">Discussion</string>
+    <string name="navigation_account">My Account</string>
+    <string name="navigation_contact">Find Help</string>
+    <string name="navigation_report">Report Issue</string>
+    <string name="navigation_logoff">Log Off</string>
+    
+    
     <string-array name="spinner_list_items">
         <item>Day</item>
         <item>Week</item>
