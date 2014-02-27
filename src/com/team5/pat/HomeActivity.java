@@ -10,9 +10,9 @@ import com.team5.fragment.SocialFragment;
 import com.team5.fragment.StatusFragment;
 import com.team5.navigationlist.NavListAdapter;
 import com.team5.pat.R;
-import com.team5.pat.R.id;
 
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.app.ActionBar;
 import android.app.Activity;
@@ -23,6 +23,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
@@ -33,15 +37,27 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-public class HomeActivity extends Activity implements OnItemClickListener {
+public class HomeActivity extends Activity implements OnItemClickListener,
+		SensorEventListener {
+	// Constants and variables for back press and shaking censor
+	private final int VIBRATE_DURATION = 200;
+	private final long SHAKE_DURATION = 1000;
 	private final long BACK_PRESS_DURATION = 1000;
+	private final float SHAKE_THRESHOLD = 3F;
 	private long previousPress = 0;
+	private long previousTime = 0;
 
+	// Components for navigation drawer list
 	private DrawerLayout myDrawerLayout;
 	private ListView myDrawerList;
 	private ActionBarDrawerToggle myDrawerToggle;
 	private ActionBar actionBar;
 	private SharedPreferences preference;
+
+	// Components for shaking the phone
+	private Sensor mAccelerometer;
+	private SensorManager mSensorManager;
+	private Vibrator vibrator;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,13 +77,24 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		actionBar.setHomeButtonEnabled(true);
 		actionBar.setTitle(R.string.app_name);
 
-		createDrawerListAndAddListener();
+		initialiseNavigationDrawerAndShakingSensor();
 		addItemsToNavList();
 
 		// Launch home fragment if this application is first started
 		if (savedInstanceState == null) {
 			changeFragment(new HomeFragment());
 		}
+	}
+
+	protected void onResume() {
+		super.onResume();
+		mSensorManager.registerListener(this, mAccelerometer,
+				SensorManager.SENSOR_DELAY_NORMAL);
+	}
+
+	protected void onPause() {
+		super.onPause();
+		mSensorManager.unregisterListener(this);
 	}
 
 	@Override
@@ -98,10 +125,6 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 			return true;
 		case R.id.action_contact:
 			intent = new Intent(this, ContactActivity.class);
-			startActivity(intent);
-			return true;
-		case R.id.action_map:
-			intent = new Intent(this, MapActivity.class);
 			startActivity(intent);
 			return true;
 		case R.id.action_status:
@@ -148,6 +171,32 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
 		myDrawerToggle.onConfigurationChanged(newConfig);
+	}
+
+	@Override
+	public void onAccuracyChanged(Sensor arg0, int arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/** React when the phone is shaken **/
+	@Override
+	public void onSensorChanged(SensorEvent event) {
+		float x = event.values[0]; // horizontal movement
+		float y = event.values[1]; // vertical movement
+		float z = event.values[2]; // opaque movement
+		float G = SensorManager.GRAVITY_EARTH;
+		float acceleration = (x * x + y * y + z * z) / (G * G);
+
+		if (acceleration > SHAKE_THRESHOLD) {
+			long currentTime = System.currentTimeMillis();
+
+			if ((currentTime - previousTime > SHAKE_DURATION)
+					&& (isShake(x, y, z))) {
+				vibrator.vibrate(VIBRATE_DURATION);
+				previousTime = currentTime;
+			}
+		}
 	}
 
 	private void changeFragment(Fragment fragment) {
@@ -209,8 +258,8 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		adapter.addItem(NavListAdapter.navigationLogOff);
 	}
 
-	private void createDrawerListAndAddListener() {
-		// initialise drawer components
+	private void initialiseNavigationDrawerAndShakingSensor() {
+		// Initialise drawer components
 		myDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		myDrawerList = (ListView) findViewById(R.id.drawer_list);
 
@@ -223,6 +272,12 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 				R.drawable.ic_drawer, // nav drawer image to replace 'Up' caret
 				R.string.drawer_open, R.string.drawer_close);
 		myDrawerLayout.setDrawerListener(myDrawerToggle);
+
+		// Inisitalise shaking censor
+		mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+		mAccelerometer = mSensorManager
+				.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+		vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 	}
 
 	private void setLocale() {
@@ -236,6 +291,11 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 
 	}
 
+	/** Return true if the phone is considered shaking **/
+	private boolean isShake(float x, float y, float z) {
+		return Math.abs(x) > 15 && Math.abs(y) > 15 && Math.abs(z) < 10;
+	}
+	
 	public void setTitle(String title) {
 		actionBar.setTitle("PAT - " + title);
 	}

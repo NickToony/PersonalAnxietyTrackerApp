@@ -66,6 +66,5 @@ public class ReflectionFragment extends Fragment implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		getFragmentManager().beginTransaction().remove(this).commit();
-
 	}
 }
