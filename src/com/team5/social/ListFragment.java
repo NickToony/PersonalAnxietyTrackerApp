@@ -29,7 +29,6 @@ public class ListFragment extends Fragment implements SocialFragmentInterface  {
 		super.onCreate(savedInstanceState);
 		myView = inflater.inflate(R.layout.social_fragment_list, container, false);
 		myActivity = (HomeActivity) getActivity();
-		myActivity.setTitle("Discussion");
 		
 		// Get the list view
 		listView = (ListView) myView.findViewById(R.id.social_fragment_list_listView);
@@ -51,9 +50,8 @@ public class ListFragment extends Fragment implements SocialFragmentInterface  {
 	}
 
 	@Override
-	public Fragment setParentFragment(Fragment frag) {
+	public void setParentFragment(SocialFragmentInterface frag) {
 		this.myParent = (MainFragment) frag;
-		return this;
 	}
 	
 	

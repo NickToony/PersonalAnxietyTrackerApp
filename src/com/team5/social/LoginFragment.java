@@ -7,10 +7,8 @@ import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.ActionBar.TabListener;
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
@@ -22,6 +20,7 @@ public class LoginFragment extends Fragment implements SocialFragmentInterface, 
 	private HomeActivity myActivity;
 	private SocialFragment myParent;
 	private ViewPager myPager;
+	private SocialPagerAdapter myAdapter;
 	private ActionBar myActionBar;
 	
 	@Override
@@ -29,7 +28,6 @@ public class LoginFragment extends Fragment implements SocialFragmentInterface, 
 		super.onCreate(savedInstanceState);
 		myView = inflater.inflate(R.layout.social_fragment_login, container, false);
 		myActivity = (HomeActivity) getActivity();
-		myActivity.setTitle("Discussion - Login");
 		
 		myActionBar = myActivity.getActionBar();
 		myActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -43,17 +41,24 @@ public class LoginFragment extends Fragment implements SocialFragmentInterface, 
 		myActionBar.addTab(tabSignIn, 0);
 		myActionBar.addTab(tabSignUp, 1);
 		
+		// Get pager view
 		myPager = (ViewPager) myView.findViewById(R.id.social_fragment_login_pager);
-		myPager.setAdapter(new PagerAdapter(getFragmentManager(), this));
+		// Make an adapter for the view
+		myAdapter = new SocialPagerAdapter(getFragmentManager(), this);
+		//Add tabs
+		myAdapter.addItem(new SigninFragment());
+		myAdapter.addItem(new SignupFragment());
+		// Set the adapter to the pager view
+		myPager.setAdapter(myAdapter);
+		// Set listener
 		myPager.setOnPageChangeListener(this);
 		
 		return myView;
 	}
 
 	@Override
-	public Fragment setParentFragment(Fragment frag) {
+	public void setParentFragment(SocialFragmentInterface frag) {
 		this.myParent = (SocialFragment) frag;
-		return this;
 	}
 
 	@Override
@@ -90,36 +95,8 @@ public class LoginFragment extends Fragment implements SocialFragmentInterface, 
 		// TODO Auto-generated method stub
 		
 	}
-	
-	private class PagerAdapter extends FragmentStatePagerAdapter {
-		private LoginFragment parent;
-		
-		public PagerAdapter(FragmentManager fm, LoginFragment parent) {
-			super(fm);
-			this.parent = parent;
-		}
-
-		@Override
-		public Fragment getItem(int position) {
-			Fragment fragment = null;
-			switch (position) {
-			case 0:
-				fragment = new SigninFragment().setParentFragment(parent);
-				break;
-			case 1:
-				fragment = new SignupFragment().setParentFragment(parent);
-				break;
-			}
-			return fragment;
-		}
-
-		@Override
-		public int getCount() {
-			return 2;
-		}
-	}
 
 	public void logIn() {
-		myParent.changeFragment(new MainFragment().setParentFragment(myParent));
+		myParent.changeFragment(new MainFragment());
 	}
 }

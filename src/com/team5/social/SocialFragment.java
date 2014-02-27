@@ -28,7 +28,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SocialFragment extends Fragment implements NetworkInterface {	
+public class SocialFragment extends Fragment implements NetworkInterface, SocialFragmentInterface {	
 	private View myView;
 	private HomeActivity myActivity;
 	
@@ -43,16 +43,18 @@ public class SocialFragment extends Fragment implements NetworkInterface {
 		//new Request(this, "http://193.35.58.219/PAT/android/login.php", "email=Nick&pass=Pass");
 
 		// Replace the frame with another fragment
-		changeFragment(new LoginFragment().setParentFragment(this));
+		changeFragment(new LoginFragment());
 		
 		return myView;
 	}
 	
-	public void changeFragment(Fragment theFrag)	{
+	public void changeFragment(SocialFragmentInterface theFrag)	{
+		theFrag.setParentFragment(this);
+		
 		// Replace the frame with another fragment
 		FragmentManager manager = getFragmentManager();
 		FragmentTransaction transaction = manager.beginTransaction();
-		transaction.replace(R.id.social_fragment_frame, theFrag).commit();
+		transaction.replace(R.id.social_fragment_frame, (Fragment) theFrag).commit();
 	}
 
 	@Override
@@ -108,6 +110,10 @@ public class SocialFragment extends Fragment implements NetworkInterface {
 		
 		// Put that string into the text view
 		//myText.setText(theOutput); -- FIX
+	}
+
+	@Override
+	public void setParentFragment(SocialFragmentInterface frag) {
 	}
 
 }

@@ -20,7 +20,6 @@ public class SigninFragment extends Fragment implements SocialFragmentInterface 
 		super.onCreate(savedInstanceState);
 		myView = inflater.inflate(R.layout.social_fragment_signin, container, false);
 		myActivity = (HomeActivity) getActivity();
-		myActivity.setTitle("Discussion - Sign In");
 		
 		View button = myView.findViewById(R.id.social_fragment_signin_button);
 		button.setOnClickListener(new OnClickListener()	{
@@ -35,8 +34,7 @@ public class SigninFragment extends Fragment implements SocialFragmentInterface 
 	}
 
 	@Override
-	public Fragment setParentFragment(Fragment frag) {
+	public void setParentFragment(SocialFragmentInterface frag) {
 		this.myParent = (LoginFragment) frag;
-		return this;
 	}
 }

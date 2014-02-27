@@ -1,7 +1,9 @@
 package com.team5.social;
 
+import com.team5.pat.HomeActivity;
+
 import android.app.Fragment;
 
 public interface SocialFragmentInterface {
-	public Fragment setParentFragment(Fragment frag);
+	public void setParentFragment(SocialFragmentInterface frag);
 }

@@ -23,13 +23,13 @@ public class MainFragment extends Fragment implements SocialFragmentInterface, T
 	private SocialFragment myParent;
 	private ViewPager myPager;
 	private ActionBar myActionBar;
+	private SocialPagerAdapter myAdapter;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
 		super.onCreate(savedInstanceState);
 		myView = inflater.inflate(R.layout.social_fragment_login, container, false);
 		myActivity = (HomeActivity) getActivity();
-		myActivity.setTitle("Discussion - Login");
 		
 		myActionBar = myActivity.getActionBar();
 		myActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -45,17 +45,25 @@ public class MainFragment extends Fragment implements SocialFragmentInterface, T
 		myActionBar.addTab(tabNew, 1);
 		myActionBar.addTab(tabMine, 2);
 		
+		// Get pager view
 		myPager = (ViewPager) myView.findViewById(R.id.social_fragment_login_pager);
-		myPager.setAdapter(new PagerAdapter(getFragmentManager()));
+		// Make an adapter for the view
+		myAdapter = new SocialPagerAdapter(getFragmentManager(), this);
+		//Add tabs
+		myAdapter.addItem(new ListFragment());
+		myAdapter.addItem(new ListFragment());
+		myAdapter.addItem(new ListFragment());
+		// Set the adapter to the pager view
+		myPager.setAdapter(myAdapter);
+		// Set listener
 		myPager.setOnPageChangeListener(this);
 		
 		return myView;
 	}
 
 	@Override
-	public Fragment setParentFragment(Fragment frag) {
+	public void setParentFragment(SocialFragmentInterface frag) {
 		this.myParent = (SocialFragment) frag;
-		return this;
 	}
 
 	@Override
@@ -90,35 +98,5 @@ public class MainFragment extends Fragment implements SocialFragmentInterface, T
 	@Override
 	public void onTabUnselected(Tab arg0, FragmentTransaction arg1) {
 		// TODO Auto-generated method stub
-		
-	}
-	
-	private class PagerAdapter extends FragmentStatePagerAdapter {
-
-		public PagerAdapter(FragmentManager fm) {
-			super(fm);
-		}
-
-		@Override
-		public Fragment getItem(int position) {
-			Fragment fragment = null;
-			switch (position) {
-			case 0:
-				fragment = new ListFragment();
-				break;
-			case 1:
-				fragment = new ListFragment();
-				break;
-			case 2:
-				fragment = new ListFragment();
-				break;
-			}
-			return fragment;
-		}
-
-		@Override
-		public int getCount() {
-			return 3;
-		}
 	}
 }
