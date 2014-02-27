@@ -184,9 +184,9 @@ public final class R {
         public static final int seriousnessSeekBar=0x7f0c004b;
         public static final int sideWheelActivity=0x7f0c003c;
         public static final int social_fragment_frame=0x7f0c0054;
-        public static final int social_fragment_list_listView=0x7f0c0055;
-        public static final int social_fragment_login_pager=0x7f0c0056;
-        public static final int social_fragment_signin_button=0x7f0c0057;
+        public static final int social_fragment_list_listView=0x7f0c0056;
+        public static final int social_fragment_login_pager=0x7f0c0057;
+        public static final int social_fragment_signin_button=0x7f0c0058;
         public static final int social_fragment_signin_loginText=0x7f0c005a;
         public static final int social_fragment_signup_loginText=0x7f0c005c;
         public static final int startButton=0x7f0c001b;
@@ -199,7 +199,7 @@ public final class R {
         public static final int tempList=0x7f0c003e;
         public static final int text=0x7f0c0037;
         public static final int textView=0x7f0c0031;
-        public static final int textView1=0x7f0c0058;
+        public static final int textView1=0x7f0c0055;
         public static final int textView2=0x7f0c0027;
         public static final int textView3=0x7f0c0028;
         public static final int textView4=0x7f0c0029;
@@ -232,11 +232,12 @@ public final class R {
         public static final int slide_right_enter=0x7f030017;
         public static final int social_fragment=0x7f030018;
         public static final int social_fragment_list=0x7f030019;
-        public static final int social_fragment_login=0x7f03001a;
-        public static final int social_fragment_signin=0x7f03001b;
-        public static final int social_fragment_signup=0x7f03001c;
-        public static final int spinner_list=0x7f03001d;
-        public static final int status_layout=0x7f03001e;
+        public static final int social_fragment_list_row=0x7f03001a;
+        public static final int social_fragment_login=0x7f03001b;
+        public static final int social_fragment_signin=0x7f03001c;
+        public static final int social_fragment_signup=0x7f03001d;
+        public static final int spinner_list=0x7f03001e;
+        public static final int status_layout=0x7f03001f;
     }
     public static final class menu {
         public static final int contact=0x7f0b0000;
