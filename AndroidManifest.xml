@@ -13,8 +13,11 @@
         android:required="true" />
 
     <!-- Permission for shake censor -->
-    <uses-permission android:name="android.permission.VIBRATE"/>
-    
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- Record audio -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <!-- Permissions for Location Services -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

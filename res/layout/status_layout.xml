@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="#ABCDEF"
     android:minHeight="300dp" >
 
@@ -70,5 +70,27 @@
         android:lines="5"
         android:maxLength="200" >
     </EditText>
+
+    <ImageView
+        android:id="@+id/audioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/newAnxietyHeading"
+        android:layout_below="@+id/commentEditText"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="29dp"
+        android:contentDescription="@string/image_content_description"
+        android:src="@drawable/start_record" />
+
+    <ImageView
+        android:id="@+id/playButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/newAnxietyHeading"
+        android:layout_below="@+id/commentEditText"
+        android:layout_marginRight="33dp"
+        android:layout_marginTop="18dp"
+        android:contentDescription="@string/image_content_description"
+        android:src="@drawable/play" />
 
 </RelativeLayout>

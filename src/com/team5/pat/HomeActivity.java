@@ -1,5 +1,6 @@
 package com.team5.pat;
 
+import java.io.File;
 import java.util.Locale;
 
 import com.team5.fragment.BreathExerciseFragment;
@@ -12,6 +13,7 @@ import com.team5.navigationlist.NavListAdapter;
 import com.team5.pat.R;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.app.ActionBar;
@@ -176,7 +178,7 @@ public class HomeActivity extends Activity implements OnItemClickListener,
 	@Override
 	public void onAccuracyChanged(Sensor arg0, int arg1) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	/** React when the phone is shaken **/
@@ -295,7 +297,7 @@ public class HomeActivity extends Activity implements OnItemClickListener,
 	private boolean isShake(float x, float y, float z) {
 		return Math.abs(x) > 15 && Math.abs(y) > 15 && Math.abs(z) < 10;
 	}
-	
+
 	public void setTitle(String title) {
 		actionBar.setTitle("PAT - " + title);
 	}

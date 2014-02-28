@@ -14,10 +14,10 @@
         android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:contentDescription="@string/image_content_description"
-        android:src="@drawable/ic_lockscreen"
+        android:src="@drawable/ic_splash"
         android:visibility="invisible" />
 
     <TableLayout
