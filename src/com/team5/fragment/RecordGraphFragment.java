@@ -22,7 +22,8 @@ public class RecordGraphFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		myView = inflater.inflate(R.layout.record_graph_layout, container, false);
+		myView = inflater.inflate(R.layout.record_graph_layout, container,
+				false);
 		myActivity = (HomeActivity) getActivity();
 		myActivity.setTitle("Graph Test");
 
@@ -37,12 +38,14 @@ public class RecordGraphFragment extends Fragment {
 		List<UserRecord> points = ((Session) getActivity().getApplication())
 				.getUserAccount().getRecordByTime(0,
 						new java.util.Date().getTime());
-		//
-		// // For each record
+
+		// For each record
 		for (int i = 0; i < points.size(); i++) {
 			// add to graph
-			mLineGraph.addPoint(mRedLine, i, points.get(i).getAnxiety(), "Random string");
-			mLineGraph.addPoint(mBlueLine, i, points.get(i).getSeriousness(), "Random string");
+			mLineGraph.addPoint(mRedLine, i, points.get(i).getAnxiety(),
+					"Random string");
+			mLineGraph.addPoint(mBlueLine, i, points.get(i).getSeriousness(),
+					"Random string");
 		}
 
 		// Make it visible
