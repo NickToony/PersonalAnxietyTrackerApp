@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:gravity="center_horizontal"
-        android:paddingTop="80dp"
+        android:paddingTop="45dp"
         android:text="@string/seriousness_heading"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/seekBarHeadingColor"
@@ -90,7 +90,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/seriousnessSeekBar"
         android:gravity="center_horizontal"
-        android:paddingTop="40dp"
+        android:paddingTop="45dp"
         android:text="@string/anxiety_heading"
         android:textColor="@color/seekBarHeadingColor"
         android:textSize="20sp"
@@ -105,18 +105,21 @@
         android:layout_marginTop="27dp"
         android:background="@drawable/commenttextfield"
         android:ems="10"
+        android:gravity="top|left"
         android:hint="@string/thoughts_hint"
         android:minHeight="140dp"
-        android:minWidth="290dp" >
+        android:minWidth="290dp"
+        android:padding="@dimen/seek_bar_text_padding" >
+
     </EditText>
 
     <Button
         android:id="@+id/seekBarSubmitButton"
         android:layout_width="100dp"
         android:layout_height="30dp"
-        android:layout_below="@+id/commentsEditText"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/commenttextfield"
         android:gravity="center"
         android:text="@string/save_button_text"

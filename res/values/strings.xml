@@ -120,9 +120,10 @@
     <string name="breathEx">Breathing Exercise</string>
     <string name="seconds">Seconds:</string>
     <string name="start">Start</string>
+    <string name="pause">Pause</string>
     <string name="stop">Stop</string>
-    <string name="exerciseDefaultDuration">60</string>
-
+	<string name="exerciseDefaultDuration">60</string>
+	
     <!-- Start of calm down text -->
     <string name="CalmDown">Being patient is key. Take a couple seconds to cool down.
     Slowly  take deep breaths in and deep breaths out and let it all out.</string>

@@ -19,13 +19,25 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="0.62" >
-
-        <com.team5.exercise.AnimationCanvas
-            android:id="@+id/animationCanvas"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_alignParentBottom="true" />
-
+		
+        <ImageView
+            android:id="@+id/background_circle"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/background_circle" 
+            android:visibility="visible"/>
+        
+        <ImageView
+            android:id="@+id/asd_id"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/dynamic_circle" 
+            android:visibility="visible"/>
+        
         <ProgressBar
             android:id="@+id/progressBarBreathExercise"
             style="?android:attr/progressBarStyleLarge"
@@ -33,6 +45,9 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true" />
+
+        
+
     </RelativeLayout>
 
     <TextView
