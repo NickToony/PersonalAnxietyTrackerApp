@@ -22,21 +22,30 @@
 		
         <ImageView
             android:id="@+id/background_circle"
-            android:layout_width="350dp"
-            android:layout_height="350dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:src="@drawable/background_circle" 
             android:visibility="visible"/>
         
         <ImageView
-            android:id="@+id/asd_id"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
+            android:id="@+id/dynamic_circle"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:src="@drawable/dynamic_circle" 
             android:visibility="visible"/>
+       
+        <ImageView
+            android:id="@+id/center_circle"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/centre_circle" 
+            android:visibility="invisible"/>
         
         <ProgressBar
             android:id="@+id/progressBarBreathExercise"
