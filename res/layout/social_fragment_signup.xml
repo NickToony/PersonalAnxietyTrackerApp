@@ -9,6 +9,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".SocialFragment" >
 
+    
+    
     <TextView
         android:id="@+id/social_fragment_signup_loginText"
         android:layout_width="wrap_content"
@@ -19,21 +21,31 @@
         android:text="@string/social_fragment_signup_loginText"
         android:textAppearance="?android:attr/textAppearanceLarge" />
     
+    <EditText
+        android:id="@+id/social_fragment_signup_Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/social_fragment_signup_loginText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:hint="Username"
+        android:inputType="textPassword" />
+    
     <RelativeLayout
         android:id="@+id/social_fragment_signup_emailLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/social_fragment_signup_loginText"
+        android:layout_below="@+id/social_fragment_signup_Name"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp" >
 
 
 	    <EditText
-	        android:id="@+id/editText1"
+	        android:id="@+id/social_fragment_signup_Email"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:layout_centerHorizontal="true"
-	        android:hint="Email Name" >
+	        android:hint="Email" >
 	
 	        <requestFocus />
 	    </EditText>
@@ -49,7 +61,7 @@
     </RelativeLayout>
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/social_fragment_signup_Password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/social_fragment_signup_emailLayout"
@@ -62,9 +74,16 @@
         android:id="@+id/social_fragment_signup_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/social_fragment_signup_Password"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
         android:text="@string/social_fragment_signup_buttonText" />
+    
+    <TextView 
+        android:id="@+id/socialCheapOutput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/social_fragment_signup_button"
+        android:text="Nothing" />
 
 </RelativeLayout>

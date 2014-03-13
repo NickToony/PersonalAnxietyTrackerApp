@@ -24,6 +24,7 @@ public class Request {
 	private String myUrlParameters;
 	private NetworkInterface myTarget;
 	private Request myObject = this;
+	private boolean usePost = false;
 	
 	public Request(NetworkInterface myTarget, String myUrl, String myUrlParameters)	{
 		this.myUrl = myUrl;
@@ -64,7 +65,11 @@ public class Request {
 			// Handle url generation
 			try {
 				// Attempt to create the URL object
-				theUrl = new URL(myUrl);
+				if (usePost)
+					theUrl = new URL(myUrl);
+				else	{
+					theUrl = new URL(myUrl + "?" + myUrlParameters);
+				}
 			} catch (MalformedURLException e2) {
 				// Failure
 				theResponse.set(false, "Malformed URL.", null);
@@ -89,17 +94,17 @@ public class Request {
 			theConnection.setInstanceFollowRedirects(false);
 			
 			
-			try {
-				// Attempt to set form data mode to POST, rather than GET
-					// NOTE: Doing this triggers it to connect to the server (hence no .connect() further up)
-				theConnection.setRequestMethod("POST");
-			} catch (ProtocolException e1) {
-				// Couldn't setup protocols, usually occurs when connection failed.
-				theResponse.set(false, "Failed to initiate protocols. Server not responding?", null);
-				theConnection.disconnect();
-				return theResponse;
-			}
-			
+			if (usePost)	{
+				try {
+					// Attempt to set form data mode to POST, rather than GET
+						// NOTE: Doing this triggers it to connect to the server (hence no .connect() further up)
+					theConnection.setRequestMethod("POST");
+				} catch (ProtocolException e1) {
+					// Couldn't setup protocols, usually occurs when connection failed.
+					theResponse.set(false, "Failed to initiate protocols. Server not responding?", null);
+					theConnection.disconnect();
+					return theResponse;
+				}
 			// Output HTTP header properties
 			theConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 			// the POST data's format
@@ -127,6 +132,8 @@ public class Request {
 				theResponse.set(false, "Failing to attach parameters.", null);
 				theConnection.disconnect();
 				return theResponse;
+			}
+			
 			}
 			
 			// Attempt to get the XML and parse it
