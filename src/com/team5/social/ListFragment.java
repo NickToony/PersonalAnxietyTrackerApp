@@ -36,10 +36,8 @@ public class ListFragment extends Fragment implements SocialFragmentInterface  {
 		listAdapter = new ListAdapter(myActivity, R.layout.social_fragment_list_row);
 		
 		// Insert test data..
-		listAdapter.addItem(new ListItem("A new topic", "Hello there, I am a subtitle.", 1));
-		listAdapter.addItem(new ListItem("Another topic", "Hello there, I am another subtitle.", 2));
-		listAdapter.addItem(new ListItem("Proof", "..that the listview works.", 3));
-		listAdapter.addItem(new ListItem("Desperate plea", "A story of anxiety. Lovely!", 4));
+		listAdapter.addItem(new ListItem(1, "jsmith92", "16:35 02 Mar", "I am very anxious about an upcoming exam. Does anyone have any advice for me? Or recomend any techniques for calming down?", 4, 4.5));
+		listAdapter.addItem(new ListItem(2, "bdavidson12", "13:22 01 Mar", "I have a big class presentation tomorrow infront of a lot of people. I feel nauseous. Does anyone have any tips for me?", 1, 2.5));
 		
 		// Finally, assign the custom adapter to the list
 		listView.setAdapter(listAdapter);
@@ -61,14 +59,21 @@ public class ListFragment extends Fragment implements SocialFragmentInterface  {
 	 * Contains data of each item in the list
 	 */
 	private class ListItem {
-		public String title;
-		public String description;
+		public String name;
+		public String date;
+		public String content;
+		public int replies;
+		public double rating;
+		
 		public int id;
 		
-		public ListItem(String title, String description, int id)	{
-			this.title = title;
-			this.description = description;
+		public ListItem(int id, String name, String date, String content, int replies, double rating)	{
 			this.id = id;
+			this.name = name;
+			this.date = date;
+			this.content = content;
+			this.replies = replies;
+			this.rating = rating;
 		}
 	}
 	
@@ -98,12 +103,19 @@ public class ListFragment extends Fragment implements SocialFragmentInterface  {
 				myView = inflater.inflate(resource, parent, false);
 			}
 
-			TextView textTitle = (TextView) myView.findViewById(R.id.social_fragment_list_rowTitle);
-			TextView textDescription = (TextView) myView.findViewById(R.id.social_fragment_list_rowDescription);
+			TextView textName = (TextView) myView.findViewById(R.id.social_fragment_list_rowName);
+			TextView textDate = (TextView) myView.findViewById(R.id.social_fragment_list_rowDate);
+			TextView textContent = (TextView) myView.findViewById(R.id.social_fragment_list_rowContent);
+			TextView textReplies = (TextView) myView.findViewById(R.id.social_fragment_list_rowReplies);
+			TextView textRating = (TextView) myView.findViewById(R.id.social_fragment_list_rowRating);
+			
 			
 			ListItem myItem = getItem(position);
-			textTitle.setText(myItem.title);
-			textDescription.setText(myItem.description);
+			textName.setText(myItem.name);
+			textDate.setText(myItem.date);
+			textContent.setText(myItem.content);
+			textReplies.setText("Replies: " + myItem.replies);
+			textReplies.setText("Rating: " + myItem.rating);
 
 			return myView;
 		}
@@ -127,6 +139,16 @@ public class ListFragment extends Fragment implements SocialFragmentInterface  {
 			//items.add(new NavListItem(context.getResources().getDrawable( navArray[0] ), label));
 			items.add(item);
 		}
+		
+		// This code disables highlightung
+		public boolean areAllItemsEnabled() 
+        { 
+                return false; 
+        } 
+        public boolean isEnabled(int position) 
+        { 
+                return false; 
+        }
 		
 	}
 }

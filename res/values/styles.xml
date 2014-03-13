@@ -30,5 +30,9 @@
     <color name="centerCircleColour">#894325</color>
     <color name="backgroundCircleColour">#2d5c3a</color>
     <color name="dynamicCircleColour">#d7d7d7</color>
+    <color name="socialBackgroundColour">#C6DEF5</color>
+    <color name="social_topic">#89D1E2</color>
+    <color name="social_topic_highlight">#FFFFFF</color>
+    <color name="social_topic_outline">#929394</color>
 
 </resources>
