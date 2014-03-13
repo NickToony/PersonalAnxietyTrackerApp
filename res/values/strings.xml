@@ -118,7 +118,7 @@
 
     <!-- Breathing Exercise -->
     <string name="breathEx">Breathing Exercise</string>
-    <string name="seconds">Seconds:</string>
+    <string name="seconds">Seconds</string>
     <string name="start">Start</string>
     <string name="pause">Pause</string>
     <string name="stop">Stop</string>
