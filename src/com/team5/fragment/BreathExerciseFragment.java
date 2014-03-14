@@ -1,26 +1,20 @@
 package com.team5.fragment;
 
-import com.team5.graph.Line;
 import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.ScaleAnimation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 
 public class BreathExerciseFragment extends Fragment implements OnClickListener
 {

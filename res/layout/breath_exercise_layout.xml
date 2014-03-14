@@ -97,7 +97,7 @@
             android:layout_marginLeft="3.5dp"
             android:layout_marginRight="7dp"
             android:layout_weight="1"
-            android:background="@drawable/commenttextfield"
+            android:background="@drawable/commenttextfield1"
             android:ems="10"
             android:gravity="center"
             android:inputType="number"
