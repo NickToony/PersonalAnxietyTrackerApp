@@ -1,5 +1,7 @@
 package com.team5.social;
 
+import java.util.Map;
+
 import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
 
@@ -98,5 +100,14 @@ public class MainFragment extends Fragment implements SocialFragmentInterface, T
 	@Override
 	public void onTabUnselected(Tab arg0, FragmentTransaction arg1) {
 		// TODO Auto-generated method stub
+	}
+	
+	@Override
+	public void setCookies(Map<String, String> cookieMap)	{
+		myParent.setCookies(cookieMap);
+	}
+	@Override
+	public Map<String, String> getCookies()	{
+		return myParent.getCookies();
 	}
 }

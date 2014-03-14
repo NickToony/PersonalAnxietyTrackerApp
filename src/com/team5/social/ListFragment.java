@@ -2,6 +2,7 @@ package com.team5.social;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -50,6 +51,15 @@ public class ListFragment extends Fragment implements SocialFragmentInterface  {
 	@Override
 	public void setParentFragment(SocialFragmentInterface frag) {
 		this.myParent = (MainFragment) frag;
+	}
+	
+	@Override
+	public void setCookies(Map<String, String> cookieMap)	{
+		myParent.setCookies(cookieMap);
+	}
+	@Override
+	public Map<String, String> getCookies()	{
+		return myParent.getCookies();
 	}
 	
 	

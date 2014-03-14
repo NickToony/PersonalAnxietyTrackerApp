@@ -1,5 +1,8 @@
 package com.team5.network;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -7,6 +10,7 @@ public class Response {
 	private boolean mySuccess;
 	private String myMessage;
 	private Document myDocument;
+	private Map<String, String> myCookies = new HashMap<String, String>();
 	
 	public void set(boolean success, String message, Document document)	{
 		this.mySuccess = success;
@@ -44,5 +48,13 @@ public class Response {
 	
 	public Element getData()	{
 		return (Element) myDocument.getElementsByTagName("data").item(0);
+	}
+
+	public void addCookie(String cookieName, String cookieValue) {
+		myCookies.put(cookieName, cookieValue);
+	}
+	
+	public Map<String, String> getCookies()	{
+		return myCookies;
 	}
 }

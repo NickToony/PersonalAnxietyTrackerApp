@@ -1,5 +1,7 @@
 package com.team5.social;
 
+import java.util.Map;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -58,7 +60,7 @@ public class SignupFragment extends Fragment implements SocialFragmentInterface,
 		if (theView == myButton)	{
 			if (networking == false)	{
 				networking = true;
-				new Request(this, "http://nick-hope.co.uk/PAT/android/signup.php", "name=" + myNameView.getText() + "&email=" + myEmailView.getText() + "@newcastle.ac.uk" + "&pass=" + myPasswordView.getText());
+				new Request(this, "http://nick-hope.co.uk/PAT/android/signup.php", "name=" + myNameView.getText() + "&email=" + myEmailView.getText() + "@newcastle.ac.uk" + "&pass=" + myPasswordView.getText(), getCookies());
 				InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(
 					      Context.INPUT_METHOD_SERVICE);
 					imm.hideSoftInputFromWindow(myEmailView.getWindowToken(), 0);
@@ -81,6 +83,9 @@ public class SignupFragment extends Fragment implements SocialFragmentInterface,
 			networking = false;
 			return;
 		}
+		
+		// Store cookies
+		setCookies(response.getCookies());
 		
 		// Get the request element
 		Element eleRequest = response.getRequest();
@@ -127,5 +132,14 @@ public class SignupFragment extends Fragment implements SocialFragmentInterface,
 		}
 				
 		networking = false;
+	}
+	
+	@Override
+	public void setCookies(Map<String, String> cookieMap)	{
+		myParent.setCookies(cookieMap);
+	}
+	@Override
+	public Map<String, String> getCookies()	{
+		return myParent.getCookies();
 	}
 }

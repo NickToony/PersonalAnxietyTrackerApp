@@ -6,6 +6,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -24,12 +25,34 @@ public class Request {
 	private String myUrlParameters;
 	private NetworkInterface myTarget;
 	private Request myObject = this;
+	private Map<String, String> myCookies;
 	private boolean usePost = false;
+	
+	public Request(NetworkInterface myTarget, String myUrl)	{
+		this.myUrl = myUrl;
+		this.myUrlParameters = "";
+		this.myTarget = myTarget;
+		this.myCookies = null;
+		
+		// Start the ASYNC task
+		new RequestTask().execute();
+	}
 	
 	public Request(NetworkInterface myTarget, String myUrl, String myUrlParameters)	{
 		this.myUrl = myUrl;
 		this.myUrlParameters = myUrlParameters;
 		this.myTarget = myTarget;
+		this.myCookies = null;
+		
+		// Start the ASYNC task
+		new RequestTask().execute();
+	}
+	
+	public Request(NetworkInterface myTarget, String myUrl, String myUrlParameters, Map<String, String> myCookies)	{
+		this.myUrl = myUrl;
+		this.myUrlParameters = myUrlParameters;
+		this.myTarget = myTarget;
+		this.myCookies = myCookies;
 		
 		// Start the ASYNC task
 		new RequestTask().execute();
@@ -93,6 +116,12 @@ public class Request {
 			// We refuse any redirects
 			theConnection.setInstanceFollowRedirects(false);
 			
+			// Attach cookies
+			if (myCookies != null)	{
+				for (Map.Entry<String, String> cookie : myCookies.entrySet())	{
+					theConnection.setRequestProperty("Cookie", cookie.getKey() + "=" + cookie.getValue());
+				}
+			}
 			
 			if (usePost)	{
 				try {
@@ -141,6 +170,19 @@ public class Request {
 				// We take the data from the stream from the server, and try to parse it
 				theDoc = myDocBuilder.parse(theConnection.getInputStream());
 				theResponse.set(true, "Response fetched successfully.", theDoc);
+				
+				// handle cookies
+				String headerName=null;
+				for (int i=1; (headerName = theConnection.getHeaderFieldKey(i))!=null; i++) {
+				 	if (headerName.equals("Set-Cookie")) {                  
+				 		String cookie = theConnection.getHeaderField(i);
+				 		cookie = cookie.substring(0, cookie.indexOf(";"));
+				        String cookieName = cookie.substring(0, cookie.indexOf("="));
+				        String cookieValue = cookie.substring(cookie.indexOf("=") + 1, cookie.length());
+				        theResponse.addCookie(cookieName, cookieValue);
+				 	}
+				}
+				
 				theConnection.disconnect();
 				return theResponse;
 			} catch (SAXException e) {

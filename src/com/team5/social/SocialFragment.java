@@ -2,6 +2,8 @@
 package com.team5.social;
 
 import java.io.StringWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
@@ -31,6 +33,7 @@ import android.widget.Toast;
 public class SocialFragment extends Fragment implements NetworkInterface, SocialFragmentInterface {	
 	private View myView;
 	private HomeActivity myActivity;
+	private Map<String, String> myCookies = new HashMap<String, String>();
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
@@ -114,6 +117,14 @@ public class SocialFragment extends Fragment implements NetworkInterface, Social
 
 	@Override
 	public void setParentFragment(SocialFragmentInterface frag) {
+	}
+	
+	public void setCookies(Map<String, String> cookieMap)	{
+		myCookies.putAll(cookieMap);
+	}
+	
+	public Map<String, String> getCookies()	{
+		return myCookies;
 	}
 
 }

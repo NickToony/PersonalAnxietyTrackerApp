@@ -1,5 +1,7 @@
 package com.team5.social;
 
+import java.util.Map;
+
 import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
 
@@ -98,5 +100,14 @@ public class LoginFragment extends Fragment implements SocialFragmentInterface, 
 
 	public void logIn() {
 		myParent.changeFragment(new MainFragment());
+	}
+	
+	@Override
+	public void setCookies(Map<String, String> cookieMap)	{
+		myParent.setCookies(cookieMap);
+	}
+	@Override
+	public Map<String, String> getCookies()	{
+		return myParent.getCookies();
 	}
 }
