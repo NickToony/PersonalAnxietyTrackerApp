@@ -1,69 +1,98 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_centerHorizontal="true"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".SocialFragment" >
-
-    <TextView
-        android:id="@+id/social_fragment_signin_loginText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        android:padding="10dp"
-        android:text="@string/social_fragment_signin_loginText"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-    
-    <RelativeLayout
-        android:id="@+id/social_fragment_signin_emailLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/social_fragment_signin_loginText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp" >
-
-	    <EditText
-	        android:id="@+id/editText1"
+    android:gravity="center"
+    android:orientation="vertical" >
+	
+	<TextView
+	        android:id="@+id/social_fragment_signin_loginText"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	        android:layout_centerHorizontal="true"
-	        android:hint="Email Name" >
+	        android:layout_marginBottom="20dp"
+	        android:layout_marginTop="20dp"
+	        android:text="@string/social_fragment_signin_loginText"
+	        android:textAppearance="?android:attr/textAppearanceLarge"
+	        android:layout_gravity="center"
+ 			android:gravity="center" />
 	
-	        <requestFocus />
-	    </EditText>
-	
-	    <TextView
-	        android:id="@+id/textView1"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_below="@+id/editText1"
-	        android:layout_centerHorizontal="true"
-	        android:layout_marginBottom="28dp"
-	        android:text="@string/social_fragment_signin_email" />
-    </RelativeLayout>
+	<ScrollView android:layout_width="fill_parent"
+	 android:layout_height="0dp"  android:layout_weight="1">
 
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/social_fragment_signin_emailLayout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        android:hint="Password"
-        android:inputType="textPassword" />
-    
-    <Button
-        android:id="@+id/social_fragment_signin_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        android:text="@string/social_fragment_signin_buttonText" />
+		<LinearLayout android:orientation="vertical"
+		android:layout_width="fill_parent" android:layout_height="wrap_content">
 
-</RelativeLayout>
+		    <TextView
+			        android:id="@+id/social_fragment_signin_error"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textColor="@color/social_error"
+			        android:layout_gravity="center"
+			        android:text="" />
+			
+		    <RelativeLayout
+		        android:id="@+id/social_fragment_signin_emailLayout"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="20dp" >
+			    <EditText
+			        android:id="@+id/social_fragment_signin_Email"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:layout_centerHorizontal="true"
+			        android:hint="Email"
+			        android:inputType="textWebEmailAddress"
+			         >
+			        <requestFocus />
+			    </EditText>
+			    <TextView
+			        android:id="@+id/textView2"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_below="@+id/social_fragment_signin_Email"
+			        android:layout_centerHorizontal="true"
+			        android:text="@string/social_fragment_signin_email" />
+		    </RelativeLayout>
+		    
+		    <TextView
+			        android:id="@+id/social_fragment_signin_errorEmail"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textColor="@color/social_error"
+			        android:layout_gravity="center"
+			        android:text="" />
+		
+		    <EditText
+		        android:id="@+id/social_fragment_signin_Password"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="20dp"
+		        android:hint="Password"
+		        android:inputType="textPassword" />
+		    
+		    <TextView
+			        android:id="@+id/social_fragment_signin_errorPassword"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textColor="@color/social_error"
+			        android:layout_gravity="center"
+			        android:text="" />
+			
+		</LinearLayout>
+
+	</ScrollView>
+
+
+	<LinearLayout android:id="@+id/add_app_done_layout" android:layout_height="wrap_content"
+	    android:layout_width="match_parent" android:gravity="center"
+	    android:orientation="horizontal" android:paddingTop="20dp">
+
+		<Button
+		        android:id="@+id/social_fragment_signin_button"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/social_fragment_signin_buttonText"
+		        android:layout_marginRight="10dp" />
+
+	</LinearLayout>
+
+</LinearLayout> 

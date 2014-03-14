@@ -1,68 +1,95 @@
-<LinearLayout android:orientation="vertical"  xmlns:android="http://schemas.android.com/apk/res/android"
- android:layout_width="fill_parent" android:layout_height="fill_parent" android:gravity="center">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical" >
 	
 	<TextView
 	        android:id="@+id/social_fragment_signup_loginText"
-	        android:layout_width="wrap_content"
+	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	        android:layout_marginBottom="5dp"
-	        android:padding="5dp"
+	        android:layout_marginBottom="20dp"
+	        android:layout_marginTop="20dp"
 	        android:text="@string/social_fragment_signup_loginText"
-	        android:textAppearance="?android:attr/textAppearanceLarge" />
+	        android:textAppearance="?android:attr/textAppearanceLarge"
+	        android:layout_gravity="center"
+ 			android:gravity="center" />
 	
 	<ScrollView android:layout_width="fill_parent"
-	 android:layout_height="0dip"  android:layout_weight="1">
+	 android:layout_height="0dp"  android:layout_weight="1">
 
-		<LinearLayout android:orientation="vertical" 
+		<LinearLayout android:orientation="vertical"
 		android:layout_width="fill_parent" android:layout_height="wrap_content">
 
+		    <TextView
+			        android:id="@+id/social_fragment_signup_error"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textColor="@color/social_error"
+			        android:layout_gravity="center"
+			        android:text="" />
 			<EditText
 		        android:id="@+id/social_fragment_signup_Name"
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
-		        android:layout_marginBottom="20dp"
 		        android:hint="Username"
-		        android:inputType="textPassword" />
+		        android:inputType="textNoSuggestions|text" />
+			
+			<TextView
+			        android:id="@+id/social_fragment_signup_errorName"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textColor="@color/social_error"
+			        android:layout_gravity="center"
+			        android:text="" />
 			
 		    <RelativeLayout
 		        android:id="@+id/social_fragment_signup_emailLayout"
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
-		        android:layout_marginBottom="20dp" >
+		        android:layout_marginTop="20dp" >
 			    <EditText
 			        android:id="@+id/social_fragment_signup_Email"
 			        android:layout_width="match_parent"
 			        android:layout_height="wrap_content"
 			        android:layout_centerHorizontal="true"
 			        android:hint="Email"
+			        android:inputType="textWebEmailAddress"
 			         >
 			        <requestFocus />
 			    </EditText>
 			    <TextView
-			        android:id="@+id/textView1"
+			        android:id="@+id/textView2"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:layout_below="@+id/social_fragment_signup_Email"
 			        android:layout_centerHorizontal="true"
-			        android:layout_marginBottom="28dp"
 			        android:text="@string/social_fragment_signup_email" />
 		    </RelativeLayout>
+		    
+		    <TextView
+			        android:id="@+id/social_fragment_signup_errorEmail"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textColor="@color/social_error"
+			        android:layout_gravity="center"
+			        android:text="" />
 		
 		    <EditText
 		        android:id="@+id/social_fragment_signup_Password"
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
-		        android:layout_marginBottom="20dp"
+		        android:layout_marginTop="20dp"
 		        android:hint="Password"
 		        android:inputType="textPassword" />
 		    
-		    <TextView 
-	        android:id="@+id/socialCheapOutput"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:text="Nothing"
-	        android:maxLines = "8"
-			android:scrollbars = "vertical" />
+		    <TextView
+			        android:id="@+id/social_fragment_signup_errorPassword"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textColor="@color/social_error"
+			        android:layout_gravity="center"
+			        android:text="" />
 			
 		</LinearLayout>
 
@@ -71,13 +98,13 @@
 
 	<LinearLayout android:id="@+id/add_app_done_layout" android:layout_height="wrap_content"
 	    android:layout_width="match_parent" android:gravity="center"
-	    android:orientation="horizontal">
+	    android:orientation="horizontal" android:paddingTop="20dp">
 
-	<Button
-	        android:id="@+id/social_fragment_signup_button"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="@string/social_fragment_signup_buttonText" />
+		<Button
+		        android:id="@+id/social_fragment_signup_button"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/social_fragment_signup_buttonText" />
 
 	</LinearLayout>
 

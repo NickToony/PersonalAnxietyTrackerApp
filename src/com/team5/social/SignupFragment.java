@@ -1,22 +1,18 @@
 package com.team5.social;
 
-import java.io.StringWriter;
-
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
-import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -62,51 +58,74 @@ public class SignupFragment extends Fragment implements SocialFragmentInterface,
 		if (theView == myButton)	{
 			if (networking == false)	{
 				networking = true;
-				new Request(this, "http://nick-hope.co.uk/PAT/android/signup.php", "name=" + myNameView.getText() + "&email=" + myEmailView.getText() + "@Newcastle.ac.uk" + "&pass=" + myPasswordView.getText());
+				new Request(this, "http://nick-hope.co.uk/PAT/android/signup.php", "name=" + myNameView.getText() + "&email=" + myEmailView.getText() + "@newcastle.ac.uk" + "&pass=" + myPasswordView.getText());
+				InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(
+					      Context.INPUT_METHOD_SERVICE);
+					imm.hideSoftInputFromWindow(myEmailView.getWindowToken(), 0);
+					((TextView) myView.findViewById(R.id.social_fragment_signup_error)).setText("Signing up ... please wait");
 			}
 		}
 	}
 
 	@Override
 	public void eventNetworkResponse(Request from, Response response) {
-		TextView text = (TextView) myView.findViewById(R.id.socialCheapOutput);
+		// Find all outputs
+		TextView outputSignup = (TextView) myView.findViewById(R.id.social_fragment_signup_error);
+		TextView outputName = (TextView) myView.findViewById(R.id.social_fragment_signup_errorName);
+		TextView outputEmail = (TextView) myView.findViewById(R.id.social_fragment_signup_errorEmail);
+		TextView outputPassword = (TextView) myView.findViewById(R.id.social_fragment_signup_errorPassword);
+		
+		
 		if (!response.isSuccess())	{
-			text.setText("Problem: " + response.getMessage());
-		}	else	{
-			String theOutput;
-			
-			// Make a transformer factory
-			TransformerFactory theTransformerFactory = TransformerFactory.newInstance();
-			Transformer theTransformer;
-			// We're transforming the XML into a string, so need a string writer
-			StringWriter theWriter = new StringWriter();
-
-			
-			try {
-				// Try to create a transformer object
-				theTransformer = theTransformerFactory.newTransformer();
-			} catch (TransformerConfigurationException e) {
-				e.printStackTrace();
-				return;
-			}
-			
-			// Tell the transformer we're dealing with XML
-			theTransformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
-			try {
-				// Attempt to convert XML into String
-				theTransformer.transform(new DOMSource(response.getDocument()), new StreamResult(theWriter));
-			} catch (TransformerException e) {
-				e.printStackTrace();
-				return;
-			}
-			// Now make a string from the writer
-			theOutput = theWriter.getBuffer().toString();
-			
-			// Put that string into the text view
-			text.setText(theOutput);
-			text.setMovementMethod(new ScrollingMovementMethod());
+			outputSignup.setText("Failure: " + response.getMessage());
+			networking = false;
+			return;
 		}
 		
+		// Get the request element
+		Element eleRequest = response.getRequest();
+		
+		// Get script status
+		int scriptStatus = Integer.parseInt(eleRequest.getElementsByTagName("status").item(0).getTextContent());
+		// script failure
+		if (scriptStatus != 0)	{
+			String errorType = eleRequest.getElementsByTagName("error").item(0).getTextContent();
+			String errorMessage = eleRequest.getElementsByTagName("message").item(0).getTextContent();
+			outputSignup.setText("Error: " + errorType + ": " + errorMessage);
+			networking = false;
+			return;
+		}
+		
+		// Get the request element
+		Element eleData = response.getData();
+		
+		// Get the section elements
+		TextView outputViews[] = {	outputSignup, outputName, outputPassword, outputEmail };
+		NodeList sectionList = eleData.getChildNodes();
+		
+		boolean success = true;
+		for (int i = 0; i < sectionList.getLength(); i ++)	{
+			// Get the section element
+			Element sectionElement = (Element) sectionList.item(i);
+			
+			// Fetch the section data
+			int sectionResponse = Integer.parseInt(sectionElement.getElementsByTagName("response").item(0).getTextContent());
+			String sectionMessage = sectionElement.getElementsByTagName("message").item(0).getTextContent();
+			
+			// Output into correct position
+			if (sectionResponse != 0)	{
+				outputViews[i].setText(sectionElement.getNodeName() + ": " + sectionMessage);
+				success = false;
+			}	else	{
+				outputViews[i].setText("");
+			}
+		}
+		
+		if (success)	{
+			// do something
+			outputSignup.setText("Registered! Try logging in.");
+		}
+				
 		networking = false;
 	}
 }

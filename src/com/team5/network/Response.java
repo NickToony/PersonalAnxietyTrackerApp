@@ -1,6 +1,7 @@
 package com.team5.network;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class Response {
 	private boolean mySuccess;
@@ -35,5 +36,13 @@ public class Response {
 
 	public void setDocument(Document myDocument) {
 		this.myDocument = myDocument;
+	}
+	
+	public Element getRequest()	{
+		return (Element) myDocument.getElementsByTagName("request").item(0);
+	}
+	
+	public Element getData()	{
+		return (Element) myDocument.getElementsByTagName("data").item(0);
 	}
 }
