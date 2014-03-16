@@ -57,4 +57,11 @@ public class Response {
 	public Map<String, String> getCookies()	{
 		return myCookies;
 	}
+	
+	public boolean getLoggedIn()	{
+		int logged_in = Integer.parseInt(getRequest().getElementsByTagName("logged_in").item(0).getTextContent());
+		if (logged_in == 1)
+			return true;
+		return false;
+	}
 }
