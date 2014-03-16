@@ -26,7 +26,7 @@ import com.team5.pat.R;
 public class SigninFragment extends Fragment implements SocialFragmentInterface, OnClickListener, NetworkInterface {
 	private View myView;
 	private HomeActivity myActivity;
-	private LoginFragment myParent;
+	private SocialFragmentInterface myParent;
 	private View myButton;
 	private EditText myEmailView;
 	private EditText myPasswordView;
@@ -49,7 +49,7 @@ public class SigninFragment extends Fragment implements SocialFragmentInterface,
 
 	@Override
 	public void setParentFragment(SocialFragmentInterface frag) {
-		this.myParent = (LoginFragment) frag;
+		this.myParent = frag;
 	}
 
 	@Override
@@ -143,5 +143,10 @@ public class SigninFragment extends Fragment implements SocialFragmentInterface,
 	@Override
 	public void eventChild(int eventID)	{
 		myParent.eventChild(eventID);
+	}
+	
+	@Override
+	public void changeFragment(SocialFragmentInterface theFrag)	{
+		myParent.changeFragment(theFrag);
 	}
 }

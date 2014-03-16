@@ -164,6 +164,11 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 		myParent.eventChild(eventID);
 	}
 	
+	@Override
+	public void changeFragment(SocialFragmentInterface theFrag)	{
+		myParent.changeFragment(theFrag);
+	}
+	
 	
 	/*
 	 * ListItem

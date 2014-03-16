@@ -42,6 +42,8 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 	private ActionBarDrawerToggle myDrawerToggle;
 	private ActionBar actionBar;
 	private SharedPreferences preference;
+	
+	private Fragment currentFragment;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -113,6 +115,13 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 	/** Show a message to confirm the user really wants to exit this application **/
 	@Override
 	public void onBackPressed() {
+		// If social fragment
+		if (currentFragment instanceof SocialFragment)	{
+			// Perform the go back event
+			((SocialFragment) currentFragment).eventChild(SocialFragment.EVENT_GO_BACK);
+			return;
+		}
+		
 		long currentPress = System.currentTimeMillis();
 
 		// User presses back for the first time
@@ -148,6 +157,8 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		FragmentManager manager = getFragmentManager();
 		FragmentTransaction transaction = manager.beginTransaction();
 		transaction.replace(R.id.content_frame, fragment).commit();
+		
+		currentFragment = fragment;
 		
 		// Reset action bar
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);

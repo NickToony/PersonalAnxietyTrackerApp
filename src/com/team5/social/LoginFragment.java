@@ -20,7 +20,7 @@ import android.view.ViewGroup;
 public class LoginFragment extends Fragment implements SocialFragmentInterface, TabListener, OnPageChangeListener  {
 	private View myView;
 	private HomeActivity myActivity;
-	private SocialFragment myParent;
+	private SocialFragmentInterface myParent;
 	private ViewPager myPager;
 	private SocialPagerAdapter myAdapter;
 	private ActionBar myActionBar;
@@ -60,7 +60,7 @@ public class LoginFragment extends Fragment implements SocialFragmentInterface, 
 
 	@Override
 	public void setParentFragment(SocialFragmentInterface frag) {
-		this.myParent = (SocialFragment) frag;
+		this.myParent = frag;
 	}
 
 	@Override
@@ -110,5 +110,10 @@ public class LoginFragment extends Fragment implements SocialFragmentInterface, 
 	@Override
 	public void eventChild(int eventID)	{
 		myParent.eventChild(eventID);
+	}
+	
+	@Override
+	public void changeFragment(SocialFragmentInterface theFrag)	{
+		myParent.changeFragment(theFrag);
 	}
 }

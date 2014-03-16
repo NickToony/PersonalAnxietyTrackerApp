@@ -23,7 +23,7 @@ import android.view.ViewGroup;
 public class BrowsePostsFragment extends Fragment implements SocialFragmentInterface, TabListener, OnPageChangeListener  {
 	private View myView;
 	private HomeActivity myActivity;
-	private SocialFragment myParent;
+	private SocialFragmentInterface myParent;
 	private ViewPager myPager;
 	private ActionBar myActionBar;
 	private SocialPagerAdapter myAdapter;
@@ -63,7 +63,12 @@ public class BrowsePostsFragment extends Fragment implements SocialFragmentInter
 
 	@Override
 	public void setParentFragment(SocialFragmentInterface frag) {
-		this.myParent = (SocialFragment) frag;
+		this.myParent = frag;
+	}
+	
+	@Override
+	public void changeFragment(SocialFragmentInterface theFrag)	{
+		myParent.changeFragment(theFrag);
 	}
 
 	@Override

@@ -19,7 +19,7 @@ import android.widget.AdapterView.OnItemClickListener;
 public class MainFragment extends Fragment implements SocialFragmentInterface {
 	private View myView;
 	private HomeActivity myActivity;
-	private SocialFragment myParent;
+	private SocialFragmentInterface myParent;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
@@ -68,6 +68,11 @@ public class MainFragment extends Fragment implements SocialFragmentInterface {
 	@Override
 	public void eventChild(int eventID)	{
 		myParent.eventChild(eventID);
+	}
+	
+	@Override
+	public void changeFragment(SocialFragmentInterface theFrag)	{
+		myParent.changeFragment(theFrag);
 	}
 	
 	public void doNavigation(int nav)	{

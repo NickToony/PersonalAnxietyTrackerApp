@@ -11,4 +11,5 @@ public interface SocialFragmentInterface {
 	public void setCookies(Map<String, String> cookieMap);
 	public Map<String, String> getCookies();
 	public void eventChild(int eventID);
+	public void changeFragment(SocialFragmentInterface frag);
 }

@@ -2,7 +2,9 @@
 package com.team5.social;
 
 import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.xml.transform.OutputKeys;
@@ -37,11 +39,14 @@ import android.widget.Toast;
 public class SocialFragment extends Fragment implements NetworkInterface, SocialFragmentInterface {	
 	private View myView;
 	private HomeActivity myActivity;
+	private List<SocialFragmentInterface> myStack = new ArrayList<SocialFragmentInterface>();
 	
 	public final static int EVENT_SIGN_IN = 0;
 	public final static int EVENT_SIGN_OUT = 1;
 	public final static int EVENT_SESSION_END = 2;
 	public final static int EVENT_GOTO_BROWSE = 3;
+	public final static int EVENT_GO_BACK = 4;
+	public final static int EVENT_EXIT = 5;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
@@ -64,7 +69,11 @@ public class SocialFragment extends Fragment implements NetworkInterface, Social
 	}
 	
 	public void changeFragment(SocialFragmentInterface theFrag)	{
+		// Set its parent
 		theFrag.setParentFragment(this);
+		
+		// Store it on the stack
+		myStack.add(theFrag);
 		
 		// Replace the frame with another fragment
 		FragmentManager manager = getFragmentManager();
@@ -76,6 +85,23 @@ public class SocialFragment extends Fragment implements NetworkInterface, Social
 		getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActivity().getActionBar().setHomeButtonEnabled(true);
 		getActivity().getActionBar().removeAllTabs(); // get rid of all tabs - they're maintained across fragments!!
+	}
+	
+	private void popFragment()	{
+		if (myStack.size() > 1)	{
+			// Remove current item
+			myStack.remove(myStack.size() - 1);
+			// Navigate to item before
+			changeFragment(myStack.get(myStack.size() - 1));
+			// Remove the new one added
+			myStack.remove(myStack.size() - 1);
+		}	else	{
+			eventChild(EVENT_EXIT);
+		}
+	}
+	
+	private void resetFragments()	{
+		myStack.clear();
 	}
 
 	@Override
@@ -156,6 +182,7 @@ public class SocialFragment extends Fragment implements NetworkInterface, Social
 		case EVENT_SIGN_IN:
 			((Session) myActivity.getApplication()).setLoggedIn(true);
 			// Go to main fragment
+			resetFragments();
 			changeFragment(new MainFragment());
 			break;
 			
@@ -166,12 +193,13 @@ public class SocialFragment extends Fragment implements NetworkInterface, Social
 			
 			new Request(null, "http://nick-hope.co.uk/logout.php");
 			
-			myActivity.doNavigation(NavListAdapter.navigationHome);
+			eventChild(EVENT_EXIT);
 			break;
 			
 		// Users session expired (or a problem)
 		case EVENT_SESSION_END:
 			((Session) myActivity.getApplication()).setLoggedIn(false);
+			// resetFragments(); -- commented to allow for recovery of fragments
 			// go to login fragment
 			changeFragment(new LoginFragment());
 			break;
@@ -179,6 +207,16 @@ public class SocialFragment extends Fragment implements NetworkInterface, Social
 		// User wants to browse topics
 		case EVENT_GOTO_BROWSE:
 			changeFragment(new BrowsePostsFragment());
+			break;
+			
+		// User wants to go back a fragment
+		case EVENT_GO_BACK:
+			popFragment();
+			break;
+			
+		// User wants to leave social
+		case EVENT_EXIT:
+			myActivity.doNavigation(NavListAdapter.navigationHome);
 			break;
 		}
 	}
