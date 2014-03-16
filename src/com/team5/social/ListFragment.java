@@ -27,7 +27,7 @@ import com.team5.pat.R;
 public class ListFragment extends Fragment implements SocialFragmentInterface, NetworkInterface  {
 	private View myView;
 	private HomeActivity myActivity;
-	private MainFragment myParent;
+	private SocialFragmentInterface myParent;
 	
 	private ListView listView;
 	private ListAdapter listAdapter;
@@ -147,7 +147,7 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 
 	@Override
 	public void setParentFragment(SocialFragmentInterface frag) {
-		this.myParent = (MainFragment) frag;
+		this.myParent = frag;
 	}
 	
 	@Override

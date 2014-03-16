@@ -28,7 +28,7 @@ public class LoginFragment extends Fragment implements SocialFragmentInterface, 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
 		super.onCreate(savedInstanceState);
-		myView = inflater.inflate(R.layout.social_fragment_login, container, false);
+		myView = inflater.inflate(R.layout.social_fragment_container, container, false);
 		myActivity = (HomeActivity) getActivity();
 		
 		myActionBar = myActivity.getActionBar();

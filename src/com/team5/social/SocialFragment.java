@@ -41,6 +41,7 @@ public class SocialFragment extends Fragment implements NetworkInterface, Social
 	public final static int EVENT_SIGN_IN = 0;
 	public final static int EVENT_SIGN_OUT = 1;
 	public final static int EVENT_SESSION_END = 2;
+	public final static int EVENT_GOTO_BROWSE = 3;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
@@ -150,12 +151,15 @@ public class SocialFragment extends Fragment implements NetworkInterface, Social
 	public void eventChild(int eventID)	{
 		Log.i("Social Fragment", "Triggered Event: " + eventID);
 		switch (eventID)	{
+		
 		// Sign in event
 		case EVENT_SIGN_IN:
 			((Session) myActivity.getApplication()).setLoggedIn(true);
 			// Go to main fragment
 			changeFragment(new MainFragment());
 			break;
+			
+		// User wants to sign out
 		case EVENT_SIGN_OUT:
 			((Session) myActivity.getApplication()).clearCookies();
 			((Session) myActivity.getApplication()).setLoggedIn(false);
@@ -164,10 +168,17 @@ public class SocialFragment extends Fragment implements NetworkInterface, Social
 			
 			myActivity.doNavigation(NavListAdapter.navigationHome);
 			break;
+			
+		// Users session expired (or a problem)
 		case EVENT_SESSION_END:
 			((Session) myActivity.getApplication()).setLoggedIn(false);
 			// go to login fragment
 			changeFragment(new LoginFragment());
+			break;
+			
+		// User wants to browse topics
+		case EVENT_GOTO_BROWSE:
+			changeFragment(new BrowsePostsFragment());
 			break;
 		}
 	}

@@ -74,6 +74,10 @@ public class MainFragment extends Fragment implements SocialFragmentInterface {
 		switch (nav)	{
 		case NavListAdapter.navigationLogOff:
 			myParent.eventChild(SocialFragment.EVENT_SIGN_OUT);
+			break;
+		case NavListAdapter.navigationBrowse:
+			myParent.eventChild(SocialFragment.EVENT_GOTO_BROWSE);
+			break;
 		}
 	}
 

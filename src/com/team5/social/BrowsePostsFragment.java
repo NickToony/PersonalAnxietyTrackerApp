@@ -20,7 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class MultiTabListFragment extends Fragment implements SocialFragmentInterface, TabListener, OnPageChangeListener  {
+public class BrowsePostsFragment extends Fragment implements SocialFragmentInterface, TabListener, OnPageChangeListener  {
 	private View myView;
 	private HomeActivity myActivity;
 	private SocialFragment myParent;
@@ -31,7 +31,7 @@ public class MultiTabListFragment extends Fragment implements SocialFragmentInte
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
 		super.onCreate(savedInstanceState);
-		myView = inflater.inflate(R.layout.social_fragment_login, container, false);
+		myView = inflater.inflate(R.layout.social_fragment_container, container, false);
 		myActivity = (HomeActivity) getActivity();
 		
 		myActionBar = myActivity.getActionBar();
@@ -42,26 +42,21 @@ public class MultiTabListFragment extends Fragment implements SocialFragmentInte
 
 		ActionBar.Tab tabTop = myActionBar.newTab().setText("Top").setTabListener(this);
 		ActionBar.Tab tabNew = myActionBar.newTab().setText("New").setTabListener(this);
-		ActionBar.Tab tabMine = myActionBar.newTab().setText("Mine").setTabListener(this);
 
 		myActionBar.addTab(tabTop, 0);
 		myActionBar.addTab(tabNew, 1);
-		myActionBar.addTab(tabMine, 2);
 		
 		// Get pager view
 		myPager = (ViewPager) myView.findViewById(R.id.social_fragment_login_pager);
 		// Make an adapter for the view
 		myAdapter = new SocialPagerAdapter(getFragmentManager(), this);
 		//Add tabs
-		myAdapter.addItem(new ListFragment().defineList(-1, -1, -1, -1));
-		myAdapter.addItem(new ListFragment().defineList(7, -1, -1, -1));
-		myAdapter.addItem(new ListFragment().defineList(-1, -1, -1, -1));
+		myAdapter.addItem(new ListFragment().defineList(-1, -1, 0, -1));
+		myAdapter.addItem(new ListFragment().defineList(-1, -1, 1, -1));
 		// Set the adapter to the pager view
 		myPager.setAdapter(myAdapter);
 		// Set listener
 		myPager.setOnPageChangeListener(this);
-		
-		Log.i("(Social) MainFragment", "Opened Main Fragment");
 		
 		return myView;
 	}
