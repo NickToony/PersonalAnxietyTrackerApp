@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,6 +60,8 @@ public class MainFragment extends Fragment implements SocialFragmentInterface, T
 		myPager.setAdapter(myAdapter);
 		// Set listener
 		myPager.setOnPageChangeListener(this);
+		
+		Log.i("(Social) MainFragment", "Opened Main Fragment");
 		
 		return myView;
 	}

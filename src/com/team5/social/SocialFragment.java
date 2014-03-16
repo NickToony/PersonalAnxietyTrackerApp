@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,7 @@ public class SocialFragment extends Fragment implements NetworkInterface, Social
 	private Map<String, String> myCookies = new HashMap<String, String>();
 	
 	public final static int EVENT_SIGN_IN = 0;
+	public final static int EVENT_SIGN_OUT = 1;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
@@ -133,11 +135,16 @@ public class SocialFragment extends Fragment implements NetworkInterface, Social
 	
 	@Override
 	public void eventChild(int eventID)	{
+		Log.i("Social Fragment", "Triggered Event: " + eventID);
 		switch (eventID)	{
 		// Sign in event
 		case EVENT_SIGN_IN:
 			// Go to main fragment
 			changeFragment(new MainFragment());
+			break;
+		case EVENT_SIGN_OUT:
+			// go to login fragment
+			changeFragment(new LoginFragment());
 			break;
 		}
 	}
