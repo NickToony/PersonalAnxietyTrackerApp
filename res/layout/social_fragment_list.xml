@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/socialBackgroundColour"
     tools:context=".SocialFragment" >
-
+    
     <TextView
         android:id="@+id/social_fragment_list_errorMessage"
         android:layout_centerHorizontal="true"
@@ -18,7 +18,6 @@
         android:id="@+id/social_fragment_list_listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
         android:layout_below="@id/social_fragment_list_errorMessage"
         android:layout_margin="10dp"
         android:divider="@null"

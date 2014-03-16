@@ -28,11 +28,31 @@ public class BrowsePostsFragment extends Fragment implements SocialFragmentInter
 	private ActionBar myActionBar;
 	private SocialPagerAdapter myAdapter;
 	
+	private ListFragment topList;
+	private ListFragment newList;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
 		super.onCreate(savedInstanceState);
-		myView = inflater.inflate(R.layout.social_fragment_container, container, false);
-		myActivity = (HomeActivity) getActivity();
+		if (myView == null){
+			myView = inflater.inflate(R.layout.social_fragment_container, container, false);
+			myActivity = (HomeActivity) getActivity();
+			
+			// Get pager view
+			myPager = (ViewPager) myView.findViewById(R.id.social_fragment_login_pager);
+			// Make an adapter for the view
+			myAdapter = new SocialPagerAdapter(getFragmentManager(), this);
+			// Create tabs
+			if (topList == null)	topList = new ListFragment().defineList(null, -1, 0, -1);
+			if (newList == null)	newList = new ListFragment().defineList(null, -1, 1, -1);
+			//Add tabs
+			myAdapter.addItem(topList);
+			myAdapter.addItem(newList);
+			// Set the adapter to the pager view
+			myPager.setAdapter(myAdapter);
+			// Set listener
+			myPager.setOnPageChangeListener(this);
+		}
 		
 		myActionBar = myActivity.getActionBar();
 		myActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -45,19 +65,6 @@ public class BrowsePostsFragment extends Fragment implements SocialFragmentInter
 
 		myActionBar.addTab(tabTop, 0);
 		myActionBar.addTab(tabNew, 1);
-		
-		// Get pager view
-		myPager = (ViewPager) myView.findViewById(R.id.social_fragment_login_pager);
-		// Make an adapter for the view
-		myAdapter = new SocialPagerAdapter(getFragmentManager(), this);
-		//Add tabs
-		myAdapter.addItem(new ListFragment().defineList(-1, -1, 0, -1));
-		myAdapter.addItem(new ListFragment().defineList(-1, -1, 1, -1));
-		// Set the adapter to the pager view
-		myPager.setAdapter(myAdapter);
-		// Set listener
-		myPager.setOnPageChangeListener(this);
-		
 		return myView;
 	}
 

@@ -10,13 +10,18 @@ import org.w3c.dom.NodeList;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
 
 import com.team5.network.NetworkInterface;
 import com.team5.network.Request;
@@ -32,39 +37,63 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 	private ListView listView;
 	private ListAdapter listAdapter;
 	
-	private int postParent = -1; // fetch by post parent?
+	private ListItem postParent = null; // fetch by post parent?
 	private int postOwner = -1; // fetch by owner?
 	private int postOrder = 0; // 0 = new, 1 = top,
 	private int postFavourites = 0; // fetch by favourites?
+	
+	private int scrollPosition = 0;
 	
 	private boolean networking = false;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
 		super.onCreate(savedInstanceState);
-		myView = inflater.inflate(R.layout.social_fragment_list, container, false);
-		myActivity = (HomeActivity) getActivity();
-		
-		// Get the list view
-		listView = (ListView) myView.findViewById(R.id.social_fragment_list_listView);
-		// Create a custom adapter
-		listAdapter = new ListAdapter(myActivity, R.layout.social_fragment_list_row);
-		
-		// Insert test data..
-		//listAdapter.addItem(new ListItem(1, "jsmith92", "16:35 02 Mar", "I am very anxious about an upcoming exam. Does anyone have any advice for me? Or recomend any techniques for calming down?", 4, 4.5));
-		//listAdapter.addItem(new ListItem(2, "bdavidson12", "13:22 01 Mar", "I have a big class presentation tomorrow infront of a lot of people. I feel nauseous. Does anyone have any tips for me?", 1, 2.5));
-		new Request(this, "http://nick-hope.co.uk/PAT/android/fetchposts.php", "parent=" + postParent + "&owner=" + postOwner + "&order=" + postOrder + "&favourites=" + postFavourites, getCookies());
-		networking = true;
-		
-		// Finally, assign the custom adapter to the list
-		listView.setAdapter(listAdapter);
-		
-		
-		
+		if (myView == null)	{
+			myView = inflater.inflate(R.layout.social_fragment_list, container, false);
+			myActivity = (HomeActivity) getActivity();
+			
+			// Get the list view
+			listView = (ListView) myView.findViewById(R.id.social_fragment_list_listView);
+			// Create a custom adapter
+			listAdapter = new ListAdapter(myActivity, R.layout.social_fragment_list_row_parent, R.layout.social_fragment_list_row_child);
+			// Finally, assign the custom adapter to the list
+			listView.setAdapter(listAdapter);
+			
+			OnItemClickListener clickListener = new OnItemClickListener() {
+				@Override
+				public void onItemClick(AdapterView<?> parent, View v,
+						int position, long id) {
+					scrollPosition = position;
+					ListItem item = (ListItem) parent.getAdapter().getItem(position);
+					myParent.changeFragment(new ListFragment().defineList(item, -1, 0, -1));
+				}
+			};
+			
+			listView.setOnItemClickListener(clickListener);
+			
+			
+			// Insert test data..
+			//listAdapter.addItem(new ListItem(1, "jsmith92", "16:35 02 Mar", "I am very anxious about an upcoming exam. Does anyone have any advice for me? Or recomend any techniques for calming down?", 4, 4.5));
+			//listAdapter.addItem(new ListItem(2, "bdavidson12", "13:22 01 Mar", "I have a big class presentation tomorrow infront of a lot of people. I feel nauseous. Does anyone have any tips for me?", 1, 2.5));
+			String parameters = "";
+			if (postParent != null)	{
+				// Add the parameters
+				parameters += "parent=" + postParent.id + "&";
+				// Output the parent
+				listAdapter.addItem(postParent, true);
+			}
+			parameters += "owner=" + postOwner + "&";
+			parameters += "favourites=" + postFavourites + "&";
+			parameters += "order=" + postOrder + "";
+			
+			new Request(this, "http://nick-hope.co.uk/PAT/android/fetchposts.php", parameters, getCookies());
+			networking = true;
+		}
 		return myView;
 	}
 	
-	public ListFragment defineList(int postParent, int postOwner, int postOrder, int postFavourites)	{
+	public ListFragment defineList(ListItem postParent, int postOwner, int postOrder, int postFavourites)	{
 		this.postParent = postParent; // fetch by post parent?
 		this.postOwner = postOwner; // fetch by owner?
 		
@@ -137,12 +166,23 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 			}
 			
 			// Add the item to list
-			listAdapter.addItem(new ListItem(postID, postOwner, postDate, postContent, postResponses, postRating, postOwnerID));
+			// Add the item to list
+			boolean isParent;
+			if (postParent == null)
+				isParent = true;
+			else
+				isParent = false;
+			listAdapter.addItem(new ListItem(postID, postOwner, postDate, postContent, postResponses, postRating, postOwnerID), isParent);
 		}
 		
-		errorOutput.setText("");
+		if (errorOutput != null)
+			errorOutput.setText("");
 				
 		networking = false;
+		
+		// move scroll to correct position
+		listView.setSelectionFromTop(scrollPosition, 0);
+		Log.i("List", "Position should be: " + scrollPosition);
 	}
 
 	@Override
@@ -202,31 +242,37 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 	 * 
 	 * Adapter for the topics list
 	 */
-	private class ListAdapter extends ArrayAdapter<ListItem> {
+	private class ListAdapter extends BaseAdapter {
 		private List<ListItem> items = new ArrayList<ListItem>();
+		private List<Boolean> itemIsParent = new ArrayList<Boolean>();
 		private Context context;
-		private int resource;
+		private int resourceParent;
+		private int resourceChild;
 		
-		public ListAdapter(Context context, int resource) {
-			super(context, resource);
+		public ListAdapter(Context context, int resourceParent, int resourceChild) {
+			super();
 			this.context = context;
-			this.resource = resource;
+			this.resourceParent = resourceParent;
+			this.resourceChild = resourceChild;
 		}
 		
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
-			myView = convertView;
 			LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-			if (myView == null) {
-				myView = inflater.inflate(resource, parent, false);
+			int type = getItemViewType(position);
+			if (convertView == null)	{
+				if (type == 0)
+					convertView = inflater.inflate(resourceParent, null);
+				else
+					convertView = inflater.inflate(resourceChild, null);
 			}
 
-			TextView textName = (TextView) myView.findViewById(R.id.social_fragment_list_rowName);
-			TextView textDate = (TextView) myView.findViewById(R.id.social_fragment_list_rowDate);
-			TextView textContent = (TextView) myView.findViewById(R.id.social_fragment_list_rowContent);
-			TextView textReplies = (TextView) myView.findViewById(R.id.social_fragment_list_rowReplies);
-			TextView textRating = (TextView) myView.findViewById(R.id.social_fragment_list_rowRating);
+			TextView textName = (TextView) convertView.findViewById(R.id.social_fragment_list_rowName);
+			TextView textDate = (TextView) convertView.findViewById(R.id.social_fragment_list_rowDate);
+			TextView textContent = (TextView) convertView.findViewById(R.id.social_fragment_list_rowContent);
+			TextView textReplies = (TextView) convertView.findViewById(R.id.social_fragment_list_rowReplies);
+			TextView textRating = (TextView) convertView.findViewById(R.id.social_fragment_list_rowRating);
 			
 			
 			ListItem myItem = getItem(position);
@@ -235,8 +281,8 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 			textContent.setText(myItem.content);
 			textReplies.setText("Replies: " + myItem.replies);
 			textRating.setText("Rating: " + myItem.rating);
-
-			return myView;
+			
+			return convertView;
 		}
 		
 		@Override
@@ -254,21 +300,38 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 			return getItem(position).id;
 		}
 		
-		public void addItem(ListItem item)	{
+		public void addItem(ListItem item, boolean isParent)	{
 			//items.add(new NavListItem(context.getResources().getDrawable( navArray[0] ), label));
 			items.add(item);
+			itemIsParent.add(isParent);
 			((BaseAdapter) this).notifyDataSetChanged(); 
 		}
 		
 		// This code disables highlightung
-		public boolean areAllItemsEnabled() 
+		/*public boolean areAllItemsEnabled() 
         { 
                 return false; 
-        } 
+        }*/ 
+		@Override
         public boolean isEnabled(int position) 
         { 
-                return false; 
+        	if (postParent == null)
+        		return true;
+        	return !(itemIsParent.get(position));
         }
+		
+		@Override
+		public int getViewTypeCount()	{
+			return 2;
+		}
+		
+		@Override
+		public int getItemViewType(int position)	{
+			if (itemIsParent.get(position))
+				return 0;
+			else
+				return 1;
+		}
 		
 	}
 }

@@ -33,5 +33,6 @@ public class SocialPagerAdapter extends FragmentStatePagerAdapter {
 	public void addItem(SocialFragmentInterface fragment)	{
 		fragment.setParentFragment(myParent);
 		myFragments.add(fragment);
+		this.notifyDataSetChanged();
 	}
 }

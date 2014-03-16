@@ -261,12 +261,13 @@ public final class R {
         public static final int social_fragment=0x7f030018;
         public static final int social_fragment_container=0x7f030019;
         public static final int social_fragment_list=0x7f03001a;
-        public static final int social_fragment_list_row=0x7f03001b;
-        public static final int social_fragment_main=0x7f03001c;
-        public static final int social_fragment_signin=0x7f03001d;
-        public static final int social_fragment_signup=0x7f03001e;
-        public static final int spinner_list=0x7f03001f;
-        public static final int status_layout=0x7f030020;
+        public static final int social_fragment_list_row_child=0x7f03001b;
+        public static final int social_fragment_list_row_parent=0x7f03001c;
+        public static final int social_fragment_main=0x7f03001d;
+        public static final int social_fragment_signin=0x7f03001e;
+        public static final int social_fragment_signup=0x7f03001f;
+        public static final int spinner_list=0x7f030020;
+        public static final int status_layout=0x7f030021;
     }
     public static final class menu {
         public static final int contact=0x7f0b0000;
