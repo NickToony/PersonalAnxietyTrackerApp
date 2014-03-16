@@ -62,6 +62,11 @@ public class ListFragment extends Fragment implements SocialFragmentInterface  {
 		return myParent.getCookies();
 	}
 	
+	@Override
+	public void eventChild(int eventID)	{
+		myParent.eventChild(eventID);
+	}
+	
 	
 	/*
 	 * ListItem

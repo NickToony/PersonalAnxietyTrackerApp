@@ -142,4 +142,9 @@ public class SignupFragment extends Fragment implements SocialFragmentInterface,
 	public Map<String, String> getCookies()	{
 		return myParent.getCookies();
 	}
+	
+	@Override
+	public void eventChild(int eventID)	{
+		myParent.eventChild(eventID);
+	}
 }

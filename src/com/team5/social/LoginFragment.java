@@ -97,10 +97,6 @@ public class LoginFragment extends Fragment implements SocialFragmentInterface, 
 		// TODO Auto-generated method stub
 		
 	}
-
-	public void logIn() {
-		myParent.changeFragment(new MainFragment());
-	}
 	
 	@Override
 	public void setCookies(Map<String, String> cookieMap)	{
@@ -109,5 +105,10 @@ public class LoginFragment extends Fragment implements SocialFragmentInterface, 
 	@Override
 	public Map<String, String> getCookies()	{
 		return myParent.getCookies();
+	}
+	
+	@Override
+	public void eventChild(int eventID)	{
+		myParent.eventChild(eventID);
 	}
 }

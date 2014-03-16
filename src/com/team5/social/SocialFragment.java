@@ -35,6 +35,8 @@ public class SocialFragment extends Fragment implements NetworkInterface, Social
 	private HomeActivity myActivity;
 	private Map<String, String> myCookies = new HashMap<String, String>();
 	
+	public final static int EVENT_SIGN_IN = 0;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
 		super.onCreate(savedInstanceState);
@@ -119,12 +121,24 @@ public class SocialFragment extends Fragment implements NetworkInterface, Social
 	public void setParentFragment(SocialFragmentInterface frag) {
 	}
 	
+	@Override
 	public void setCookies(Map<String, String> cookieMap)	{
 		myCookies.putAll(cookieMap);
 	}
 	
+	@Override
 	public Map<String, String> getCookies()	{
 		return myCookies;
 	}
-
+	
+	@Override
+	public void eventChild(int eventID)	{
+		switch (eventID)	{
+		// Sign in event
+		case EVENT_SIGN_IN:
+			// Go to main fragment
+			changeFragment(new MainFragment());
+			break;
+		}
+	}
 }
