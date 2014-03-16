@@ -19,6 +19,7 @@ import com.team5.network.Request;
 import com.team5.network.Response;
 import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
+import com.team5.pat.Session;
 
 import android.os.Bundle;
 import android.app.Fragment;
@@ -34,7 +35,6 @@ import android.widget.Toast;
 public class SocialFragment extends Fragment implements NetworkInterface, SocialFragmentInterface {	
 	private View myView;
 	private HomeActivity myActivity;
-	private Map<String, String> myCookies = new HashMap<String, String>();
 	
 	public final static int EVENT_SIGN_IN = 0;
 	public final static int EVENT_SIGN_OUT = 1;
@@ -50,7 +50,11 @@ public class SocialFragment extends Fragment implements NetworkInterface, Social
 		//new Request(this, "http://193.35.58.219/PAT/android/login.php", "email=Nick&pass=Pass");
 
 		// Replace the frame with another fragment
-		changeFragment(new LoginFragment());
+		if (((Session) myActivity.getApplication()).isLoggedIn())	{
+			changeFragment(new MainFragment());
+		}	else	{
+			changeFragment(new LoginFragment());
+		}
 		
 		return myView;
 	}
@@ -125,12 +129,12 @@ public class SocialFragment extends Fragment implements NetworkInterface, Social
 	
 	@Override
 	public void setCookies(Map<String, String> cookieMap)	{
-		myCookies.putAll(cookieMap);
+		((Session) getActivity().getApplication()).setCookies(cookieMap);
 	}
 	
 	@Override
 	public Map<String, String> getCookies()	{
-		return myCookies;
+		return ((Session) getActivity().getApplication()).getCookies();
 	}
 	
 	@Override
@@ -139,10 +143,12 @@ public class SocialFragment extends Fragment implements NetworkInterface, Social
 		switch (eventID)	{
 		// Sign in event
 		case EVENT_SIGN_IN:
+			((Session) myActivity.getApplication()).setLoggedIn(true);
 			// Go to main fragment
 			changeFragment(new MainFragment());
 			break;
 		case EVENT_SIGN_OUT:
+			((Session) myActivity.getApplication()).setLoggedIn(false);
 			// go to login fragment
 			changeFragment(new LoginFragment());
 			break;
