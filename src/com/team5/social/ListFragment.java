@@ -94,7 +94,7 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 		
 		// Check logged in
 		if (!response.getLoggedIn())	{
-			myParent.eventChild(SocialFragment.EVENT_SIGN_OUT);
+			myParent.eventChild(SocialFragment.EVENT_SESSION_END);
 			return;
 		}
 		

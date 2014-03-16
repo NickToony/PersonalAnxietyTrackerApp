@@ -23,6 +23,10 @@
     <string name="navigation_contact">Find Help</string>
     <string name="navigation_report">Report Issue</string>
     <string name="navigation_logoff">Log Off</string>
+    <string name="navigation_browse">Browse Posts</string>
+    <string name="navigation_create">New Post</string>
+    <string name="navigation_favourites">My Favourites</string>
+    <string name="navigation_mine">My Posts</string>
     
     
     <string-array name="spinner_list_items">

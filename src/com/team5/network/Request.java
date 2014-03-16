@@ -198,7 +198,8 @@ public class Request {
 		
 		protected void onPostExecute(Response response)	{
 			// Trigger the event on the object which made the request
-			myTarget.eventNetworkResponse(myObject, response);
+			if (myTarget != null)
+				myTarget.eventNetworkResponse(myObject, response);
 		}
 	}
 }

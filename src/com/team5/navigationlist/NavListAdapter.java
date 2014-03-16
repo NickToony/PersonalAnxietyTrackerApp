@@ -26,7 +26,7 @@ public class NavListAdapter extends ArrayAdapter<NavListItem> {
 	private View myView;
 	
 	// Navigation Items
-	private NavListItem[] navigationItems = new NavListItem[9];
+	private NavListItem[] navigationItems = new NavListItem[13];
 	public final static int navigationHome = 0;
 	public final static int navigationLog = 1;
 	public final static int navigationTracker = 2;
@@ -36,6 +36,10 @@ public class NavListAdapter extends ArrayAdapter<NavListItem> {
 	public final static int navigationContact = 6;
 	public final static int navigationReport = 7;
 	public final static int navigationLogOff = 8;
+	public final static int navigationBrowse = 9;
+	public final static int navigationCreate = 10;
+	public final static int navigationFavourites = 11;
+	public final static int navigationMine = 12;
 	
 	public NavListAdapter(Context context, int resource) {
 		super(context, resource);
@@ -51,6 +55,10 @@ public class NavListAdapter extends ArrayAdapter<NavListItem> {
 		navigationItems[navigationContact] = new NavListItem(R.drawable.ic_find_help, R.string.navigation_contact);
 		navigationItems[navigationReport] = new NavListItem(R.drawable.ic_report_issue, R.string.navigation_report);
 		navigationItems[navigationLogOff] = new NavListItem(R.drawable.ic_log_off, R.string.navigation_logoff);
+		navigationItems[navigationBrowse] = new NavListItem(R.drawable.ic_forums2, R.string.navigation_browse);
+		navigationItems[navigationCreate] = new NavListItem(R.drawable.ic_forums2, R.string.navigation_create);
+		navigationItems[navigationFavourites] = new NavListItem(R.drawable.ic_forums2, R.string.navigation_favourites);
+		navigationItems[navigationMine] = new NavListItem(R.drawable.ic_forums2, R.string.navigation_mine);
 	}
 
 	@Override

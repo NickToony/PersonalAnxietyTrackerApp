@@ -14,6 +14,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import com.team5.fragment.SeekBarFragment;
+import com.team5.navigationlist.NavListAdapter;
 import com.team5.network.NetworkInterface;
 import com.team5.network.Request;
 import com.team5.network.Response;
@@ -22,6 +23,7 @@ import com.team5.pat.R;
 import com.team5.pat.Session;
 
 import android.os.Bundle;
+import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -38,6 +40,7 @@ public class SocialFragment extends Fragment implements NetworkInterface, Social
 	
 	public final static int EVENT_SIGN_IN = 0;
 	public final static int EVENT_SIGN_OUT = 1;
+	public final static int EVENT_SESSION_END = 2;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
@@ -66,6 +69,12 @@ public class SocialFragment extends Fragment implements NetworkInterface, Social
 		FragmentManager manager = getFragmentManager();
 		FragmentTransaction transaction = manager.beginTransaction();
 		transaction.replace(R.id.social_fragment_frame, (Fragment) theFrag).commit();
+		
+		// Reset action bar
+		getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+		getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
+		getActivity().getActionBar().setHomeButtonEnabled(true);
+		getActivity().getActionBar().removeAllTabs(); // get rid of all tabs - they're maintained across fragments!!
 	}
 
 	@Override
@@ -148,6 +157,14 @@ public class SocialFragment extends Fragment implements NetworkInterface, Social
 			changeFragment(new MainFragment());
 			break;
 		case EVENT_SIGN_OUT:
+			((Session) myActivity.getApplication()).clearCookies();
+			((Session) myActivity.getApplication()).setLoggedIn(false);
+			
+			new Request(null, "http://nick-hope.co.uk/logout.php");
+			
+			myActivity.doNavigation(NavListAdapter.navigationHome);
+			break;
+		case EVENT_SESSION_END:
 			((Session) myActivity.getApplication()).setLoggedIn(false);
 			// go to login fragment
 			changeFragment(new LoginFragment());

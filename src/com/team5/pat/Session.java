@@ -48,4 +48,7 @@ public class Session extends Application {
 		this.socialLoggedIn = loggedIn;
 	}
 	
+	public void clearCookies()	{
+		myCookies = new HashMap<String, String>();
+	}
 }
