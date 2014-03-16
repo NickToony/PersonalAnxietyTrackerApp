@@ -53,9 +53,9 @@ public class MainFragment extends Fragment implements SocialFragmentInterface, T
 		// Make an adapter for the view
 		myAdapter = new SocialPagerAdapter(getFragmentManager(), this);
 		//Add tabs
-		myAdapter.addItem(new ListFragment());
-		myAdapter.addItem(new ListFragment());
-		myAdapter.addItem(new ListFragment());
+		myAdapter.addItem(new ListFragment().defineList(-1, -1, -1, -1));
+		myAdapter.addItem(new ListFragment().defineList(7, -1, -1, -1));
+		myAdapter.addItem(new ListFragment().defineList(-1, -1, -1, -1));
 		// Set the adapter to the pager view
 		myPager.setAdapter(myAdapter);
 		// Set listener

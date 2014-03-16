@@ -53,8 +53,7 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 		// Insert test data..
 		//listAdapter.addItem(new ListItem(1, "jsmith92", "16:35 02 Mar", "I am very anxious about an upcoming exam. Does anyone have any advice for me? Or recomend any techniques for calming down?", 4, 4.5));
 		//listAdapter.addItem(new ListItem(2, "bdavidson12", "13:22 01 Mar", "I have a big class presentation tomorrow infront of a lot of people. I feel nauseous. Does anyone have any tips for me?", 1, 2.5));
-		
-		new Request(this, "http://nick-hope.co.uk/PAT/android/fetchposts.php", "", getCookies());
+		new Request(this, "http://nick-hope.co.uk/PAT/android/fetchposts.php", "parent=" + postParent + "&owner=" + postOwner + "&order=" + postOrder + "&favourites=" + postFavourites, getCookies());
 		networking = true;
 		
 		// Finally, assign the custom adapter to the list
@@ -63,6 +62,19 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 		
 		
 		return myView;
+	}
+	
+	public ListFragment defineList(int postParent, int postOwner, int postOrder, int postFavourites)	{
+		this.postParent = postParent; // fetch by post parent?
+		this.postOwner = postOwner; // fetch by owner?
+		
+		if (postOrder != -1)
+			this.postOrder = postOrder;
+		if (postFavourites != -1)
+			this.postFavourites = postFavourites;
+			
+		
+		return this;
 	}
 	
 	@Override
