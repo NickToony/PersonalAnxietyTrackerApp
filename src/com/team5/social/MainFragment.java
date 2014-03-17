@@ -53,7 +53,7 @@ public class MainFragment extends Fragment implements SocialFragmentInterface {
 	
 	@Override
 	public void setParentFragment(SocialFragmentInterface frag) {
-		this.myParent = (SocialFragment) frag;
+		this.myParent = (SocialAccount) frag;
 	}
 	
 	@Override
@@ -78,10 +78,10 @@ public class MainFragment extends Fragment implements SocialFragmentInterface {
 	public void doNavigation(int nav)	{
 		switch (nav)	{
 		case NavListAdapter.navigationLogOff:
-			myParent.eventChild(SocialFragment.EVENT_SIGN_OUT);
+			myParent.eventChild(SocialAccount.EVENT_SIGN_OUT);
 			break;
 		case NavListAdapter.navigationBrowse:
-			myParent.eventChild(SocialFragment.EVENT_GOTO_BROWSE);
+			myParent.eventChild(SocialAccount.EVENT_GOTO_BROWSE);
 			break;
 		}
 	}

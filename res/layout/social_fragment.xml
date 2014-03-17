@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     
     android:background="@color/socialBackgroundColour"
-    tools:context=".SocialFragment" >
+    tools:context=".SocialAccount" >
         
     <FrameLayout
         android:id="@+id/social_fragment_frame"

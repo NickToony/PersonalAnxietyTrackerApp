@@ -69,16 +69,6 @@ public class BrowsePostsFragment extends Fragment implements SocialFragmentInter
 	}
 
 	@Override
-	public void setParentFragment(SocialFragmentInterface frag) {
-		this.myParent = frag;
-	}
-	
-	@Override
-	public void changeFragment(SocialFragmentInterface theFrag)	{
-		myParent.changeFragment(theFrag);
-	}
-
-	@Override
 	public void onPageScrollStateChanged(int arg0) {
 		// TODO Auto-generated method stub
 		
@@ -110,19 +100,5 @@ public class BrowsePostsFragment extends Fragment implements SocialFragmentInter
 	@Override
 	public void onTabUnselected(Tab arg0, FragmentTransaction arg1) {
 		// TODO Auto-generated method stub
-	}
-	
-	@Override
-	public void setCookies(Map<String, String> cookieMap)	{
-		myParent.setCookies(cookieMap);
-	}
-	@Override
-	public Map<String, String> getCookies()	{
-		return myParent.getCookies();
-	}
-	
-	@Override
-	public void eventChild(int eventID)	{
-		myParent.eventChild(eventID);
 	}
 }

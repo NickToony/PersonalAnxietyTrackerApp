@@ -125,7 +125,7 @@ public class SigninFragment extends Fragment implements SocialFragmentInterface,
 		if (success)	{
 			// do something
 			outputSignin.setText("Logged in!");
-			myParent.eventChild(SocialFragment.EVENT_SIGN_IN);
+			myParent.eventChild(SocialAccount.EVENT_SIGN_IN);
 		}
 				
 		networking = false;

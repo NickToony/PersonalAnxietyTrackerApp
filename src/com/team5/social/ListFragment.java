@@ -123,7 +123,7 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 		
 		// Check logged in
 		if (!response.getLoggedIn())	{
-			myParent.eventChild(SocialFragment.EVENT_SESSION_END);
+			myParent.eventChild(SocialAccount.EVENT_SESSION_END);
 			return;
 		}
 		
@@ -183,30 +183,6 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 		// move scroll to correct position
 		listView.setSelectionFromTop(scrollPosition, 0);
 		Log.i("List", "Position should be: " + scrollPosition);
-	}
-
-	@Override
-	public void setParentFragment(SocialFragmentInterface frag) {
-		this.myParent = frag;
-	}
-	
-	@Override
-	public void setCookies(Map<String, String> cookieMap)	{
-		myParent.setCookies(cookieMap);
-	}
-	@Override
-	public Map<String, String> getCookies()	{
-		return myParent.getCookies();
-	}
-	
-	@Override
-	public void eventChild(int eventID)	{
-		myParent.eventChild(eventID);
-	}
-	
-	@Override
-	public void changeFragment(SocialFragmentInterface theFrag)	{
-		myParent.changeFragment(theFrag);
 	}
 	
 	

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/socialBackgroundColour"
-    tools:context=".SocialFragment" >
+    tools:context=".SocialAccount" >
     
     <TextView
         android:id="@+id/social_fragment_list_errorMessage"

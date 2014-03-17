@@ -8,7 +8,7 @@ import com.team5.fragment.HomeFragment;
 import com.team5.fragment.SeekBarFragment;
 import com.team5.navigationlist.NavListAdapter;
 import com.team5.pat.R;
-import com.team5.social.SocialFragment;
+import com.team5.social.SocialAccount;
 
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -114,11 +114,11 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 	@Override
 	public void onBackPressed() {
 		// If social fragment
-		if (currentFragment instanceof SocialFragment)	{
+		/*if (currentFragment instanceof SocialFragmentInterface)	{
 			// Perform the go back event
-			((SocialFragment) currentFragment).eventChild(SocialFragment.EVENT_GO_BACK);
+			((SocialAccount) currentFragment).eventChild(SocialAccount.EVENT_GO_BACK);
 			return;
-		}
+		}*/
 		
 		long currentPress = System.currentTimeMillis();
 
@@ -148,7 +148,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		myDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
-	private void changeFragment(Fragment fragment) {
+	public void changeFragment(Fragment fragment) {
 		myDrawerLayout.closeDrawer(myDrawerList);
 
 		// Replace the frame with another fragment
@@ -165,7 +165,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		actionBar.removeAllTabs(); // get rid of all tabs - they're maintained across fragments!!
 	}
 
-	public void doNavigation(int theItem) {
+	public void doNavigation(int theItem) {		
 		switch (theItem) {
 		case NavListAdapter.navigationHome:
 			changeFragment(new HomeFragment());
@@ -180,7 +180,8 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 			changeFragment(new BreathExerciseFragment());
 			break;
 		case NavListAdapter.navigationDiscussion:
-			changeFragment(new SocialFragment());
+			((Session) getApplication()).getSocialAccount().navigateTo();
+			// changeFragment(new SocialAccount());
 			//startActivity(new Intent(this, SocialActivity.class));
 			break;
 		case NavListAdapter.navigationContact:
