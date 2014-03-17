@@ -6,10 +6,8 @@ import com.team5.fragment.BreathExerciseFragment;
 import com.team5.fragment.GraphFragment;
 import com.team5.fragment.HomeFragment;
 import com.team5.fragment.SeekBarFragment;
-import com.team5.fragment.StatusFragment;
 import com.team5.navigationlist.NavListAdapter;
 import com.team5.pat.R;
-import com.team5.social.SocialActivity;
 import com.team5.social.SocialFragment;
 
 import android.os.Bundle;
