@@ -1,0 +1,71 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".SocialAccount"
+    android:background="@drawable/social_topic" >
+        
+    
+    <LinearLayout 
+        android:id="@+id/social_fragment_list_rowTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="10dp"
+        >
+	    <TextView
+	        android:id="@+id/social_fragment_list_rowName"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Name"
+	        android:layout_weight="0.5"
+	        android:textStyle="bold"
+	    />
+	    
+	    <TextView
+	        android:id="@+id/social_fragment_list_rowDate"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:gravity="right"
+	        android:text="Date"
+	        android:layout_weight="0.5"
+	        android:textStyle="bold"
+	    />
+	</LinearLayout>
+
+    <TextView
+        android:id="@+id/social_fragment_list_rowContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/social_fragment_list_rowTop"
+        android:text="Summary"
+        android:layout_marginBottom="10dp"
+         />
+    
+    <LinearLayout 
+        android:id="@+id/social_fragment_list_rowBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/social_fragment_list_rowContent"
+        >
+	    <TextView
+	        android:id="@+id/social_fragment_list_rowReplies"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="5 Replies"
+	        android:layout_weight="0.5"
+	        android:textStyle="bold"
+	    />
+	    
+	    <TextView
+	        android:id="@+id/social_fragment_list_rowRating"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:gravity="right"
+	        android:text="Rating"
+	        android:layout_weight="0.5"
+	        android:textStyle="bold"
+	    />
+	</LinearLayout>
+
+</RelativeLayout>

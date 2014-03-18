@@ -6,10 +6,10 @@ import com.team5.fragment.BreathExerciseFragment;
 import com.team5.fragment.GraphFragment;
 import com.team5.fragment.HomeFragment;
 import com.team5.fragment.SeekBarFragment;
-import com.team5.fragment.SocialFragment;
-import com.team5.fragment.StatusFragment;
 import com.team5.navigationlist.NavListAdapter;
 import com.team5.pat.R;
+import com.team5.social.SocialAccount;
+import com.team5.social.SocialFragmentInterface;
 
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -41,7 +41,9 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 	private ActionBarDrawerToggle myDrawerToggle;
 	private ActionBar actionBar;
 	private SharedPreferences preference;
-
+	
+	public Fragment currentFragment;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -49,6 +51,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 
 		((Session) getApplication()).initiate(this);
 		((Session) getApplication()).getUserAccount().logIn("1234");
+		((Session) getApplication()).getSocialAccount().useActivity(this);
 
 		preference = PreferenceManager
 				.getDefaultSharedPreferences(getApplicationContext());
@@ -99,11 +102,6 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 			intent = new Intent(this, ContactActivity.class);
 			startActivity(intent);
 			return true;
-		case R.id.action_status:
-			FragmentTransaction ft = getFragmentManager().beginTransaction();
-			ft.addToBackStack(null);
-			ft.add(R.id.content_frame, new StatusFragment()).commit();
-			return true;
 		}
 		return super.onOptionsItemSelected(item);
 
@@ -117,6 +115,13 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 	/** Show a message to confirm the user really wants to exit this application **/
 	@Override
 	public void onBackPressed() {
+		// If social fragment
+		if (currentFragment instanceof SocialFragmentInterface)	{
+			// Perform the go back event
+			((Session) getApplication()).getSocialAccount().handleEvent(SocialAccount.EVENT_GO_BACK);
+			return;
+		}
+		
 		long currentPress = System.currentTimeMillis();
 
 		// User presses back for the first time
@@ -145,16 +150,24 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		myDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
-	private void changeFragment(Fragment fragment) {
+	public void changeFragment(Fragment fragment) {
 		myDrawerLayout.closeDrawer(myDrawerList);
 
 		// Replace the frame with another fragment
 		FragmentManager manager = getFragmentManager();
 		FragmentTransaction transaction = manager.beginTransaction();
-		transaction.replace(R.id.content_frame, fragment).commit();
+		transaction.replace(R.id.content_frame, fragment).commitAllowingStateLoss();
+		
+		// Reset action bar
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+		actionBar.setDisplayHomeAsUpEnabled(true);
+		actionBar.setHomeButtonEnabled(true);
+		actionBar.removeAllTabs(); // get rid of all tabs - they're maintained across fragments!!
+		
+		currentFragment = fragment;
 	}
 
-	public void doNavigation(int theItem) {
+	public void doNavigation(int theItem) {			
 		switch (theItem) {
 		case NavListAdapter.navigationHome:
 			changeFragment(new HomeFragment());
@@ -169,7 +182,9 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 			changeFragment(new BreathExerciseFragment());
 			break;
 		case NavListAdapter.navigationDiscussion:
-			changeFragment(new SocialFragment());
+			((Session) getApplication()).getSocialAccount().navigateTo();
+			// changeFragment(new SocialAccount());
+			//startActivity(new Intent(this, SocialActivity.class));
 			break;
 		case NavListAdapter.navigationContact:
 			startActivity(new Intent(this, ContactActivity.class));

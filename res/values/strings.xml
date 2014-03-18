@@ -23,6 +23,10 @@
     <string name="navigation_contact">Find Help</string>
     <string name="navigation_report">Report Issue</string>
     <string name="navigation_logoff">Log Off</string>
+    <string name="navigation_browse">Browse Posts</string>
+    <string name="navigation_create">New Post</string>
+    <string name="navigation_favourites">My Favourites</string>
+    <string name="navigation_mine">My Posts</string>
     
     
     <string-array name="spinner_list_items">
@@ -174,5 +178,13 @@
     <string name="rating">Rating</string>
     <string name="time">Time</string>
     <string name="title_activity_social">SocialActivity</string>
+    
+    <!-- Social Features -->
+    <string name="social_fragment_signin_loginText">Sign In to Your Account</string>
+    <string name="social_fragment_signin_email">\@Newcastle.ac.uk</string>
+    <string name="social_fragment_signin_buttonText">Sign In</string>
+    <string name="social_fragment_signup_loginText">Create a new account</string>
+    <string name="social_fragment_signup_email">\@Newcastle.ac.uk</string>
+    <string name="social_fragment_signup_buttonText">Sign Up</string>
 
 </resources>
