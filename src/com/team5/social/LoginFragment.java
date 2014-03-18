@@ -49,7 +49,7 @@ public class LoginFragment extends Fragment implements SocialFragmentInterface, 
 		// Get pager view
 		myPager = (ViewPager) myView.findViewById(R.id.social_fragment_login_pager);
 		// Make an adapter for the view
-		myAdapter = new SocialPagerAdapter(getFragmentManager(), this);
+		myAdapter = new SocialPagerAdapter(getFragmentManager());
 		//Add tabs
 		myAdapter.addItem(new SigninFragment());
 		myAdapter.addItem(new SignupFragment());

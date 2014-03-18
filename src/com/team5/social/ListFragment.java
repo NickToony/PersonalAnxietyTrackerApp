@@ -152,7 +152,11 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 	public void eventNetworkResponse(Request request, Response response)	{
 		networking = false;
 		myView.findViewById(R.id.social_fragment_list_progress).setVisibility(View.INVISIBLE);
-		progressDialog.dismiss();
+		if (progressDialog!=null) {
+            if (progressDialog.isShowing()) {
+            	progressDialog.dismiss();       
+            }
+        }
 		
 		// Find error textview
 		TextView errorOutput = (TextView) myView.findViewById(R.id.social_fragment_list_errorMessage);

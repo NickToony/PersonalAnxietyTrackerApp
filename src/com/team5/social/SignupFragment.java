@@ -72,7 +72,11 @@ public class SignupFragment extends Fragment implements SocialFragmentInterface,
 	@Override
 	public void eventNetworkResponse(Request from, Response response) {
 		// Dismiss dialog
-		progressDialog.dismiss();
+		if (progressDialog!=null) {
+            if (progressDialog.isShowing()) {
+            	progressDialog.dismiss();       
+            }
+        }
 		
 		// Find all outputs
 		TextView outputSignup = (TextView) myView.findViewById(R.id.social_fragment_signup_error);

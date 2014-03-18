@@ -80,7 +80,11 @@ public class SocialAccount {
 			// Remove current item
 			myStack.remove(myStack.size() - 1);
 			// Navigate to item before
-			changeFragment(myStack.get(myStack.size() - 1));
+			Fragment frag = myStack.get(myStack.size() - 1);
+			if (frag instanceof BrowsePostsFragment)
+				changeFragment(new BrowsePostsFragment());
+			else
+				changeFragment(frag);
 			// Remove the new one added
 			myStack.remove(myStack.size() - 1);
 		}	else	{

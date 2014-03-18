@@ -70,7 +70,11 @@ public class SigninFragment extends Fragment implements SocialFragmentInterface,
 	@Override
 	public void eventNetworkResponse(Request from, Response response) {
 		// Get rid of dialog
-		progressDialog.dismiss();
+		if (progressDialog!=null) {
+            if (progressDialog.isShowing()) {
+            	progressDialog.dismiss();       
+            }
+        }
 		
 		// Find all outputs
 		TextView outputSignin = (TextView) myView.findViewById(R.id.social_fragment_signin_error);

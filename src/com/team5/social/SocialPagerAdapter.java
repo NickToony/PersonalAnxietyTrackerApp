@@ -9,20 +9,14 @@ import android.support.v13.app.FragmentStatePagerAdapter;
 
 public class SocialPagerAdapter extends FragmentStatePagerAdapter {
 	private List<SocialFragmentInterface> myFragments = new ArrayList<SocialFragmentInterface>();
-	private SocialFragmentInterface myParent;
 	
-	public SocialPagerAdapter(FragmentManager fm, SocialFragmentInterface parent) {
+	public SocialPagerAdapter(FragmentManager fm) {
 		super(fm);			
-		this.myParent = parent;
 	}
 
 	@Override
 	public Fragment getItem(int position) {
 		return (Fragment) myFragments.get(position);
-	}
-	
-	public SocialFragmentInterface getSocialItem(int position)	{
-		return myFragments.get(position);
 	}
 
 	@Override
@@ -32,6 +26,11 @@ public class SocialPagerAdapter extends FragmentStatePagerAdapter {
 	
 	public void addItem(SocialFragmentInterface fragment)	{
 		myFragments.add(fragment);
+		this.notifyDataSetChanged();
+	}
+	
+	public void clearFragments()	{
+		myFragments.clear();
 		this.notifyDataSetChanged();
 	}
 }
