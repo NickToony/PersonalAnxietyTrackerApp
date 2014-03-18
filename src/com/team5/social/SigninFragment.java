@@ -6,6 +6,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -33,6 +34,7 @@ public class SigninFragment extends Fragment implements SocialFragmentInterface,
 	private EditText myPasswordView;
 	private boolean networking = false;
 	private SocialAccount mySocialAccount;
+	private ProgressDialog progressDialog;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
@@ -55,6 +57,7 @@ public class SigninFragment extends Fragment implements SocialFragmentInterface,
 		if (theView == myButton)	{
 			if (networking == false)	{
 				networking = true;
+				progressDialog = ProgressDialog.show(myActivity, "", "Signing In...");
 				new Request(this, "http://nick-hope.co.uk/PAT/android/login.php", "email=" + myEmailView.getText() + "@newcastle.ac.uk" + "&pass=" + myPasswordView.getText(), mySocialAccount.getCookies());
 				InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(
 					      Context.INPUT_METHOD_SERVICE);
@@ -66,6 +69,9 @@ public class SigninFragment extends Fragment implements SocialFragmentInterface,
 
 	@Override
 	public void eventNetworkResponse(Request from, Response response) {
+		// Get rid of dialog
+		progressDialog.dismiss();
+		
 		// Find all outputs
 		TextView outputSignin = (TextView) myView.findViewById(R.id.social_fragment_signin_error);
 		TextView outputEmail = (TextView) myView.findViewById(R.id.social_fragment_signin_errorEmail);

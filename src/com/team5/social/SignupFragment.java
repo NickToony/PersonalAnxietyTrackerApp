@@ -8,6 +8,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -34,6 +35,7 @@ public class SignupFragment extends Fragment implements SocialFragmentInterface,
 	private EditText myEmailView;
 	private EditText myPasswordView;
 	private boolean networking = false;
+	private ProgressDialog progressDialog;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
@@ -57,6 +59,7 @@ public class SignupFragment extends Fragment implements SocialFragmentInterface,
 		if (theView == myButton)	{
 			if (networking == false)	{
 				networking = true;
+				progressDialog = ProgressDialog.show(myActivity, "", "Registering Account...");
 				new Request(this, "http://nick-hope.co.uk/PAT/android/signup.php", "name=" + myNameView.getText() + "&email=" + myEmailView.getText() + "@newcastle.ac.uk" + "&pass=" + myPasswordView.getText(), mySocialAccount.getCookies());
 				InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(
 					      Context.INPUT_METHOD_SERVICE);
@@ -68,6 +71,9 @@ public class SignupFragment extends Fragment implements SocialFragmentInterface,
 
 	@Override
 	public void eventNetworkResponse(Request from, Response response) {
+		// Dismiss dialog
+		progressDialog.dismiss();
+		
 		// Find all outputs
 		TextView outputSignup = (TextView) myView.findViewById(R.id.social_fragment_signup_error);
 		TextView outputName = (TextView) myView.findViewById(R.id.social_fragment_signup_errorName);

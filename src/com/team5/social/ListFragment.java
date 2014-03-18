@@ -8,6 +8,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Parcel;
@@ -49,6 +50,8 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 	
 	private boolean networking = false;
 	private SocialAccount mySocialAccount;
+	
+	private ProgressDialog progressDialog;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
@@ -105,6 +108,9 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 			parameters += "order=" + postOrder + "";
 			
 			new Request(this, "http://nick-hope.co.uk/PAT/android/fetchposts.php", parameters, mySocialAccount.getCookies());
+			
+			myView.findViewById(R.id.social_fragment_list_progress).setVisibility(View.VISIBLE);
+			progressDialog = ProgressDialog.show(myActivity, "", "Fetching Posts...");
 			networking = true;
 		}
 		return myView;
@@ -145,6 +151,8 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 	@Override
 	public void eventNetworkResponse(Request request, Response response)	{
 		networking = false;
+		myView.findViewById(R.id.social_fragment_list_progress).setVisibility(View.INVISIBLE);
+		progressDialog.dismiss();
 		
 		// Find error textview
 		TextView errorOutput = (TextView) myView.findViewById(R.id.social_fragment_list_errorMessage);
