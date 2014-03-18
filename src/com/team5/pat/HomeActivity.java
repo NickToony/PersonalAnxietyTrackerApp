@@ -42,8 +42,6 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 	private ActionBar actionBar;
 	private SharedPreferences preference;
 	
-	public Fragment currentFragment;
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -120,11 +118,11 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 	@Override
 	public void onBackPressed() {
 		// If social fragment
-		if (getFragmentManager().findFragmentById(R.id.content_frame) instanceof SocialFragmentInterface)	{
+		if (getCurrentFragment() instanceof SocialFragmentInterface)	{
 			// Perform the go back event
 			((Session) getApplication()).getSocialAccount().handleEvent(SocialAccount.EVENT_GO_BACK);
 			return;
-		}	else if (getFragmentManager().findFragmentById(R.id.content_frame) instanceof HomeFragment)	{
+		}	else if (getCurrentFragment() instanceof HomeFragment)	{
 			long currentPress = System.currentTimeMillis();
 			if (currentPress - previousPress > BACK_PRESS_DURATION) {
 				previousPress = currentPress;
@@ -155,6 +153,12 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 
 	public void changeFragment(Fragment fragment) {
 		myDrawerLayout.closeDrawer(myDrawerList);
+		
+		// If they're the same class
+		if (getCurrentFragment() != null)
+			if (getCurrentFragment().getClass().equals( fragment.getClass()))	{
+				return;
+			}
 
 		// Replace the frame with another fragment
 		FragmentManager manager = getFragmentManager();
@@ -167,8 +171,6 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setHomeButtonEnabled(true);
 		actionBar.removeAllTabs(); // get rid of all tabs - they're maintained across fragments!!
-		
-		currentFragment = fragment;
 	}
 
 	public void doNavigation(int theItem) {			
