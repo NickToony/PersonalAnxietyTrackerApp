@@ -156,13 +156,15 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		
 		// If they're the same class
 		if (getCurrentFragment() != null)
-			if (getCurrentFragment().getClass().equals( fragment.getClass()))	{
-				return;
-			}
+			if (getCurrentFragment().getClass().equals( fragment.getClass()))
+				if (!(getCurrentFragment() instanceof SocialFragmentInterface))
+					return;
 
 		// Replace the frame with another fragment
 		FragmentManager manager = getFragmentManager();
 		FragmentTransaction transaction = manager.beginTransaction();
+		//transaction.setCustomAnimations(R.anim.fragment_enter, R.anim.fragment_exit, R.anim.fragment_pop_enter, R.anim.fragment_pop_exit);
+		transaction.setTransition(android.support.v4.app.FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 		transaction.addToBackStack(null);
 		transaction.replace(R.id.content_frame, fragment).commitAllowingStateLoss();;
 		
