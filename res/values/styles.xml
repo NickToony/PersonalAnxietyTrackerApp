@@ -35,5 +35,6 @@
     <color name="social_topic_highlight">#FFFFFF</color>
     <color name="social_topic_outline">#929394</color>
     <color name="social_error">#FF0000</color>
+    <color name="secondsEditTextBreathExercise">#ffffff</color>
 
 </resources>
