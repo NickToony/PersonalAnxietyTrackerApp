@@ -10,6 +10,8 @@ import org.w3c.dom.NodeList;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,22 +24,23 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Toast;
 
 import com.team5.network.NetworkInterface;
 import com.team5.network.Request;
 import com.team5.network.Response;
 import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
+import com.team5.pat.Session;
 
 public class ListFragment extends Fragment implements SocialFragmentInterface, NetworkInterface  {
 	private View myView;
 	private HomeActivity myActivity;
-	private SocialFragmentInterface myParent;
 	
 	private ListView listView;
 	private ListAdapter listAdapter;
 	
-	private ListItem postParent = null; // fetch by post parent?
+	private Post postParent = null; // fetch by post parent?
 	private int postOwner = -1; // fetch by owner?
 	private int postOrder = 0; // 0 = new, 1 = top,
 	private int postFavourites = 0; // fetch by favourites?
@@ -45,13 +48,27 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 	private int scrollPosition = 0;
 	
 	private boolean networking = false;
+	private SocialAccount mySocialAccount;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
 		super.onCreate(savedInstanceState);
+		
+		myActivity = (HomeActivity) getActivity();
+		mySocialAccount = ((Session) myActivity.getApplication()).getSocialAccount();
+		
+		if (savedInstanceState != null)	{
+			
+			this.postParent = (Post) savedInstanceState.getParcelable("postParent");
+			this.postFavourites = savedInstanceState.getInt("postFavourites");
+			this.postOrder = savedInstanceState.getInt("postOrder");
+			this.postOwner = savedInstanceState.getInt("postOwner");
+			
+			myActivity.currentFragment = this;
+		}
+		
 		if (myView == null)	{
 			myView = inflater.inflate(R.layout.social_fragment_list, container, false);
-			myActivity = (HomeActivity) getActivity();
 			
 			// Get the list view
 			listView = (ListView) myView.findViewById(R.id.social_fragment_list_listView);
@@ -65,8 +82,8 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 				public void onItemClick(AdapterView<?> parent, View v,
 						int position, long id) {
 					scrollPosition = position;
-					ListItem item = (ListItem) parent.getAdapter().getItem(position);
-					myParent.changeFragment(new ListFragment().defineList(item, -1, 0, -1));
+					Post item = (Post) parent.getAdapter().getItem(position);
+					mySocialAccount.changeFragment(new ListFragment().defineList(item, -1, 0, -1));
 				}
 			};
 			
@@ -87,13 +104,32 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 			parameters += "favourites=" + postFavourites + "&";
 			parameters += "order=" + postOrder + "";
 			
-			new Request(this, "http://nick-hope.co.uk/PAT/android/fetchposts.php", parameters, getCookies());
+			new Request(this, "http://nick-hope.co.uk/PAT/android/fetchposts.php", parameters, mySocialAccount.getCookies());
 			networking = true;
 		}
 		return myView;
 	}
 	
-	public ListFragment defineList(ListItem postParent, int postOwner, int postOrder, int postFavourites)	{
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		/*
+		 * 	private ListItem postParent = null; // fetch by post parent?
+			private int postOwner = -1; // fetch by owner?
+			private int postOrder = 0; // 0 = new, 1 = top,
+			private int postFavourites = 0; // fetch by favourites?
+			
+			private int scrollPosition = 0;
+		 */
+		
+		outState.putParcelable("postParent", postParent);
+	    outState.putInt("postOwner", postOwner);
+	    outState.putInt("postOrder", postOrder);
+	    outState.putInt("postFavourites", postFavourites);
+	    
+	    super.onSaveInstanceState(outState);
+	}
+	
+	public ListFragment defineList(Post postParent, int postOwner, int postOrder, int postFavourites)	{
 		this.postParent = postParent; // fetch by post parent?
 		this.postOwner = postOwner; // fetch by owner?
 		
@@ -119,11 +155,11 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 		}
 		
 		// Save cookies
-		setCookies(response.getCookies());
+		mySocialAccount.setCookies(response.getCookies());
 		
 		// Check logged in
 		if (!response.getLoggedIn())	{
-			myParent.eventChild(SocialAccount.EVENT_SESSION_END);
+			mySocialAccount.handleEvent(SocialAccount.EVENT_SESSION_END);
 			return;
 		}
 		
@@ -172,7 +208,7 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 				isParent = true;
 			else
 				isParent = false;
-			listAdapter.addItem(new ListItem(postID, postOwner, postDate, postContent, postResponses, postRating, postOwnerID), isParent);
+			listAdapter.addItem(new Post(postID, postOwner, postDate, postContent, postResponses, postRating, postOwnerID), isParent);
 		}
 		
 		if (errorOutput != null)
@@ -186,31 +222,7 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 	}
 	
 	
-	/*
-	 * ListItem
-	 * 
-	 * Contains data of each item in the list
-	 */
-	private class ListItem {
-		public String name;
-		public String date;
-		public String content;
-		public int replies;
-		public double rating;
-		
-		public int id;
-		public int ownerId;
-		
-		public ListItem(int id, String name, String date, String content, int replies, double rating, int ownerId)	{
-			this.id = id;
-			this.name = name;
-			this.date = date;
-			this.content = content;
-			this.replies = replies;
-			this.rating = rating;
-			this.ownerId = ownerId;
-		}
-	}
+	
 	
 	
 	/*
@@ -219,7 +231,7 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 	 * Adapter for the topics list
 	 */
 	private class ListAdapter extends BaseAdapter {
-		private List<ListItem> items = new ArrayList<ListItem>();
+		private List<Post> items = new ArrayList<Post>();
 		private List<Boolean> itemIsParent = new ArrayList<Boolean>();
 		private Context context;
 		private int resourceParent;
@@ -251,7 +263,7 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 			TextView textRating = (TextView) convertView.findViewById(R.id.social_fragment_list_rowRating);
 			
 			
-			ListItem myItem = getItem(position);
+			Post myItem = getItem(position);
 			textName.setText(myItem.name);
 			textDate.setText(myItem.date);
 			textContent.setText(myItem.content);
@@ -267,7 +279,7 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 		}
 		
 		@Override
-		public ListItem getItem(int position)	{
+		public Post getItem(int position)	{
 			return items.get(position);
 		}
 		
@@ -276,7 +288,7 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 			return getItem(position).id;
 		}
 		
-		public void addItem(ListItem item, boolean isParent)	{
+		public void addItem(Post item, boolean isParent)	{
 			//items.add(new NavListItem(context.getResources().getDrawable( navArray[0] ), label));
 			items.add(item);
 			itemIsParent.add(isParent);

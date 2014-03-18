@@ -8,6 +8,7 @@ import com.team5.user.UserAccount;
 
 import android.app.Application;
 import android.content.Context;
+import android.widget.Toast;
 
 public class Session extends Application {
 	private Context myContext;
@@ -18,9 +19,14 @@ public class Session extends Application {
 	public void initiate(Context c)	{
 		myContext = c;
 		
-		myUserAccount = new UserAccount(myContext);
-		mySocialAccount = new SocialAccount(myContext);
-		
+		if (setup == false)	{
+			myUserAccount = new UserAccount(myContext);
+			mySocialAccount = new SocialAccount(myContext);
+			
+			Toast.makeText(c, "Remade", 
+					   Toast.LENGTH_LONG).show();
+		}
+			
 		setup = true;
 	}
 	

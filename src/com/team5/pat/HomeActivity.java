@@ -9,6 +9,7 @@ import com.team5.fragment.SeekBarFragment;
 import com.team5.navigationlist.NavListAdapter;
 import com.team5.pat.R;
 import com.team5.social.SocialAccount;
+import com.team5.social.SocialFragmentInterface;
 
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -41,8 +42,8 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 	private ActionBar actionBar;
 	private SharedPreferences preference;
 	
-	private Fragment currentFragment;
-
+	public Fragment currentFragment;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -50,6 +51,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 
 		((Session) getApplication()).initiate(this);
 		((Session) getApplication()).getUserAccount().logIn("1234");
+		((Session) getApplication()).getSocialAccount().useActivity(this);
 
 		preference = PreferenceManager
 				.getDefaultSharedPreferences(getApplicationContext());
@@ -114,11 +116,11 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 	@Override
 	public void onBackPressed() {
 		// If social fragment
-		/*if (currentFragment instanceof SocialFragmentInterface)	{
+		if (currentFragment instanceof SocialFragmentInterface)	{
 			// Perform the go back event
-			((SocialAccount) currentFragment).eventChild(SocialAccount.EVENT_GO_BACK);
+			((Session) getApplication()).getSocialAccount().handleEvent(SocialAccount.EVENT_GO_BACK);
 			return;
-		}*/
+		}
 		
 		long currentPress = System.currentTimeMillis();
 
@@ -154,18 +156,18 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		// Replace the frame with another fragment
 		FragmentManager manager = getFragmentManager();
 		FragmentTransaction transaction = manager.beginTransaction();
-		transaction.replace(R.id.content_frame, fragment).commit();
-		
-		currentFragment = fragment;
+		transaction.replace(R.id.content_frame, fragment).commitAllowingStateLoss();
 		
 		// Reset action bar
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setHomeButtonEnabled(true);
 		actionBar.removeAllTabs(); // get rid of all tabs - they're maintained across fragments!!
+		
+		currentFragment = fragment;
 	}
 
-	public void doNavigation(int theItem) {		
+	public void doNavigation(int theItem) {			
 		switch (theItem) {
 		case NavListAdapter.navigationHome:
 			changeFragment(new HomeFragment());

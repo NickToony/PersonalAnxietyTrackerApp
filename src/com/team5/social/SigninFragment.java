@@ -22,6 +22,7 @@ import com.team5.network.Request;
 import com.team5.network.Response;
 import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
+import com.team5.pat.Session;
 
 public class SigninFragment extends Fragment implements SocialFragmentInterface, OnClickListener, NetworkInterface {
 	private View myView;
@@ -31,12 +32,14 @@ public class SigninFragment extends Fragment implements SocialFragmentInterface,
 	private EditText myEmailView;
 	private EditText myPasswordView;
 	private boolean networking = false;
+	private SocialAccount mySocialAccount;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
 		super.onCreate(savedInstanceState);
 		myView = inflater.inflate(R.layout.social_fragment_signin, container, false);
 		myActivity = (HomeActivity) getActivity();
+		mySocialAccount = ((Session) myActivity.getApplication()).getSocialAccount();
 		
 		myButton = myView.findViewById(R.id.social_fragment_signin_button);
 		myButton.setOnClickListener(this);
@@ -48,16 +51,11 @@ public class SigninFragment extends Fragment implements SocialFragmentInterface,
 	}
 
 	@Override
-	public void setParentFragment(SocialFragmentInterface frag) {
-		this.myParent = frag;
-	}
-
-	@Override
 	public void onClick(View theView) {
 		if (theView == myButton)	{
 			if (networking == false)	{
 				networking = true;
-				new Request(this, "http://nick-hope.co.uk/PAT/android/login.php", "email=" + myEmailView.getText() + "@newcastle.ac.uk" + "&pass=" + myPasswordView.getText(), getCookies());
+				new Request(this, "http://nick-hope.co.uk/PAT/android/login.php", "email=" + myEmailView.getText() + "@newcastle.ac.uk" + "&pass=" + myPasswordView.getText(), mySocialAccount.getCookies());
 				InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(
 					      Context.INPUT_METHOD_SERVICE);
 					imm.hideSoftInputFromWindow(myEmailView.getWindowToken(), 0);
@@ -81,7 +79,7 @@ public class SigninFragment extends Fragment implements SocialFragmentInterface,
 		}
 		
 		// Save cookies
-		setCookies(response.getCookies());
+		mySocialAccount.setCookies(response.getCookies());
 		
 		// Get the request element
 		Element eleRequest = response.getRequest();
@@ -125,28 +123,9 @@ public class SigninFragment extends Fragment implements SocialFragmentInterface,
 		if (success)	{
 			// do something
 			outputSignin.setText("Logged in!");
-			myParent.eventChild(SocialAccount.EVENT_SIGN_IN);
+			mySocialAccount.handleEvent(SocialAccount.EVENT_SIGN_IN);
 		}
 				
 		networking = false;
-	}
-	
-	@Override
-	public void setCookies(Map<String, String> cookieMap)	{
-		myParent.setCookies(cookieMap);
-	}
-	@Override
-	public Map<String, String> getCookies()	{
-		return myParent.getCookies();
-	}
-	
-	@Override
-	public void eventChild(int eventID)	{
-		myParent.eventChild(eventID);
-	}
-	
-	@Override
-	public void changeFragment(SocialFragmentInterface theFrag)	{
-		myParent.changeFragment(theFrag);
 	}
 }

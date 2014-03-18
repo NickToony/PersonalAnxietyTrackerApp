@@ -6,6 +6,7 @@ import com.team5.navigationlist.HomeMenuAdapter;
 import com.team5.navigationlist.NavListAdapter;
 import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
+import com.team5.pat.Session;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -20,12 +21,14 @@ public class MainFragment extends Fragment implements SocialFragmentInterface {
 	private View myView;
 	private HomeActivity myActivity;
 	private SocialFragmentInterface myParent;
+	private SocialAccount mySocialAccount;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
 		super.onCreate(savedInstanceState);
 		myView = inflater.inflate(R.layout.social_fragment_main, container, false);
 		myActivity = (HomeActivity) getActivity();
+		mySocialAccount = ((Session) myActivity.getApplication()).getSocialAccount();
 		
 		// social_fragment_mainGrid#
 		
@@ -51,37 +54,13 @@ public class MainFragment extends Fragment implements SocialFragmentInterface {
 		return myView;
 	}
 	
-	@Override
-	public void setParentFragment(SocialFragmentInterface frag) {
-		this.myParent = (SocialAccount) frag;
-	}
-	
-	@Override
-	public void setCookies(Map<String, String> cookieMap)	{
-		myParent.setCookies(cookieMap);
-	}
-	@Override
-	public Map<String, String> getCookies()	{
-		return myParent.getCookies();
-	}
-	
-	@Override
-	public void eventChild(int eventID)	{
-		myParent.eventChild(eventID);
-	}
-	
-	@Override
-	public void changeFragment(SocialFragmentInterface theFrag)	{
-		myParent.changeFragment(theFrag);
-	}
-	
 	public void doNavigation(int nav)	{
 		switch (nav)	{
 		case NavListAdapter.navigationLogOff:
-			myParent.eventChild(SocialAccount.EVENT_SIGN_OUT);
+			mySocialAccount.handleEvent(SocialAccount.EVENT_SIGN_OUT);
 			break;
 		case NavListAdapter.navigationBrowse:
-			myParent.eventChild(SocialAccount.EVENT_GOTO_BROWSE);
+			mySocialAccount.handleEvent(SocialAccount.EVENT_GOTO_BROWSE);
 			break;
 		}
 	}

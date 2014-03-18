@@ -53,7 +53,13 @@ public class SocialAccount {
 		myActivity = (HomeActivity) c;
 	}
 	
+	public void useActivity(Context c)	{
+		this.myActivity = (HomeActivity) c;
+	}
+	
 	public void navigateTo()	{
+		resetFragments();
+		
 		if (isLoggedIn())	{
 			changeFragment(new MainFragment());
 		}	else	{
@@ -83,6 +89,11 @@ public class SocialAccount {
 	}
 	
 	public void resetFragments()	{
+		/*for (int i = 0; i < myStack.size(); i ++)	{
+			FragmentTransaction fragmentTransaction = myActivity.getFragmentManager().beginTransaction();
+			fragmentTransaction.remove(myStack.get(i)).commit();
+		}*/
+		
 		myStack.clear();
 	}
 	
@@ -113,7 +124,11 @@ public class SocialAccount {
 			setLoggedIn(false);
 			// resetFragments(); -- commented to allow for recovery of fragments
 			// go to login fragment
-			changeFragment(new LoginFragment());
+			navigateTo();
+			
+			Toast.makeText(myActivity.getApplicationContext(), "Lost Connection to Session", 
+					   Toast.LENGTH_LONG).show();
+			
 			break;
 			
 		// User wants to browse topics
@@ -152,4 +167,9 @@ public class SocialAccount {
 	public void clearCookies()	{
 		myCookies = new HashMap<String, String>();
 	}
+}
+
+class StackedFragment	{
+	public Fragment myFragment;
+	public Bundle myFragmentState;
 }

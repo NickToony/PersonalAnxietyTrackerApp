@@ -4,6 +4,7 @@ import java.util.Map;
 
 import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
+import com.team5.pat.Session;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
@@ -24,12 +25,14 @@ public class LoginFragment extends Fragment implements SocialFragmentInterface, 
 	private ViewPager myPager;
 	private SocialPagerAdapter myAdapter;
 	private ActionBar myActionBar;
+	private SocialAccount mySocialAccount;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
 		super.onCreate(savedInstanceState);
 		myView = inflater.inflate(R.layout.social_fragment_container, container, false);
 		myActivity = (HomeActivity) getActivity();
+		mySocialAccount = ((Session) myActivity.getApplication()).getSocialAccount();
 		
 		myActionBar = myActivity.getActionBar();
 		myActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -56,11 +59,6 @@ public class LoginFragment extends Fragment implements SocialFragmentInterface, 
 		myPager.setOnPageChangeListener(this);
 		
 		return myView;
-	}
-
-	@Override
-	public void setParentFragment(SocialFragmentInterface frag) {
-		this.myParent = frag;
 	}
 
 	@Override
@@ -96,24 +94,5 @@ public class LoginFragment extends Fragment implements SocialFragmentInterface, 
 	public void onTabUnselected(Tab arg0, FragmentTransaction arg1) {
 		// TODO Auto-generated method stub
 		
-	}
-	
-	@Override
-	public void setCookies(Map<String, String> cookieMap)	{
-		myParent.setCookies(cookieMap);
-	}
-	@Override
-	public Map<String, String> getCookies()	{
-		return myParent.getCookies();
-	}
-	
-	@Override
-	public void eventChild(int eventID)	{
-		myParent.eventChild(eventID);
-	}
-	
-	@Override
-	public void changeFragment(SocialFragmentInterface theFrag)	{
-		myParent.changeFragment(theFrag);
 	}
 }
