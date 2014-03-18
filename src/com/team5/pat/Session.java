@@ -22,9 +22,6 @@ public class Session extends Application {
 		if (setup == false)	{
 			myUserAccount = new UserAccount(myContext);
 			mySocialAccount = new SocialAccount(myContext);
-			
-			Toast.makeText(c, "Remade", 
-					   Toast.LENGTH_LONG).show();
 		}
 			
 		setup = true;

@@ -55,10 +55,10 @@ public class NavListAdapter extends ArrayAdapter<NavListItem> {
 		navigationItems[navigationContact] = new NavListItem(R.drawable.ic_find_help, R.string.navigation_contact);
 		navigationItems[navigationReport] = new NavListItem(R.drawable.ic_report_issue, R.string.navigation_report);
 		navigationItems[navigationLogOff] = new NavListItem(R.drawable.ic_log_off, R.string.navigation_logoff);
-		navigationItems[navigationBrowse] = new NavListItem(R.drawable.ic_forums2, R.string.navigation_browse);
-		navigationItems[navigationCreate] = new NavListItem(R.drawable.ic_forums2, R.string.navigation_create);
-		navigationItems[navigationFavourites] = new NavListItem(R.drawable.ic_forums2, R.string.navigation_favourites);
-		navigationItems[navigationMine] = new NavListItem(R.drawable.ic_forums2, R.string.navigation_mine);
+		navigationItems[navigationBrowse] = new NavListItem(R.drawable.ic_browseposts, R.string.navigation_browse);
+		navigationItems[navigationCreate] = new NavListItem(R.drawable.ic_addpost, R.string.navigation_create);
+		navigationItems[navigationFavourites] = new NavListItem(R.drawable.ic_favouriteposts, R.string.navigation_favourites);
+		navigationItems[navigationMine] = new NavListItem(R.drawable.ic_myposts, R.string.navigation_mine);
 	}
 
 	@Override
