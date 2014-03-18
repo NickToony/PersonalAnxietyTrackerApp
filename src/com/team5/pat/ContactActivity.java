@@ -1,6 +1,5 @@
 package com.team5.pat;
 
-import com.team5.contact.ContactFavouriteFragment;
 import com.team5.contact.ContactGroupFragment;
 import com.team5.contact.ContactMapFragment;
 
@@ -110,12 +109,9 @@ public class ContactActivity extends Activity implements TabListener,
 				.setTabListener(this);
 		ActionBar.Tab tabMap = actionBar.newTab().setText("Map")
 				.setTabListener(this);
-		ActionBar.Tab tabFavourite = actionBar.newTab().setText("Favourite")
-				.setTabListener(this);
 
 		actionBar.addTab(tabGroup, 0);
 		actionBar.addTab(tabMap, 1);
-		actionBar.addTab(tabFavourite, 2);
 	}
 
 	private void handleIntent(Intent intent) {
@@ -142,9 +138,6 @@ class ContactAdapter extends FragmentStatePagerAdapter {
 			break;
 		case 1:
 			fragment = new ContactMapFragment();
-			break;
-		case 2:
-			fragment = new ContactFavouriteFragment();
 			break;
 		}
 		return fragment;

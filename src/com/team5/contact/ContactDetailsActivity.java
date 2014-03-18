@@ -102,16 +102,13 @@ class ContactDetailsAdapter extends FragmentStatePagerAdapter {
 		case 1:
 			fragment = new ContactMapFragment();
 			break;
-		case 2:
-			fragment = new ContactFavouriteFragment();
-			break;
 		}
 		return fragment;
 	}
 
 	@Override
 	public int getCount() {
-		return 3;
+		return 2;
 	}
 
 }

@@ -48,6 +48,21 @@ public class GroupAdapter extends ArrayAdapter<GroupItem> {
 
 		return row;
 	}
+
+	@Override
+	public int getCount() {
+		return items.size();
+	}
+
+	@Override
+	public GroupItem getItem(int position) {
+		return items.get(position);
+	}
+
+	@Override
+	public long getItemId(int position) {
+		return 1;
+	}
 }
 
 /** Objects shown every row **/
