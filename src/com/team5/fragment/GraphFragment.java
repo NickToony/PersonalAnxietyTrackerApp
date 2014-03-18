@@ -108,6 +108,7 @@ public class GraphFragment extends Fragment implements OnTouchListener {
 						fragment.setAnx(p.getY());
 						fragment.setThought(p.getInformation());
 						transaction.add(android.R.id.content, fragment);
+						transaction.addToBackStack(null);
 						transaction.commit();
 						break;
 					} else {
