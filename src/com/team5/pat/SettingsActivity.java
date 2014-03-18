@@ -57,6 +57,10 @@ public class SettingsActivity extends Activity implements
 			// Set the language selected by user
 			String choice = preference.getString("pref_language", "en");
 			editor.putString("pref_language", choice).commit();
+		} else if (key.equals("pref_breath_exercise")) {
+			// Set the breath exercise timing type
+			String countDownChoice = preference.getString("pref_breath_exercise", "seconds");
+			editor.putString("pref_breath_exercise", countDownChoice);
 		}
 
 		// Not yet done
