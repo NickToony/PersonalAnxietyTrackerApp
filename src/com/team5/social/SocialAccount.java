@@ -6,34 +6,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
-import com.team5.fragment.SeekBarFragment;
 import com.team5.navigationlist.NavListAdapter;
-import com.team5.network.NetworkInterface;
 import com.team5.network.Request;
-import com.team5.network.Response;
 import com.team5.pat.HomeActivity;
-import com.team5.pat.R;
-import com.team5.pat.Session;
-
 import android.os.Bundle;
-import android.app.ActionBar;
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class SocialAccount {	
@@ -48,6 +27,7 @@ public class SocialAccount {
 	public final static int EVENT_GOTO_BROWSE = 3;
 	public final static int EVENT_GO_BACK = 4;
 	public final static int EVENT_EXIT = 5;
+	public static final int EVENT_NEW_POST = 6;
 	
 	public SocialAccount	(Context c)	{
 		myActivity = (HomeActivity) c;
@@ -148,6 +128,11 @@ public class SocialAccount {
 		// User wants to leave social
 		case EVENT_EXIT:
 			myActivity.doNavigation(NavListAdapter.navigationHome);
+			break;
+			
+		// User wants to make a new topic
+		case EVENT_NEW_POST:
+			changeFragment(new AddTopicFragment());
 			break;
 		}
 	}

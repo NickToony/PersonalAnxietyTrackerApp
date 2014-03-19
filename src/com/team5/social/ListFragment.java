@@ -7,6 +7,8 @@ import java.util.Map;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import android.app.ActionBar;
+import android.app.ActionBar.OnNavigationListener;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -24,9 +26,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
+
 
 import com.team5.network.NetworkInterface;
 import com.team5.network.Request;
@@ -50,6 +54,8 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 	private int scrollPosition = 0;
 	
 	private boolean networking = false;
+	private boolean doActionBar = true;
+	private SpinnerAdapter dropDownAdapter;
 	private SocialAccount mySocialAccount;
 	
 	private ProgressDialog progressDialog;
@@ -85,7 +91,7 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 						int position, long id) {
 					scrollPosition = position;
 					Post item = (Post) parent.getAdapter().getItem(position);
-					mySocialAccount.changeFragment(new ListFragment().defineList(item, -1, 0, -1));
+					mySocialAccount.changeFragment(new ListFragment().defineList(item, -1, 0, -1, true));
 				}
 			};
 			
@@ -100,9 +106,25 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 			myView.findViewById(R.id.social_fragment_list_addPost).setOnClickListener(addClickListener);
 		}
 		
-		// Insert test data..
-		//listAdapter.addItem(new ListItem(1, "jsmith92", "16:35 02 Mar", "I am very anxious about an upcoming exam. Does anyone have any advice for me? Or recomend any techniques for calming down?", 4, 4.5));
-		//listAdapter.addItem(new ListItem(2, "bdavidson12", "13:22 01 Mar", "I have a big class presentation tomorrow infront of a lot of people. I feel nauseous. Does anyone have any tips for me?", 1, 2.5));
+		fetchPosts();
+		
+		if (doActionBar)	{
+			// Action bar settings
+			ActionBar actionBar = getActivity().getActionBar();
+			actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+			if (dropDownAdapter == null)	{
+				dropDownAdapter = ArrayAdapter.createFromResource(getActivity(),
+					R.array.social_list_items, R.layout.social_fragment_list_dropdown);
+				actionBar.setListNavigationCallbacks(dropDownAdapter, new DropDownListener());
+			}
+		}
+		
+		return myView;
+	}
+	
+	private void fetchPosts()	{
+		if (networking == true)	return;
+		
 		String parameters = "";
 		if (postParent != null)	{
 			// Add the parameters
@@ -117,10 +139,8 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 		new Request(this, "http://nick-hope.co.uk/PAT/android/fetchposts.php", parameters, mySocialAccount.getCookies());
 		
 		myView.findViewById(R.id.social_fragment_list_progress).setVisibility(View.VISIBLE);
-		progressDialog = ProgressDialog.show(myActivity, "", "Fetching Posts...");
+		//progressDialog = ProgressDialog.show(myActivity, "", "Fetching Posts...");
 		networking = true;
-		
-		return myView;
 	}
 	
 	@Override
@@ -142,17 +162,46 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 	    super.onSaveInstanceState(outState);
 	}
 	
-	public ListFragment defineList(Post postParent, int postOwner, int postOrder, int postFavourites)	{
+	public ListFragment defineList(Post postParent, int postOwner, int postOrder, int postFavourites, boolean doActionBar)	{
 		this.postParent = postParent; // fetch by post parent?
 		this.postOwner = postOwner; // fetch by owner?
 		
-		if (postOrder != -1)
+		if (postOrder != -1)	{
 			this.postOrder = postOrder;
-		if (postFavourites != -1)
+		}
+		if (postFavourites != -1)	{
 			this.postFavourites = postFavourites;
+		}
 			
+		this.doActionBar = doActionBar;
 		
 		return this;
+	}
+	
+	class DropDownListener implements OnNavigationListener {
+		// The same word as SpinerAdapter
+		String[] titles = getResources().getStringArray(
+				R.array.spinner_list_items);
+
+		@Override
+		public boolean onNavigationItemSelected(int position, long id) {
+			switch (position) {
+			case 0:
+				fetchPosts();
+				postOrder = 0;
+				return true;
+			case 1:
+				fetchPosts();
+				postOrder = 1;
+				return true;
+			case 2:
+				fetchPosts();
+				postOrder = 2;
+				return true;
+			default:
+				return false;
+			}
+		}
 	}
 	
 	@Override
@@ -198,6 +247,11 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 		// Clear posts already there
 		listAdapter.clear();
 		
+		if (postParent != null)	{
+			// Output the parent
+			listAdapter.addItem(postParent, true);
+		}
+		
 		// Get the request element
 		Element eleData = response.getData();
 		
@@ -232,6 +286,8 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 				isParent = false;
 			listAdapter.addItem(new Post(postID, postOwner, postDate, postContent, postResponses, postRating, postOwnerID), isParent);
 		}
+		
+		listAdapter.addItem(null, true);
 		
 		if (errorOutput != null)
 			errorOutput.setText("");
@@ -274,9 +330,16 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 			if (convertView == null)	{
 				if (type == 0)
 					convertView = inflater.inflate(resourceParent, null);
-				else
+				else if (type == 1)
 					convertView = inflater.inflate(resourceChild, null);
+				else if (type == 2)	{
+					//convertView = inflater.inflate(R.id.spacer, null);
+					convertView = inflater.inflate(R.layout.social_fragment_spacer, null);
+				}
 			}
+			
+			if (type == 2)
+				return convertView;
 
 			TextView textName = (TextView) convertView.findViewById(R.id.social_fragment_list_rowName);
 			TextView textDate = (TextView) convertView.findViewById(R.id.social_fragment_list_rowDate);
@@ -325,6 +388,8 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 		@Override
         public boolean isEnabled(int position) 
         { 
+			if (items.get(position) == null)
+				return false;
         	if (postParent == null)
         		return true;
         	return !(itemIsParent.get(position));
@@ -332,11 +397,13 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 		
 		@Override
 		public int getViewTypeCount()	{
-			return 2;
+			return 3;
 		}
 		
 		@Override
 		public int getItemViewType(int position)	{
+			if (items.get(position) == null)
+				return 2;
 			if (itemIsParent.get(position))
 				return 0;
 			else
@@ -344,10 +411,10 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 		}
 		
 		public void clear()	{
-			for (int i = 1; i < items.size(); i ++)	{
+			//for (int i = 0; i < items.size(); i ++)	{
 				items.clear();
 				itemIsParent.clear();
-			}
+			//}
 			((BaseAdapter) this).notifyDataSetChanged(); 
 		}
 		

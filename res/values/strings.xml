@@ -196,6 +196,13 @@
     <string name="social_fragment_signin_buttonText">Sign In</string>
     <string name="social_fragment_signup_loginText">Create a new account</string>
     <string name="social_fragment_signup_email">\@Newcastle.ac.uk</string>
-    <string name="social_fragment_signup_buttonText">Sign Up</string>
+    <string name="social_fragment_signup_buttonText">Sign Up Test</string>
+    <string name="social_fragment_list_addPost">Add Reply</string>
+    
+    <string-array name="social_list_items">
+        <item>Oldest</item>
+        <item>Newest</item>
+        <item>Top Rated</item>
+    </string-array>
 
 </resources>

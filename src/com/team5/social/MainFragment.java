@@ -62,6 +62,8 @@ public class MainFragment extends Fragment implements SocialFragmentInterface {
 		case NavListAdapter.navigationBrowse:
 			mySocialAccount.handleEvent(SocialAccount.EVENT_GOTO_BROWSE);
 			break;
+		case NavListAdapter.navigationCreate:
+			mySocialAccount.handleEvent(SocialAccount.EVENT_NEW_POST);
 		}
 	}
 
