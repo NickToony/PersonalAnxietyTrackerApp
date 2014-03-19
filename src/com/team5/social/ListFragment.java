@@ -67,8 +67,6 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 			this.postFavourites = savedInstanceState.getInt("postFavourites");
 			this.postOrder = savedInstanceState.getInt("postOrder");
 			this.postOwner = savedInstanceState.getInt("postOwner");
-			
-			myActivity.currentFragment = this;
 		}
 		
 		if (myView == null)	{

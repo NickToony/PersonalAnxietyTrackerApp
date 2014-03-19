@@ -26,8 +26,8 @@ public class SeekBarFragment extends Fragment implements OnClickListener {
 	private static final String COMMENTS = "";
 
 	// Variables
-	private int seriousnessState = 0;
-	private int anxietyState = 0;
+	private int seriousnessState = 5;
+	private int anxietyState = 5;
 	private String comments = "";
 
 	// Initialize the objects

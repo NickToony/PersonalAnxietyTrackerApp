@@ -124,9 +124,19 @@
     <string name="breathEx">Breathing Exercise</string>
     <string name="seconds">Seconds:</string>
     <string name="start">Start</string>
+    <string name="pause">Pause</string>
     <string name="stop">Stop</string>
-    <string name="exerciseDefaultDuration">60</string>
-
+	<string name="exerciseDefaultDuration">60</string>
+	<string name="exerciseDefaultCycles">20</string>
+	<string name="animation_speed">Speed</string>
+	<string name="cycles">Cycles:</string>
+	
+	
+	<string-array name="countdown_options">
+        <item>Seconds</item>
+        <item>Cycles</item>
+    </string-array>
+	
     <!-- Start of calm down text -->
     <string name="CalmDown">Being patient is key. Take a couple seconds to cool down.
     Slowly  take deep breaths in and deep breaths out and let it all out.</string>
@@ -145,6 +155,7 @@
     <string name="pref_lockscreen_summ">Show lockscreen on startup</string>
     <string name="pref_about_us_summ">Newcastle University</string>
     <string name="pref_night_mode_summ">Night Mode helps protect your eyes</string>
+    <string name="pref_breath_exercise_countdown">Exercise countdown type </string>
 
     <string-array name="pref_language_list_options">
         <item>English</item>
@@ -154,6 +165,7 @@
         <item>en</item>
         <item>zh</item>
     </string-array>
+    
 
     <!-- Splash -->
     <string-array name="button_array">
