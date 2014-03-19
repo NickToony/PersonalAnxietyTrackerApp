@@ -16,6 +16,7 @@ import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
@@ -80,7 +81,7 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 			// Finally, assign the custom adapter to the list
 			listView.setAdapter(listAdapter);
 			
-			OnItemClickListener clickListener = new OnItemClickListener() {
+			OnItemClickListener topicClickListener = new OnItemClickListener() {
 				@Override
 				public void onItemClick(AdapterView<?> parent, View v,
 						int position, long id) {
@@ -90,29 +91,37 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 				}
 			};
 			
-			listView.setOnItemClickListener(clickListener);
+			OnClickListener addClickListener = new OnClickListener() {
+				@Override
+				public void onClick( View v) {
+					mySocialAccount.changeFragment(new AddTopicFragment().defineParent(postParent));
+				}
+			};
 			
-			
-			// Insert test data..
-			//listAdapter.addItem(new ListItem(1, "jsmith92", "16:35 02 Mar", "I am very anxious about an upcoming exam. Does anyone have any advice for me? Or recomend any techniques for calming down?", 4, 4.5));
-			//listAdapter.addItem(new ListItem(2, "bdavidson12", "13:22 01 Mar", "I have a big class presentation tomorrow infront of a lot of people. I feel nauseous. Does anyone have any tips for me?", 1, 2.5));
-			String parameters = "";
-			if (postParent != null)	{
-				// Add the parameters
-				parameters += "parent=" + postParent.id + "&";
-				// Output the parent
-				listAdapter.addItem(postParent, true);
-			}
-			parameters += "owner=" + postOwner + "&";
-			parameters += "favourites=" + postFavourites + "&";
-			parameters += "order=" + postOrder + "";
-			
-			new Request(this, "http://nick-hope.co.uk/PAT/android/fetchposts.php", parameters, mySocialAccount.getCookies());
-			
-			myView.findViewById(R.id.social_fragment_list_progress).setVisibility(View.VISIBLE);
-			progressDialog = ProgressDialog.show(myActivity, "", "Fetching Posts...");
-			networking = true;
+			listView.setOnItemClickListener(topicClickListener);
+			myView.findViewById(R.id.social_fragment_list_addPost).setOnClickListener(addClickListener);
 		}
+		
+		// Insert test data..
+		//listAdapter.addItem(new ListItem(1, "jsmith92", "16:35 02 Mar", "I am very anxious about an upcoming exam. Does anyone have any advice for me? Or recomend any techniques for calming down?", 4, 4.5));
+		//listAdapter.addItem(new ListItem(2, "bdavidson12", "13:22 01 Mar", "I have a big class presentation tomorrow infront of a lot of people. I feel nauseous. Does anyone have any tips for me?", 1, 2.5));
+		String parameters = "";
+		if (postParent != null)	{
+			// Add the parameters
+			parameters += "parent=" + postParent.id + "&";
+			// Output the parent
+			listAdapter.addItem(postParent, true);
+		}
+		parameters += "owner=" + postOwner + "&";
+		parameters += "favourites=" + postFavourites + "&";
+		parameters += "order=" + postOrder + "";
+		
+		new Request(this, "http://nick-hope.co.uk/PAT/android/fetchposts.php", parameters, mySocialAccount.getCookies());
+		
+		myView.findViewById(R.id.social_fragment_list_progress).setVisibility(View.VISIBLE);
+		progressDialog = ProgressDialog.show(myActivity, "", "Fetching Posts...");
+		networking = true;
+		
 		return myView;
 	}
 	
@@ -187,6 +196,9 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 			errorOutput.setText("Error: " + errorType + ": " + errorMessage);
 			return;
 		}
+		
+		// Clear posts already there
+		listAdapter.clear();
 		
 		// Get the request element
 		Element eleData = response.getData();
@@ -331,6 +343,14 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 				return 0;
 			else
 				return 1;
+		}
+		
+		public void clear()	{
+			for (int i = 1; i < items.size(); i ++)	{
+				items.clear();
+				itemIsParent.clear();
+			}
+			((BaseAdapter) this).notifyDataSetChanged(); 
 		}
 		
 	}
