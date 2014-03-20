@@ -184,14 +184,62 @@
         <item>DEL</item>
     </string-array>
 
+
+
+
     <string name="seriousness">Seriousness</string>
     <string name="anxiety">Anxiety</string>
     <string name="Ref_seriousness">Reflected\nSeriousness</string>
     <string name="Ref_anxiety">Reflected\nAnxiety</string>
-    <string name="rating">Rating</string>
+    <string name="rating">RATING</string>
     <string name="time">Time</string>
     <string name="title_activity_social">SocialActivity</string>
-    
+    <!-- the x axis labelling for the week -->
+    <string-array name="x_axis_grid_week">
+
+        <item>Mon</item>
+        <item>Tue</item>
+        <item>Wed</item>
+        <item>Thu</item>
+        <item>Fri</item>
+        <item>Sat</item>
+        <item>Sun</item>
+
+    </string-array>
+
+    <!-- the x axis labelling for the month-->
+    <string-array name="x_axis_grid_month">
+        <item>Week 1</item>
+        <item>Week 2</item>
+        <item>Week 3</item>
+        <item>Week 4</item>
+        <item>Week 5</item>
+
+
+    </string-array>
+
+    <!-- the x axis labelling for the year -->
+    <string-array name="x_axis_grid_year">
+        <item>Jan</item>
+        <item>Feb</item>
+        <item>Mar</item>
+        <item>Apr</item>
+        <item>May</item>
+        <item>Jun</item>
+        <item>jul</item>
+        <item>Aug</item>
+        <item>Sept</item>
+        <item>Oct</item>
+        <item>Nov</item>
+        <item>Dec</item>
+        <item>Sun</item>
+
+    </string-array>
+    <string name="x_axis_title_days">DAYS OF WEEK</string>
+    <string name="x_axis_title_month">WEEKS OF MONTH</string>
+    <string name="x_axis_title_year">YEAR</string>
+
+
     <!-- Social Features -->
     <string name="social_fragment_signin_loginText">Sign In to Your Account</string>
     <string name="social_fragment_signin_email">\@Newcastle.ac.uk</string>

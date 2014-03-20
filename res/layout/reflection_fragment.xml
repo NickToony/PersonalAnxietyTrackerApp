@@ -7,51 +7,51 @@
     android:layout_marginTop="70dp"
     android:background="#8bdbff"
     android:orientation="vertical"
-    android:weightSum="1" >
+    android:weightSum="1"
+    >
 
     <TextView
         android:id="@+id/SeriousnesstextView"
         android:layout_width="119dp"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/seriousnessEditText"
-        android:layout_toLeftOf="@+id/seriousnessEditText"
         android:layout_weight="0.03"
         android:text="@string/seriousness"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:editable="false"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_above="@+id/anxietyEditText"
+        android:layout_toLeftOf="@+id/anxietyEditText" />
 
     <EditText
         android:id="@+id/seriousnessEditText"
         android:layout_width="112dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
         android:layout_gravity="center_horizontal"
-        android:layout_marginRight="30dp"
         android:ems="10"
-        android:inputType="number" />
+        android:inputType="number"
+        android:layout_above="@+id/anxietyEditText"
+        android:layout_alignRight="@+id/reflectionText" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/anxietyEditText"
-        android:layout_alignLeft="@+id/SeriousnesstextView"
-        android:layout_alignStart="@+id/SeriousnesstextView"
         android:text="@string/anxiety"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_above="@+id/reflectionText"
+        android:layout_alignLeft="@+id/SeriousnesstextView"
+        android:layout_alignStart="@+id/SeriousnesstextView" />
 
     <EditText
         android:id="@+id/anxietyEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/seriousnessEditText"
-        android:layout_alignRight="@+id/seriousnessEditText"
-        android:layout_below="@+id/seriousnessEditText"
-        android:layout_marginTop="25dp"
-        android:layout_toRightOf="@+id/SeriousnesstextView"
         android:ems="10"
-        android:inputType="number" />
+        android:inputType="number"
+        android:editable="true"
+        android:layout_above="@+id/reflectionText"
+        android:layout_alignLeft="@+id/seriousnessEditText"
+        android:layout_alignStart="@+id/seriousnessEditText"
+        android:layout_alignRight="@+id/reflectionText" />
 
     <Button
         android:id="@+id/ref_fragment_cancel_button"
@@ -67,14 +67,14 @@
         android:id="@+id/reflectionText"
         android:layout_width="250dp"
         android:layout_height="120dp"
-        android:layout_above="@+id/ref_fragment_cancel_button"
-        android:layout_alignRight="@+id/anxietyEditText"
-        android:layout_marginBottom="16dp"
         android:autoText="true"
         android:background="@drawable/rounded_edges"
         android:editable="true"
         android:padding="5dp"
         android:radius="5dp"
-        android:text="@string/CalmDown" />
+        android:text="@string/CalmDown"
+        android:layout_above="@+id/ref_fragment_cancel_button"
+        android:layout_centerHorizontal="true" />
+
 
 </RelativeLayout>

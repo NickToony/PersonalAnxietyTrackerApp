@@ -1,7 +1,16 @@
 package com.team5.user;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Random;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -64,27 +73,332 @@ public class UserAccount {
 	private void logInProcess()	{
 		// We logged in
 		loggedIn = true;
-		
-		// Temporay data
+
+
+        // Temporay data
         if (getRecordByID(1).size() == 0)	{
         	// if no records, then add some
         	
-        	long current = new java.util.Date().getTime();
-            addRecord(new UserRecord(current, 1, 10, "today"));
-            addRecord(new UserRecord(current - (60*60*24*1), 1, 10, "1 day ago"));
-            addRecord(new UserRecord(current - (60*60*24*2), 10, 9, "2 days ago"));
-            addRecord(new UserRecord(current - (60*60*24*3), 2, 8, "3 days ago"));
-            addRecord(new UserRecord(current - (60*60*24*4), 8, 7, "4 days ago"));
-            addRecord(new UserRecord(current - (60*60*24*5), 3, 6, "5 days ago"));
-            addRecord(new UserRecord(current - (60*60*24*6), 7, 5, "6 days ago"));
-            addRecord(new UserRecord(current - (60*60*24*7), 4, 4, "7 days ago"));
-            addRecord(new UserRecord(current - (60*60*24*8), 6, 3, "8 days ago"));
-            addRecord(new UserRecord(current - (60*60*24*9), 5, 2, "9 days ago"));
-            addRecord(new UserRecord(current - (60*60*24*10), 5, 1, "10 days ago"));
+//        	long current = new java.util.Date().getTime();
+//            addRecord(new UserRecord(current, 1, 10, "today"));
+//            addRecord(new UserRecord(current - (60*60*24*1), 1, 10, "1 day ago"));
+//            addRecord(new UserRecord(current - (60*60*24*2), 10, 9, "2 days ago"));
+//            addRecord(new UserRecord(current - (60*60*24*3), 2, 8, "3 days ago"));
+//            addRecord(new UserRecord(current - (60*60*24*4), 8, 7, "4 days ago"));
+//            addRecord(new UserRecord(current - (60*60*24*5), 3, 6, "5 days ago"));
+//            addRecord(new UserRecord(current - (60*60*24*6), 7, 5, "6 days ago"));
+//            addRecord(new UserRecord(current - (60*60*24*7), 4, 4, "7 days ago"));
+//            addRecord(new UserRecord(current - (60*60*24*8), 6, 3, "8 days ago"));
+//            addRecord(new UserRecord(current - (60*60*24*9), 5, 2, "9 days ago"));
+//            addRecord(new UserRecord(current - (60*60*24*10), 5, 1, "10 days ago"));
+
+            Calendar c1 = GregorianCalendar.getInstance();
+            c1.setFirstDayOfWeek(Calendar.MONDAY);
+
+            c1.set(Calendar.DAY_OF_MONTH, 1);
+            addRecord(new UserRecord(c1.getTimeInMillis(), 1, 10, "today"));
+
+            Calendar c2 = GregorianCalendar.getInstance();
+            c2.setFirstDayOfWeek(Calendar.MONDAY);
+
+            c2.set(Calendar.DAY_OF_MONTH, 1);
+            addRecord(new UserRecord(c2.getTimeInMillis(), 7, 4, "today"));
+
+            Calendar c3 = GregorianCalendar.getInstance();
+            c3.setFirstDayOfWeek(Calendar.MONDAY);
+
+            c3.set(Calendar.DAY_OF_MONTH, 3);
+            addRecord(new UserRecord(c3.getTimeInMillis(), 3, 4, "today"));
+
+            Calendar c4 = GregorianCalendar.getInstance();
+            c4.setFirstDayOfWeek(Calendar.MONDAY);
+
+            c4.set(Calendar.DAY_OF_MONTH, 3);
+            addRecord(new UserRecord(c4.getTimeInMillis(), 1, 1, "today"));
+
+            Calendar c5 = GregorianCalendar.getInstance();
+            c5.setFirstDayOfWeek(Calendar.MONDAY);
+
+            c5.set(Calendar.DAY_OF_MONTH, 5);
+            addRecord(new UserRecord(c5.getTimeInMillis(), 1, 4, "today"));
+
+            Calendar c6 = GregorianCalendar.getInstance();
+            c6.setFirstDayOfWeek(Calendar.MONDAY);
+            c6.set(Calendar.DAY_OF_MONTH, 9);
+            addRecord(new UserRecord(c6.getTimeInMillis(), 3, 4, "today"));
+
+            Calendar c7 = GregorianCalendar.getInstance();
+            c7.setFirstDayOfWeek(Calendar.MONDAY);
+
+            c7.set(Calendar.DAY_OF_MONTH, 12);
+            addRecord(new UserRecord(c7.getTimeInMillis(), 9, 4, "today"));
+
+            Calendar c8 = GregorianCalendar.getInstance();
+            c8.setFirstDayOfWeek(Calendar.MONDAY);
+
+            c8.set(Calendar.DAY_OF_MONTH, 14);
+            addRecord(new UserRecord(c8.getTimeInMillis(), 4, 8, "today"));
+
+            Calendar c9 = GregorianCalendar.getInstance();
+            c9.setFirstDayOfWeek(Calendar.MONDAY);
+
+            c9.set(Calendar.DAY_OF_MONTH, 18);
+            addRecord(new UserRecord(c9.getTimeInMillis(), 1, 10, "today"));
+
+            Calendar c10 = GregorianCalendar.getInstance();
+            c10.setFirstDayOfWeek(Calendar.MONDAY);
+
+            c10.set(Calendar.DAY_OF_MONTH, 18);
+            addRecord(new UserRecord(c10.getTimeInMillis(), 9, 4, "today"));
+            Calendar c1gg = GregorianCalendar.getInstance();
+            c10.setFirstDayOfWeek(Calendar.MONDAY);
+
+            c10.set(Calendar.DAY_OF_MONTH, 19);
+            addRecord(new UserRecord(c10.getTimeInMillis(), 0, 0, "today"));
+
+            Calendar c11 = GregorianCalendar.getInstance();
+            c11.setFirstDayOfWeek(Calendar.MONDAY);
+
+            c11.set(Calendar.DAY_OF_MONTH, 20);
+            addRecord(new UserRecord(c11.getTimeInMillis(), 0, 0, "today"));
+            Calendar cafsd = GregorianCalendar.getInstance();
+            c10.setFirstDayOfWeek(Calendar.MONDAY);
+
+            c10.set(Calendar.DAY_OF_MONTH, 21);
+            addRecord(new UserRecord(c10.getTimeInMillis(), 0, 0, "today"));
+
+            Calendar cgdsgdf = GregorianCalendar.getInstance();
+            c10.setFirstDayOfWeek(Calendar.MONDAY);
+
+            c10.set(Calendar.DAY_OF_MONTH, 22);
+            addRecord(new UserRecord(c10.getTimeInMillis(), 0, 0, "today"));
+
+            Calendar c12 = GregorianCalendar.getInstance();
+            c12.setFirstDayOfWeek(Calendar.MONDAY);
+
+            c12.set(Calendar.DAY_OF_MONTH, 23);
+            addRecord(new UserRecord(c12.getTimeInMillis(), 1, 1, "today"));
+            Calendar c13 = GregorianCalendar.getInstance();
+            c13.set(Calendar.DAY_OF_MONTH, 23);
+            c13.setFirstDayOfWeek(Calendar.MONDAY);
+
+            addRecord(new UserRecord(c13.getTimeInMillis(), 9, 4, "today"));
+
+            Calendar c14 = GregorianCalendar.getInstance();
+            c14.setFirstDayOfWeek(Calendar.MONDAY);
+
+            c14.set(Calendar.DAY_OF_MONTH, 24);
+            addRecord(new UserRecord(c14.getTimeInMillis(), 4, 8, "today"));
+
+            Calendar c15 = GregorianCalendar.getInstance();
+            c15.setFirstDayOfWeek(Calendar.MONDAY);
+
+            c15.set(Calendar.DAY_OF_MONTH, 28);
+            addRecord(new UserRecord(c15.getTimeInMillis(), 1, 10, "today"));
+
+            Calendar c16 = GregorianCalendar.getInstance();
+            c16.setFirstDayOfWeek(Calendar.MONDAY);
+
+            c16.set(Calendar.DAY_OF_MONTH, 29);
+            addRecord(new UserRecord(c16.getTimeInMillis(), 7, 4, "today"));
+
+            Calendar c17 = GregorianCalendar.getInstance();
+            c17.setFirstDayOfWeek(Calendar.MONDAY);
+
+            c17.set(Calendar.DAY_OF_MONTH, 29);
+            addRecord(new UserRecord(c17.getTimeInMillis(), 3, 4, "today"));
+
+            Calendar c18 = GregorianCalendar.getInstance();
+            c18.setFirstDayOfWeek(Calendar.MONDAY);
+
+            c18.set(Calendar.DAY_OF_MONTH, 30);
+            addRecord(new UserRecord(c18.getTimeInMillis(), 1, 1, "today"));
+
+
+
+
+
+
         }
-	}
-	
-	public boolean addRecord(UserRecord record)	{
+
+    }
+    public List<UserRecord> getRecordByMonthAverage(long from, long to)	{
+        // We must be logged in
+        if (!getLoggedIn())	{
+            return null;
+        }
+
+        // Create the results array
+        List<UserRecord> results = new ArrayList<UserRecord>();
+
+        // Query for all columns of the row with ID
+        Cursor myCursor = myDatabase.query(false, DatabaseHelper.TABLE_RECORDS, null, DatabaseHelper.COLUMN_TIMESTAMP + ">=" + from + " AND " + DatabaseHelper.COLUMN_TIMESTAMP + "<=" + to, null, null, null, null, null);
+
+        if (myCursor.getCount() > 0)	{
+            // Move to first result
+            myCursor.moveToFirst();
+            // If there was a result
+            Calendar c=Calendar.getInstance();
+
+            Calendar c2 = Calendar.getInstance();
+//            c2.setFirstDayOfWeek(Calendar.MONDAY);
+
+
+
+            int size= 0;
+            int counter=0;
+            while (true)	{
+                c.setTimeInMillis(myCursor.getLong(myCursor.getColumnIndex(DatabaseHelper.COLUMN_TIMESTAMP)));
+                int year = c.get(c.YEAR);
+                int week = c.get(c.WEEK_OF_YEAR);
+                int day = c.get(c.DAY_OF_WEEK);
+                int day2=0;
+
+                int year2=0;
+                int week2=0;
+                size = results.size()-1;
+                if(!results.isEmpty()){
+                    c2.setTimeInMillis(results.get(size).getTimestamp());
+                    day2 =  c2.get(c.DAY_OF_WEEK);
+                    year2=c2.get(c2.YEAR);
+                    week2=c2.get(c2.WEEK_OF_YEAR);
+
+                }
+
+                if(!results.isEmpty() && year==year2 && week==week2){
+                    counter++;
+                    results.get(size).setAnxiety(results.get(size).getAnxiety()+myCursor.getInt(myCursor.getColumnIndex(DatabaseHelper.COLUMN_ANXIETY)));
+                    results.get(size).setSeriousness(results.get(size).getSeriousness()+myCursor.getInt(myCursor.getColumnIndex(DatabaseHelper.COLUMN_SERIOUSNESS)));
+
+                }
+                else{
+                    if(!results.isEmpty()){
+                        results.get(size).setAnxiety(results.get(size).getAnxiety()/counter);
+                        results.get(size).setSeriousness(results.get(size).getSeriousness()/counter);
+
+                    }
+                    counter =1;
+
+                    // Get date
+                    long recordDate = myCursor.getLong(myCursor.getColumnIndex(DatabaseHelper.COLUMN_TIMESTAMP));
+                    // Get anxiety
+                    int recordAnxiety = myCursor.getInt(myCursor.getColumnIndex(DatabaseHelper.COLUMN_ANXIETY));
+                    // get depression
+                    int recordSeriousness = myCursor.getInt(myCursor.getColumnIndex(DatabaseHelper.COLUMN_SERIOUSNESS));
+                    // get comments
+                    String recordComments = myCursor.getString(myCursor.getColumnIndex(DatabaseHelper.COLUMN_COMMENTS));
+
+                    // Create a new record using the information just read from database
+                    UserRecord newRecord = new UserRecord(recordDate, recordAnxiety, recordSeriousness, recordComments);
+
+                    // Set the record ID as we know it
+                    newRecord.setId(myCursor.getInt(myCursor.getColumnIndex(DatabaseHelper.COLUMN_ID)));
+
+                    // add it to the results array
+                    results.add(newRecord);
+                }
+
+                if (myCursor.isLast())	{
+                    if(!results.isEmpty()){
+                        results.get(size).setAnxiety(results.get(size).getAnxiety()/counter);
+                        results.get(size).setSeriousness(results.get(size).getSeriousness()/counter);
+
+                    }
+                    break;
+                }	else	{
+                    myCursor.moveToNext();
+                }
+            }
+        }
+
+
+        return results;
+
+
+    }
+
+
+    public List<UserRecord> getRecordByYearAverage(long from, long to)	{
+        // We must be logged in
+        if (!getLoggedIn())	{
+            return null;
+        }
+
+        // Create the results array
+        List<UserRecord> results = new ArrayList<UserRecord>();
+
+        // Query for all columns of the row with ID
+        Cursor myCursor = myDatabase.query(false, DatabaseHelper.TABLE_RECORDS, null, DatabaseHelper.COLUMN_TIMESTAMP + ">=" + from + " AND " + DatabaseHelper.COLUMN_TIMESTAMP + "<=" + to, null, null, null, null, null);
+
+        if (myCursor.getCount() > 0)	{
+            // Move to first result
+            myCursor.moveToFirst();
+            // If there was a result
+            Date d1 = new Date();
+            Date d2 = new Date();
+            int size= 0;
+            int counter=0;
+            while (true)	{
+                d1.setTime(myCursor.getLong(myCursor.getColumnIndex(DatabaseHelper.COLUMN_TIMESTAMP)));
+                size = results.size()-1;
+                if(!results.isEmpty()){
+                    d2.setTime(results.get(size).getTimestamp());
+                }
+
+                if(!results.isEmpty() && d1.getMonth() == d2.getMonth()&&d1.getYear()==d2.getYear()){
+                    counter++;
+                    results.get(size).setAnxiety(results.get(size).getAnxiety()+myCursor.getInt(myCursor.getColumnIndex(DatabaseHelper.COLUMN_ANXIETY)));
+                    results.get(size).setSeriousness(results.get(size).getSeriousness()+myCursor.getInt(myCursor.getColumnIndex(DatabaseHelper.COLUMN_SERIOUSNESS)));
+
+                }
+                else{
+                    if(!results.isEmpty()){
+                        results.get(size).setAnxiety(results.get(size).getAnxiety()/counter);
+                        results.get(size).setSeriousness(results.get(size).getSeriousness()/counter);
+
+                    }
+                    counter =1;
+
+                    // Get date
+                long recordDate = myCursor.getLong(myCursor.getColumnIndex(DatabaseHelper.COLUMN_TIMESTAMP));
+                // Get anxiety
+                int recordAnxiety = myCursor.getInt(myCursor.getColumnIndex(DatabaseHelper.COLUMN_ANXIETY));
+                // get depression
+                int recordSeriousness = myCursor.getInt(myCursor.getColumnIndex(DatabaseHelper.COLUMN_SERIOUSNESS));
+                // get comments
+                String recordComments = myCursor.getString(myCursor.getColumnIndex(DatabaseHelper.COLUMN_COMMENTS));
+
+                // Create a new record using the information just read from database
+                UserRecord newRecord = new UserRecord(recordDate, recordAnxiety, recordSeriousness, recordComments);
+
+                // Set the record ID as we know it
+                newRecord.setId(myCursor.getInt(myCursor.getColumnIndex(DatabaseHelper.COLUMN_ID)));
+
+                // add it to the results array
+                results.add(newRecord);
+                }
+
+                if (myCursor.isLast())	{
+                    if(!results.isEmpty()){
+                        results.get(size).setAnxiety(results.get(size).getAnxiety()/counter);
+                        results.get(size).setSeriousness(results.get(size).getSeriousness()/counter);
+
+                    }
+                    break;
+                }	else	{
+                    myCursor.moveToNext();
+                }
+            }
+        }
+
+
+        return results;
+
+
+    }
+
+
+    public boolean addRecord(UserRecord record)	{
 		// We must be logged in
 		if (!getLoggedIn())	{
 			return false;
@@ -153,7 +467,95 @@ public class UserAccount {
 		
 		return results;
 	}
-	
+//     SELECT AVG(COLUMN_ANXIETY), AVG(COLUMN_SERIOUSNESS) FROM TABLE_RECORDS WHERE (COLUMN_TIMESTAMP >= timeStart) AND (COLUMN_TIMESTAMP <= timeStart);
+
+
+
+    public List<UserRecord> getRecordByDayAverage(long from, long to)	{
+        // We must be logged in
+        if (!getLoggedIn())	{
+            return null;
+        }
+
+
+        // Create the results array
+        List<UserRecord> results = new ArrayList<UserRecord>();
+
+        // Query for all columns of the row with ID
+        Cursor myCursor = myDatabase.query(false, DatabaseHelper.TABLE_RECORDS, null, DatabaseHelper.COLUMN_TIMESTAMP + ">=" + from + " AND " + DatabaseHelper.COLUMN_TIMESTAMP + "<=" + to, null, null, null, null, null);
+        if (myCursor.getCount() > 0)	{
+            // Move to first result
+            myCursor.moveToFirst();
+            Date d1 = new Date();
+            Date d2 = new Date();
+
+
+            // If there was a result
+            int counter=0;
+            while (true)	{
+                d1.setTime(myCursor.getLong(myCursor.getColumnIndex(DatabaseHelper.COLUMN_TIMESTAMP)));
+                int size= results.size()-1;
+                //if there is something in the list
+                if(!results.isEmpty()){
+                d2.setTime(results.get(size).getTimestamp());
+                }
+                if(!results.isEmpty() && d1.getDay() == d2.getDay() && d1.getMonth()==d2.getMonth()){
+                    counter++;
+                    results.get(size).setAnxiety(results.get(size).getAnxiety()+myCursor.getInt(myCursor.getColumnIndex(DatabaseHelper.COLUMN_ANXIETY)));
+                    results.get(size).setSeriousness(results.get(size).getSeriousness()+myCursor.getInt(myCursor.getColumnIndex(DatabaseHelper.COLUMN_SERIOUSNESS)));
+
+                }
+                else{
+                // Get date
+                    if(!results.isEmpty()){
+                        results.get(size).setAnxiety(results.get(size).getAnxiety()/counter);
+                        results.get(size).setSeriousness(results.get(size).getSeriousness()/counter);
+
+                    }
+                    counter=1;
+                long recordDate = myCursor.getLong(myCursor.getColumnIndex(DatabaseHelper.COLUMN_TIMESTAMP));
+                // Get anxiety
+                int recordAnxiety = myCursor.getInt(myCursor.getColumnIndex(DatabaseHelper.COLUMN_ANXIETY));
+                // get depression
+                int recordSeriousness = myCursor.getInt(myCursor.getColumnIndex(DatabaseHelper.COLUMN_SERIOUSNESS));
+                // get comments
+                String recordComments = myCursor.getString(myCursor.getColumnIndex(DatabaseHelper.COLUMN_COMMENTS));
+
+                // Create a new record using the information just read from database
+                UserRecord newRecord = new UserRecord(recordDate, recordAnxiety, recordSeriousness, recordComments);
+
+                // Set the record ID as we know it
+                newRecord.setId(myCursor.getInt(myCursor.getColumnIndex(DatabaseHelper.COLUMN_ID)));
+
+                // add it to the results array
+                results.add(newRecord);
+
+                }
+
+                if (myCursor.isLast())	{
+                    size=results.size()-1;
+                    if(!results.isEmpty()){
+                        results.get(size).setAnxiety(results.get(size).getAnxiety()/counter);
+                        results.get(size).setSeriousness(results.get(size).getSeriousness()/counter);
+
+                    }
+                    break;
+                }	else	{
+                    myCursor.moveToNext();
+                }
+
+
+            }
+        }
+
+
+        return results;
+
+
+    }
+
+
+
 	public List<UserRecord> getRecordByTime(long from, long to)	{
 		// We must be logged in
 		if (!getLoggedIn())	{
@@ -226,7 +628,7 @@ public class UserAccount {
 class DatabaseHelper extends SQLiteOpenHelper	{
 	// Define basic database information
 	private static final String DATABASE_NAME = "mentalHealthApp_Database";
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 58;
     
     // Define tables
     public static final String TABLE_RECORDS = "myRecords";

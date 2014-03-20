@@ -41,8 +41,8 @@ public class RecordGraphFragment extends Fragment {
 		// // For each record
 		for (int i = 0; i < points.size(); i++) {
 			// add to graph
-			mLineGraph.addPoint(mRedLine, i, points.get(i).getAnxiety(), "Random string");
-			mLineGraph.addPoint(mBlueLine, i, points.get(i).getSeriousness(), "Random string");
+//			mLineGraph.addPoint(mRedLine, i, points.get(i).getAnxiety(), "Random string");
+//			mLineGraph.addPoint(mBlueLine, i, points.get(i).getSeriousness(), "Random string");
 		}
 
 		// Make it visible
