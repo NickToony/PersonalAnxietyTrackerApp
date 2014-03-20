@@ -30,10 +30,11 @@ public final class R {
         public static final int contact_name=0x7f090001;
         public static final int contact_phone_number=0x7f090003;
         public static final int countdown_options=0x7f090004;
-        public static final int nav_list_icons=0x7f090008;
-        public static final int nav_list_titles=0x7f090009;
+        public static final int nav_list_icons=0x7f090009;
+        public static final int nav_list_titles=0x7f09000a;
         public static final int pref_language_list_options=0x7f090005;
         public static final int pref_language_list_values=0x7f090006;
+        public static final int social_list_items=0x7f090008;
         public static final int spinner_list_items=0x7f090000;
     }
     public static final class attr {
@@ -116,10 +117,11 @@ public final class R {
         public static final int logo=0x7f020027;
         public static final int rounded_edges=0x7f020028;
         public static final int seekbarprogress=0x7f020029;
-        public static final int social_topic=0x7f02002a;
-        public static final int wallpaper_01=0x7f02002b;
-        public static final int wallpaper_02=0x7f02002c;
-        public static final int wallpaper_03=0x7f02002d;
+        public static final int social_button=0x7f02002a;
+        public static final int social_topic=0x7f02002b;
+        public static final int wallpaper_01=0x7f02002c;
+        public static final int wallpaper_02=0x7f02002d;
+        public static final int wallpaper_03=0x7f02002e;
     }
     public static final class id {
         public static final int AnxietyCheckBox=0x7f0d003a;
@@ -128,14 +130,14 @@ public final class R {
         public static final int SeekBarLayout=0x7f0d0050;
         public static final int SeriousnesstextView=0x7f0d004a;
         public static final int SubMenuLayout=0x7f0d0046;
-        public static final int action_contact=0x7f0d0085;
-        public static final int action_exit=0x7f0d0086;
-        public static final int action_feedback=0x7f0d0084;
-        public static final int action_language=0x7f0d0083;
-        public static final int action_save=0x7f0d0087;
-        public static final int action_search=0x7f0d0081;
-        public static final int action_settings=0x7f0d0082;
-        public static final int add_app_done_layout=0x7f0d006f;
+        public static final int action_contact=0x7f0d008b;
+        public static final int action_exit=0x7f0d008c;
+        public static final int action_feedback=0x7f0d008a;
+        public static final int action_language=0x7f0d0089;
+        public static final int action_save=0x7f0d008d;
+        public static final int action_search=0x7f0d0087;
+        public static final int action_settings=0x7f0d0088;
+        public static final int add_app_done_layout=0x7f0d006c;
         public static final int animation_speed=0x7f0d001c;
         public static final int anxietyEditText=0x7f0d004c;
         public static final int anxietyHeading=0x7f0d0057;
@@ -154,7 +156,7 @@ public final class R {
         public static final int buttonDelete=0x7f0d0014;
         public static final int center_circle=0x7f0d001a;
         public static final int circularProgressBar=0x7f0d0034;
-        public static final int commentEditText=0x7f0d0080;
+        public static final int commentEditText=0x7f0d0086;
         public static final int commentsEditText=0x7f0d0059;
         public static final int contactDetailsImage=0x7f0d0025;
         public static final int contactDetailsName=0x7f0d0026;
@@ -187,10 +189,10 @@ public final class R {
         public static final int myLineGraph=0x7f0d0035;
         public static final int myPieChart=0x7f0d0036;
         public static final int myReflectionLayout=0x7f0d0049;
-        public static final int newAnxietyHeading=0x7f0d007d;
-        public static final int newAnxietySeekBar=0x7f0d007e;
-        public static final int newSeriousnessHeading=0x7f0d007b;
-        public static final int newSeriousnessSeekBar=0x7f0d007c;
+        public static final int newAnxietyHeading=0x7f0d0083;
+        public static final int newAnxietySeekBar=0x7f0d0084;
+        public static final int newSeriousnessHeading=0x7f0d0081;
+        public static final int newSeriousnessSeekBar=0x7f0d0082;
         public static final int pager=0x7f0d0000;
         public static final int quickPanicActivity=0x7f0d0048;
         public static final int ratingBar=0x7f0d0033;
@@ -214,39 +216,45 @@ public final class R {
         public static final int seriousnessSeekBar=0x7f0d0052;
         public static final int sideWheelActivity=0x7f0d0043;
         public static final int social_fragment_frame=0x7f0d005b;
+        public static final int social_fragment_list_addPost=0x7f0d0060;
         public static final int social_fragment_list_errorMessage=0x7f0d005d;
         public static final int social_fragment_list_listView=0x7f0d005e;
         public static final int social_fragment_list_progress=0x7f0d005f;
-        public static final int social_fragment_list_rowBottom=0x7f0d0064;
-        public static final int social_fragment_list_rowContent=0x7f0d0063;
-        public static final int social_fragment_list_rowDate=0x7f0d0062;
-        public static final int social_fragment_list_rowName=0x7f0d0061;
-        public static final int social_fragment_list_rowRating=0x7f0d0066;
-        public static final int social_fragment_list_rowReplies=0x7f0d0065;
-        public static final int social_fragment_list_rowTop=0x7f0d0060;
+        public static final int social_fragment_list_rowBottom=0x7f0d0065;
+        public static final int social_fragment_list_rowContent=0x7f0d0064;
+        public static final int social_fragment_list_rowDate=0x7f0d0063;
+        public static final int social_fragment_list_rowName=0x7f0d0062;
+        public static final int social_fragment_list_rowRating=0x7f0d0067;
+        public static final int social_fragment_list_rowReplies=0x7f0d0066;
+        public static final int social_fragment_list_rowTop=0x7f0d0061;
         public static final int social_fragment_login_pager=0x7f0d005c;
-        public static final int social_fragment_mainGrid=0x7f0d0067;
-        public static final int social_fragment_signin_Email=0x7f0d006b;
-        public static final int social_fragment_signin_Password=0x7f0d006d;
-        public static final int social_fragment_signin_button=0x7f0d0070;
-        public static final int social_fragment_signin_emailLayout=0x7f0d006a;
-        public static final int social_fragment_signin_error=0x7f0d0069;
-        public static final int social_fragment_signin_errorEmail=0x7f0d006c;
-        public static final int social_fragment_signin_errorPassword=0x7f0d006e;
-        public static final int social_fragment_signin_loginText=0x7f0d0068;
-        public static final int social_fragment_signup_Email=0x7f0d0076;
-        public static final int social_fragment_signup_Name=0x7f0d0073;
-        public static final int social_fragment_signup_Password=0x7f0d0078;
-        public static final int social_fragment_signup_button=0x7f0d007a;
-        public static final int social_fragment_signup_emailLayout=0x7f0d0075;
-        public static final int social_fragment_signup_error=0x7f0d0072;
-        public static final int social_fragment_signup_errorEmail=0x7f0d0077;
-        public static final int social_fragment_signup_errorName=0x7f0d0074;
-        public static final int social_fragment_signup_errorPassword=0x7f0d0079;
-        public static final int social_fragment_signup_loginText=0x7f0d0071;
+        public static final int social_fragment_mainGrid=0x7f0d0068;
+        public static final int social_fragment_new_post_button=0x7f0d006e;
+        public static final int social_fragment_new_post_content=0x7f0d006a;
+        public static final int social_fragment_new_post_error=0x7f0d006d;
+        public static final int social_fragment_new_post_errorContent=0x7f0d006b;
+        public static final int social_fragment_post_parent=0x7f0d0069;
+        public static final int social_fragment_signin_Email=0x7f0d0072;
+        public static final int social_fragment_signin_Password=0x7f0d0074;
+        public static final int social_fragment_signin_button=0x7f0d0076;
+        public static final int social_fragment_signin_emailLayout=0x7f0d0071;
+        public static final int social_fragment_signin_error=0x7f0d0070;
+        public static final int social_fragment_signin_errorEmail=0x7f0d0073;
+        public static final int social_fragment_signin_errorPassword=0x7f0d0075;
+        public static final int social_fragment_signin_loginText=0x7f0d006f;
+        public static final int social_fragment_signup_Email=0x7f0d007c;
+        public static final int social_fragment_signup_Name=0x7f0d0079;
+        public static final int social_fragment_signup_Password=0x7f0d007e;
+        public static final int social_fragment_signup_button=0x7f0d0080;
+        public static final int social_fragment_signup_emailLayout=0x7f0d007b;
+        public static final int social_fragment_signup_error=0x7f0d0078;
+        public static final int social_fragment_signup_errorEmail=0x7f0d007d;
+        public static final int social_fragment_signup_errorName=0x7f0d007a;
+        public static final int social_fragment_signup_errorPassword=0x7f0d007f;
+        public static final int social_fragment_signup_loginText=0x7f0d0077;
         public static final int startButton=0x7f0d001f;
         public static final int stopButton=0x7f0d0020;
-        public static final int summaryEditText=0x7f0d007f;
+        public static final int summaryEditText=0x7f0d0085;
         public static final int tableRow1=0x7f0d0006;
         public static final int tableRow2=0x7f0d000a;
         public static final int tableRow3=0x7f0d000e;
@@ -287,13 +295,16 @@ public final class R {
         public static final int social_fragment=0x7f030018;
         public static final int social_fragment_container=0x7f030019;
         public static final int social_fragment_list=0x7f03001a;
-        public static final int social_fragment_list_row_child=0x7f03001b;
-        public static final int social_fragment_list_row_parent=0x7f03001c;
-        public static final int social_fragment_main=0x7f03001d;
-        public static final int social_fragment_signin=0x7f03001e;
-        public static final int social_fragment_signup=0x7f03001f;
-        public static final int spinner_list=0x7f030020;
-        public static final int status_layout=0x7f030021;
+        public static final int social_fragment_list_dropdown=0x7f03001b;
+        public static final int social_fragment_list_row_child=0x7f03001c;
+        public static final int social_fragment_list_row_parent=0x7f03001d;
+        public static final int social_fragment_main=0x7f03001e;
+        public static final int social_fragment_new_post=0x7f03001f;
+        public static final int social_fragment_signin=0x7f030020;
+        public static final int social_fragment_signup=0x7f030021;
+        public static final int social_fragment_spacer=0x7f030022;
+        public static final int spinner_list=0x7f030023;
+        public static final int status_layout=0x7f030024;
     }
     public static final class menu {
         public static final int contact=0x7f0c0000;
@@ -308,7 +319,7 @@ public final class R {
         public static final int CalmDown=0x7f080047;
         public static final int Ref_anxiety=0x7f080059;
         public static final int Ref_seriousness=0x7f080058;
-        public static final int Sub_menu=0x7f080063;
+        public static final int Sub_menu=0x7f080064;
         public static final int Xaxis=0x7f080002;
         public static final int Yaxis=0x7f080001;
         public static final int action_contact=0x7f080021;
@@ -344,7 +355,7 @@ public final class R {
         public static final int drawer_open=0x7f080018;
         public static final int exerciseDefaultCycles=0x7f080043;
         public static final int exerciseDefaultDuration=0x7f080042;
-        public static final int hello_world=0x7f080068;
+        public static final int hello_world=0x7f080069;
         public static final int image_content_description=0x7f080009;
         public static final int keyboard=0x7f080030;
         public static final int kiss_me=0x7f080031;
@@ -385,8 +396,8 @@ public final class R {
         public static final int pref_notification_summ=0x7f080051;
         public static final int pref_notification_title=0x7f08004b;
         public static final int pref_pin_title=0x7f08004e;
-        public static final int pref_update_summ=0x7f080067;
-        public static final int pref_update_title=0x7f080066;
+        public static final int pref_update_summ=0x7f080068;
+        public static final int pref_update_title=0x7f080067;
         public static final int rating=0x7f08005a;
         public static final int red_line=0x7f080003;
         public static final int save_button_text=0x7f080037;
@@ -401,6 +412,7 @@ public final class R {
         public static final int secondsLabel=0x7f08003e;
         public static final int seriousness=0x7f080056;
         public static final int seriousness_heading=0x7f080035;
+        public static final int social_fragment_list_addPost=0x7f080063;
         public static final int social_fragment_signin_buttonText=0x7f08005f;
         public static final int social_fragment_signin_email=0x7f08005e;
         /**  Social Features 
@@ -427,8 +439,8 @@ public final class R {
  Activities label 
          */
         public static final int title_activity_nav_list=0x7f08001a;
-        public static final int title_activity_quickPanic=0x7f080064;
-        public static final int title_activity_record_graph=0x7f080065;
+        public static final int title_activity_quickPanic=0x7f080065;
+        public static final int title_activity_record_graph=0x7f080066;
         public static final int title_activity_settings=0x7f08001b;
         public static final int title_activity_social=0x7f08005c;
     }

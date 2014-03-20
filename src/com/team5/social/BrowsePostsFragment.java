@@ -43,8 +43,8 @@ public class BrowsePostsFragment extends Fragment implements SocialFragmentInter
 			// Make an adapter for the view
 			myAdapter = new SocialPagerAdapter(getFragmentManager());
 			// Create tabs
-			if (topList == null)	topList = new ListFragment().defineList(null, -1, 0, -1);
-			if (newList == null)	newList = new ListFragment().defineList(null, -1, 1, -1);
+			if (topList == null)	topList = new ListFragment().defineList(null, -1, 2, -1, false);
+			if (newList == null)	newList = new ListFragment().defineList(null, -1, 0, -1, false);
 			//Add tabs
 			myAdapter.addItem(topList);
 			myAdapter.addItem(newList);

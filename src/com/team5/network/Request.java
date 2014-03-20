@@ -2,10 +2,14 @@ package com.team5.network;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -22,40 +26,51 @@ import android.util.Log;
 
 public class Request {
 	private String myUrl;
-	private String myUrlParameters;
+	private List<String> myUrlParameters = new ArrayList<String>();
 	private NetworkInterface myTarget;
 	private Request myObject = this;
 	private Map<String, String> myCookies;
 	private boolean usePost = false;
+	private boolean started = false;
 	
 	public Request(NetworkInterface myTarget, String myUrl)	{
 		this.myUrl = myUrl;
-		this.myUrlParameters = "";
 		this.myTarget = myTarget;
 		this.myCookies = null;
-		
-		// Start the ASYNC task
-		new RequestTask().execute();
 	}
 	
-	public Request(NetworkInterface myTarget, String myUrl, String myUrlParameters)	{
+	public Request(NetworkInterface myTarget, String myUrl, Map<String, String> myCookies)	{
 		this.myUrl = myUrl;
-		this.myUrlParameters = myUrlParameters;
-		this.myTarget = myTarget;
-		this.myCookies = null;
-		
-		// Start the ASYNC task
-		new RequestTask().execute();
-	}
-	
-	public Request(NetworkInterface myTarget, String myUrl, String myUrlParameters, Map<String, String> myCookies)	{
-		this.myUrl = myUrl;
-		this.myUrlParameters = myUrlParameters;
 		this.myTarget = myTarget;
 		this.myCookies = myCookies;
-		
+	}
+	
+	public Request start()	{
 		// Start the ASYNC task
-		new RequestTask().execute();
+		if (started == false)
+			new RequestTask().execute();
+		started = true;
+		
+		return this;
+	}
+	
+	public Request addParameter(String key, String value)	{
+		if (started == false)	{
+			try {
+				value = URLEncoder.encode(value, "utf-8");
+			} catch (UnsupportedEncodingException e) {
+				// Already failed.
+				started = true;
+				// Make the response object
+				Response theResponse = new Response();
+				theResponse.set(false, "Failed to encode parameter: " + key, null);
+				returnAnswer(theResponse);
+				return this;
+			}
+			
+			myUrlParameters.add(key + "=" + value);
+		}
+		return this;
 	}
 	
 	private class RequestTask  extends AsyncTask<Void, Void, Response>	{
@@ -85,13 +100,18 @@ public class Request {
 				return null;
 			}
 			
+			String theParameters = "";
+			for (int i = 0; i < myUrlParameters.size(); i ++)	{
+				theParameters += myUrlParameters.get(i) + "&";
+			}
+			
 			// Handle url generation
 			try {
 				// Attempt to create the URL object
 				if (usePost)
 					theUrl = new URL(myUrl);
 				else	{
-					theUrl = new URL(myUrl + "?" + myUrlParameters);
+					theUrl = new URL(myUrl + "?" + theParameters);
 				}
 			} catch (MalformedURLException e2) {
 				// Failure
@@ -139,7 +159,7 @@ public class Request {
 			// the POST data's format
 			theConnection.setRequestProperty("charset", "utf-8"); 
 			// the POST data's size
-			theConnection.setRequestProperty("Content-Length", "" + Integer.toString(myUrlParameters.getBytes().length));
+			theConnection.setRequestProperty("Content-Length", "" + Integer.toString(theParameters.getBytes().length));
 			
 			// NO caching
 			theConnection.setUseCaches (false);
@@ -149,13 +169,13 @@ public class Request {
 				// Create a DataOutputStream to help us write to the connections output stream to the server
 				theOutputStream = new DataOutputStream(theConnection.getOutputStream());
 				// Write the form data
-				theOutputStream.writeBytes(myUrlParameters);
+				theOutputStream.writeBytes(theParameters);
 				// Push it to the output stream
 				theOutputStream.flush();
 				// No longer need the DataOutputStream
 				theOutputStream.close();
 				// Debug
-				Log.i("Request", "Request.doInBackground() — wrote parameters: " + myUrlParameters);
+				Log.i("Request", "Request.doInBackground() — wrote parameters: " + theParameters);
 			} catch (IOException e1) {
 				// Encoding issues?
 				theResponse.set(false, "Failing to attach parameters.", null);
@@ -198,9 +218,13 @@ public class Request {
 		
 		protected void onPostExecute(Response response)	{
 			// Trigger the event on the object which made the request
-			if (myTarget != null)
-				myTarget.eventNetworkResponse(myObject, response);
+			returnAnswer(response);
 		}
+	}
+	
+	private void returnAnswer(Response response)	{
+		if (myTarget != null)
+			myTarget.eventNetworkResponse(myObject, response);
 	}
 }
 
