@@ -39,7 +39,7 @@
         <activity
             android:name="com.team5.pat.HomeActivity"
             android:label="@string/app_name"
-            android:windowSoftInputMode="adjustResize" >
+            android:windowSoftInputMode="adjustPan" >
         </activity>
         <activity
             android:name="com.team5.pat.ContactActivity"

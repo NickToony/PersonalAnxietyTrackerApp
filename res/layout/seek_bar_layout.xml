@@ -98,28 +98,27 @@
 
     <EditText
         android:id="@+id/commentsEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="270dp"
+        android:layout_height="170dp"
         android:layout_below="@+id/scaleEnd"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="27dp"
+        android:layout_marginBottom="43dp"
         android:background="@drawable/commenttextfield1"
         android:ems="10"
         android:gravity="top|left"
         android:hint="@string/thoughts_hint"
-        android:minHeight="140dp"
-        android:minWidth="290dp"
-        android:padding="@dimen/seek_bar_text_padding" >
-
+        android:maxLines="30"
+        android:padding="@dimen/seek_bar_text_padding"
+        android:scrollbars="vertical" >
     </EditText>
 
     <Button
         android:id="@+id/seekBarSubmitButton"
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:layout_alignParentBottom="true"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/commentsEditText"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
         android:background="@drawable/commenttextfield1"
         android:gravity="center"
         android:text="@string/save_button_text"

@@ -123,6 +123,7 @@
     <!-- Breathing Exercise -->
     <string name="breathEx">Breathing Exercise</string>
     <string name="seconds">Seconds:</string>
+    <string name="secondsLabel">Seconds</string>
     <string name="start">Start</string>
     <string name="pause">Pause</string>
     <string name="stop">Stop</string>
@@ -130,6 +131,7 @@
 	<string name="exerciseDefaultCycles">20</string>
 	<string name="animation_speed">Speed</string>
 	<string name="cycles">Cycles:</string>
+	<string name="cyclesLabel">Cycles</string>
 	
 	
 	<string-array name="countdown_options">

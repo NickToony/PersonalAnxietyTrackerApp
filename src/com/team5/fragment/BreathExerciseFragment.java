@@ -1,17 +1,10 @@
 package com.team5.fragment;
 
-import com.team5.fragment.GraphFragment.DropDownListener;
 import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
-
-import android.R.anim;
-import android.app.ActionBar;
 import android.app.Fragment;
-import android.app.ActionBar.OnNavigationListener;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,18 +12,18 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.ScaleAnimation;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.SpinnerAdapter;
 
-public class BreathExerciseFragment extends Fragment implements OnClickListener {
+import android.widget.TextView;
+
+public class BreathExerciseFragment extends Fragment implements OnClickListener
+{
 	// Layout components for breath exercise
 	private Button startButton;
 	private Button stopButton;
@@ -39,25 +32,28 @@ public class BreathExerciseFragment extends Fragment implements OnClickListener 
 	private ImageView image;
 	private int countDownSeconds;
 	private EditText secondsEditTextView;
+	private TextView secondsMainView;
+	private TextView countDownType;
+	private TextView speedToggle;
 	private CountDownTimer timer;
-	private boolean timerToggled = false;
-	private boolean stopButtonToggled = false;
+	private boolean startToggled = false;
 	private AnimationSet animSet;
 	private Animation expand;
 	private Animation shrink;
-	private long defaultExpandDuration = 2000;
-	private long defaultShrinkDuration = 3000;
-	private long expandDuration = defaultExpandDuration;
-	private long shrinkDuration = defaultShrinkDuration;
+	private long expandDuration = 2000;
+	private long shrinkDuration = 3000;
 	private int durationRateOfChange = 2;
-	private ActionBar actionBar;
 	private SeekBar speedSetSeekBar;
 	private int speedSetSeekBarMaxProgress = 2;
 	private int speedSetSeekBarCurrentProgress = 1;
+	private boolean seekBarVisibility= false;
+	private boolean countDownTypeUsedSecondsDefault = true;
+	
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+			Bundle savedInstanceState)
+	{
 		myView = inflater.inflate(R.layout.breath_exercise_layout, container,
 				false);
 		myActivity = (HomeActivity) getActivity();
@@ -69,106 +65,133 @@ public class BreathExerciseFragment extends Fragment implements OnClickListener 
 	}
 
 	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
+	public void onClick(View v)
+	{
+		switch (v.getId())
+		{
 		case R.id.startButton:
-			// get the set time for the animation to run
-			countDownSeconds = Integer.parseInt(secondsEditTextView.getText()
-					.toString());
-			// if the timer is not started and the seconds differ from 0 start
-			// the animation
-			if (!timerToggled && countDownSeconds != 0) {
 
-				image.startAnimation(animSet);
-				timer(countDownSeconds);
-				timerToggled = true;
-
-			}
+			startAnimation();
 
 			break;
 		case R.id.stopButton:
 
-			if (timerToggled) {
-				// when the stop button is pressed - stop the timer, indicate
-				// that the stop button is pressed and stop the animation, then
-				// indicate the timer has been stopped
-				timer.cancel();
-				stopButtonToggled = true;
-				image.clearAnimation();
-				timerToggled = false;
-			}
-			break;
+			stopAnimation();
 
+			break;
+	
+		case R.id.countDownType:
+			
+			if(countDownTypeUsedSecondsDefault)
+			{
+				//left to IMPLEMENT
+			}
+			
+			break;
+			
+		case R.id.animation_speed:
+			
+			if(!seekBarVisibility)
+			{
+				speedSetSeekBar.setVisibility(View.VISIBLE);
+				seekBarVisibility=!seekBarVisibility;
+			}
+			else
+			{
+				speedSetSeekBar.setVisibility(View.GONE);
+				seekBarVisibility=!seekBarVisibility;
+			}
+			
+			break;
 		default:
 
 			break;
 		}
 	}
 
-	private void initialiseComponents() {
-
+	private void initialiseComponents()
+	{
+		
 		// the seconds input field
 		secondsEditTextView = (EditText) myView.findViewById(R.id.secondsInput);
+		secondsMainView = (TextView) myView.findViewById(R.id.mainSeconds);
+		// the countDown type button and speed toggle
+		countDownType= (TextView) myView.findViewById(R.id.countDownType);
+		speedToggle=(TextView) myView.findViewById(R.id.animation_speed);
 		// the image that is scaled
 		image = (ImageView) myView.findViewById(R.id.dynamic_circle);
 		// the integer taken from the seconds input field
 		countDownSeconds = Integer.parseInt(secondsEditTextView.getText()
 				.toString());
-		// Set the action bar
-		SpinnerAdapter adapter = ArrayAdapter.createFromResource(getActivity(),
-				R.array.countdown_options, R.layout.spinner_list);
-		// Action bar settings
-		actionBar = getActivity().getActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(true);
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-		actionBar.setListNavigationCallbacks(adapter, new DropDownListener());
 
 		// Set the speed seek bar
 		speedSetSeekBar = (SeekBar) myView
 				.findViewById(R.id.inhale_exhale_speed);
 		speedSetSeekBar.setMax(speedSetSeekBarMaxProgress);
 		speedSetSeekBar.setProgress(speedSetSeekBarCurrentProgress);
-		// Change the parameters when seekBar is initialized
-		expandDuration = expandDuration + expandDuration
-				* speedSetSeekBar.getProgress();
-		shrinkDuration = shrinkDuration + shrinkDuration
-				* speedSetSeekBar.getProgress();
 
 		// Set up a listener on speedSetSeekBar
 		speedSetSeekBar
 				.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 
 					@Override
-					public void onStopTrackingTouch(SeekBar seekBar) {
+					public void onStopTrackingTouch(SeekBar seekBar)
+					{
 
-						if (speedSetSeekBar.getProgress() > speedSetSeekBarCurrentProgress) {
+						if (speedSetSeekBar.getProgress() < speedSetSeekBarCurrentProgress)
+						{
 
+							// If animation started - stop it
+							if (startToggled)
+							{
+								stopAnimation();
+							}
+
+							// Calculate new durations for increased speed
 							expandDuration = expandDuration
-									* ((speedSetSeekBar.getProgress() - speedSetSeekBarCurrentProgress) * durationRateOfChange);
-							shrinkDuration = shrinkDuration
-									* ((speedSetSeekBar.getProgress() - speedSetSeekBarCurrentProgress) * durationRateOfChange);
-
-						} else if (speedSetSeekBar.getProgress() < speedSetSeekBarCurrentProgress) {
-							expandDuration = expandDuration
-									/ ((speedSetSeekBarCurrentProgress - speedSetSeekBar
+									* ((speedSetSeekBarCurrentProgress - speedSetSeekBar
 											.getProgress()) * durationRateOfChange);
 							shrinkDuration = shrinkDuration
-									/ ((speedSetSeekBarCurrentProgress - speedSetSeekBar
+									* ((speedSetSeekBarCurrentProgress - speedSetSeekBar
 											.getProgress()) * durationRateOfChange);
+
+							// Reset animation and start it
+							resetDurations(expandDuration, shrinkDuration);
+							startAnimation();
+
+						} else if (speedSetSeekBar.getProgress() > speedSetSeekBarCurrentProgress)
+						{
+							// If animation started - stop it
+							if (startToggled)
+							{
+								stopAnimation();
+							}
+
+							// Calculate new durations for increased speed
+							expandDuration = expandDuration
+									/ ((speedSetSeekBar.getProgress() - speedSetSeekBarCurrentProgress) * durationRateOfChange);
+							shrinkDuration = shrinkDuration
+									/ ((speedSetSeekBar.getProgress() - speedSetSeekBarCurrentProgress) * durationRateOfChange);
+
+							// Reset animation and start it
+							resetDurations(expandDuration, shrinkDuration);
+							startAnimation();
 						}
 						speedSetSeekBarCurrentProgress = speedSetSeekBar
 								.getProgress();
 					}
 
 					@Override
-					public void onStartTrackingTouch(SeekBar seekBar) {
+					public void onStartTrackingTouch(SeekBar seekBar)
+					{
 						// TODO Auto-generated method stub
 
 					}
 
 					@Override
 					public void onProgressChanged(SeekBar seekBar,
-							int progress, boolean fromUser) {
+							int progress, boolean fromUser)
+					{
 						// TODO Auto-generated method stub
 
 					}
@@ -177,41 +200,66 @@ public class BreathExerciseFragment extends Fragment implements OnClickListener 
 		// Set up the animation
 		setUpAnimation();
 
-		// start and stop buttons and their listeners
+		// start and stop buttons and their listeners as well as views
 		startButton = (Button) myView.findViewById(R.id.startButton);
 		stopButton = (Button) myView.findViewById(R.id.stopButton);
 		startButton.setOnClickListener(this);
 		stopButton.setOnClickListener(this);
+		countDownType.setOnClickListener(this);
+		speedToggle.setOnClickListener(this);
 
 		// the animation listener to help with the repeat count
 		animSet.setAnimationListener(new AnimationListener() {
 
 			@Override
-			public void onAnimationStart(Animation animation) {
+			public void onAnimationStart(Animation animation)
+			{
 			}
 
 			@Override
-			public void onAnimationRepeat(Animation animation) {
+			public void onAnimationRepeat(Animation animation)
+			{
 			}
 
 			@Override
-			public void onAnimationEnd(Animation animation) {
-				// when the animation ends, restart it
-				image.startAnimation(animSet);
-				// if the timer has finished and stop button is automatically
-				// clicked, stop the animation entirely
-				if (stopButtonToggled) {
-					stopButtonToggled = false;
-					image.clearAnimation();
-					timerToggled = false;
+			public void onAnimationEnd(Animation animation)
+			{
+
+				if (startToggled)
+				{
+					image.startAnimation(animSet);
 				}
 			}
 		});
 
 	}
 
-	private void setUpAnimation() {
-		image.clearAnimation();
+	private void startAnimation()
+	{
+		countDownSeconds = Integer.parseInt(secondsEditTextView.getText()
+				.toString());
+
+		if (!startToggled && countDownSeconds != 0)
+		{
+			timer(countDownSeconds);
+			image.startAnimation(animSet);
+			startToggled = true;
+		}
+	}
+
+	private void stopAnimation()
+	{
+		if (startToggled)
+		{
+			startToggled = false;
+			timer.cancel();
+			image.clearAnimation();
+
+		}
+	}
+
+	private void setUpAnimation()
+	{
 		// Set the animations
 		animSet = new AnimationSet(false);
 
@@ -238,57 +286,53 @@ public class BreathExerciseFragment extends Fragment implements OnClickListener 
 		animSet.addAnimation(shrink);
 	}
 
-	class DropDownListener implements OnNavigationListener {
-		// The same word as SpinerAdapter
-		String[] titles = getResources().getStringArray(
-				R.array.countdown_options);
-
-		@Override
-		public boolean onNavigationItemSelected(int position, long id) {
-			switch (position) {
-			case 0:
-				return true;
-			case 1:
-				return true;
-			default:
-				return false;
-			}
-		}
+	private void resetDurations(long expandDur, long shrinkDur)
+	{
+		expand.setDuration(expandDur);
+		shrink.setStartOffset(expandDur);
+		shrink.setDuration(shrinkDur);
 	}
 
+
 	// the timer
-	private void timer(long remainingTime) {
+	private void timer(long remainingTime)
+	{
 		long secondsTick = 1000;
-		timerToggled = true;
 
 		timer = new CountDownTimer((remainingTime + 1) * secondsTick,
 				secondsTick) {
 
-			public void onTick(long millisUntilFinished) {
+			public void onTick(long millisUntilFinished)
+			{
 
-				if (millisUntilFinished < 2001) {
+				if (millisUntilFinished < 2001)
+				{
 					// imitates the stop button click event, stops the timer and
 					// clears the animation
 					countDownSeconds--;
 					secondsEditTextView.setText("" + countDownSeconds);
-
-					stopButtonToggled = true;
-					timerToggled = false;
+					secondsMainView.setText("" + countDownSeconds);
+					
+					startToggled = false;
 					image.clearAnimation();
 					timer.cancel();
 				}
 
-				else {
+				else
+				{
 					// updates the seconds left field and the progress bar on
 					// each
 					// tick and
 					countDownSeconds--;
 					secondsEditTextView.setText("" + countDownSeconds);
+					secondsMainView.setText("" + countDownSeconds);
+					
 				}
 
 			}
 
-			public void onFinish() {
+			public void onFinish()
+			{
 
 			}
 		}.start();
