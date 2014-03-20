@@ -58,7 +58,12 @@ public class SigninFragment extends Fragment implements SocialFragmentInterface,
 			if (networking == false)	{
 				networking = true;
 				progressDialog = ProgressDialog.show(myActivity, "", "Signing In...");
-				new Request(this, "http://nick-hope.co.uk/PAT/android/login.php", "email=" + myEmailView.getText() + "@newcastle.ac.uk" + "&pass=" + myPasswordView.getText(), mySocialAccount.getCookies());
+				
+				Request r = new Request(this, "http://nick-hope.co.uk/PAT/android/login.php", mySocialAccount.getCookies());
+				r.addParameter("email", myEmailView.getText() + "@newcastle.ac.uk");
+				r.addParameter("pass", myPasswordView.getText().toString());
+				r.start();
+				
 				InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(
 					      Context.INPUT_METHOD_SERVICE);
 					imm.hideSoftInputFromWindow(myEmailView.getWindowToken(), 0);

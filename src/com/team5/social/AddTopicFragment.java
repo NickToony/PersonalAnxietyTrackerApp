@@ -86,14 +86,12 @@ public class AddTopicFragment extends Fragment implements SocialFragmentInterfac
 	private void createTopic()	{
 		if (networking == false)	{
 			networking = true;
-			String parameters = "";
-			if (postParent != null)	{
-				// Add the parameters
-				parameters += "parent=" + postParent.id + "&";
-			}
-			parameters += "content=" + ((EditText) myView.findViewById(R.id.social_fragment_new_post_content)).getText() + "";
 			
-			new Request(this, "http://nick-hope.co.uk/PAT/android/post.php", parameters, mySocialAccount.getCookies());
+			Request r = new Request(this, "http://nick-hope.co.uk/PAT/android/post.php", mySocialAccount.getCookies());
+			if (postParent != null)
+				r.addParameter("parent", "" + postParent.id);
+			r.addParameter("content", ((EditText) myView.findViewById(R.id.social_fragment_new_post_content)).getText() + "");
+			r.start();
 			
 			progressDialog = ProgressDialog.show(myActivity, "", "Creating post...");
 		}

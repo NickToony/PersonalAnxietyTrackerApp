@@ -136,7 +136,14 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 		parameters += "favourites=" + postFavourites + "&";
 		parameters += "order=" + postOrder + "";
 		
-		new Request(this, "http://nick-hope.co.uk/PAT/android/fetchposts.php", parameters, mySocialAccount.getCookies());
+		
+		Request r = new Request(this, "http://nick-hope.co.uk/PAT/android/fetchposts.php", mySocialAccount.getCookies());
+		if (postParent != null)
+			r.addParameter("parent", postParent.id + "");
+		r.addParameter("owner", postOwner + "");
+		r.addParameter("favourites", postFavourites + "");
+		r.addParameter("order", postOrder + "");
+		r.start();
 		
 		myView.findViewById(R.id.social_fragment_list_progress).setVisibility(View.VISIBLE);
 		//progressDialog = ProgressDialog.show(myActivity, "", "Fetching Posts...");

@@ -60,7 +60,13 @@ public class SignupFragment extends Fragment implements SocialFragmentInterface,
 			if (networking == false)	{
 				networking = true;
 				progressDialog = ProgressDialog.show(myActivity, "", "Registering Account...");
-				new Request(this, "http://nick-hope.co.uk/PAT/android/signup.php", "name=" + myNameView.getText() + "&email=" + myEmailView.getText() + "@newcastle.ac.uk" + "&pass=" + myPasswordView.getText(), mySocialAccount.getCookies());
+				
+				Request r = new Request(this, "http://nick-hope.co.uk/PAT/android/signup.php", mySocialAccount.getCookies());
+				r.addParameter("name", myNameView.getText().toString());
+				r.addParameter("email", myEmailView.getText() + "@newcastle.ac.uk");
+				r.addParameter("pass", myPasswordView.getText().toString());
+				r.start();
+				
 				InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(
 					      Context.INPUT_METHOD_SERVICE);
 					imm.hideSoftInputFromWindow(myEmailView.getWindowToken(), 0);
