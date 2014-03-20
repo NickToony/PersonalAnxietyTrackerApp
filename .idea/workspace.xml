@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2aebe5eb-261a-4d8b-bcf0-60131885ff85" name="Default" comment="graphs and user account modified">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gen/com/team5/pat/Manifest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PersonalAnxietyTrackerApps.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/android_support_v13.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitattributes" afterPath="$PROJECT_DIR$/.gitattributes" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/fragment/BreathExerciseFragment.java" afterPath="$PROJECT_DIR$/src/com/team5/fragment/BreathExerciseFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/social/BrowsePostsFragment.java" afterPath="$PROJECT_DIR$/src/com/team5/social/BrowsePostsFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/com/team5/pat/BuildConfig.java" afterPath="$PROJECT_DIR$/gen/com/team5/pat/BuildConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/menu/CircleView.java" afterPath="$PROJECT_DIR$/src/com/team5/menu/CircleView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/pat/ContactActivity.java" afterPath="$PROJECT_DIR$/src/com/team5/pat/ContactActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/contact/ContactDetailsActivity.java" afterPath="$PROJECT_DIR$/src/com/team5/contact/ContactDetailsActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/contact/ContactDetailsFragment.java" afterPath="$PROJECT_DIR$/src/com/team5/contact/ContactDetailsFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/contact/ContactFavouriteFragment.java" afterPath="$PROJECT_DIR$/src/com/team5/contact/ContactFavouriteFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/contact/ContactGroupFragment.java" afterPath="$PROJECT_DIR$/src/com/team5/contact/ContactGroupFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/contact/ContactMapFragment.java" afterPath="$PROJECT_DIR$/src/com/team5/contact/ContactMapFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/contact/GroupAdapter.java" afterPath="$PROJECT_DIR$/src/com/team5/contact/GroupAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/menu/HexagonView.java" afterPath="$PROJECT_DIR$/src/com/team5/menu/HexagonView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/pat/HomeActivity.java" afterPath="$PROJECT_DIR$/src/com/team5/pat/HomeActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/fragment/HomeFragment.java" afterPath="$PROJECT_DIR$/src/com/team5/fragment/HomeFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/navigationlist/HomeMenuAdapter.java" afterPath="$PROJECT_DIR$/src/com/team5/navigationlist/HomeMenuAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/social/ListFragment.java" afterPath="$PROJECT_DIR$/src/com/team5/social/ListFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/social/LoginFragment.java" afterPath="$PROJECT_DIR$/src/com/team5/social/LoginFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/social/MainFragment.java" afterPath="$PROJECT_DIR$/src/com/team5/social/MainFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/fragment/MenuFragment.java" afterPath="$PROJECT_DIR$/src/com/team5/fragment/MenuFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/fragment/MenuHexagonFragment.java" afterPath="$PROJECT_DIR$/src/com/team5/fragment/MenuHexagonFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/navigationlist/NavListAdapter.java" afterPath="$PROJECT_DIR$/src/com/team5/navigationlist/NavListAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/navigationlist/NavListItem.java" afterPath="$PROJECT_DIR$/src/com/team5/navigationlist/NavListItem.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/network/NetworkInterface.java" afterPath="$PROJECT_DIR$/src/com/team5/network/NetworkInterface.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/social/Post.java" afterPath="$PROJECT_DIR$/src/com/team5/social/Post.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/com/team5/pat/R.java" afterPath="$PROJECT_DIR$/gen/com/team5/pat/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/pat/RecordGraphActivity.java" afterPath="$PROJECT_DIR$/src/com/team5/pat/RecordGraphActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/network/Request.java" afterPath="$PROJECT_DIR$/src/com/team5/network/Request.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/network/Response.java" afterPath="$PROJECT_DIR$/src/com/team5/network/Response.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/dialog/ScrollableDialog.java" afterPath="$PROJECT_DIR$/src/com/team5/dialog/ScrollableDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/dialog/ScrollableDialogFragment.java" afterPath="$PROJECT_DIR$/src/com/team5/dialog/ScrollableDialogFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/fragment/SeekBarFragment.java" afterPath="$PROJECT_DIR$/src/com/team5/fragment/SeekBarFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/pat/Session.java" afterPath="$PROJECT_DIR$/src/com/team5/pat/Session.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/pat/SettingsActivity.java" afterPath="$PROJECT_DIR$/src/com/team5/pat/SettingsActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/social/SigninFragment.java" afterPath="$PROJECT_DIR$/src/com/team5/social/SigninFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/social/SignupFragment.java" afterPath="$PROJECT_DIR$/src/com/team5/social/SignupFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/social/SocialAccount.java" afterPath="$PROJECT_DIR$/src/com/team5/social/SocialAccount.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/social/SocialFragmentInterface.java" afterPath="$PROJECT_DIR$/src/com/team5/social/SocialFragmentInterface.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/social/SocialPagerAdapter.java" afterPath="$PROJECT_DIR$/src/com/team5/social/SocialPagerAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/team5/fragment/StatusFragment.java" afterPath="$PROJECT_DIR$/src/com/team5/fragment/StatusFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_contact.xml" afterPath="$PROJECT_DIR$/res/layout/activity_contact.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_lock_screen.xml" afterPath="$PROJECT_DIR$/res/layout/activity_lock_screen.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/animator/breath_exercise_anim.xml" afterPath="$PROJECT_DIR$/res/animator/breath_exercise_anim.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/commenttextfield.xml" afterPath="$PROJECT_DIR$/res/drawable-hdpi/commenttextfield.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/commenttextfield1.xml" afterPath="$PROJECT_DIR$/res/drawable-hdpi/commenttextfield1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/menu/contact.xml" afterPath="$PROJECT_DIR$/res/menu/contact.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/contact_favourite_fragment.xml" afterPath="$PROJECT_DIR$/res/layout/contact_favourite_fragment.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/contact_group_details.xml" afterPath="$PROJECT_DIR$/res/layout/contact_group_details.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/contact_group_fragment.xml" afterPath="$PROJECT_DIR$/res/layout/contact_group_fragment.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/contact_group_list_item.xml" afterPath="$PROJECT_DIR$/res/layout/contact_group_list_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/contact_map_fragment.xml" afterPath="$PROJECT_DIR$/res/layout/contact_map_fragment.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/dialog_box_layout.xml" afterPath="$PROJECT_DIR$/res/layout/dialog_box_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/dimens.xml" afterPath="$PROJECT_DIR$/res/values/dimens.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values-sw600dp/dimens.xml" afterPath="$PROJECT_DIR$/res/values-sw600dp/dimens.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values-sw720dp-land/dimens.xml" afterPath="$PROJECT_DIR$/res/values-sw720dp-land/dimens.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/anim/fragment_enter.xml" afterPath="$PROJECT_DIR$/res/anim/fragment_enter.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/anim/fragment_exit.xml" afterPath="$PROJECT_DIR$/res/anim/fragment_exit.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/anim/fragment_pop_enter.xml" afterPath="$PROJECT_DIR$/res/anim/fragment_pop_enter.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/anim/fragment_pop_exit.xml" afterPath="$PROJECT_DIR$/res/anim/fragment_pop_exit.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/hexagon_layout.xml" afterPath="$PROJECT_DIR$/res/layout/hexagon_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/menu/home.xml" afterPath="$PROJECT_DIR$/res/menu/home.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/home_layout.xml" afterPath="$PROJECT_DIR$/res/layout/home_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/website/index.html" afterPath="$PROJECT_DIR$/website/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/item_row.xml" afterPath="$PROJECT_DIR$/res/layout/item_row.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lint.xml" afterPath="$PROJECT_DIR$/lint.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/main_dialog.xml" afterPath="$PROJECT_DIR$/res/layout/main_dialog.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/menu/menu.xml" afterPath="$PROJECT_DIR$/res/menu/menu.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/menu_layout.xml" afterPath="$PROJECT_DIR$/res/layout/menu_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/nav_list_layout.xml" afterPath="$PROJECT_DIR$/res/layout/nav_list_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/xml/preference.xml" afterPath="$PROJECT_DIR$/res/xml/preference.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/proguard-project.txt" afterPath="$PROJECT_DIR$/proguard-project.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/quick_panic_layout.xml" afterPath="$PROJECT_DIR$/res/layout/quick_panic_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/record_graph_layout.xml" afterPath="$PROJECT_DIR$/res/layout/record_graph_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/rounded_edges.xml" afterPath="$PROJECT_DIR$/res/drawable/rounded_edges.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/row_text.xml" afterPath="$PROJECT_DIR$/res/layout/row_text.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/xml/searchable.xml" afterPath="$PROJECT_DIR$/res/xml/searchable.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/seek_bar_layout.xml" afterPath="$PROJECT_DIR$/res/layout/seek_bar_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-hdpi/seekbarprogress.xml" afterPath="$PROJECT_DIR$/res/drawable-hdpi/seekbarprogress.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/animator/slide_right_enter.xml" afterPath="$PROJECT_DIR$/res/animator/slide_right_enter.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/slide_right_enter.xml" afterPath="$PROJECT_DIR$/res/layout/slide_right_enter.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/animator/slide_right_exit.xml" afterPath="$PROJECT_DIR$/res/animator/slide_right_exit.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/social_fragment.xml" afterPath="$PROJECT_DIR$/res/layout/social_fragment.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/social_fragment_container.xml" afterPath="$PROJECT_DIR$/res/layout/social_fragment_container.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/social_fragment_list.xml" afterPath="$PROJECT_DIR$/res/layout/social_fragment_list.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/social_fragment_list_row_child.xml" afterPath="$PROJECT_DIR$/res/layout/social_fragment_list_row_child.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/social_fragment_list_row_parent.xml" afterPath="$PROJECT_DIR$/res/layout/social_fragment_list_row_parent.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/social_fragment_main.xml" afterPath="$PROJECT_DIR$/res/layout/social_fragment_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/social_fragment_signin.xml" afterPath="$PROJECT_DIR$/res/layout/social_fragment_signin.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/social_fragment_signup.xml" afterPath="$PROJECT_DIR$/res/layout/social_fragment_signup.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/social_topic.xml" afterPath="$PROJECT_DIR$/res/drawable/social_topic.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/spinner_list.xml" afterPath="$PROJECT_DIR$/res/layout/spinner_list.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/menu/status.xml" afterPath="$PROJECT_DIR$/res/menu/status.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/status_layout.xml" afterPath="$PROJECT_DIR$/res/layout/status_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values-zh/strings.xml" afterPath="$PROJECT_DIR$/res/values-zh/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values-v11/styles.xml" afterPath="$PROJECT_DIR$/res/values-v11/styles.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values-v14/styles.xml" afterPath="$PROJECT_DIR$/res/values-v14/styles.xml" />
+    </list>
+    <ignored path="PersonalAnxietyTrackerApps.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="DebuggerManager">
+    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <breakpoint_rules />
+    <ui_properties />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="PersonalAnxietyTrackerApps" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="186" column="0" selection-start="7286" selection-end="7286" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3855">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RecordGraphFragment.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/team5/fragment/RecordGraphFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="44" column="34" selection-start="1405" selection-end="1405" vertical-scroll-proportion="0.0" vertical-offset="179" max-vertical-offset="690">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GraphFragment.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/team5/fragment/GraphFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="224" column="8" selection-start="9112" selection-end="9112" vertical-scroll-proportion="0.0" vertical-offset="2639" max-vertical-offset="4380">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserAccount.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/team5/user/UserAccount.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="267" column="26" selection-start="9566" selection-end="9566" vertical-scroll-proportion="0.0" vertical-offset="3465" max-vertical-offset="9870">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserRecord.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/team5/user/UserRecord.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="33" column="13" selection-start="603" selection-end="864" vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="1335">
+              <folding>
+                <element signature="e#1082#1083#0" expanded="true" />
+                <element signature="e#1101#1102#0" expanded="true" />
+                <element signature="e#1131#1132#0" expanded="true" />
+                <element signature="e#1152#1153#0" expanded="true" />
+                <element signature="e#1196#1197#0" expanded="true" />
+                <element signature="e#1232#1233#0" expanded="true" />
+                <element signature="e#1283#1284#0" expanded="true" />
+                <element signature="e#1327#1328#0" expanded="true" />
+                <element signature="e#1365#1366#0" expanded="true" />
+                <element signature="e#1390#1391#0" expanded="true" />
+                <element signature="e#1422#1423#0" expanded="true" />
+                <element signature="e#1444#1445#0" expanded="true" />
+                <element signature="e#1482#1483#0" expanded="true" />
+                <element signature="e#1515#1516#0" expanded="true" />
+                <element signature="e#1542#1543#0" expanded="true" />
+                <element signature="e#1570#1571#0" expanded="true" />
+                <element signature="e#1605#1606#0" expanded="true" />
+                <element signature="e#1636#1637#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RecordGraphActivity.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/team5/pat/RecordGraphActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="43" column="37" selection-start="1344" selection-end="1344" vertical-scroll-proportion="0.79452056" vertical-offset="44" max-vertical-offset="990">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/src/com/team5/fragment/RecordGraphFragment.java" />
+        <option value="$PROJECT_DIR$/src/com/team5/user/UserRecord.java" />
+        <option value="$PROJECT_DIR$/src/com/team5/pat/RecordGraphActivity.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PersonalAnxietyTrackerApps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PersonalAnxietyTrackerApps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PersonalAnxietyTrackerApps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PersonalAnxietyTrackerApps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PersonalAnxietyTrackerApps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="team5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PersonalAnxietyTrackerApps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PersonalAnxietyTrackerApps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="team5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UserAccount.java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PersonalAnxietyTrackerApps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PersonalAnxietyTrackerApps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="team5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PersonalAnxietyTrackerApps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PersonalAnxietyTrackerApps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="team5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="recentsLimit" value="5" />
+    <property name="FullScreen" value="true" />
+    <property name="restartRequiresConfirmation" value="true" />
+    <property name="ChangesBrowser.SHOW_FLATTEN" value="false" />
+  </component>
+  <component name="RunManager" selected="Android Application.PersonalAnxietyTrackerApps">
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="false" name="PersonalAnxietyTrackerApps" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="PersonalAnxietyTrackerApps" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="USB_DEVICE" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <RunnerSettings RunnerId="AndroidDebugRunner" />
+      <ConfigurationWrapper RunnerId="AndroidDebugRunner" />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Android Application.PersonalAnxietyTrackerApps" />
+    </list>
+    <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+    </configuration>
+    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
+      <Host>localhost</Host>
+      <Port>5050</Port>
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="sslv3">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2aebe5eb-261a-4d8b-bcf0-60131885ff85" name="Default" comment="" />
+      <created>1395332875769</created>
+      <updated>1395332875769</updated>
+    </task>
+    <task id="LOCAL-00001" summary="graphs and user account modified">
+      <created>1395333936794</created>
+      <updated>1395333936794</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329602" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.329602" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28969958" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329602" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USERS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+    <MESSAGE value="graphs and user account modified" />
+    <option name="LAST_COMMIT_MESSAGE" value="graphs and user account modified" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="186" column="0" selection-start="7286" selection-end="7286" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3855">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/team5/fragment/RecordGraphFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="34" selection-start="1405" selection-end="1405" vertical-scroll-proportion="0.0" vertical-offset="179" max-vertical-offset="690">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/team5/fragment/GraphFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="224" column="8" selection-start="9112" selection-end="9112" vertical-scroll-proportion="0.0" vertical-offset="2639" max-vertical-offset="4380">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/team5/user/UserAccount.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="267" column="26" selection-start="9566" selection-end="9566" vertical-scroll-proportion="0.0" vertical-offset="3465" max-vertical-offset="9870">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/team5/user/UserRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="13" selection-start="603" selection-end="864" vertical-scroll-proportion="0.0" vertical-offset="585" max-vertical-offset="1335">
+          <folding>
+            <element signature="e#1082#1083#0" expanded="true" />
+            <element signature="e#1101#1102#0" expanded="true" />
+            <element signature="e#1131#1132#0" expanded="true" />
+            <element signature="e#1152#1153#0" expanded="true" />
+            <element signature="e#1196#1197#0" expanded="true" />
+            <element signature="e#1232#1233#0" expanded="true" />
+            <element signature="e#1283#1284#0" expanded="true" />
+            <element signature="e#1327#1328#0" expanded="true" />
+            <element signature="e#1365#1366#0" expanded="true" />
+            <element signature="e#1390#1391#0" expanded="true" />
+            <element signature="e#1422#1423#0" expanded="true" />
+            <element signature="e#1444#1445#0" expanded="true" />
+            <element signature="e#1482#1483#0" expanded="true" />
+            <element signature="e#1515#1516#0" expanded="true" />
+            <element signature="e#1542#1543#0" expanded="true" />
+            <element signature="e#1570#1571#0" expanded="true" />
+            <element signature="e#1605#1606#0" expanded="true" />
+            <element signature="e#1636#1637#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/team5/pat/RecordGraphActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="37" selection-start="1344" selection-end="1344" vertical-scroll-proportion="0.79452056" vertical-offset="44" max-vertical-offset="990">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
+

@@ -40,10 +40,10 @@ public class RecordGraphActivity extends Activity {
 		// For each record
 		for (int i = 0; i < points.size(); i++) {
 			// add to graph
-			mLineGraph.addPoint(myRedLine, i, points.get(i).getAnxiety(),
-					"Random string");
-			mLineGraph.addPoint(myBlueLine, i, points.get(i).getSeriousness(),
-					"Random string");
+//			mLineGraph.addPoint(myRedLine, i, points.get(i).getAnxiety(),
+//					"Random string");
+//			mLineGraph.addPoint(myBlueLine, i, points.get(i).getSeriousness(),
+//					"Random string");
 		}
 
 		// Make it visible
