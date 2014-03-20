@@ -202,8 +202,8 @@
     <string name="social_fragment_list_addPost">Add Reply</string>
     
     <string-array name="social_list_items">
-        <item>Oldest</item>
         <item>Newest</item>
+        <item>Oldest</item>
         <item>Top Rated</item>
     </string-array>
 

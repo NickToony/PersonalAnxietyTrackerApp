@@ -115,8 +115,9 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 			if (dropDownAdapter == null)	{
 				dropDownAdapter = ArrayAdapter.createFromResource(getActivity(),
 					R.array.social_list_items, R.layout.social_fragment_list_dropdown);
-				actionBar.setListNavigationCallbacks(dropDownAdapter, new DropDownListener());
 			}
+			
+			actionBar.setListNavigationCallbacks(dropDownAdapter, new DropDownListener());
 		}
 		
 		return myView;
@@ -186,24 +187,20 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 	}
 	
 	class DropDownListener implements OnNavigationListener {
-		// The same word as SpinerAdapter
-		String[] titles = getResources().getStringArray(
-				R.array.spinner_list_items);
-
 		@Override
 		public boolean onNavigationItemSelected(int position, long id) {
 			switch (position) {
 			case 0:
-				fetchPosts();
 				postOrder = 0;
+				fetchPosts();
 				return true;
 			case 1:
-				fetchPosts();
 				postOrder = 1;
+				fetchPosts();
 				return true;
 			case 2:
-				fetchPosts();
 				postOrder = 2;
+				fetchPosts();
 				return true;
 			default:
 				return false;
