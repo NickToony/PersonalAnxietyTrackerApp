@@ -113,14 +113,13 @@ public final class R {
         public static final int ic_tracker=0x7f020024;
         public static final int ic_week=0x7f020025;
         public static final int ic_year=0x7f020026;
-        public static final int lets_see=0x7f020027;
-        public static final int logo=0x7f020028;
-        public static final int rounded_edges=0x7f020029;
-        public static final int seekbarprogress=0x7f02002a;
-        public static final int social_topic=0x7f02002b;
-        public static final int wallpaper_01=0x7f02002c;
-        public static final int wallpaper_02=0x7f02002d;
-        public static final int wallpaper_03=0x7f02002e;
+        public static final int logo=0x7f020027;
+        public static final int rounded_edges=0x7f020028;
+        public static final int seekbarprogress=0x7f020029;
+        public static final int social_topic=0x7f02002a;
+        public static final int wallpaper_01=0x7f02002b;
+        public static final int wallpaper_02=0x7f02002c;
+        public static final int wallpaper_03=0x7f02002d;
     }
     public static final class id {
         public static final int AnxietyCheckBox=0x7f0d003a;
