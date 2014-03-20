@@ -5,197 +5,298 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
+
+import com.team5.pat.R;
+import com.team5.user.UserRecord;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class LineGraphView extends View {
-	private List<Line> myData = new ArrayList<Line>();
-	// stores the cordinates for each line
-	private List<Point> pointCordinates = new ArrayList<Point>();
-	private Paint myPaint = new Paint();
-	private float maxX = 0;
-	private float maxY = 0;
-	private final int gridSpace = 70;
+    private List<Line> myData = new ArrayList<Line>();
+    // stores the co-ordinates for each line
+    private List<UserRecord> pointCordinates = new ArrayList<UserRecord>();
+    private Paint myPaint = new Paint();
+    private float maxX = 0;
+    private float maxY = 0;
+    private float xScale, yScale;
+    private final int rating = 10;
+    private int maxXLines = 0;
+    private int canvasPadding = 50;
+    private int spinnerPosition = 0;
+    private String[] titles;
 
-	// touch tolerance from the user touch on screen and point on graph
-	final int touchTolerance = 60;
-	// Canvas
-	private Canvas lineGraphCanvas;
+    // touch tolerance from the user touch on screen and point on graph
+    final int touchTolerance = 60;
+    // Canvas
+    private Canvas lineGraphCanvas;
 
-	// Required
-	public LineGraphView(Context context) {
-		super(context);
-	}
 
-	// Required
-	public LineGraphView(Context context, AttributeSet attributes) {
-		super(context, attributes);
-	}
+    public void setGridSpace(int xlines, int position) {
+        maxXLines = xlines;
+        spinnerPosition = position;
+        //set the x axis labels to weeks e.g. mon, tue, wed
+        if (position == 0) {
 
-	// Required
-	public LineGraphView(Context context, AttributeSet attributes, int defStyle) {
-		super(context, attributes, defStyle);
-	}
+            titles = getResources().getStringArray(
+                    R.array.x_axis_grid_week);
+        }
+        //set the x axis to month e.g. week 1, week2 etc
+        if (position == 1) {
+            titles = getResources().getStringArray(
+                    R.array.x_axis_grid_month);
+        }
+        if (position == 2) {
+            titles = getResources().getStringArray(
+                    R.array.x_axis_grid_year);
+        }
 
-	// Creates a line and returns it
-	public int addLine(int colour) {
-		// Create the line
-		Line newLine = new Line(colour);
+    }
 
-		// Add the line to the arraylist, so we know to render it
-		myData.add(newLine);
+    public int getTitlesLength() {
+        return titles.length;
+    }
 
-		// Return the new line
-		return myData.size() - 1;
-	}
+    public float getxScale() {
+        return xScale;
+    }
 
-	public void clearIndex(int index) {
-		myData.remove(index);
-	}
+    public float getyScale() {
+        return yScale;
+    }
 
-	public List<Point> getLineGraphPointCordinates() {
-		return pointCordinates;
-	}
+    public List<Line> getMyData() {
+        return myData;
+    }
 
-	public int getTouchTolerance() {
-		return touchTolerance;
-	}
+    // Required
+    public LineGraphView(Context context) {
 
-	public void addPoint(int line, float x, float y, String thought) {
-		Line theLine = myData.get(line);
+        super(context);
 
-		// Add the point to the line
-		theLine.addPoint(x, y, thought);
-		// Calculate if its a new maxX
-		if (x > maxX)
-			maxX = x;
-		// and a new max Y?
-		if (y > maxY)
-			maxY = y;
-	}
 
-	@Override
-	public void onDraw(Canvas canvas) {
+    }
 
-		// Collect values
-		int totalLines = myData.size();
-		float x = 0;
-		// dunno why you set it to -1 but i commented it out incase
-		// something gets broke you will easily find where it went wrong
-		// but everything seems to work fine
-		// float y = -1;
-		float y = 0;
+    // Required
+    public LineGraphView(Context context, AttributeSet attributes) {
+        super(context, attributes);
 
-		float width = getWidth();
-		float height = getHeight();
-		float xScale = width / maxX;
-		float yScale = height / maxY;
-		final int circleRadius = 10;
+    }
 
-		// set axis colour
-		myPaint.setColor(Color.BLACK);
-		myPaint.setAntiAlias(true);
-		myPaint.setStrokeWidth(1);
+    // Required
+    public LineGraphView(Context context, AttributeSet attributes, int defStyle) {
+        super(context, attributes, defStyle);
 
-		// // Draw y axis
-		// canvas.drawLine(x, y, x, y + height, myPaint);
-		// //draw x axis
-		// canvas.drawLine(x, y + height, x + width, y + height, myPaint);
-		int mydistance = (int) Math.sqrt((x - x + width) * (x - x + width)
-				+ (y + height - y + height) * (y + height - y + height));
-		for (int i = 0; i < mydistance; i = i + gridSpace) {
-			// x axis horizontal grid lines
-			canvas.drawLine(x + i, y + height, x + i, y, myPaint);
-			// y axis horizontal grid lines
-			canvas.drawLine(x, y + i, x + width, y + i, myPaint);
+    }
 
-			// Grid scale
-			// canvas.drawText(String.format("%d",(int)x + i),x + i,y +
-			// height,myPaint);
-			// canvas.drawText(String.format("%d",(int)y+i),x, y + i,myPaint);
+    // Creates a line and returns it
+    public int addLine(int colour) {
+        // Create the line
+        Line newLine = new Line(colour);
 
-		}
-		myPaint.setStrokeWidth(6);
+        // Add the line to the arraylist, so we know to render it
+        myData.add(newLine);
 
-		// For each line
-		for (int lineNum = 0; lineNum < totalLines; lineNum++) {
-			// Get Line
-			Line line = myData.get(lineNum);
-			// Change colour
-			myPaint.setColor(line.getColour());
-			
-			// Calculate first points
-			float lastX = x + (line.getX(0) * xScale);
-			float lastY = y + height - (line.getY(0) * yScale);
-			myPaint.setTextSize(20);
+        // Return the new line
+        return myData.size() - 1;
+    }
 
-			String thought="";
-			// For each point on the line
-			int size = line.getTotal();
-			for (int i = 0; i < size; i++) {
-				thought= line.getThought(i);
-				
-				// Calculate next position
-				float nextX = x + (line.getX(i) * xScale);
-				float nextY = y + height - (line.getY(i) * yScale);
+    public void clearIndex(int index) {
+        myData.remove(index);
+    }
 
-				// Draw line from last to next
-				canvas.drawLine(lastX, lastY, nextX, nextY, myPaint);
-				// Draws circle from the lastX and lastY with radius of 15
-				canvas.drawCircle(lastX, lastY, circleRadius, myPaint);
-				// display the values
-				myPaint.setTextSize(20);
-				canvas.drawText(String.format("%d", (int) line.getY(i)),
-						lastX + 20, lastY - 30, myPaint);
+    public void clearRecords() {
+        pointCordinates.clear();
+        myData.clear();
+    }
 
-				// add the co ordinate to the array
-				pointCordinates.add(new Point(lastX, lastY, thought));
+    public List<UserRecord> getLineGraphPointCordinates() {
+        return pointCordinates;
+    }
 
-				// the next point is now the last
-				lastX = nextX;
-				lastY = nextY;
-			}
+    public int getTouchTolerance() {
+        return touchTolerance;
+    }
 
-			// Draw final points
-			// Draws circle from the lastX and lastY with radius of 15
-			canvas.drawCircle(lastX, lastY, circleRadius, myPaint);
-			myPaint.setTextSize(20);
-			lineGraphCanvas = canvas;
-		}
+    public void addPoint(int line, float x, float y, String thought, long date) {
+        Line theLine = myData.get(line);
 
-	}
 
-	@Override
-	public boolean onTouchEvent(MotionEvent event) {
-		int x = (int) event.getX();
-		int y = (int) event.getY();
-		// Create point object to store coordinates
-		Point userTouch = new Point();
-		switch (event.getAction()) {
-		// when the user presses down
-		case MotionEvent.ACTION_DOWN: {// stores the co-ordinates that they
-										// press down on
-			userTouch.setX((float) event.getX());
-			userTouch.setY((float) event.getY());
+        // Add the point to the line
+        theLine.addPoint(x, y, thought, date);
+        // Calculate if its a new maxX
+        if (x > maxX)
+            maxX = x;
+        // and a new max Y?
+        if (y > maxY)
+            maxY = y;
+    }
 
-			for (Point p : pointCordinates) {
-				int distance = userTouch.getTolerance(p);
-				if (distance < touchTolerance) {
+    @Override
+    public void onDraw(Canvas canvas) {
+        int totalLines = myData.size();
+        float x = 0;
+        float y = 0;
 
-//					Toast.makeText(getContext(),
-//							String.format("%d , %d", x, y), Toast.LENGTH_SHORT)
-//							.show();
 
-				}
-			}
-		}
+        float width = canvas.getWidth() - canvasPadding;
+        //create space at the bottom for scales
+        float height = getHeight() - canvasPadding;
+        xScale = ((width) / maxXLines);
+        yScale = height / rating;
+        final int circleRadius = 5;
+        myPaint.setColor(Color.rgb(223, 240, 255));
+        int scale = 1;
 
-		}
+        //use canvasPadding to create space at the left for scales
+        //use gridspace to make sure the space between grids is drawn evenly
+        canvas.drawRect(canvasPadding, 0, width + 6, height, myPaint);
+        myPaint.setStrokeWidth(6);
+        myPaint.setColor(Color.BLACK);
+        canvas.drawLine(0, height, width, height, myPaint);
+        //vertical
+        canvas.drawLine(canvasPadding, y, canvasPadding, height + canvasPadding, myPaint);
 
-		return true;
-	}
+
+        // set axis colour
+        myPaint.setColor(Color.MAGENTA);
+        myPaint.setAntiAlias(true);
+        myPaint.setStrokeWidth(1);
+
+
+        //draw the vertical grid lines
+        myPaint.setColor(Color.BLACK);
+        myPaint.setTextSize(30);
+        myPaint.setStrokeWidth(6);
+        Line line = null;
+        // For each line
+        for (int lineNum = 0; lineNum < totalLines; lineNum++) {
+            // Get Line
+            line = myData.get(lineNum);
+            // Change colour
+            myPaint.setColor(line.getColour());
+            // For each point on the line
+            int size = line.getTotal();
+            // Calculate first points
+            float start = whereToStart(line,0);
+            float startPoint = xScale*start;
+
+            float lastX = (x + (line.getX(0) * xScale)+canvasPadding )+startPoint;
+            float lastY = y + height - (line.getY(0) * yScale);
+
+
+            String thought = "";
+            myPaint.setStrokeWidth(2);
+            myPaint.setTextSize(20);
+
+            for (int i = 1; i < size; i++) {
+
+
+
+                thought = line.getThought(i);
+
+                // Calculate next position
+                float nextX = x + ((line.getX(i) * xScale)+canvasPadding)+startPoint;
+                float nextY = y + height - (line.getY(i) * yScale);
+                myPaint.setTextSize(25);
+
+                canvas.drawText(String.format("%d", (int) line.getY(i)),
+                        nextX + 20, nextY + 30, myPaint);
+
+                // Draw line from last to next
+
+                canvas.drawLine(lastX, lastY, nextX, nextY, myPaint);
+                // Draws circle from the lastX and lastY with radius of 15
+                canvas.drawCircle(lastX, lastY, circleRadius, myPaint);
+
+                //pointCordinates.add(new Point(lastX, lastY, thought,(int)line.getX(i),(int)line.getY(i)));
+                //pointCordinates.add(new UserRecord(lastX,lastY,thought,(int)line.getX(i),(int)line.getY(i)));
+                // the next point is now the last
+                lastX = nextX;
+                lastY = nextY;
+            }
+
+            // Draw final points
+            // Draws circle from the lastX and lastY with radius of 15
+            canvas.drawCircle(lastX, lastY, circleRadius, myPaint);
+        }
+
+
+        int tempWidth = (int) width;
+        myPaint.setStrokeWidth(1);
+
+        myPaint.setColor(Color.BLACK);
+        myPaint.setTextSize(30);
+        int count = 0;
+        int i;
+        for (i = canvasPadding; i <= tempWidth; i = (int) (i + xScale)) {
+
+
+            canvas.drawLine(x + i, y, x + i, y + height + (canvasPadding / 2), myPaint);
+            if (count< titles.length) {
+                canvas.drawText(titles[count], x + i, (y + height) + (canvasPadding), myPaint);
+                count++;
+            }
+
+
+        }
+
+        scale = 10;
+        int tempHeight = (int) height;
+        myPaint.setStrokeWidth(1);
+
+        // y axis horizontal lines grid and y axis labelling
+        myPaint.setColor(Color.BLACK);
+        for (i = 0; i <= tempHeight; i = (int) (i + yScale)) {
+
+            canvas.drawLine(x + (canvasPadding / 2), y + i, x + canvas.getWidth() - canvasPadding, y + i, myPaint);
+            canvas.drawText(String.format("%d", (int) scale), x + 8, y + i + 10, myPaint);
+            scale--;
+
+
+        }
+    }
+
+    private float whereToStart(Line line,int index) {
+        int dayOfWeek = 0;
+        int weekOfMonth=0;
+        int monthOfYear=0;
+        if (spinnerPosition == 0) {
+            long time = line.getTimeStamp(index);
+            Calendar cal = Calendar.getInstance();
+            cal.setFirstDayOfWeek(Calendar.SUNDAY);
+            cal.setTimeInMillis(time);
+            Date d = new Date();
+            d.setTime(cal.getTime().getTime());
+            dayOfWeek = cal.get(Calendar.DAY_OF_WEEK)-Calendar.SUNDAY;
+            return  dayOfWeek-1;
+        }
+        if(spinnerPosition==1){
+            long time = line.getTimeStamp(index);
+            Calendar cal = Calendar.getInstance();
+            cal.setTimeInMillis(time);
+            Date d = new Date();
+            d.setTime(cal.getTime().getTime());
+            weekOfMonth = cal.get(Calendar.WEEK_OF_MONTH);
+            return weekOfMonth;
+
+        }
+        if(spinnerPosition==2){
+            long time = line.getTimeStamp(index);
+            Calendar cal = Calendar.getInstance();
+            cal.setTimeInMillis(time);
+            Date d = new Date();
+            d.setTime(cal.getTime().getTime());
+            monthOfYear = cal.get(Calendar.MONTH);
+            return monthOfYear;
+        }
+        return 0;
+    }
+
+
 
 }
