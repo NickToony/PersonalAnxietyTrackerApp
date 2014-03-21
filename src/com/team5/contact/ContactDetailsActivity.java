@@ -87,7 +87,8 @@ public class ContactDetailsActivity extends Activity implements TabListener,
 }
 
 class ContactDetailsAdapter extends FragmentStatePagerAdapter {
-
+	private final int NUM_OF_TABS = 2;
+	
 	public ContactDetailsAdapter(FragmentManager fm) {
 		super(fm);
 	}
@@ -102,16 +103,13 @@ class ContactDetailsAdapter extends FragmentStatePagerAdapter {
 		case 1:
 			fragment = new ContactMapFragment();
 			break;
-		case 2:
-			fragment = new ContactFavouriteFragment();
-			break;
 		}
 		return fragment;
 	}
 
 	@Override
 	public int getCount() {
-		return 3;
+		return NUM_OF_TABS;
 	}
 
 }

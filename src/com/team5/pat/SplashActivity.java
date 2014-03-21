@@ -14,21 +14,23 @@ import android.view.View.OnClickListener;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class LockScreenActivity extends Activity implements OnClickListener {
+/** Splash screen shown before entering the application **/
+public class SplashActivity extends Activity implements OnClickListener {
 	// Normal constants
 	private final int NUM_BUTTONS = 11;
 	private final int PASS_LENTH = 4;
-	private final long DURATION = 1500; // 1.5 second
+	private final long SPLASH_DURATION = 1500; // 1.5 second
 	private final Handler mHandler = new Handler();
 	private final String FAIL_TEXT = "Incorrect key. Try again.";
 	private final int[] KEYPAD_BUTTON = { R.id.button1, R.id.button2,
 			R.id.button3, R.id.button4, R.id.button5, R.id.button6,
 			R.id.button7, R.id.button8, R.id.button9, R.id.button0,
 			R.id.buttonDelete };
-	private final Runnable mRunnable = new Runnable() {
+	private final Runnable runnableWithPassword = new Runnable() {
 		@Override
 		public void run() {
 			showTextAndButtons();
@@ -49,6 +51,7 @@ public class LockScreenActivity extends Activity implements OnClickListener {
 	private TranslateAnimation animation;
 
 	// Views
+	private ProgressBar mProgressBar;
 	private ImageView mLogo;
 	private TextView mText;
 	private TextView mInformation;
@@ -57,18 +60,28 @@ public class LockScreenActivity extends Activity implements OnClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_lock_screen);
+		setContentView(R.layout.activity_splash);
 
 		initialiseComponentsAndSetUpAnimation();
 
 		if (preference.getBoolean("pref_key_lockscreen", true) == true) {
 			setUpKeyPadButtons();
 			mLogo.setAnimation(animation);
-			mHandler.postDelayed(mRunnable, DURATION);
+			mHandler.postDelayed(runnableWithPassword, SPLASH_DURATION);
 		} else {
-			Intent intent = new Intent(this, HomeActivity.class);
-			startActivity(intent);
-			finish();
+			mLogo.setVisibility(View.VISIBLE);
+			mProgressBar.setVisibility(View.VISIBLE);
+			Runnable runnable = new Runnable() {
+				public void run() {
+					Intent intent = new Intent(SplashActivity.this,
+							HomeActivity.class);
+					startActivity(intent);
+					finish();
+				}
+			};
+
+			mHandler.postDelayed(runnable, SPLASH_DURATION);
+
 		}
 	}
 
@@ -135,9 +148,10 @@ public class LockScreenActivity extends Activity implements OnClickListener {
 		getActionBar().hide();
 
 		animation = new TranslateAnimation(FROM_X, TO_X, FROM_Y, TO_Y);
-		animation.setDuration(DURATION);
+		animation.setDuration(SPLASH_DURATION);
 		animation.setFillAfter(true);
 
+		mProgressBar = (ProgressBar) findViewById(R.id.splashScreenProgressBar);
 		mLogo = (ImageView) findViewById(R.id.logo);
 		mText = (TextView) findViewById(R.id.keypadInput);
 		mInformation = (TextView) findViewById(R.id.keypadInformation);

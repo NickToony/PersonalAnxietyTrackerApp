@@ -1,6 +1,5 @@
 package com.team5.pat;
 
-import com.team5.contact.ContactFavouriteFragment;
 import com.team5.contact.ContactGroupFragment;
 import com.team5.contact.ContactMapFragment;
 
@@ -26,7 +25,6 @@ import android.widget.Toast;
 public class ContactActivity extends Activity implements TabListener,
 		OnPageChangeListener {
 	private ActionBar actionBar;
-
 	private ViewPager viewPager;
 
 	@Override
@@ -110,12 +108,9 @@ public class ContactActivity extends Activity implements TabListener,
 				.setTabListener(this);
 		ActionBar.Tab tabMap = actionBar.newTab().setText("Map")
 				.setTabListener(this);
-		ActionBar.Tab tabFavourite = actionBar.newTab().setText("Favourite")
-				.setTabListener(this);
 
 		actionBar.addTab(tabGroup, 0);
 		actionBar.addTab(tabMap, 1);
-		actionBar.addTab(tabFavourite, 2);
 	}
 
 	private void handleIntent(Intent intent) {
@@ -128,7 +123,8 @@ public class ContactActivity extends Activity implements TabListener,
 }
 
 class ContactAdapter extends FragmentStatePagerAdapter {
-
+	private final int NUM_OF_TABS = 2;
+	
 	public ContactAdapter(FragmentManager fm) {
 		super(fm);
 	}
@@ -143,16 +139,13 @@ class ContactAdapter extends FragmentStatePagerAdapter {
 		case 1:
 			fragment = new ContactMapFragment();
 			break;
-		case 2:
-			fragment = new ContactFavouriteFragment();
-			break;
 		}
 		return fragment;
 	}
 
 	@Override
 	public int getCount() {
-		return 3;
+		return NUM_OF_TABS;
 	}
 
 }

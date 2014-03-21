@@ -41,7 +41,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 	private ActionBarDrawerToggle myDrawerToggle;
 	private ActionBar actionBar;
 	private SharedPreferences preference;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -96,10 +96,6 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 			Toast.makeText(getApplicationContext(), "Feedback",
 					Toast.LENGTH_SHORT).show();
 			return true;
-		case R.id.action_contact:
-			intent = new Intent(this, ContactActivity.class);
-			startActivity(intent);
-			return true;
 		}
 		return super.onOptionsItemSelected(item);
 
@@ -109,8 +105,8 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 	public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
 		doNavigation((int) myDrawerList.getItemIdAtPosition(pos));
 	}
-	
-	private Fragment getCurrentFragment()	{
+
+	private Fragment getCurrentFragment() {
 		return getFragmentManager().findFragmentById(R.id.content_frame);
 	}
 
@@ -118,21 +114,23 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 	@Override
 	public void onBackPressed() {
 		// If social fragment
-		if (getCurrentFragment() instanceof SocialFragmentInterface)	{
+		if (getCurrentFragment() instanceof SocialFragmentInterface) {
 			// Perform the go back event
-			((Session) getApplication()).getSocialAccount().handleEvent(SocialAccount.EVENT_GO_BACK);
+			((Session) getApplication()).getSocialAccount().handleEvent(
+					SocialAccount.EVENT_GO_BACK);
 			return;
-		}	else if (getCurrentFragment() instanceof HomeFragment)	{
+		} else if (getCurrentFragment() instanceof HomeFragment) {
 			long currentPress = System.currentTimeMillis();
 			if (currentPress - previousPress > BACK_PRESS_DURATION) {
 				previousPress = currentPress;
 				Toast.makeText(getApplicationContext(), "Press to exit",
 						Toast.LENGTH_SHORT).show();
-			} // Exit this application when user presses back for the second time
+			} // Exit this application when user presses back for the second
+				// time
 			else {
 				doNavigation(NavListAdapter.navigationLogOff);
 			}
-		}	else	{
+		} else {
 			getFragmentManager().popBackStack();
 		}
 	}
@@ -153,29 +151,35 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 
 	public void changeFragment(Fragment fragment) {
 		myDrawerLayout.closeDrawer(myDrawerList);
-		
+
 		// If they're the same class
 		if (getCurrentFragment() != null)
-			if (getCurrentFragment().getClass().equals( fragment.getClass()))
+			if (getCurrentFragment().getClass().equals(fragment.getClass()))
 				if (!(getCurrentFragment() instanceof SocialFragmentInterface))
 					return;
 
 		// Replace the frame with another fragment
 		FragmentManager manager = getFragmentManager();
 		FragmentTransaction transaction = manager.beginTransaction();
-		//transaction.setCustomAnimations(R.anim.fragment_enter, R.anim.fragment_exit, R.anim.fragment_pop_enter, R.anim.fragment_pop_exit);
-		transaction.setTransition(android.support.v4.app.FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+		// transaction.setCustomAnimations(R.anim.fragment_enter,
+		// R.anim.fragment_exit, R.anim.fragment_pop_enter,
+		// R.anim.fragment_pop_exit);
+		transaction
+				.setTransition(android.support.v4.app.FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 		transaction.addToBackStack(null);
-		transaction.replace(R.id.content_frame, fragment).commitAllowingStateLoss();;
-		
+		transaction.replace(R.id.content_frame, fragment)
+				.commitAllowingStateLoss();
+		;
+
 		// Reset action bar
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setHomeButtonEnabled(true);
-		actionBar.removeAllTabs(); // get rid of all tabs - they're maintained across fragments!!
+		actionBar.removeAllTabs(); // get rid of all tabs - they're maintained
+									// across fragments!!
 	}
 
-	public void doNavigation(int theItem) {			
+	public void doNavigation(int theItem) {
 		switch (theItem) {
 		case NavListAdapter.navigationHome:
 			changeFragment(new HomeFragment());
@@ -192,7 +196,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		case NavListAdapter.navigationDiscussion:
 			((Session) getApplication()).getSocialAccount().navigateTo();
 			// changeFragment(new SocialAccount());
-			//startActivity(new Intent(this, SocialActivity.class));
+			// startActivity(new Intent(this, SocialActivity.class));
 			break;
 		case NavListAdapter.navigationContact:
 			startActivity(new Intent(this, ContactActivity.class));
@@ -255,6 +259,6 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 	}
 
 	public void setTitle(String title) {
-		actionBar.setTitle("PAT - " + title);
+		actionBar.setTitle(title);
 	}
 }

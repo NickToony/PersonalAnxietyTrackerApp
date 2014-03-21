@@ -94,7 +94,7 @@ public class SubMenuFragment extends ListFragment {
 			break;
 
 		case 9:
-			intent = new Intent(getActivity(), com.team5.pat.LockScreenActivity.class);
+			intent = new Intent(getActivity(), com.team5.pat.SplashActivity.class);
 			startActivity(intent);
 			break;
 		}
