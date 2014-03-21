@@ -327,9 +327,6 @@ public final class R {
         public static final int app_name=0x7f080000;
         public static final int below_menu=0x7f080005;
         public static final int blue_line=0x7f080004;
-        /**  Breathing Exercise 
-         */
-        public static final int breathEx=0x7f08003c;
         public static final int brightness=0x7f08002d;
         public static final int cycles=0x7f080045;
         public static final int cyclesLabel=0x7f080046;
@@ -347,6 +344,9 @@ public final class R {
         public static final int exerciseDefaultDuration=0x7f080042;
         public static final int hello_world=0x7f080068;
         public static final int image_content_description=0x7f080009;
+        /**  Breathing Exercise 
+         */
+        public static final int instructions=0x7f08003c;
         public static final int keyboard=0x7f080030;
         public static final int kiss_me=0x7f080031;
         public static final int language=0x7f080007;

@@ -121,7 +121,7 @@
     <string name="status_comment_hint">Comment</string>
 
     <!-- Breathing Exercise -->
-    <string name="breathEx">Breathing Exercise</string>
+    <string name="instructions">Inhale when the circle expands\nExhale when the circle shrinks</string>
     <string name="seconds">Seconds:</string>
     <string name="secondsLabel">Seconds</string>
     <string name="start">Start</string>

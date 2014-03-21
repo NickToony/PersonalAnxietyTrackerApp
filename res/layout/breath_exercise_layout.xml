@@ -10,11 +10,16 @@
         android:id="@+id/headingText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/commenttextfield1"
         android:gravity="center"
-        android:text="@string/breathEx"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="@dimen/HeadingSizeBreathExerc" />
+        android:padding="10dp"
+        android:text="@string/instructions"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/seekBarHeadingColor"
+        android:textSize="15sp" />
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -181,7 +186,7 @@
                 android:inputType="number"
                 android:maxLength="3"
                 android:paddingRight="7dp"
-                android:text="@string/exerciseDefaultDuration"
+                android:text="@string/exerciseDefaultCycles"
                 android:textSize="15sp"
                 android:visibility="gone" >
 
