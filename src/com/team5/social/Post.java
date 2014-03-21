@@ -13,7 +13,8 @@ class Post implements Parcelable {
 	public String date;
 	public String content;
 	public int replies;
-	public double rating;
+	public float rating;
+	public float myRating;
 	
 	public int id;
 	public int ownerId;
@@ -33,12 +34,13 @@ class Post implements Parcelable {
 		this.date = parcIn.readString();
 		this.content = parcIn.readString();
 		this.replies = parcIn.readInt();
-		this.rating = parcIn.readDouble();
+		this.rating = parcIn.readFloat();
+		this.myRating = parcIn.readFloat();
 		this.id = parcIn.readInt();
 		this.ownerId = parcIn.readInt();
 	}
 	
-	public Post(int id, String name, String date, String content, int replies, double rating, int ownerId)	{
+	public Post(int id, String name, String date, String content, int replies, float rating, int ownerId, float postMyRating)	{
 		this.id = id;
 		this.name = name;
 		this.date = date;
@@ -46,6 +48,7 @@ class Post implements Parcelable {
 		this.replies = replies;
 		this.rating = rating;
 		this.ownerId = ownerId;
+		this.myRating = postMyRating;
 	}
 
 	@Override
@@ -59,7 +62,8 @@ class Post implements Parcelable {
 		parcOut.writeString(date);
 		parcOut.writeString(content);
 		parcOut.writeInt(replies);
-		parcOut.writeDouble(rating);
+		parcOut.writeFloat(rating);
+		parcOut.writeFloat(myRating);
 		parcOut.writeInt(id);
 		parcOut.writeInt(ownerId);
 	}

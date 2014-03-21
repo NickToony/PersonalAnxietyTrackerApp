@@ -70,7 +70,47 @@
 	        android:text="Rating"
 	        android:layout_weight="0.5"
 	        android:textStyle="bold"
+	        android:visibility="gone"
 	    />
+	    
+	   <RelativeLayout
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content" >
+	    
+		    <RatingBar 
+		      android:id="@+id/social_fragment_list_rowStarRatingBelow"
+		      android:layout_height="wrap_content"
+		      android:layout_width="wrap_content"
+		      android:numStars="5"
+		      android:rating="0"
+		      android:isIndicator="true"
+		      style="@style/postStarRating"   
+		      android:layout_alignParentTop="true" 
+			/> 
+			
+		    <RatingBar 
+		      android:id="@+id/social_fragment_list_rowStarRatingBlue"
+		      android:layout_height="wrap_content"
+		      android:layout_width="wrap_content"
+		      android:numStars="5"
+		      android:rating="0"
+		      android:isIndicator="false"
+		      style="@style/postStarRatingBlue" 
+		      android:layout_alignParentTop="true" 
+			/>
+		    
+		    <RatingBar 
+		      android:id="@+id/social_fragment_list_rowStarRatingAbove"
+		      android:layout_height="wrap_content"
+		      android:layout_width="wrap_content"
+		      android:numStars="5"
+		      android:rating="0"
+		      android:isIndicator="true"
+		      style="@style/postStarRating"   
+		      android:layout_alignParentTop="true" 
+		      
+			/> 
+		 </RelativeLayout>
 	</LinearLayout>
 
 </RelativeLayout>
