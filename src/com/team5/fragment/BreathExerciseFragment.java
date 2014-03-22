@@ -286,7 +286,12 @@ public class BreathExerciseFragment extends Fragment implements OnClickListener
 						if (speedSetSeekBar.getProgress() < SEEKBAR_CURRENT_PROGRESS)
 						{
 
-							
+							// If animation started - stop it
+							if (startToggled)
+							{
+								animationJustStarted=true;
+								stopAnimation();
+							}
 
 							// Calculate new durations for increased speed
 							EXPAND_DURATION = EXPAND_DURATION_TIMES[speedSetSeekBar
@@ -300,7 +305,13 @@ public class BreathExerciseFragment extends Fragment implements OnClickListener
 						} else if (speedSetSeekBar.getProgress() > SEEKBAR_CURRENT_PROGRESS)
 						{
 
-						
+							// If animation started - stop it
+							if (startToggled)
+							{
+
+								animationJustStarted=true;
+								stopAnimation();
+							}
 
 							// Calculate new durations for increased speed
 							EXPAND_DURATION = EXPAND_DURATION_TIMES[speedSetSeekBar
@@ -321,12 +332,6 @@ public class BreathExerciseFragment extends Fragment implements OnClickListener
 					public void onStartTrackingTouch(SeekBar seekBar)
 					{
 						// TODO Auto-generated method stub
-						// If animation started - stop it
-						if (startToggled)
-						{
-							animationJustStarted=true;
-							stopAnimation();
-						}
 
 					}
 
