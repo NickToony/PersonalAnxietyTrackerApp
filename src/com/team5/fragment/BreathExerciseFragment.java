@@ -4,11 +4,11 @@ import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
 
 import android.app.Fragment;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -49,14 +49,17 @@ public class BreathExerciseFragment extends Fragment implements OnClickListener
 	private AnimationSet animSet;
 	private Animation expand;
 	private Animation shrink;
-	private double EXPAND_DURATION = 2000;
-	private double SHRINK_DURATION = 3000;
-	private double DURATION_RATE_OF_CHANGE = 1.5;
+	private long[] EXPAND_DURATION_TIMES = { 3000, 2000, 1500 };
+	private long[] SHRINK_DURATION_TIMES = { 4500, 3000, 2000 };
+	private long EXPAND_DURATION = EXPAND_DURATION_TIMES[1];
+	private long SHRINK_DURATION = SHRINK_DURATION_TIMES[1];
 	private int SEEKBAR_MAX_PROGRESS = 2;
 	private int SEEKBAR_CURRENT_PROGRESS = 1;
 	private boolean seekBarVisibility = false;
 	private boolean countDownTypeCycles = false;
-	private boolean animationEndBugBoolean = true;
+	private boolean animationListenerCalledOnce = true;
+	private boolean firstTimerTick = true;
+	private boolean animationJustStarted = false;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,6 +71,9 @@ public class BreathExerciseFragment extends Fragment implements OnClickListener
 		myActivity.setTitle("Breathing");
 
 		initialiseComponents();
+		// Disable screen orientation
+		getActivity().setRequestedOrientation(
+				ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		return myView;
 	}
@@ -90,37 +96,7 @@ public class BreathExerciseFragment extends Fragment implements OnClickListener
 
 		case R.id.countDownType:
 
-			if (countDownTypeCycles)
-			{
-				if (startToggled)
-				{
-					stopAnimation();
-				}
-				// Change layout to seconds
-				secondsEditTextView.setVisibility(View.VISIBLE);
-				secondsLeftText.setVisibility(View.VISIBLE);
-				cyclesInputEditText.setVisibility(View.GONE);
-				cyclesLeftText.setVisibility(View.GONE);
-				countDownType.setText(R.string.secondsLabel);
-				countDownMainView.setText("" + countDownSeconds);
-
-				countDownTypeCycles = !countDownTypeCycles;
-			} else
-			{
-				if (startToggled)
-				{
-					stopAnimation();
-				}
-				// Change layout to cycles
-				secondsEditTextView.setVisibility(View.GONE);
-				secondsLeftText.setVisibility(View.GONE);
-				cyclesInputEditText.setVisibility(View.VISIBLE);
-				cyclesLeftText.setVisibility(View.VISIBLE);
-				countDownType.setText(R.string.cyclesLabel);
-				countDownMainView.setText("" + countDownCycles);
-
-				countDownTypeCycles = !countDownTypeCycles;
-			}
+			switchLayout();
 
 			break;
 
@@ -196,6 +172,7 @@ public class BreathExerciseFragment extends Fragment implements OnClickListener
 				.toString());
 		countDownCycles = Integer.parseInt(cyclesInputEditText.getText()
 				.toString());
+		animationListenerCalledOnce = true;
 
 		if (!startToggled && countDownSeconds != 0 && !countDownTypeCycles)
 		{
@@ -211,9 +188,11 @@ public class BreathExerciseFragment extends Fragment implements OnClickListener
 
 	private void stopAnimation()
 	{
+
 		if (startToggled && !countDownTypeCycles)
 		{
 			startToggled = false;
+			firstTimerTick = true;
 			timer.cancel();
 			image.clearAnimation();
 		} else if (startToggled && countDownTypeCycles)
@@ -258,6 +237,41 @@ public class BreathExerciseFragment extends Fragment implements OnClickListener
 		shrink.setDuration((long) shrinkDur);
 	}
 
+	private void switchLayout()
+	{
+		if (countDownTypeCycles)
+		{
+			if (startToggled)
+			{
+				stopAnimation();
+			}
+			// Change layout to seconds
+			secondsEditTextView.setVisibility(View.VISIBLE);
+			secondsLeftText.setVisibility(View.VISIBLE);
+			cyclesInputEditText.setVisibility(View.GONE);
+			cyclesLeftText.setVisibility(View.GONE);
+			countDownType.setText(R.string.secondsLabel);
+			countDownMainView.setText("" + countDownSeconds);
+
+			countDownTypeCycles = !countDownTypeCycles;
+		} else
+		{
+			if (startToggled)
+			{
+				stopAnimation();
+			}
+			// Change layout to cycles
+			secondsEditTextView.setVisibility(View.GONE);
+			secondsLeftText.setVisibility(View.GONE);
+			cyclesInputEditText.setVisibility(View.VISIBLE);
+			cyclesLeftText.setVisibility(View.VISIBLE);
+			countDownType.setText(R.string.cyclesLabel);
+			countDownMainView.setText("" + countDownCycles);
+
+			countDownTypeCycles = !countDownTypeCycles;
+		}
+	}
+
 	private void setListeners()
 	{
 
@@ -275,38 +289,40 @@ public class BreathExerciseFragment extends Fragment implements OnClickListener
 							// If animation started - stop it
 							if (startToggled)
 							{
+								animationJustStarted=true;
 								stopAnimation();
 							}
 
 							// Calculate new durations for increased speed
-							EXPAND_DURATION = EXPAND_DURATION
-									* ((SEEKBAR_CURRENT_PROGRESS - speedSetSeekBar
-											.getProgress()) * DURATION_RATE_OF_CHANGE);
-							SHRINK_DURATION = SHRINK_DURATION
-									* ((SEEKBAR_CURRENT_PROGRESS - speedSetSeekBar
-											.getProgress()) * DURATION_RATE_OF_CHANGE);
-							Log.i("EXPAND DURATION "+ EXPAND_DURATION, "SHRINK DURATION "+ SHRINK_DURATION);
+							EXPAND_DURATION = EXPAND_DURATION_TIMES[speedSetSeekBar
+									.getProgress()];
+							SHRINK_DURATION = SHRINK_DURATION_TIMES[speedSetSeekBar
+									.getProgress()];
 							// Reset animation and start it
 							resetDurations(EXPAND_DURATION, SHRINK_DURATION);
 							startAnimation();
 
 						} else if (speedSetSeekBar.getProgress() > SEEKBAR_CURRENT_PROGRESS)
 						{
+
 							// If animation started - stop it
 							if (startToggled)
 							{
+
+								animationJustStarted=true;
 								stopAnimation();
 							}
-							
+
 							// Calculate new durations for increased speed
-							EXPAND_DURATION = EXPAND_DURATION
-									/ ((speedSetSeekBar.getProgress() - SEEKBAR_CURRENT_PROGRESS) * DURATION_RATE_OF_CHANGE);
-							SHRINK_DURATION = SHRINK_DURATION
-									/ ((speedSetSeekBar.getProgress() - SEEKBAR_CURRENT_PROGRESS) * DURATION_RATE_OF_CHANGE);
-							Log.i("EXPAND DURATION "+ EXPAND_DURATION, "SHRINK DURATION "+ SHRINK_DURATION);
+							EXPAND_DURATION = EXPAND_DURATION_TIMES[speedSetSeekBar
+									.getProgress()];
+							SHRINK_DURATION = SHRINK_DURATION_TIMES[speedSetSeekBar
+									.getProgress()];
+
 							// Reset animation and start it
 							resetDurations(EXPAND_DURATION, SHRINK_DURATION);
 							startAnimation();
+
 						}
 						SEEKBAR_CURRENT_PROGRESS = speedSetSeekBar
 								.getProgress();
@@ -345,27 +361,46 @@ public class BreathExerciseFragment extends Fragment implements OnClickListener
 			public void onAnimationEnd(Animation animation)
 			{
 
-				if (startToggled)
+				// first if statement fixes the bug(onAnimationEnd is called
+				// twice instead of once)
+				if (animationListenerCalledOnce)
 				{
-					image.startAnimation(animSet);
+					if (startToggled)
+					{
+						image.startAnimation(animSet);
 
-				}
-				if (animationEndBugBoolean)
-				{
+					}
+
 					if (startToggled && countDownTypeCycles
 							&& countDownCycles != 0)
 					{
-						countDownCycles--;
+						if(!animationJustStarted)
+						{
+							countDownCycles--;
+						}
+						else
+						{
+							animationJustStarted=false;
+						}
 						cyclesInputEditText.setText("" + countDownCycles);
 					}
 
+					if (countDownTypeCycles && countDownCycles == 0)
+					{
+						stopAnimation();
+					}
+					animationListenerCalledOnce = !animationListenerCalledOnce;
+				} else if (!animationListenerCalledOnce)
+				{
+					if (startToggled)
+					{
+						image.startAnimation(animSet);
+
+					}
+
+					animationListenerCalledOnce = !animationListenerCalledOnce;
 				}
 
-				if (countDownTypeCycles && countDownCycles == 0)
-				{
-					stopAnimation();
-				}
-				animationEndBugBoolean = !animationEndBugBoolean;
 			}
 		});
 
@@ -376,14 +411,13 @@ public class BreathExerciseFragment extends Fragment implements OnClickListener
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count)
 			{
-				
-				
+
 				if (secondsEditTextView.getText().length() == 0)
 				{
 					countDownSeconds = 0;
 					countDownMainView.setText("" + 0);
 					secondsEditTextView.setText("" + 0);
-					
+
 				} else
 				{
 					countDownSeconds = Integer.parseInt(secondsEditTextView
@@ -396,14 +430,12 @@ public class BreathExerciseFragment extends Fragment implements OnClickListener
 			public void beforeTextChanged(CharSequence s, int start, int count,
 					int after)
 			{
-				// TODO Auto-generated method stub
 
 			}
 
 			@Override
 			public void afterTextChanged(Editable s)
 			{
-				// TODO Auto-generated method stub
 
 			}
 		});
@@ -432,7 +464,6 @@ public class BreathExerciseFragment extends Fragment implements OnClickListener
 			public void beforeTextChanged(CharSequence s, int start, int count,
 					int after)
 			{
-				// TODO Auto-generated method stub
 
 			}
 
@@ -449,9 +480,14 @@ public class BreathExerciseFragment extends Fragment implements OnClickListener
 			@Override
 			public void onClick(View v)
 			{
-				int selectFocusPos = secondsEditTextView.getText().length();
-				secondsEditTextView
-						.setSelection(selectFocusPos, selectFocusPos);
+				// If animation started - stop it
+				if (startToggled)
+				{
+					stopAnimation();
+				}
+
+				secondsEditTextView.setSelection(secondsEditTextView.getText()
+						.length());
 
 			}
 		});
@@ -461,6 +497,12 @@ public class BreathExerciseFragment extends Fragment implements OnClickListener
 			@Override
 			public void onClick(View v)
 			{
+				// If animation started - stop it
+				if (startToggled)
+				{
+					stopAnimation();
+				}
+
 				cyclesInputEditText.setSelection(cyclesInputEditText.getText()
 						.length());
 
@@ -474,36 +516,44 @@ public class BreathExerciseFragment extends Fragment implements OnClickListener
 	{
 		long secondsTick = 1000;
 
-		timer = new CountDownTimer((remainingTime + 1) * secondsTick,
+		timer = new CountDownTimer((remainingTime + 2) * secondsTick,
 				secondsTick) {
 
 			public void onTick(long millisUntilFinished)
 			{
-
-				if (millisUntilFinished < 2001)
+				if (firstTimerTick)
 				{
-					// imitates the stop button click event, stops the timer and
-					// clears the animation
-					countDownSeconds--;
-					secondsEditTextView.setText("" + countDownSeconds);
-					countDownMainView.setText("" + countDownSeconds);
-
-					startToggled = false;
-					image.clearAnimation();
-					timer.cancel();
-				}
-
-				else
+					// do nothing change and boolean to false
+					firstTimerTick = !firstTimerTick;
+				} else if (!firstTimerTick)
 				{
-					// updates the seconds left field and the progress bar on
-					// each
-					// tick and
-					countDownSeconds--;
-					secondsEditTextView.setText("" + countDownSeconds);
-					countDownMainView.setText("" + countDownSeconds);
+					if (millisUntilFinished < 2001)
+					{
+						// imitates the stop button click event, stops the timer
+						// and
+						// clears the animation
+						countDownSeconds--;
+						secondsEditTextView.setText("" + countDownSeconds);
+						countDownMainView.setText("" + countDownSeconds);
 
+						startToggled = false;
+						image.clearAnimation();
+						firstTimerTick = true;
+						timer.cancel();
+					}
+
+					else
+					{
+						// updates the seconds left field
+						// on
+						// each
+						// tick
+						countDownSeconds--;
+						secondsEditTextView.setText("" + countDownSeconds);
+						countDownMainView.setText("" + countDownSeconds);
+
+					}
 				}
-
 			}
 
 			public void onFinish()

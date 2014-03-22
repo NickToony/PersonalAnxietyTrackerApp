@@ -17,9 +17,9 @@
         android:gravity="center"
         android:padding="10dp"
         android:text="@string/instructions"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/seekBarHeadingColor"
-        android:textSize="15sp" />
+        android:textSize="20sp" />
 
     <RelativeLayout
         android:layout_width="fill_parent"
