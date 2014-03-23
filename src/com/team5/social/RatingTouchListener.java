@@ -84,4 +84,9 @@ class RatingTouchListener implements OnTouchListener, NetworkInterface {
 		
 	}
 
+	public void resetMyRating() {
+		starRatingUser.setRating(0);
+		fixRating();
+	}
+
 };

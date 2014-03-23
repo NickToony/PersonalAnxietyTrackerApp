@@ -4,16 +4,16 @@
     android:layout_height="match_parent"
     android:background="@color/socialBackgroundColour"
     tools:context=".SocialAccount" >
-    
+
     <TextView
         android:id="@+id/social_fragment_list_errorMessage"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/social_error"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_height="wrap_content" />
-    
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/social_error" />
+
     <ListView
         android:id="@+id/social_fragment_list_listView"
         android:layout_width="match_parent"
@@ -21,23 +21,22 @@
         android:layout_below="@id/social_fragment_list_errorMessage"
         android:layout_margin="10dp"
         android:divider="@null"
-		android:dividerHeight="20dp" >
-        
+        android:dividerHeight="20dp" >
     </ListView>
-    
+
     <ProgressBar
         android:id="@+id/social_fragment_list_progress"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true" />
 
     <Button
         android:id="@+id/social_fragment_list_addPost"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
-        android:text="@string/social_fragment_list_addPost"
-        android:background="@drawable/social_button" />
+        android:background="@drawable/social_button"
+        android:text="@string/social_fragment_list_addPost" />
 
 </RelativeLayout>

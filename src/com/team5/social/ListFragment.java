@@ -63,6 +63,10 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 	
 	private ProgressDialog progressDialog;
 	
+	public static final int ORDER_NEW = 0;
+	public static final int ORDER_OLD = 1;
+	public static final int ORDER_TOP = 2;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
 		super.onCreate(savedInstanceState);
@@ -121,6 +125,7 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 			}
 			
 			actionBar.setListNavigationCallbacks(dropDownAdapter, new DropDownListener());
+			actionBar.setSelectedNavigationItem(postOrder);
 		}
 		
 		return myView;
@@ -194,15 +199,15 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 		public boolean onNavigationItemSelected(int position, long id) {
 			switch (position) {
 			case 0:
-				postOrder = 0;
+				postOrder = ListFragment.ORDER_NEW;
 				fetchPosts();
 				return true;
 			case 1:
-				postOrder = 1;
+				postOrder = ListFragment.ORDER_OLD;
 				fetchPosts();
 				return true;
 			case 2:
-				postOrder = 2;
+				postOrder = ListFragment.ORDER_TOP;
 				fetchPosts();
 				return true;
 			default:
@@ -277,13 +282,13 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 			String postContent = sectionElement.getElementsByTagName("Content").item(0).getTextContent();
 			String postDate = sectionElement.getElementsByTagName("Posted").item(0).getTextContent();
 			int postResponses = Integer.parseInt(sectionElement.getElementsByTagName("Responses").item(0).getTextContent());
-			float postRating;
+			float postRating = 0;
 			try	{
 				postRating = Float.parseFloat(sectionElement.getElementsByTagName("Rating").item(0).getTextContent());
 			}	catch	(NumberFormatException e)	{
 				postRating = 0;
 			}
-			float postMyRating;
+			float postMyRating = 0;
 			try	{
 				postMyRating = Float.parseFloat(sectionElement.getElementsByTagName("MyRating").item(0).getTextContent());
 			}	catch	(NumberFormatException e)	{
@@ -324,6 +329,7 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 	private class ListAdapter extends BaseAdapter {
 		private List<Post> items = new ArrayList<Post>();
 		private List<Boolean> itemIsParent = new ArrayList<Boolean>();
+		private List<RatingTouchListener> ratingListeners = new ArrayList<RatingTouchListener>();
 		private Context context;
 		private int resourceParent;
 		private int resourceChild;
@@ -370,12 +376,18 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 			textContent.setText(myItem.content);
 			textReplies.setText("Replies: " + myItem.replies);
 			
-			RatingTouchListener starTouchListener = new RatingTouchListener();
+			RatingTouchListener starTouchListener;
+			if (ratingListeners.get(position) == null)
+				starTouchListener = new RatingTouchListener();
+			else
+				starTouchListener = ratingListeners.get(position);
 			starTouchListener.setRatingBars(myItem, starRatingBelow, starRatingAbove, starRatingUser, mySocialAccount);
 			
 			starTouchListener.setOthersRating(myItem.rating);
 			if (myItem.myRating > 0)
 				starTouchListener.setMyRating(myItem.myRating);
+			else
+				starTouchListener.resetMyRating();
 			
 			return convertView;
 		}
@@ -399,6 +411,7 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 			//items.add(new NavListItem(context.getResources().getDrawable( navArray[0] ), label));
 			items.add(item);
 			itemIsParent.add(isParent);
+			ratingListeners.add(null);
 			((BaseAdapter) this).notifyDataSetChanged(); 
 		}
 		

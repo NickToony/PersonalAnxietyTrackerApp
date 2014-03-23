@@ -3,7 +3,6 @@
     android:id="@+id/rowTitle"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:textColor="@color/social_topic"
     android:textSize="15sp"
     android:gravity="center"
     android:layout_centerInParent="true"
