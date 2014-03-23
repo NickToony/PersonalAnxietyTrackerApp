@@ -1,63 +1,99 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/socialBackgroundColour"
     android:gravity="center"
-    android:orientation="vertical"
-    android:background="@color/socialBackgroundColour" >
-	
-	<ScrollView android:layout_width="fill_parent"
-	 android:layout_height="0dp"  android:layout_weight="1">
+    android:orientation="vertical" >
 
-		<LinearLayout android:orientation="vertical"
-		android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="20dp">
+    <TextView
+        android:id="@+id/social_fragment_account_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/social_container"
+        android:gravity="center"
+        android:text="Create a Post"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_margin="10dp" />
 
-		    <include 
-		        layout="@layout/social_fragment_list_row_parent"
-		        android:id="@+id/social_fragment_post_parent" />
-		
-		    
-		    <EditText
-		        android:id="@+id/social_fragment_new_post_content"
-		        android:layout_width="match_parent"
-		        android:layout_height="wrap_content"
-		        android:layout_marginTop="20dp"
-		        android:hint="Content"
-		        android:scrollbars="vertical"
-		        android:gravity="top|left"
-		        android:inputType="textMultiLine" />
-		    
-		    <TextView
-			        android:id="@+id/social_fragment_new_post_errorContent"
-			        android:layout_width="match_parent"
-			        android:layout_height="wrap_content"
-			        android:textColor="@color/social_error"
-			        android:text=""
-			        android:gravity="center" />
-			
-		</LinearLayout>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
 
-	</ScrollView>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:layout_margin="10dp" >
 
+            <TextView
+                android:id="@+id/social_fragment_account_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/social_container"
+                android:gravity="center"
+                android:text="Write your message below, using at least 10 characters. Speak your mind!"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_marginBottom="10dp" />
 
-	<LinearLayout android:id="@+id/add_app_done_layout" android:layout_height="wrap_content"
-	    android:layout_width="match_parent" android:gravity="center"
-	    android:orientation="vertical" android:paddingTop="20dp">
+            <include
+                android:id="@+id/social_fragment_post_parent"
+                layout="@layout/social_fragment_list_row_parent" />
 
-	    <TextView
-			        android:id="@+id/social_fragment_new_post_error"
-			        android:layout_width="match_parent"
-			        android:layout_height="wrap_content"
-			        android:textColor="@color/social_error"
-			        android:text=""
-			        android:gravity="center" />
-	    
-		<Button
-		        android:id="@+id/social_fragment_new_post_button"
-		        android:layout_width="match_parent"
-		        android:layout_height="40dp"
-		        android:text="Create Post"
-		        android:background="@drawable/social_button" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/social_container"
+                android:orientation="vertical" >
 
-	</LinearLayout>
+                <EditText
+                    android:id="@+id/social_fragment_new_post_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="top|left"
+                    android:hint="Content"
+                    android:inputType="textMultiLine"
+                    android:scrollbars="vertical" />
 
-</LinearLayout> 
+                <TextView
+                    android:id="@+id/social_fragment_new_post_errorContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/social_error" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/add_app_done_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="20dp" >
+
+        <TextView
+            android:id="@+id/social_fragment_new_post_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/social_error" />
+
+        <Button
+            android:id="@+id/social_fragment_new_post_button"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/social_button"
+            android:text="Create Post" />
+    </LinearLayout>
+
+</LinearLayout>

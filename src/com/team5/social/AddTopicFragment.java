@@ -21,6 +21,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -57,7 +58,9 @@ public class AddTopicFragment extends Fragment implements SocialFragmentInterfac
 				TextView textDate = (TextView) post.findViewById(R.id.social_fragment_list_rowDate);
 				TextView textContent = (TextView) post.findViewById(R.id.social_fragment_list_rowContent);
 				TextView textReplies = (TextView) post.findViewById(R.id.social_fragment_list_rowReplies);
-				TextView textRating = (TextView) post.findViewById(R.id.social_fragment_list_rowRating);
+				RatingBar starRatingAbove = (RatingBar) post.findViewById(R.id.social_fragment_list_rowStarRatingAbove);
+				RatingBar starRatingBelow = (RatingBar) post.findViewById(R.id.social_fragment_list_rowStarRatingBelow);
+				RatingBar starRatingUser = (RatingBar) post.findViewById(R.id.social_fragment_list_rowStarRatingBlue);
 				
 				// Assign the data into it
 				Post myItem = postParent;
@@ -65,10 +68,16 @@ public class AddTopicFragment extends Fragment implements SocialFragmentInterfac
 				textDate.setText(myItem.date);
 				textContent.setText(myItem.content);
 				textReplies.setText("Replies: " + myItem.replies);
-				textRating.setText("Rating: " + myItem.rating);
+				
+				RatingTouchListener starTouchListener = new RatingTouchListener();
+				starTouchListener.setRatingBars(myItem, starRatingBelow, starRatingAbove, starRatingUser, mySocialAccount);
+				
+				starTouchListener.setOthersRating(myItem.rating);
+				if (myItem.myRating > 0)
+					starTouchListener.setMyRating(myItem.myRating);
 			}	else	{
 				// No parent? No display
-				post.setVisibility(View.INVISIBLE);
+				post.setVisibility(View.GONE);
 			}
 		}
 		

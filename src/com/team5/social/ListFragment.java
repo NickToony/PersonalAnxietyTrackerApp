@@ -371,7 +371,7 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 			textReplies.setText("Replies: " + myItem.replies);
 			
 			RatingTouchListener starTouchListener = new RatingTouchListener();
-			starTouchListener.setRatingBars(myItem, starRatingBelow, starRatingAbove, starRatingUser);
+			starTouchListener.setRatingBars(myItem, starRatingBelow, starRatingAbove, starRatingUser, mySocialAccount);
 			
 			starTouchListener.setOthersRating(myItem.rating);
 			if (myItem.myRating > 0)
@@ -436,80 +436,5 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 		}
 		
 	}
-	
-	class RatingTouchListener implements OnTouchListener, NetworkInterface {
-		private RatingBar starRatingBelow;
-		private RatingBar starRatingAbove;
-		private RatingBar starRatingUser;
-		private boolean ratingUserSet = false;
-		private Post post;
-		
-		public void setRatingBars(Post post, RatingBar starRatingBelow, RatingBar starRatingAbove, RatingBar starRatingUser)	{
-			this.post = post;
-			this.starRatingBelow = starRatingBelow;
-			this.starRatingAbove = starRatingAbove;
-			this.starRatingUser = starRatingUser;
-			
-			starRatingAbove.setOnTouchListener(this);
-			starRatingBelow.setOnTouchListener(this);
-			starRatingUser.setOnTouchListener(this);
-		}
-		
-	    @Override
-	    public boolean onTouch(View v, MotionEvent event) {
-	    	if (ratingUserSet)
-	    		return true;
-	    	
-	        if (event.getAction() == MotionEvent.ACTION_UP) {
-	             float stars = (event.getX() / starRatingUser.getWidth()) * 5.0f;
-	             setMyRating(stars);
-	             
-	             Request r = new Request(this, "http://nick-hope.co.uk/PAT/android/rate.php", mySocialAccount.getCookies());
-	             r.addParameter("post", post.id + "");
-	             r.addParameter("rating", stars + "");
-	             r.start();
-	             
-	             v.setPressed(false);
-	        }
-	        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-	            v.setPressed(true);
-	        }
-
-	        if (event.getAction() == MotionEvent.ACTION_CANCEL) {
-	            v.setPressed(false);
-	        }
-	        return true;
-	    }
-	    
-	    public void setOthersRating(float value)	{
-			starRatingBelow.setRating(value);
-			starRatingAbove.setRating(value);
-			
-			fixRating();
-		}
-		
-		void setMyRating(float value)	{
-			starRatingUser.setRating(value);
-			ratingUserSet = true;
-			
-			fixRating();
-		}
-		
-		private void fixRating()	{
-			 if (starRatingUser.getRating() <= starRatingAbove.getRating())	{
-	        	 starRatingAbove.setVisibility(View.GONE);
-	        	 starRatingBelow.setVisibility(View.VISIBLE);
-	         }	else	{
-	        	 starRatingBelow.setVisibility(View.GONE);
-	        	 starRatingAbove.setVisibility(View.VISIBLE);
-	         }
-		}
-
-		@Override
-		public void eventNetworkResponse(Request from, Response response) {
-			
-		}
-
-	};
 
 }
