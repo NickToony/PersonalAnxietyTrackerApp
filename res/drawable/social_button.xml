@@ -4,4 +4,10 @@
    	<solid
    	    android:color="@color/social_topic" />
    	<stroke android:width="2px" android:color="@color/social_topic_outline"/>
+   	<padding
+   	    android:left="2dp"
+   	    android:right="2dp"
+   	    android:top="2dp"
+   	    android:bottom="2dp"
+   	    />
 </shape>
