@@ -19,6 +19,18 @@
 
     <style name="HoloTheme" parent="@android:style/Theme.Holo.Light">
     </style>
+    
+    <style name="postStarRating" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/rating_star_drawable</item>
+        <item name="android:minHeight">22dip</item>
+        <item name="android:maxHeight">22dip</item>
+    </style>
+    
+    <style name="postStarRatingBlue" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/rating_star_drawable_blue</item>
+        <item name="android:minHeight">22dip</item>
+        <item name="android:maxHeight">22dip</item>
+    </style>
 
     <color name="grey">#C0C0C0</color>
     <color name="hintTextColor">#6B6B6B</color>

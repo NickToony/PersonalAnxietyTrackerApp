@@ -17,8 +17,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
@@ -26,6 +28,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -280,6 +283,12 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 			}	catch	(NumberFormatException e)	{
 				postRating = 0;
 			}
+			float postMyRating;
+			try	{
+				postMyRating = Float.parseFloat(sectionElement.getElementsByTagName("MyRating").item(0).getTextContent());
+			}	catch	(NumberFormatException e)	{
+				postMyRating = 0;
+			}
 			
 			// Add the item to list
 			// Add the item to list
@@ -288,7 +297,7 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 				isParent = true;
 			else
 				isParent = false;
-			listAdapter.addItem(new Post(postID, postOwner, postDate, postContent, postResponses, postRating, postOwnerID), isParent);
+			listAdapter.addItem(new Post(postID, postOwner, postDate, postContent, postResponses, postRating, postOwnerID, postMyRating), isParent);
 		}
 		
 		listAdapter.addItem(null, true);
@@ -346,10 +355,13 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 				return convertView;
 
 			TextView textName = (TextView) convertView.findViewById(R.id.social_fragment_list_rowName);
-			TextView textDate = (TextView) convertView.findViewById(R.id.social_fragment_list_rowDate);
+			TextView textDate = (TextView) convertView.findViewById(R.id.social_fragment_list_rowDate); 
 			TextView textContent = (TextView) convertView.findViewById(R.id.social_fragment_list_rowContent);
 			TextView textReplies = (TextView) convertView.findViewById(R.id.social_fragment_list_rowReplies);
-			TextView textRating = (TextView) convertView.findViewById(R.id.social_fragment_list_rowRating);
+			//TextView textRating = (TextView) convertView.findViewById(R.id.social_fragment_list_rowRating);
+			RatingBar starRatingAbove = (RatingBar) convertView.findViewById(R.id.social_fragment_list_rowStarRatingAbove);
+			RatingBar starRatingBelow = (RatingBar) convertView.findViewById(R.id.social_fragment_list_rowStarRatingBelow);
+			RatingBar starRatingUser = (RatingBar) convertView.findViewById(R.id.social_fragment_list_rowStarRatingBlue);
 			
 			
 			Post myItem = getItem(position);
@@ -357,7 +369,13 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 			textDate.setText(myItem.date);
 			textContent.setText(myItem.content);
 			textReplies.setText("Replies: " + myItem.replies);
-			textRating.setText("Rating: " + myItem.rating);
+			
+			RatingTouchListener starTouchListener = new RatingTouchListener();
+			starTouchListener.setRatingBars(myItem, starRatingBelow, starRatingAbove, starRatingUser);
+			
+			starTouchListener.setOthersRating(myItem.rating);
+			if (myItem.myRating > 0)
+				starTouchListener.setMyRating(myItem.myRating);
 			
 			return convertView;
 		}
@@ -384,11 +402,6 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 			((BaseAdapter) this).notifyDataSetChanged(); 
 		}
 		
-		// This code disables highlightung
-		/*public boolean areAllItemsEnabled() 
-        { 
-                return false; 
-        }*/ 
 		@Override
         public boolean isEnabled(int position) 
         { 
@@ -423,4 +436,80 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 		}
 		
 	}
+	
+	class RatingTouchListener implements OnTouchListener, NetworkInterface {
+		private RatingBar starRatingBelow;
+		private RatingBar starRatingAbove;
+		private RatingBar starRatingUser;
+		private boolean ratingUserSet = false;
+		private Post post;
+		
+		public void setRatingBars(Post post, RatingBar starRatingBelow, RatingBar starRatingAbove, RatingBar starRatingUser)	{
+			this.post = post;
+			this.starRatingBelow = starRatingBelow;
+			this.starRatingAbove = starRatingAbove;
+			this.starRatingUser = starRatingUser;
+			
+			starRatingAbove.setOnTouchListener(this);
+			starRatingBelow.setOnTouchListener(this);
+			starRatingUser.setOnTouchListener(this);
+		}
+		
+	    @Override
+	    public boolean onTouch(View v, MotionEvent event) {
+	    	if (ratingUserSet)
+	    		return true;
+	    	
+	        if (event.getAction() == MotionEvent.ACTION_UP) {
+	             float stars = (event.getX() / starRatingUser.getWidth()) * 5.0f;
+	             setMyRating(stars);
+	             
+	             Request r = new Request(this, "http://nick-hope.co.uk/PAT/android/rate.php", mySocialAccount.getCookies());
+	             r.addParameter("post", post.id + "");
+	             r.addParameter("rating", stars + "");
+	             r.start();
+	             
+	             v.setPressed(false);
+	        }
+	        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+	            v.setPressed(true);
+	        }
+
+	        if (event.getAction() == MotionEvent.ACTION_CANCEL) {
+	            v.setPressed(false);
+	        }
+	        return true;
+	    }
+	    
+	    public void setOthersRating(float value)	{
+			starRatingBelow.setRating(value);
+			starRatingAbove.setRating(value);
+			
+			fixRating();
+		}
+		
+		void setMyRating(float value)	{
+			starRatingUser.setRating(value);
+			ratingUserSet = true;
+			
+			fixRating();
+		}
+		
+		private void fixRating()	{
+			 if (starRatingUser.getRating() <= starRatingAbove.getRating())	{
+	        	 starRatingAbove.setVisibility(View.GONE);
+	        	 starRatingBelow.setVisibility(View.VISIBLE);
+	         }	else	{
+	        	 starRatingBelow.setVisibility(View.GONE);
+	        	 starRatingAbove.setVisibility(View.VISIBLE);
+	         }
+		}
+
+		@Override
+		public void eventNetworkResponse(Request from, Response response) {
+			
+		}
+
+	};
+
 }
