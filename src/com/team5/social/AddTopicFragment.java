@@ -72,6 +72,11 @@ public class AddTopicFragment extends Fragment implements SocialFragmentInterfac
 				RatingTouchListener starTouchListener = new RatingTouchListener();
 				starTouchListener.setRatingBars(myItem, starRatingBelow, starRatingAbove, starRatingUser, mySocialAccount);
 				
+				if (!myItem.mine)
+					post.findViewById(R.id.social_fragment_post_background).setBackgroundResource(R.drawable.social_container_highlight);
+				else
+					post.findViewById(R.id.social_fragment_post_background).setBackgroundResource(R.drawable.social_container);
+				
 				starTouchListener.setOthersRating(myItem.rating);
 				if (myItem.myRating > 0)
 					starTouchListener.setMyRating(myItem.myRating);

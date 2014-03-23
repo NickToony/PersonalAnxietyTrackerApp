@@ -1,103 +1,107 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/social_topic"
-    tools:context=".SocialAccount" >
+    android:layout_height="wrap_content" >
 
-    <LinearLayout
-        android:id="@+id/social_fragment_list_rowTop"
+    <RelativeLayout
+        android:id="@+id/social_fragment_post_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="10dp" >
+        android:background="@drawable/social_container"
+        tools:context=".SocialAccount" >
 
-        <TextView
-            android:id="@+id/social_fragment_list_rowName"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/social_fragment_list_rowTop"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="Name"
-            android:textStyle="bold" />
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="10dp" >
 
-        <TextView
-            android:id="@+id/social_fragment_list_rowDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:gravity="right"
-            android:text="Date"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/social_fragment_list_rowContent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/social_fragment_list_rowTop"
-        android:layout_marginBottom="10dp"
-        android:text="Summary" />
-
-    <LinearLayout
-        android:id="@+id/social_fragment_list_rowBottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/social_fragment_list_rowContent" >
-
-        <TextView
-            android:id="@+id/social_fragment_list_rowReplies"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="5 Replies"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/social_fragment_list_rowRating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:gravity="right"
-            android:text="Rating"
-            android:textStyle="bold"
-            android:visibility="gone" />
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:gravity="right" >
-
-            <RatingBar
-                android:id="@+id/social_fragment_list_rowStarRatingBelow"
-                style="@style/postStarRating"
+            <TextView
+                android:id="@+id/social_fragment_list_rowName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:isIndicator="true"
-                android:numStars="5"
-                android:rating="0" />
+                android:layout_weight="0.5"
+                android:text="Name"
+                android:textStyle="bold" />
 
-            <RatingBar
-                android:id="@+id/social_fragment_list_rowStarRatingBlue"
-                style="@style/postStarRatingBlue"
+            <TextView
+                android:id="@+id/social_fragment_list_rowDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:isIndicator="true"
-                android:numStars="5"
-                android:rating="0" />
+                android:layout_weight="0.5"
+                android:gravity="right"
+                android:text="Date"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-            <RatingBar
-                android:id="@+id/social_fragment_list_rowStarRatingAbove"
-                style="@style/postStarRating"
+        <TextView
+            android:id="@+id/social_fragment_list_rowContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/social_fragment_list_rowTop"
+            android:layout_marginBottom="10dp"
+            android:text="Summary" />
+
+        <LinearLayout
+            android:id="@+id/social_fragment_list_rowBottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/social_fragment_list_rowContent" >
+
+            <TextView
+                android:id="@+id/social_fragment_list_rowReplies"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:isIndicator="true"
-                android:numStars="5"
-                android:rating="0" />
-        </RelativeLayout>
-    </LinearLayout>
+                android:layout_weight="0.5"
+                android:text="5 Replies"
+                android:textStyle="bold" />
 
-</RelativeLayout>
+            <TextView
+                android:id="@+id/social_fragment_list_rowRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:gravity="right"
+                android:text="Rating"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <RatingBar
+                    android:id="@+id/social_fragment_list_rowStarRatingBelow"
+                    style="@style/postStarRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:rating="0" />
+
+                <RatingBar
+                    android:id="@+id/social_fragment_list_rowStarRatingBlue"
+                    style="@style/postStarRatingBlue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:rating="0" />
+
+                <RatingBar
+                    android:id="@+id/social_fragment_list_rowStarRatingAbove"
+                    style="@style/postStarRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:rating="0" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

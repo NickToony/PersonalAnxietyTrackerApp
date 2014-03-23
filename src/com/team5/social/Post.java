@@ -15,6 +15,7 @@ class Post implements Parcelable {
 	public int replies;
 	public float rating;
 	public float myRating;
+	public boolean mine;
 	
 	public int id;
 	public int ownerId;
@@ -40,7 +41,7 @@ class Post implements Parcelable {
 		this.ownerId = parcIn.readInt();
 	}
 	
-	public Post(int id, String name, String date, String content, int replies, float rating, int ownerId, float postMyRating)	{
+	public Post(int id, String name, String date, String content, int replies, float rating, int ownerId, float postMyRating, int mine)	{
 		this.id = id;
 		this.name = name;
 		this.date = date;
@@ -49,6 +50,9 @@ class Post implements Parcelable {
 		this.rating = rating;
 		this.ownerId = ownerId;
 		this.myRating = postMyRating;
+		this.mine = false;
+		if (mine == 1)
+			this.mine = true;
 	}
 
 	@Override

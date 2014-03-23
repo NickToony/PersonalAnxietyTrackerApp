@@ -329,6 +329,7 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 			}	catch	(NumberFormatException e)	{
 				postMyRating = 0;
 			}
+			int postMine = Integer.parseInt(sectionElement.getElementsByTagName("Mine").item(0).getTextContent());
 			
 			// Add the item to list
 			// Add the item to list
@@ -337,7 +338,7 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 				isParent = true;
 			else
 				isParent = false;
-			listAdapter.addItem(new Post(postID, postOwner, postDate, postContent, postResponses, postRating, postOwnerID, postMyRating), isParent);
+			listAdapter.addItem(new Post(postID, postOwner, postDate, postContent, postResponses, postRating, postOwnerID, postMyRating, postMine), isParent);
 		}
 		
 		listAdapter.addItem(null, true);
@@ -392,8 +393,10 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 				}
 			}
 			
-			if (type == 2)
+			if (type == 2)	{
+				//convertView.setBackground(null);
 				return convertView;
+			}
 
 			TextView textName = (TextView) convertView.findViewById(R.id.social_fragment_list_rowName);
 			TextView textDate = (TextView) convertView.findViewById(R.id.social_fragment_list_rowDate); 
@@ -423,6 +426,12 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 				starTouchListener.setMyRating(myItem.myRating);
 			else
 				starTouchListener.resetMyRating();
+			
+			if (!myItem.mine)
+				convertView.findViewById(R.id.social_fragment_post_background).setBackgroundResource(R.drawable.social_container_highlight);
+			else
+				convertView.findViewById(R.id.social_fragment_post_background).setBackgroundResource(R.drawable.social_container);
+					
 			
 			return convertView;
 		}

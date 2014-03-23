@@ -44,7 +44,7 @@
     <color name="dynamicCircleColour">#d7d7d7</color>
     <color name="socialBackgroundColour">#C6DEF5</color>
     <color name="social_topic">#89D1E2</color>
-    <color name="social_topic_highlight">#FFFFFF</color>
+    <color name="social_topic_highlight">#E1ECF7</color>
     <color name="social_topic_outline">#929394</color>
     <color name="social_error">#FF0000</color>
     <color name="secondsEditTextBreathExercise">#ffffff</color>
