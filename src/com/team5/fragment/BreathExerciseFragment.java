@@ -48,6 +48,7 @@ public class BreathExerciseFragment extends Fragment implements OnClickListener
 	private int speedSetSeekBarCurrentProgress = 1;
 	private boolean seekBarVisibility= false;
 	private boolean countDownTypeUsedSecondsDefault = true;
+	//jhgvjhvbj
 	
 
 	@Override

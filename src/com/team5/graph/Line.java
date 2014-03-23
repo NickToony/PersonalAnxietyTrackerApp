@@ -1,38 +1,53 @@
 package com.team5.graph;
 
+import com.team5.user.UserRecord;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Line {
-	private List<Point> points = new ArrayList<Point>();
-	private int colour;
+    private List<UserRecord> points = new ArrayList<UserRecord>();
+    private int colour;
 
-	public Line(int colour) {
-		this.colour = colour;
-	}
+    public Line(int colour) {
+        this.colour = colour;
+    }
 
-	public int getColour() {
-		return colour;
-	}
+    public int getColour() {
+        return colour;
+    }
 
-	public void addPoint(float x, float y, String thought) {
-		Point point = new Point(x, y, thought);
-		points.add(point);
-	}
+    public void addPoint(float x, float y, String thought, long time) {
 
-	public float getX(int i) {
-		return points.get(i).getX();
-	}
+        UserRecord userRecord = new UserRecord(time, (int) x, (int) y, thought);
+        points.add(userRecord);
+    }
 
-	public float getY(int i) {
-		return points.get(i).getY();
-	}
+    public float getX(int i) {
+        return points.get(i).getAnxiety();
+    }
 
-	public int getTotal() {
-		return points.size();
-	}
+    public float getY(int i) {
+        return points.get(i).getSeriousness();
+    }
 
-	public String getThought(int i) {
-		return points.get(i).getInformation();
-	}
+    public long getTimeStamp(int i) {
+        return points.get(i).getTimestamp();
+    }
+
+    public int getTotal() {
+        // Collections.reverse(points);
+        return points.size();
+    }
+
+    public String getThought(int i) {
+        return points.get(i).getComments();
+    }
+    public void addBlankSpace(UserRecord userRecord, int index){
+        points.add(index,userRecord);
+    }
+    public List<UserRecord> returnPointList() {
+
+        return points;
+    }
 }

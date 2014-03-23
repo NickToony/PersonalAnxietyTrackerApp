@@ -25,7 +25,7 @@ public class RecordGraphFragment extends Fragment {
 		myView = inflater.inflate(R.layout.record_graph_layout, container, false);
 		myActivity = (HomeActivity) getActivity();
 		myActivity.setTitle("Graph Test");
-
+/*
 		// Fill the line graph
 		LineGraphView mLineGraph = (LineGraphView) myView
 				.findViewById(R.id.myLineGraph);
@@ -47,7 +47,7 @@ public class RecordGraphFragment extends Fragment {
 
 		// Make it visible
 		mLineGraph.setVisibility(View.VISIBLE);
-
+*/
 		return myView;
 	}
 }
