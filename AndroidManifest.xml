@@ -24,10 +24,10 @@
         android:theme="@style/HoloTheme" >
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyAiy08alPJ5NaH-zdNyg6fJ6i0rmfeg9Ec" />
+            android:value="AIzaSyB338fMRb6lpSvQxGiNOB1VDdMedL1CyZo" />
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="4242000" />
+            android:value="@integer/google_play_services_version" />
 
         <activity
             android:name="com.team5.pat.SplashActivity"
