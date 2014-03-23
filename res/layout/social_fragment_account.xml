@@ -42,7 +42,7 @@
                     android:gravity="center"
                     android:text="Statistics"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
-                
+
                 <TextView
                     android:id="@+id/social_fragment_statisticsError"
                     android:layout_width="match_parent"
@@ -183,7 +183,7 @@
                     android:text="Change Username" />
 
                 <RelativeLayout
-                    android:id="@+id/social_Fragment_account_changeUsernameLayout"
+                    android:id="@+id/social_fragment_account_changeUsernameLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/social_fragment_account_changeUsernameMessage"
@@ -200,6 +200,7 @@
                         android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <EditText
+                        android:id="@+id/social_fragment_account_changeUsernameField"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
@@ -207,17 +208,30 @@
                         android:hint="Username" />
                 </RelativeLayout>
 
+                <TextView
+                    android:id="@+id/social_fragment_account_changeUsernameError"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/social_fragment_account_changeUsernameLayout"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="-10dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/social_error" />
+
                 <!-- Password -->
 
                 <TextView
                     android:id="@+id/social_fragment_account_changePasswordMessage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/social_Fragment_account_changeUsernameLayout"
+                    android:layout_below="@id/social_fragment_account_changeUsernameError"
                     android:gravity="center"
                     android:text="Change Password" />
 
                 <RelativeLayout
+                    android:id="@+id/social_fragment_account_changePasswordLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/social_fragment_account_changePasswordMessage"
@@ -234,12 +248,26 @@
                         android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <EditText
+                        android:id="@+id/social_fragment_account_changePasswordField"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@id/social_fragment_account_changePasswordButton"
-                        android:hint="Password" />
+                        android:hint="Password"
+                        android:inputType="textPassword" />
                 </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/social_fragment_account_changePasswordError"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/social_fragment_account_changePasswordLayout"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="-10dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/social_error" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -270,7 +298,7 @@
                     android:textColor="@color/social_error" />
 
                 <Button
-                    android:id="@+id/social_fragment_account_deleteAccoutButton"
+                    android:id="@+id/social_fragment_account_deleteAccountButton"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_below="@id/social_fragment_deleteWarning"
@@ -278,6 +306,17 @@
                     android:background="@drawable/social_button"
                     android:text="DELETE ACCOUNT"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
+                
+                <TextView
+                    android:id="@+id/social_fragment_account_deleteAccountError"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/social_fragment_account_deleteAccountButton"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="@color/social_error" />
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>

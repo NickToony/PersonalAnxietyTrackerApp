@@ -32,6 +32,7 @@ public class Request {
 	private Map<String, String> myCookies;
 	private boolean usePost = false;
 	private boolean started = false;
+	private int identifier = -1;
 	
 	public Request(NetworkInterface myTarget, String myUrl)	{
 		this.myUrl = myUrl;
@@ -52,6 +53,15 @@ public class Request {
 		started = true;
 		
 		return this;
+	}
+	
+	public Request setIdentifier(int identifier)	{
+		this.identifier = identifier;
+		return this;
+	}
+	
+	public int getIdentifier()	{
+		return identifier;
 	}
 	
 	public Request addParameter(String key, String value)	{
