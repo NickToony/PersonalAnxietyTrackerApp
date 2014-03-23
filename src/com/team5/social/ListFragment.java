@@ -17,6 +17,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -25,10 +26,12 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.RatingBar;
+import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -115,17 +118,49 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 		
 		fetchPosts();
 		
+		// If this fragment is to setup the dropdown
 		if (doActionBar)	{
-			// Action bar settings
-			ActionBar actionBar = getActivity().getActionBar();
-			actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+			// If no adapter is ready
 			if (dropDownAdapter == null)	{
+				// Make a new adapter using strings
 				dropDownAdapter = ArrayAdapter.createFromResource(getActivity(),
 					R.array.social_list_items, R.layout.social_fragment_list_dropdown);
 			}
-			
-			actionBar.setListNavigationCallbacks(dropDownAdapter, new DropDownListener());
-			actionBar.setSelectedNavigationItem(postOrder);
+			// Fetch spinner (dropdown)
+			Spinner theSpinner = (Spinner) myActivity.getDropDown().getActionView();
+			// Apply adapter
+			theSpinner.setAdapter( dropDownAdapter);
+			// Apply onclick listener
+			theSpinner.setOnItemSelectedListener(new OnItemSelectedListener(){
+				@Override
+				public void onItemSelected(AdapterView<?> view, View row, int position, long id) {
+					switch (position) {
+					case 0:
+						postOrder = ListFragment.ORDER_NEW;
+						fetchPosts();
+						return;
+					case 1:
+						postOrder = ListFragment.ORDER_OLD;
+						fetchPosts();
+						return;
+					case 2:
+						postOrder = ListFragment.ORDER_TOP;
+						fetchPosts();
+						return;
+					default:
+						return;
+					}
+					
+				}
+
+				@Override
+				public void onNothingSelected(AdapterView<?> arg0) {
+					return;
+				}
+		    	
+		    });
+			// Make the dropdown visible
+			myActivity.getDropDown().setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 		}
 		
 		return myView;

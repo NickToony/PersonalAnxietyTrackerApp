@@ -9,10 +9,16 @@ import java.util.Map;
 import com.team5.navigationlist.NavListAdapter;
 import com.team5.network.Request;
 import com.team5.pat.HomeActivity;
+import com.team5.pat.R;
+
 import android.os.Bundle;
 import android.app.Fragment;
 import android.content.Context;
 import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 public class SocialAccount {	
@@ -55,6 +61,8 @@ public class SocialAccount {
 		
 		// Have HomeActivity change to the new fragment
 		myActivity.changeFragment(theFrag);
+		
+		myActivity.setTitle("Discussion");
 	}
 	
 	private void popFragment()	{

@@ -28,6 +28,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
@@ -41,6 +43,8 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 	private ActionBarDrawerToggle myDrawerToggle;
 	private ActionBar actionBar;
 	private SharedPreferences preference;
+	private SocialAccount mySocialAccount;
+	private MenuItem myDropDown;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +53,8 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 
 		((Session) getApplication()).initiate(this);
 		((Session) getApplication()).getUserAccount().logIn("1234");
-		((Session) getApplication()).getSocialAccount().useActivity(this);
+		mySocialAccount = ((Session) getApplication()).getSocialAccount();
+		mySocialAccount.useActivity(this);
 
 		preference = PreferenceManager
 				.getDefaultSharedPreferences(getApplicationContext());
@@ -74,7 +79,14 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.menu, menu);
+		
+		myDropDown = menu.findItem( R.id.dropdown );
+		myDropDown.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
 		return true;
+	}
+	
+	public MenuItem getDropDown()	{
+		return myDropDown;
 	}
 
 	@Override
@@ -177,6 +189,11 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		actionBar.setHomeButtonEnabled(true);
 		actionBar.removeAllTabs(); // get rid of all tabs - they're maintained
 									// across fragments!!
+		
+		// Get rid of any custom views here
+		//mySocialAccount.showListSpinnerAdapter(false);
+		if (myDropDown != null)
+			myDropDown.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
 	}
 
 	public void doNavigation(int theItem) {
