@@ -27,7 +27,7 @@
             android:value="AIzaSyB338fMRb6lpSvQxGiNOB1VDdMedL1CyZo" />
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+            android:value="4242000" />
 
         <activity
             android:name="com.team5.pat.SplashActivity"
