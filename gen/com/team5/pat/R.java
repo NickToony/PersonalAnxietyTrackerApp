@@ -371,9 +371,9 @@ containing a value of this type.
         public static final int contactDetailsImage=0x7f08002b;
         public static final int contactDetailsName=0x7f08002c;
         public static final int contactDetailsPhone=0x7f08002d;
-        public static final int contactGroupIcon=0x7f08002f;
-        public static final int contactGroupName=0x7f080030;
-        public static final int contactGroupPhone=0x7f080031;
+        public static final int contact_group_icon=0x7f08002f;
+        public static final int contact_group_name=0x7f080030;
+        public static final int contact_group_phone=0x7f080031;
         public static final int content_frame=0x7f080007;
         public static final int countDownType=0x7f080024;
         public static final int cyclesInput=0x7f080029;

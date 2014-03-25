@@ -38,9 +38,9 @@ public class GroupAdapter extends ArrayAdapter<GroupItem> {
 			row = inflater.inflate(resource, parent, false);
 		}
 
-		icon = (ImageView) row.findViewById(R.id.contactGroupIcon);
-		name = (TextView) row.findViewById(R.id.contactGroupName);
-		phoneNumber = (TextView) row.findViewById(R.id.contactGroupPhone);
+		icon = (ImageView) row.findViewById(R.id.contact_group_icon);
+		name = (TextView) row.findViewById(R.id.contact_group_name);
+		phoneNumber = (TextView) row.findViewById(R.id.contact_group_phone);
 
 		icon.setImageResource(items.get(position).getIcon());
 		name.setText(items.get(position).getName());

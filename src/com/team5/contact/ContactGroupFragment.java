@@ -37,7 +37,8 @@ public class ContactGroupFragment extends ListFragment implements
 		view = inflater.inflate(R.layout.contact_group_fragment, container,
 				false);
 
-		new Request(this, "http://nick-hope.co.uk/PAT/android/contact.xml").start();
+		new Request(this, "http://nick-hope.co.uk/PAT/android/contact.xml")
+				.start();
 
 		return view;
 	}
@@ -66,8 +67,8 @@ public class ContactGroupFragment extends ListFragment implements
 	public void eventNetworkResponse(Request from, Response response) {
 		// Exit if not connected to the network
 		if (!response.isSuccess()) {
-			Toast.makeText(getActivity(), "No internet", Toast.LENGTH_SHORT)
-					.show();
+			Toast.makeText(getActivity(), "Disconnected from server",
+					Toast.LENGTH_SHORT).show();
 			return;
 		}
 
