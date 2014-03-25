@@ -2,22 +2,27 @@ package com.team5.social;
 
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.RatingBar;
 
 import com.team5.network.NetworkInterface;
 import com.team5.network.Request;
 import com.team5.network.Response;
+import com.team5.pat.R;
 
-class RatingTouchListener implements OnTouchListener, NetworkInterface {
+class RatingTouchListener implements OnTouchListener, NetworkInterface, OnClickListener {
 	private RatingBar starRatingBelow;
 	private RatingBar starRatingAbove;
 	private RatingBar starRatingUser;
 	private boolean ratingUserSet = false;
 	private Post post;
 	SocialAccount mySocialAccount;
+	PostHandlerInterface myListAdapter;
 	
-	public void setRatingBars(Post post, RatingBar starRatingBelow, RatingBar starRatingAbove, RatingBar starRatingUser, SocialAccount socialAccount)	{
+	public void setRatingBars(Post post, RatingBar starRatingBelow, RatingBar starRatingAbove, RatingBar starRatingUser, SocialAccount socialAccount, PostHandlerInterface myListAdapter)	{
 		this.post = post;
 		this.starRatingBelow = starRatingBelow;
 		this.starRatingAbove = starRatingAbove;
@@ -27,6 +32,8 @@ class RatingTouchListener implements OnTouchListener, NetworkInterface {
 		starRatingAbove.setOnTouchListener(this);
 		starRatingBelow.setOnTouchListener(this);
 		starRatingUser.setOnTouchListener(this);
+		
+		this.myListAdapter = myListAdapter;
 	}
 	
     @Override
@@ -59,12 +66,16 @@ class RatingTouchListener implements OnTouchListener, NetworkInterface {
 		starRatingBelow.setRating(value);
 		starRatingAbove.setRating(value);
 		
+		post.rating = value;
+		
 		fixRating();
 	}
 	
 	void setMyRating(float value)	{
 		starRatingUser.setRating(value);
 		ratingUserSet = true;
+		
+		post.myRating = value;
 		
 		fixRating();
 	}
@@ -81,12 +92,37 @@ class RatingTouchListener implements OnTouchListener, NetworkInterface {
 
 	@Override
 	public void eventNetworkResponse(Request from, Response response) {
-		
+		if (myListAdapter != null)
+			myListAdapter.refresh();
 	}
 
 	public void resetMyRating() {
 		starRatingUser.setRating(0);
 		fixRating();
+	}
+
+	@Override
+	public void onClick( View v) {
+		switch (v.getId())	{
+		case R.id.social_fragment_list_buttonLeft:
+			Request r = new Request(this, "http://nick-hope.co.uk/PAT/android/favourite", mySocialAccount.getCookies());
+			r.addParameter("post", "" + post.id);
+			r.start();
+			
+			if (post.favourited == false)	{
+				post.favourited = true;
+				post.favourites ++;
+				((Button) v).setText("Favourited");
+			}	else	{
+				post.favourited = false;
+				post.favourites --;
+				((Button) v).setText("Favourite");
+			}
+			break;
+		case R.id.social_fragment_list_buttonRight:
+			mySocialAccount.changeFragment(new AddTopicFragment().defineParent(post));
+			break;
+		}
 	}
 
 };

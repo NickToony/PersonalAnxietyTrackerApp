@@ -26,7 +26,7 @@ public class NavListAdapter extends ArrayAdapter<NavListItem> {
 	private View myView;
 	
 	// Navigation Items
-	private NavListItem[] navigationItems = new NavListItem[13];
+	private NavListItem[] navigationItems = new NavListItem[14];
 	public final static int navigationHome = 0;
 	public final static int navigationLog = 1;
 	public final static int navigationTracker = 2;
@@ -40,6 +40,7 @@ public class NavListAdapter extends ArrayAdapter<NavListItem> {
 	public final static int navigationCreate = 10;
 	public final static int navigationFavourites = 11;
 	public final static int navigationMine = 12;
+	public final static int navigationNews = 13;
 	
 	public NavListAdapter(Context context, int resource) {
 		super(context, resource);
@@ -59,6 +60,7 @@ public class NavListAdapter extends ArrayAdapter<NavListItem> {
 		navigationItems[navigationCreate] = new NavListItem(R.drawable.ic_addpost, R.string.navigation_create);
 		navigationItems[navigationFavourites] = new NavListItem(R.drawable.ic_favouriteposts, R.string.navigation_favourites);
 		navigationItems[navigationMine] = new NavListItem(R.drawable.ic_myposts, R.string.navigation_mine);
+		navigationItems[navigationNews] = new NavListItem(R.drawable.ic_favouriteposts, R.string.navigation_news);
 	}
 
 	@Override

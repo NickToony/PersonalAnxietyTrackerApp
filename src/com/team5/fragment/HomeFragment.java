@@ -39,7 +39,7 @@ public class HomeFragment extends Fragment {
 		myAdapter.addItem(NavListAdapter.navigationTracker);
 		myAdapter.addItem(NavListAdapter.navigationExercises);
 		myAdapter.addItem(NavListAdapter.navigationDiscussion);
-		myAdapter.addItem(NavListAdapter.navigationAccount);
+		myAdapter.addItem(NavListAdapter.navigationNews);
 		myAdapter.addItem(NavListAdapter.navigationContact);
 		myAdapter.addItem(NavListAdapter.navigationReport);
 		myAdapter.addItem(NavListAdapter.navigationLogOff);

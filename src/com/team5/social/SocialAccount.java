@@ -36,6 +36,7 @@ public class SocialAccount {
 	public static final int EVENT_NEW_POST = 6;
 	public static final int EVENT_GOTO_ACCOUNT = 7;
 	public static final int EVENT_GOTO_MINE = 8;
+	public static final int EVENT_GOTO_FAVOURITES = 9;
 	
 	public SocialAccount	(Context c)	{
 		myActivity = (HomeActivity) c;
@@ -151,6 +152,10 @@ public class SocialAccount {
 			
 		case EVENT_GOTO_MINE:
 			changeFragment(new ListFragment().defineList(null, 1, ListFragment.ORDER_NEW, -1, true));
+			break;
+			
+		case EVENT_GOTO_FAVOURITES:
+			changeFragment(new ListFragment().defineList(null, -1, ListFragment.ORDER_NEW, 1, true));
 			break;
 		}
 	}

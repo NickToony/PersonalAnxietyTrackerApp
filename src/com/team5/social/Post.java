@@ -16,6 +16,8 @@ class Post implements Parcelable {
 	public float rating;
 	public float myRating;
 	public boolean mine;
+	public int favourites;
+	public boolean favourited;
 	
 	public int id;
 	public int ownerId;
@@ -39,9 +41,12 @@ class Post implements Parcelable {
 		this.myRating = parcIn.readFloat();
 		this.id = parcIn.readInt();
 		this.ownerId = parcIn.readInt();
+		this.favourites = parcIn.readInt();
+		this.favourited = parcIn.readByte() != 0;
+		this.mine = parcIn.readByte() != 0;
 	}
 	
-	public Post(int id, String name, String date, String content, int replies, float rating, int ownerId, float postMyRating, int mine)	{
+	public Post(int id, String name, String date, String content, int replies, float rating, int ownerId, float postMyRating, int mine, int favourites, int favourited)	{
 		this.id = id;
 		this.name = name;
 		this.date = date;
@@ -53,6 +58,10 @@ class Post implements Parcelable {
 		this.mine = false;
 		if (mine == 1)
 			this.mine = true;
+		this.favourites = favourites;
+		this.favourited  = false;
+		if (favourited == 1)
+			this.favourited = true;
 	}
 
 	@Override
@@ -70,5 +79,9 @@ class Post implements Parcelable {
 		parcOut.writeFloat(myRating);
 		parcOut.writeInt(id);
 		parcOut.writeInt(ownerId);
+		parcOut.writeInt(favourites);
+		parcOut.writeByte((byte) (favourited ? 1 : 0));
+		parcOut.writeByte((byte) (mine ? 1 : 0));
+		
 	}
 }
