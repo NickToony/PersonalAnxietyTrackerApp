@@ -96,6 +96,13 @@
         <item>07664678746</item>
     </string-array>
 
+    <!-- Feedback -->
+    <string name="feedback_heading">Please give us any feedback</string>
+    <string name="feedback_title_label">Title</string>
+    <string name="feedback_comment_label">Comment</string>
+    <string name="feedback_submit_button_label">Submit</string>
+    <string name="feedback_rating_label">Rating:</string>
+    
     <!-- Dialog box -->
     <string name="dialog_title">I am Milton Li</string>
     <string name="dialog_message">I want to kiss you</string>
@@ -251,5 +258,7 @@
         <item>Oldest</item>
         <item>Top Rated</item>
     </string-array>
+    
+    
 
 </resources>

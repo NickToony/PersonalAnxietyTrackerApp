@@ -101,7 +101,7 @@ class ContactDetailsAdapter extends FragmentStatePagerAdapter {
 			fragment = new ContactDetailsFragment();
 			break;
 		case 1:
-			fragment = new ContactMapFragment();
+//			fragment = new ContactMapFragment();
 			break;
 		}
 		return fragment;
