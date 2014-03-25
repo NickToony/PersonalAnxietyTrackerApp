@@ -2,6 +2,7 @@ package com.team5.social;
 
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.RatingBar;
 
@@ -9,7 +10,7 @@ import com.team5.network.NetworkInterface;
 import com.team5.network.Request;
 import com.team5.network.Response;
 
-class RatingTouchListener implements OnTouchListener, NetworkInterface {
+class RatingTouchListener implements OnTouchListener, NetworkInterface, OnClickListener {
 	private RatingBar starRatingBelow;
 	private RatingBar starRatingAbove;
 	private RatingBar starRatingUser;
@@ -87,6 +88,11 @@ class RatingTouchListener implements OnTouchListener, NetworkInterface {
 	public void resetMyRating() {
 		starRatingUser.setRating(0);
 		fixRating();
+	}
+
+	@Override
+	public void onClick( View v) {
+		mySocialAccount.changeFragment(new AddTopicFragment().defineParent(post));
 	}
 
 };

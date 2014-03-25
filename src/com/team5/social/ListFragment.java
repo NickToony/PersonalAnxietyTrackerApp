@@ -17,6 +17,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -29,6 +31,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.Spinner;
@@ -83,6 +86,7 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 			this.postFavourites = savedInstanceState.getInt("postFavourites");
 			this.postOrder = savedInstanceState.getInt("postOrder");
 			this.postOwner = savedInstanceState.getInt("postOwner");
+			this.doActionBar = savedInstanceState.getBoolean("doActionBar");
 		}
 		
 		if (myView == null)	{
@@ -105,62 +109,21 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 				}
 			};
 			
-			OnClickListener addClickListener = new OnClickListener() {
+			/* OnClickListener addClickListener = new OnClickListener() {
 				@Override
 				public void onClick( View v) {
 					mySocialAccount.changeFragment(new AddTopicFragment().defineParent(postParent));
 				}
-			};
+			};*/
 			
 			listView.setOnItemClickListener(topicClickListener);
-			myView.findViewById(R.id.social_fragment_list_addPost).setOnClickListener(addClickListener);
+			// myView.findViewById(R.id.social_fragment_list_addPost).setOnClickListener(addClickListener);
 		}
 		
 		fetchPosts();
 		
-		// If this fragment is to setup the dropdown
 		if (doActionBar)	{
-			// If no adapter is ready
-			if (dropDownAdapter == null)	{
-				// Make a new adapter using strings
-				dropDownAdapter = ArrayAdapter.createFromResource(getActivity(),
-					R.array.social_list_items, R.layout.social_fragment_list_dropdown);
-			}
-			// Fetch spinner (dropdown)
-			Spinner theSpinner = (Spinner) myActivity.getDropDown().getActionView();
-			// Apply adapter
-			theSpinner.setAdapter( dropDownAdapter);
-			// Apply onclick listener
-			theSpinner.setOnItemSelectedListener(new OnItemSelectedListener(){
-				@Override
-				public void onItemSelected(AdapterView<?> view, View row, int position, long id) {
-					switch (position) {
-					case 0:
-						postOrder = ListFragment.ORDER_NEW;
-						fetchPosts();
-						return;
-					case 1:
-						postOrder = ListFragment.ORDER_OLD;
-						fetchPosts();
-						return;
-					case 2:
-						postOrder = ListFragment.ORDER_TOP;
-						fetchPosts();
-						return;
-					default:
-						return;
-					}
-					
-				}
-
-				@Override
-				public void onNothingSelected(AdapterView<?> arg0) {
-					return;
-				}
-		    	
-		    });
-			// Make the dropdown visible
-			myActivity.getDropDown().setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+			setHasOptionsMenu(true);
 		}
 		
 		return myView;
@@ -209,8 +172,60 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 	    outState.putInt("postOwner", postOwner);
 	    outState.putInt("postOrder", postOrder);
 	    outState.putInt("postFavourites", postFavourites);
+	    outState.putBoolean("doActionBar", doActionBar);
 	    
 	    super.onSaveInstanceState(outState);
+	}
+	
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+	    
+		// If this fragment is to setup the dropdown
+				if (doActionBar)	{
+					// If no adapter is ready
+					if (dropDownAdapter == null)	{
+						// Make a new adapter using strings
+						dropDownAdapter = ArrayAdapter.createFromResource(getActivity(),
+							R.array.social_list_items, R.layout.social_fragment_list_dropdown);
+					}
+					// Fetch spinner (dropdown)
+					Spinner theSpinner = (Spinner) myActivity.getDropDown().getActionView();
+					// Apply adapter
+					theSpinner.setAdapter( dropDownAdapter);
+					// Apply onclick listener
+					theSpinner.setOnItemSelectedListener(new OnItemSelectedListener(){
+						@Override
+						public void onItemSelected(AdapterView<?> view, View row, int position, long id) {
+							switch (position) {
+							case 0:
+								postOrder = ListFragment.ORDER_NEW;
+								fetchPosts();
+								return;
+							case 1:
+								postOrder = ListFragment.ORDER_OLD;
+								fetchPosts();
+								return;
+							case 2:
+								postOrder = ListFragment.ORDER_TOP;
+								fetchPosts();
+								return;
+							default:
+								return;
+							}
+							
+						}
+
+						@Override
+						public void onNothingSelected(AdapterView<?> arg0) {
+							return;
+						}
+				    	
+				    });
+					// Make the dropdown visible
+					myActivity.getDropDown().setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+				}
+		
+	    super.onCreateOptionsMenu(menu,inflater);
 	}
 	
 	public ListFragment defineList(Post postParent, int postOwner, int postOrder, int postFavourites, boolean doActionBar)	{
@@ -293,6 +308,9 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 		
 		// Clear posts already there
 		listAdapter.clear();
+		
+		// Add space at top
+		listAdapter.addItem(null, true);
 		
 		if (postParent != null)	{
 			// Output the parent
@@ -407,12 +425,16 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 			RatingBar starRatingBelow = (RatingBar) convertView.findViewById(R.id.social_fragment_list_rowStarRatingBelow);
 			RatingBar starRatingUser = (RatingBar) convertView.findViewById(R.id.social_fragment_list_rowStarRatingBlue);
 			
-			
 			Post myItem = getItem(position);
+			
+			
 			textName.setText(myItem.name);
 			textDate.setText(myItem.date);
 			textContent.setText(myItem.content);
-			textReplies.setText("Replies: " + myItem.replies);
+			if (myItem.replies > 0)
+				textReplies.setText("Replies: " + myItem.replies);
+			else
+				textReplies.setText("No Replies Yet!");
 			
 			RatingTouchListener starTouchListener;
 			if (ratingListeners.get(position) == null)
@@ -420,6 +442,10 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 			else
 				starTouchListener = ratingListeners.get(position);
 			starTouchListener.setRatingBars(myItem, starRatingBelow, starRatingAbove, starRatingUser, mySocialAccount);
+			
+			Button buttonRight = (Button) convertView.findViewById(R.id.social_fragment_list_buttonRight);
+			if (buttonRight != null)
+				buttonRight.setOnClickListener(starTouchListener);
 			
 			starTouchListener.setOthersRating(myItem.rating);
 			if (myItem.myRating > 0)
@@ -448,7 +474,9 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 		
 		@Override
 		public long getItemId(int position)	{
-			return getItem(position).id;
+			if (getItem(position) != null)
+				return getItem(position).id;
+			return -1;
 		}
 		
 		public void addItem(Post item, boolean isParent)	{
