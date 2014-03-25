@@ -8,6 +8,7 @@ import com.team5.pat.Session;
 import com.team5.user.UserRecord;
 
 import android.app.Fragment;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,6 +46,7 @@ public class SeekBarFragment extends Fragment implements OnClickListener {
 		myView = inflater.inflate(R.layout.seek_bar_layout, container, false);
 		myActivity = (HomeActivity) getActivity();
 		myActivity.setTitle("Log");
+		getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		// If just started initialize to 0
 		if (savedInstanceState == null) {
