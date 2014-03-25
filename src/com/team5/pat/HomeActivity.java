@@ -5,6 +5,7 @@ import java.util.Locale;
 import com.team5.fragment.BreathExerciseFragment;
 import com.team5.fragment.GraphFragment;
 import com.team5.fragment.HomeFragment;
+import com.team5.fragment.NewsFragment;
 import com.team5.fragment.SeekBarFragment;
 import com.team5.navigationlist.NavListAdapter;
 import com.team5.pat.R;
@@ -142,9 +143,13 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 			else {
 				doNavigation(NavListAdapter.navigationLogOff);
 			}
-		} else {
-			getFragmentManager().popBackStack();
+			return;
+		} else if (getCurrentFragment() instanceof NewsFragment) {
+			if (	((NewsFragment) getCurrentFragment()).doBackPress()	)
+				return;
 		}
+		
+		getFragmentManager().popBackStack();
 	}
 
 	/** Sync the toggle state after onRestoreInstanceState has occurred **/
@@ -221,6 +226,9 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		case NavListAdapter.navigationLogOff:
 			finish();
 			break;
+		case NavListAdapter.navigationNews:
+			changeFragment(new NewsFragment());
+			break;
 		}
 	}
 
@@ -242,7 +250,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		adapter.addItem(NavListAdapter.navigationTracker);
 		adapter.addItem(NavListAdapter.navigationExercises);
 		adapter.addItem(NavListAdapter.navigationDiscussion);
-		adapter.addItem(NavListAdapter.navigationAccount);
+		adapter.addItem(NavListAdapter.navigationNews); 
 		adapter.addItem(NavListAdapter.navigationContact);
 		adapter.addItem(NavListAdapter.navigationReport);
 		adapter.addItem(NavListAdapter.navigationLogOff);

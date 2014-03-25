@@ -27,6 +27,7 @@
     <string name="navigation_create">New Post</string>
     <string name="navigation_favourites">My Favourites</string>
     <string name="navigation_mine">My Posts</string>
+    <string name="navigation_news">Latest News</string>
     
     
     <string-array name="spinner_list_items">
