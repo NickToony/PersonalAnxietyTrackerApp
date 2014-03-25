@@ -348,6 +348,8 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 				postMyRating = 0;
 			}
 			int postMine = Integer.parseInt(sectionElement.getElementsByTagName("Mine").item(0).getTextContent());
+			int postFavourites = Integer.parseInt(sectionElement.getElementsByTagName("Favourites").item(0).getTextContent());
+			int postFavourited = Integer.parseInt(sectionElement.getElementsByTagName("Favourited").item(0).getTextContent());
 			
 			// Add the item to list
 			// Add the item to list
@@ -356,7 +358,7 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 				isParent = true;
 			else
 				isParent = false;
-			listAdapter.addItem(new Post(postID, postOwner, postDate, postContent, postResponses, postRating, postOwnerID, postMyRating, postMine), isParent);
+			listAdapter.addItem(new Post(postID, postOwner, postDate, postContent, postResponses, postRating, postOwnerID, postMyRating, postMine, postFavourites, postFavourited), isParent);
 		}
 		
 		listAdapter.addItem(null, true);
@@ -424,6 +426,7 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 			RatingBar starRatingAbove = (RatingBar) convertView.findViewById(R.id.social_fragment_list_rowStarRatingAbove);
 			RatingBar starRatingBelow = (RatingBar) convertView.findViewById(R.id.social_fragment_list_rowStarRatingBelow);
 			RatingBar starRatingUser = (RatingBar) convertView.findViewById(R.id.social_fragment_list_rowStarRatingBlue);
+			TextView textFavourites = (TextView) convertView.findViewById(R.id.social_fragment_list_rowFavourites);
 			
 			Post myItem = getItem(position);
 			
@@ -435,6 +438,7 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 				textReplies.setText("Replies: " + myItem.replies);
 			else
 				textReplies.setText("No Replies Yet!");
+			textFavourites.setText("Favourited by " + myItem.favourites);
 			
 			RatingTouchListener starTouchListener;
 			if (ratingListeners.get(position) == null)
@@ -444,8 +448,17 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 			starTouchListener.setRatingBars(myItem, starRatingBelow, starRatingAbove, starRatingUser, mySocialAccount);
 			
 			Button buttonRight = (Button) convertView.findViewById(R.id.social_fragment_list_buttonRight);
+			Button buttonLeft = (Button) convertView.findViewById(R.id.social_fragment_list_buttonLeft);
+			
+			if (myItem.favourited)
+				buttonLeft.setText("Favourited");
+			else
+				buttonLeft.setText("Favourite");
+			
 			if (buttonRight != null)
 				buttonRight.setOnClickListener(starTouchListener);
+			if (buttonLeft != null)
+				buttonLeft.setOnClickListener(starTouchListener);
 			
 			starTouchListener.setOthersRating(myItem.rating);
 			if (myItem.myRating > 0)

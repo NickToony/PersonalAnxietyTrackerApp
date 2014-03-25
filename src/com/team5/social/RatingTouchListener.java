@@ -4,11 +4,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import android.widget.Button;
 import android.widget.RatingBar;
 
 import com.team5.network.NetworkInterface;
 import com.team5.network.Request;
 import com.team5.network.Response;
+import com.team5.pat.R;
 
 class RatingTouchListener implements OnTouchListener, NetworkInterface, OnClickListener {
 	private RatingBar starRatingBelow;
@@ -92,7 +94,26 @@ class RatingTouchListener implements OnTouchListener, NetworkInterface, OnClickL
 
 	@Override
 	public void onClick( View v) {
-		mySocialAccount.changeFragment(new AddTopicFragment().defineParent(post));
+		switch (v.getId())	{
+		case R.id.social_fragment_list_buttonLeft:
+			Request r = new Request(this, "http://nick-hope.co.uk/PAT/android/favourite", mySocialAccount.getCookies());
+			r.addParameter("post", "" + post.id);
+			r.start();
+			
+			if (post.favourited == false)	{
+				post.favourited = true;
+				post.favourites ++;
+				((Button) v).setText("Favourited");
+			}	else	{
+				post.favourited = false;
+				post.favourites --;
+				((Button) v).setText("Favourite");
+			}
+			break;
+		case R.id.social_fragment_list_buttonRight:
+			mySocialAccount.changeFragment(new AddTopicFragment().defineParent(post));
+			break;
+		}
 	}
 
 };
