@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.team5.pat"
     android:versionCode="1"
@@ -27,7 +26,7 @@
             android:value="AIzaSyB338fMRb6lpSvQxGiNOB1VDdMedL1CyZo" />
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+            android:value="4242000" />
 
         <activity
             android:name="com.team5.pat.SplashActivity"
