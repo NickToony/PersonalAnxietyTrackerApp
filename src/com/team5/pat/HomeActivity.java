@@ -21,6 +21,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -194,6 +195,9 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		actionBar.setHomeButtonEnabled(true);
 		actionBar.removeAllTabs(); // get rid of all tabs - they're maintained
 									// across fragments!!
+		
+		// Fix orientation
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
 		
 		// Get rid of any custom views here
 		//mySocialAccount.showListSpinnerAdapter(false);

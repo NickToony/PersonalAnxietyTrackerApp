@@ -48,8 +48,7 @@
         <activity
             android:name="com.team5.pat.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName="com.team5.pat.HomeActivity"
-            android:screenOrientation="portrait" >
+            android:parentActivityName="com.team5.pat.HomeActivity" >
         </activity>
         <activity
             android:name="com.team5.pat.HomeActivity"

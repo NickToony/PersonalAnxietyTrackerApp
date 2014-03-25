@@ -72,7 +72,7 @@ public class BreathExerciseFragment extends Fragment implements OnClickListener
 
 		initialiseComponents();
 		// Disable screen orientation
-		getActivity().setRequestedOrientation(
+		myActivity.setRequestedOrientation(
 				ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		return myView;
