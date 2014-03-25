@@ -382,7 +382,7 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 	 * 
 	 * Adapter for the topics list
 	 */
-	private class ListAdapter extends BaseAdapter {
+	private class ListAdapter extends BaseAdapter implements PostHandlerInterface {
 		private List<Post> items = new ArrayList<Post>();
 		private List<Boolean> itemIsParent = new ArrayList<Boolean>();
 		private List<RatingTouchListener> ratingListeners = new ArrayList<RatingTouchListener>();
@@ -445,7 +445,7 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 				starTouchListener = new RatingTouchListener();
 			else
 				starTouchListener = ratingListeners.get(position);
-			starTouchListener.setRatingBars(myItem, starRatingBelow, starRatingAbove, starRatingUser, mySocialAccount);
+			starTouchListener.setRatingBars(myItem, starRatingBelow, starRatingAbove, starRatingUser, mySocialAccount, this);
 			
 			Button buttonRight = (Button) convertView.findViewById(R.id.social_fragment_list_buttonRight);
 			Button buttonLeft = (Button) convertView.findViewById(R.id.social_fragment_list_buttonLeft);
@@ -531,6 +531,11 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 				itemIsParent.clear();
 			//}
 			((BaseAdapter) this).notifyDataSetChanged(); 
+		}
+
+		@Override
+		public void refresh() {
+			notifyDataSetChanged();
 		}
 		
 	}

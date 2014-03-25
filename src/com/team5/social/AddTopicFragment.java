@@ -19,19 +19,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class AddTopicFragment extends Fragment implements SocialFragmentInterface, NetworkInterface {
+public class AddTopicFragment extends Fragment implements SocialFragmentInterface, NetworkInterface, PostHandlerInterface {
 	private Post postParent;
 	private View myView;
 	private HomeActivity myActivity;
 	private SocialAccount mySocialAccount;
 	private boolean networking = false;
 	private ProgressDialog progressDialog;
+	private RatingTouchListener ratingListener;
 	
 	public Fragment defineParent(Post postParent) {
 		this.postParent = postParent;
@@ -47,6 +49,7 @@ public class AddTopicFragment extends Fragment implements SocialFragmentInterfac
 		
 		if (myView == null)	{
 			myView = inflater.inflate(R.layout.social_fragment_new_post, container, false);
+		}
 			
 			View post = myView.findViewById(R.id.social_fragment_post_parent);
 			if (postParent != null)	{
@@ -61,6 +64,7 @@ public class AddTopicFragment extends Fragment implements SocialFragmentInterfac
 				RatingBar starRatingAbove = (RatingBar) post.findViewById(R.id.social_fragment_list_rowStarRatingAbove);
 				RatingBar starRatingBelow = (RatingBar) post.findViewById(R.id.social_fragment_list_rowStarRatingBelow);
 				RatingBar starRatingUser = (RatingBar) post.findViewById(R.id.social_fragment_list_rowStarRatingBlue);
+				TextView textFavourites = (TextView) myView.findViewById(R.id.social_fragment_list_rowFavourites);
 				
 				// Assign the data into it
 				Post myItem = postParent;
@@ -69,8 +73,34 @@ public class AddTopicFragment extends Fragment implements SocialFragmentInterfac
 				textContent.setText(myItem.content);
 				textReplies.setText("Replies: " + myItem.replies);
 				
-				RatingTouchListener starTouchListener = new RatingTouchListener();
-				starTouchListener.setRatingBars(myItem, starRatingBelow, starRatingAbove, starRatingUser, mySocialAccount);
+				textFavourites.setText("Favourited by " + myItem.favourites);
+				
+				RatingTouchListener starTouchListener;
+				if (ratingListener == null)
+					starTouchListener = new RatingTouchListener();
+				else
+					starTouchListener = ratingListener;
+				ratingListener = starTouchListener;
+				starTouchListener.setRatingBars(myItem, starRatingBelow, starRatingAbove, starRatingUser, mySocialAccount, this);
+				
+				Button buttonRight = (Button) myView.findViewById(R.id.social_fragment_list_buttonRight);
+				Button buttonLeft = (Button) myView.findViewById(R.id.social_fragment_list_buttonLeft);
+				
+				if (myItem.favourited)
+					buttonLeft.setText("Favourited");
+				else
+					buttonLeft.setText("Favourite");
+				
+				if (buttonRight != null)
+					buttonRight.setOnClickListener(starTouchListener);
+				if (buttonLeft != null)
+					buttonLeft.setOnClickListener(starTouchListener);
+				
+				starTouchListener.setOthersRating(myItem.rating);
+				if (myItem.myRating > 0)
+					starTouchListener.setMyRating(myItem.myRating);
+				else
+					starTouchListener.resetMyRating();
 				
 				if (!myItem.mine)
 					post.findViewById(R.id.social_fragment_post_background).setBackgroundResource(R.drawable.social_container_highlight);
@@ -84,7 +114,6 @@ public class AddTopicFragment extends Fragment implements SocialFragmentInterfac
 				// No parent? No display
 				post.setVisibility(View.GONE);
 			}
-		}
 		
 		OnClickListener addClickListener = new OnClickListener() {
 			@Override
@@ -182,5 +211,10 @@ public class AddTopicFragment extends Fragment implements SocialFragmentInterfac
 		if (postParent != null)
 			postParent.replies ++;
 		mySocialAccount.handleEvent(SocialAccount.EVENT_GO_BACK);
+	}
+
+	@Override
+	public void refresh() {
+		myView.invalidate();
 	}
 }

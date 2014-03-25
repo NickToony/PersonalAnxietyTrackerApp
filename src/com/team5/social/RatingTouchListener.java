@@ -4,6 +4,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.RatingBar;
 
@@ -19,8 +20,9 @@ class RatingTouchListener implements OnTouchListener, NetworkInterface, OnClickL
 	private boolean ratingUserSet = false;
 	private Post post;
 	SocialAccount mySocialAccount;
+	PostHandlerInterface myListAdapter;
 	
-	public void setRatingBars(Post post, RatingBar starRatingBelow, RatingBar starRatingAbove, RatingBar starRatingUser, SocialAccount socialAccount)	{
+	public void setRatingBars(Post post, RatingBar starRatingBelow, RatingBar starRatingAbove, RatingBar starRatingUser, SocialAccount socialAccount, PostHandlerInterface myListAdapter)	{
 		this.post = post;
 		this.starRatingBelow = starRatingBelow;
 		this.starRatingAbove = starRatingAbove;
@@ -30,6 +32,8 @@ class RatingTouchListener implements OnTouchListener, NetworkInterface, OnClickL
 		starRatingAbove.setOnTouchListener(this);
 		starRatingBelow.setOnTouchListener(this);
 		starRatingUser.setOnTouchListener(this);
+		
+		this.myListAdapter = myListAdapter;
 	}
 	
     @Override
@@ -62,12 +66,16 @@ class RatingTouchListener implements OnTouchListener, NetworkInterface, OnClickL
 		starRatingBelow.setRating(value);
 		starRatingAbove.setRating(value);
 		
+		post.rating = value;
+		
 		fixRating();
 	}
 	
 	void setMyRating(float value)	{
 		starRatingUser.setRating(value);
 		ratingUserSet = true;
+		
+		post.myRating = value;
 		
 		fixRating();
 	}
@@ -84,7 +92,8 @@ class RatingTouchListener implements OnTouchListener, NetworkInterface, OnClickL
 
 	@Override
 	public void eventNetworkResponse(Request from, Response response) {
-		
+		if (myListAdapter != null)
+			myListAdapter.refresh();
 	}
 
 	public void resetMyRating() {
