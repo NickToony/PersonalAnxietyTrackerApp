@@ -13,6 +13,7 @@ import com.team5.social.SocialAccount;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -38,17 +39,13 @@ public class FeedbackFragment extends Fragment implements NetworkInterface
 	private TextView titleError;
 	private TextView commentError;
 	private TextView emailError;
-	private ProgressDialog progressDialog;
 
 	private final int MAX_RATING = 50;
 	private final double RATING_ROUNDING_VALUE = 10;
 	private final int INITIAL_PROGRESS = 0;
-	
-	
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState)
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		myView = inflater.inflate(R.layout.feedback_fragment, container, false);
 		myActivity = (HomeActivity) getActivity();
@@ -67,8 +64,8 @@ public class FeedbackFragment extends Fragment implements NetworkInterface
 		// Set values
 		ratingSeekBar.setMax(MAX_RATING);
 		ratingSeekBar.setProgress(INITIAL_PROGRESS);
-		
-		ratingValue.setText(""+INITIAL_PROGRESS);
+
+		ratingValue.setText("" + INITIAL_PROGRESS);
 
 		setListeners();
 
@@ -94,11 +91,10 @@ public class FeedbackFragment extends Fragment implements NetworkInterface
 			}
 
 			@Override
-			public void onProgressChanged(SeekBar seekBar, int progress,
-					boolean fromUser)
+			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
 			{
 
-				ratingValue.setText(""+Math.round((double)ratingSeekBar.getProgress()/RATING_ROUNDING_VALUE));
+				ratingValue.setText("" + Math.round((double) ratingSeekBar.getProgress() / RATING_ROUNDING_VALUE));
 			}
 		});
 
@@ -108,10 +104,11 @@ public class FeedbackFragment extends Fragment implements NetworkInterface
 			public void onClick(View v)
 			{
 
-				Request r = new Request(FeedbackFragment.this, "http://nick-hope.co.uk/PAT/android/login.php");
-				r.addParameter("email", emailEditText.getText().toString());
-				r.addParameter("title", titleEditText.getText().toString());
+				Request r = new Request(FeedbackFragment.this, "http://nick-hope.co.uk/PAT/android/feedback.php");
+				//possibility for adding feedback, not really sure
 				r.addParameter("content", commentEditText.getText().toString());
+				r.addParameter("title", titleEditText.getText().toString());
+				r.addParameter("email", emailEditText.getText().toString());
 				r.addParameter("rating", ratingValue.getText().toString());
 				r.start();
 
@@ -121,67 +118,66 @@ public class FeedbackFragment extends Fragment implements NetworkInterface
 	}
 
 	@Override
-	public void eventNetworkResponse(Request from, Response response) {
-		// Get rid of dialog
-				if (progressDialog!=null) {
-		            if (progressDialog.isShowing()) {
-		            	progressDialog.dismiss();       
-		            }
-		        }
-				
-							
-				if (!response.isSuccess())	{
-					errorType.setText("Failure: " + response.getMessage());
-					return;
-				}
-				
-				// Get the request element
-				Element eleRequest = response.getRequest();
-				
-				// Get script status
-				int scriptStatus = Integer.parseInt(eleRequest.getElementsByTagName("status").item(0).getTextContent());
-				// script failure
-				if (scriptStatus != 0)	{
-					String errorTypeString = eleRequest.getElementsByTagName("error").item(0).getTextContent();
-					String errorMessage = eleRequest.getElementsByTagName("message").item(0).getTextContent();
-					errorType.setText("Error: " + errorTypeString + ": " + errorMessage);
-					return;
-				}
-				
-				// Get the request element
-				Element eleData = response.getData();
-				
-				// Get the section elements
-				TextView outputViews[] = {	errorType, emailError, titleError, commentError };
-				NodeList sectionList = eleData.getChildNodes();
-				
-				boolean success = true;
-				for (int i = 0; i < sectionList.getLength(); i ++)	{
-					// Get the section element
-					Element sectionElement = (Element) sectionList.item(i);
-					
-					// Fetch the section data
-					int sectionResponse = Integer.parseInt(sectionElement.getElementsByTagName("response").item(0).getTextContent());
-					String sectionMessage = sectionElement.getElementsByTagName("message").item(0).getTextContent();
-					
-					// Output into correct position
-					if (sectionResponse != 0)	{
-						outputViews[i].setText(sectionElement.getNodeName() + ": " + sectionMessage);
-						success = false;
-					}	else	{
-						outputViews[i].setText("");
-					}
-				}
-				
-				if (success)	{
-					// do something
-					errorType.setText("Feedback Submitted!");
-//					errorType.setTextColor(myView.findViewById(R.color.feedback_pass_message_color));
-				}
-						
+	public void eventNetworkResponse(Request from, Response response)
+	{
 
+		if (!response.isSuccess())
+		{
+			errorType.setText("Failure: " + response.getMessage());
+			return;
+		}
+
+		// Get the request element
+		Element eleRequest = response.getRequest();
+
+		// Get script status
+		int scriptStatus = Integer.parseInt(eleRequest.getElementsByTagName("status").item(0).getTextContent());
+		// script failure
+		if (scriptStatus != 0)
+		{
+			String errorTypeString = eleRequest.getElementsByTagName("error").item(0).getTextContent();
+			String errorMessage = eleRequest.getElementsByTagName("message").item(0).getTextContent();
+			errorType.setText("Error: " + errorTypeString + ": " + errorMessage);
+			return;
+		}
+
+		// Get the request element
+		Element eleData = response.getData();
+
+		// Get the section elements
+		TextView outputViews[] = { errorType, commentError, titleError, emailError, titleEditText };
+		NodeList sectionList = eleData.getChildNodes();
+		Log.i("sectionList LENGTH", "" + sectionList.getLength());
+
+		boolean success = true;
+		for (int i = 0; i < sectionList.getLength(); i++)
+		{
+			// Get the section element
+			Element sectionElement = (Element) sectionList.item(i);
+			Log.i("ELEMENT " + i, "" + sectionElement);
+			// Fetch the section data
+			int sectionResponse = Integer.parseInt(sectionElement.getElementsByTagName("response").item(0).getTextContent());
+			String sectionMessage = sectionElement.getElementsByTagName("message").item(0).getTextContent();
+			Log.i("SECTION RESPONSE IS  ", "" + sectionResponse);
+			// Output into correct position
+			if (sectionResponse != 0)
+			{
+
+				outputViews[i].setText(sectionElement.getNodeName() + ": " + sectionMessage);
+				success = false;
+				Log.i("OUTPUT VIEW PASSED:  ", "" + outputViews[i]);
+
+			} else
+			{
+				outputViews[i].setText("");
+			}
+		}
 		
+		 if (success) {
+		 // do something
+		 errorType.setText("Feedback Submitted!");
+		 }
+
 	}
-	
-	
+
 }
