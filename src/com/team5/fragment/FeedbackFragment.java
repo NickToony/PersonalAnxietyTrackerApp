@@ -3,6 +3,7 @@ package com.team5.fragment;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import com.team5.navigationlist.NavListAdapter;
 import com.team5.network.NetworkInterface;
 import com.team5.network.Request;
 import com.team5.network.Response;
@@ -10,8 +11,11 @@ import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
 import com.team5.social.SocialAccount;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -39,6 +43,7 @@ public class FeedbackFragment extends Fragment implements NetworkInterface
 	private TextView titleError;
 	private TextView commentError;
 	private TextView emailError;
+	private TextView ratingError;
 
 	private final int MAX_RATING = 50;
 	private final double RATING_ROUNDING_VALUE = 10;
@@ -60,6 +65,8 @@ public class FeedbackFragment extends Fragment implements NetworkInterface
 		titleError = (TextView) myView.findViewById(R.id.titleError);
 		commentError = (TextView) myView.findViewById(R.id.commentError);
 		emailEditText = (EditText) myView.findViewById(R.id.emailEditText);
+		emailError = (TextView) myView.findViewById(R.id.emailError);
+		ratingError = (TextView) myView.findViewById(R.id.ratingError);
 
 		// Set values
 		ratingSeekBar.setMax(MAX_RATING);
@@ -105,7 +112,7 @@ public class FeedbackFragment extends Fragment implements NetworkInterface
 			{
 
 				Request r = new Request(FeedbackFragment.this, "http://nick-hope.co.uk/PAT/android/feedback.php");
-				//possibility for adding feedback, not really sure
+				// possibility for adding feedback, not really sure
 				r.addParameter("content", commentEditText.getText().toString());
 				r.addParameter("title", titleEditText.getText().toString());
 				r.addParameter("email", emailEditText.getText().toString());
@@ -145,7 +152,7 @@ public class FeedbackFragment extends Fragment implements NetworkInterface
 		Element eleData = response.getData();
 
 		// Get the section elements
-		TextView outputViews[] = { errorType, commentError, titleError, emailError, titleEditText };
+		TextView outputViews[] = { errorType, commentError, titleError, emailError, ratingError };
 		NodeList sectionList = eleData.getChildNodes();
 		Log.i("sectionList LENGTH", "" + sectionList.getLength());
 
@@ -172,11 +179,24 @@ public class FeedbackFragment extends Fragment implements NetworkInterface
 				outputViews[i].setText("");
 			}
 		}
-		
-		 if (success) {
-		 // do something
-		 errorType.setText("Feedback Submitted!");
-		 }
+
+		if (success)
+		{
+
+			AlertDialog.Builder successAlert = new AlertDialog.Builder(myActivity);
+			successAlert.setMessage("Feedback submitted!\nThank You!");
+			successAlert.setCancelable(true);
+			successAlert.setPositiveButton("Exit", new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int id)
+				{
+					dialog.cancel();
+					myActivity.doNavigation(NavListAdapter.navigationHome);
+				}
+			});
+
+			AlertDialog alert11 = successAlert.create();
+			alert11.show();
+		}
 
 	}
 

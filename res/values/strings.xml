@@ -104,6 +104,8 @@
     <string name="feedback_rating_label">Rating:</string>
     <string name="feedback_email_label">e-mail</string>
     <string name="feedback_email_hint">e.g. my.mail@ncl.ac.uk</string>
+    <string name="feedback_scale_end">5</string>
+    
     
     <!-- Dialog box -->
     <string name="dialog_title">I am Milton Li</string>
