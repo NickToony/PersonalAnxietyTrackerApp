@@ -2,6 +2,7 @@ package com.team5.fragment;
 
 import java.util.Date;
 
+import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
 import com.team5.pat.Session;
 import com.team5.user.UserRecord;
@@ -37,12 +38,14 @@ public class SeekBarFragment extends Fragment implements OnClickListener {
 	private EditText commentsTextField;
 
 	private View myView;
+	private HomeActivity myActivity;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		myView = inflater.inflate(R.layout.seek_bar_layout, container, false);
-		getActivity().setTitle(getResources().getString(R.string.navigation_log));
+		myActivity = (HomeActivity) getActivity();
+		myActivity.setTitle("Log");
 		getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		// If just started initialize to 0

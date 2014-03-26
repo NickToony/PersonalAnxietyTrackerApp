@@ -22,13 +22,14 @@
     <string name="navigation_account">My Account</string>
     <string name="navigation_contact">Find Help</string>
     <string name="navigation_report">Report Issue</string>
-    <string name="navigation_exit">Exit</string>
+    <string name="navigation_logoff">Log Off</string>
     <string name="navigation_browse">Browse Posts</string>
     <string name="navigation_create">New Post</string>
     <string name="navigation_favourites">My Favourites</string>
     <string name="navigation_mine">My Posts</string>
     <string name="navigation_news">Latest News</string>
-
+    
+    
     <string-array name="spinner_list_items">
         <item>Day</item>
         <item>Week</item>
@@ -59,6 +60,18 @@
     <string name="action_exit">Exit</string>
 
     <!-- Contact -->
+    <string-array name="contact_name">
+        <item>Alex</item>
+        <item>Calum</item>
+        <item>David</item>
+        <item>Lara</item>
+        <item>Milton</item>
+        <item>Nick</item>
+        <item>Sophie</item>
+        <item>Milton</item>
+        <item>Milton</item>
+        <item>Milton</item>
+    </string-array>
     <string-array name="contact_icons">
         <item>@drawable/ic_milton1</item>
         <item>@drawable/ic_milton2</item>
@@ -70,6 +83,18 @@
         <item>@drawable/ic_milton5</item>
         <item>@drawable/ic_milton3</item>
         <item>@drawable/ic_milton1</item>
+    </string-array>
+    <string-array name="contact_phone_number">
+        <item>07789631579</item>
+        <item>07135764379</item>
+        <item>07132065516</item>
+        <item>07651616354</item>
+        <item>07165316512</item>
+        <item>07219841328</item>
+        <item>07106518645</item>
+        <item>07898794646</item>
+        <item>07946131313</item>
+        <item>07664678746</item>
     </string-array>
 
     <!-- Dialog box -->
@@ -91,6 +116,10 @@
     <string name="seriousness_heading">How serious is the situation?</string>
     <string name="anxiety_heading">How anxious do you feel?</string>
     <string name="save_button_text">Save</string>
+    <string name="status_save">Save</string>
+    <string name="status_exit">Exit</string>
+    <string name="status_summary_hint">Summary</string>
+    <string name="status_comment_hint">Comment</string>
 
     <!-- Breathing Exercise -->
     <string name="instructions">Inhale when the circle expands\nExhale when the circle shrinks</string>
@@ -99,23 +128,24 @@
     <string name="start">Start</string>
     <string name="pause">Pause</string>
     <string name="stop">Stop</string>
-    <string name="exerciseDefaultDuration">60</string>
-    <string name="exerciseDefaultCycles">20</string>
-    <string name="animation_speed">Speed</string>
-    <string name="cycles">Cycles:</string>
-    <string name="cyclesLabel">Cycles</string>
-
-    <string-array name="countdown_options">
+	<string name="exerciseDefaultDuration">60</string>
+	<string name="exerciseDefaultCycles">20</string>
+	<string name="animation_speed">Speed</string>
+	<string name="cycles">Cycles:</string>
+	<string name="cyclesLabel">Cycles</string>
+	
+	
+	<string-array name="countdown_options">
         <item>Seconds</item>
         <item>Cycles</item>
     </string-array>
-
+	
     <!-- Start of calm down text -->
     <string name="CalmDown">Being patient is key. Take a couple seconds to cool down.
     Slowly  take deep breaths in and deep breaths out and let it all out.</string>
 
     <!-- Settings Preference -->
-    <string name="pin_hint">4 digits</string>
+    <string name="pin_hint">Digits with max 8 characters</string>
     <string name="pref_category_personalise">Personalise</string>
     <string name="pref_category_pat">Personal Anxiety Tracker</string>
     <string name="pref_notification_title">Notification</string>
@@ -123,9 +153,11 @@
     <string name="pref_lockscreen_title">Show lockscreen</string>
     <string name="pref_pin_title">Lockscreen pin number</string>
     <string name="pref_about_us_title">About Us</string>
+    <string name="pref_night_mode_title">Night Mode</string>
     <string name="pref_notification_summ">Notification on everyday?</string>
     <string name="pref_lockscreen_summ">Show lockscreen on startup</string>
     <string name="pref_about_us_summ">Newcastle University</string>
+    <string name="pref_night_mode_summ">Night Mode helps protect your eyes</string>
     <string name="pref_breath_exercise_countdown">Exercise countdown type </string>
 
     <string-array name="pref_language_list_options">
@@ -136,6 +168,7 @@
         <item>en</item>
         <item>zh</item>
     </string-array>
+    
 
     <!-- Splash -->
     <string-array name="button_array">
@@ -159,9 +192,10 @@
     <string name="rating">Rating</string>
     <string name="time">Time</string>
     <string name="title_activity_social">SocialActivity</string>
-
-    <!-- the x axis labelling for the week -->
+    
+        <!-- the x axis labelling for the week -->
     <string-array name="x_axis_grid_week">
+
         <item>Mon</item>
         <item>Tue</item>
         <item>Wed</item>
@@ -169,15 +203,18 @@
         <item>Fri</item>
         <item>Sat</item>
         <item>Sun</item>
+
     </string-array>
 
-    <!-- the x axis labelling for the month -->
+    <!-- the x axis labelling for the month-->
     <string-array name="x_axis_grid_month">
         <item>Week 1</item>
         <item>Week 2</item>
         <item>Week 3</item>
         <item>Week 4</item>
         <item>Week 5</item>
+
+
     </string-array>
 
     <!-- the x axis labelling for the year -->
@@ -195,12 +232,12 @@
         <item>Nov</item>
         <item>Dec</item>
         <item>Sun</item>
-    </string-array>
 
+    </string-array>
     <string name="x_axis_title_days">DAYS OF WEEK</string>
     <string name="x_axis_title_month">WEEKS OF MONTH</string>
     <string name="x_axis_title_year">YEAR</string>
-
+    
     <!-- Social Features -->
     <string name="social_fragment_signin_loginText">Sign In to Your Account</string>
     <string name="social_fragment_signin_email">\@Newcastle.ac.uk</string>
@@ -209,7 +246,7 @@
     <string name="social_fragment_signup_email">\@Newcastle.ac.uk</string>
     <string name="social_fragment_signup_buttonText">Sign Up</string>
     <string name="social_fragment_list_addPost">Add Reply</string>
-
+    
     <string-array name="social_list_items">
         <item>Newest</item>
         <item>Oldest</item>

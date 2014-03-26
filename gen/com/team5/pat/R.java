@@ -23,26 +23,28 @@ public final class R {
         /**  Splash 
  Splash 
          */
-        public static final int button_array=0x7f0c0005;
+        public static final int button_array=0x7f0c0007;
+        public static final int contact_icons=0x7f0c0002;
         /**  Contact 
          */
-        public static final int contact_icons=0x7f0c0001;
-        public static final int countdown_options=0x7f0c0002;
-        public static final int nav_list_icons=0x7f0c000a;
-        public static final int nav_list_titles=0x7f0c000b;
-        public static final int pref_language_list_options=0x7f0c0003;
-        public static final int pref_language_list_values=0x7f0c0004;
-        public static final int social_list_items=0x7f0c0009;
+        public static final int contact_name=0x7f0c0001;
+        public static final int contact_phone_number=0x7f0c0003;
+        public static final int countdown_options=0x7f0c0004;
+        public static final int nav_list_icons=0x7f0c000c;
+        public static final int nav_list_titles=0x7f0c000d;
+        public static final int pref_language_list_options=0x7f0c0005;
+        public static final int pref_language_list_values=0x7f0c0006;
+        public static final int social_list_items=0x7f0c000b;
         public static final int spinner_list_items=0x7f0c0000;
-        /**  the x axis labelling for the month 
+        /**  the x axis labelling for the month
          */
-        public static final int x_axis_grid_month=0x7f0c0007;
+        public static final int x_axis_grid_month=0x7f0c0009;
         /**  the x axis labelling for the week 
          */
-        public static final int x_axis_grid_week=0x7f0c0006;
+        public static final int x_axis_grid_week=0x7f0c0008;
         /**  the x axis labelling for the year 
          */
-        public static final int x_axis_grid_year=0x7f0c0008;
+        public static final int x_axis_grid_year=0x7f0c000a;
     }
     public static final class attr {
         /** 
@@ -568,9 +570,9 @@ containing a value of this type.
  Start of calm down text 
          */
         public static final int CalmDown=0x7f090062;
-        public static final int Ref_anxiety=0x7f090072;
-        public static final int Ref_seriousness=0x7f090071;
-        public static final int Sub_menu=0x7f090080;
+        public static final int Ref_anxiety=0x7f090074;
+        public static final int Ref_seriousness=0x7f090073;
+        public static final int Sub_menu=0x7f090082;
         public static final int Xaxis=0x7f09001c;
         public static final int Yaxis=0x7f09001b;
         public static final int action_contact=0x7f09003c;
@@ -583,7 +585,7 @@ containing a value of this type.
         public static final int action_settings=0x7f09003a;
         public static final int action_status=0x7f090040;
         public static final int animation_speed=0x7f09005f;
-        public static final int anxiety=0x7f090070;
+        public static final int anxiety=0x7f090072;
         public static final int anxiety_heading=0x7f090051;
         public static final int app_name=0x7f09001a;
         /**   Title for notification shown when GooglePlayServices needs to be
@@ -712,12 +714,12 @@ containing a value of this type.
         public static final int navigation_create=0x7f09002f;
         public static final int navigation_discussion=0x7f090029;
         public static final int navigation_exercises=0x7f090028;
-        public static final int navigation_exit=0x7f09002d;
         public static final int navigation_favourites=0x7f090030;
         /**  Navigation labels 
          */
         public static final int navigation_home=0x7f090025;
         public static final int navigation_log=0x7f090026;
+        public static final int navigation_logoff=0x7f09002d;
         public static final int navigation_mine=0x7f090031;
         public static final int navigation_news=0x7f090032;
         public static final int navigation_report=0x7f09002c;
@@ -727,24 +729,24 @@ containing a value of this type.
         /**  Settings Preference 
          */
         public static final int pin_hint=0x7f090063;
-        public static final int pref_about_us_summ=0x7f09006d;
+        public static final int pref_about_us_summ=0x7f09006e;
         public static final int pref_about_us_title=0x7f09006a;
-        public static final int pref_breath_exercise_countdown=0x7f09006e;
+        public static final int pref_breath_exercise_countdown=0x7f090070;
         public static final int pref_category_pat=0x7f090065;
         /**  Settings Preference 
          */
         public static final int pref_category_personalise=0x7f090064;
         public static final int pref_language_title=0x7f090067;
-        public static final int pref_lockscreen_summ=0x7f09006c;
+        public static final int pref_lockscreen_summ=0x7f09006d;
         public static final int pref_lockscreen_title=0x7f090068;
-        public static final int pref_night_mode_summ=0x7f090086;
-        public static final int pref_night_mode_title=0x7f090084;
-        public static final int pref_notification_summ=0x7f09006b;
+        public static final int pref_night_mode_summ=0x7f09006f;
+        public static final int pref_night_mode_title=0x7f09006b;
+        public static final int pref_notification_summ=0x7f09006c;
         public static final int pref_notification_title=0x7f090066;
         public static final int pref_pin_title=0x7f090069;
-        public static final int pref_update_summ=0x7f090085;
-        public static final int pref_update_title=0x7f090083;
-        public static final int rating=0x7f090073;
+        public static final int pref_update_summ=0x7f090086;
+        public static final int pref_update_title=0x7f090085;
+        public static final int rating=0x7f090075;
         public static final int red_line=0x7f09001d;
         public static final int save_button_text=0x7f090052;
         /**  Seek bar 
@@ -756,17 +758,17 @@ containing a value of this type.
         public static final int search_title=0x7f09003e;
         public static final int seconds=0x7f090058;
         public static final int secondsLabel=0x7f090059;
-        public static final int seriousness=0x7f09006f;
+        public static final int seriousness=0x7f090071;
         public static final int seriousness_heading=0x7f090050;
-        public static final int social_fragment_list_addPost=0x7f09007f;
-        public static final int social_fragment_signin_buttonText=0x7f09007b;
-        public static final int social_fragment_signin_email=0x7f09007a;
+        public static final int social_fragment_list_addPost=0x7f090081;
+        public static final int social_fragment_signin_buttonText=0x7f09007d;
+        public static final int social_fragment_signin_email=0x7f09007c;
         /**  Social Features 
          */
-        public static final int social_fragment_signin_loginText=0x7f090079;
-        public static final int social_fragment_signup_buttonText=0x7f09007e;
-        public static final int social_fragment_signup_email=0x7f09007d;
-        public static final int social_fragment_signup_loginText=0x7f09007c;
+        public static final int social_fragment_signin_loginText=0x7f09007b;
+        public static final int social_fragment_signup_buttonText=0x7f090080;
+        public static final int social_fragment_signup_email=0x7f09007f;
+        public static final int social_fragment_signup_loginText=0x7f09007e;
         public static final int sound=0x7f09004a;
         public static final int start=0x7f09005a;
         public static final int status_comment_hint=0x7f090056;
@@ -777,7 +779,7 @@ containing a value of this type.
         public static final int string_choice=0x7f090022;
         public static final int submit=0x7f090020;
         public static final int thoughts_hint=0x7f09004f;
-        public static final int time=0x7f090074;
+        public static final int time=0x7f090076;
         public static final int title_activity_contact=0x7f090038;
         public static final int title_activity_contact_details=0x7f090039;
         public static final int title_activity_graph=0x7f090037;
@@ -785,13 +787,13 @@ containing a value of this type.
  Activities label 
          */
         public static final int title_activity_nav_list=0x7f090035;
-        public static final int title_activity_quickPanic=0x7f090081;
-        public static final int title_activity_record_graph=0x7f090082;
+        public static final int title_activity_quickPanic=0x7f090083;
+        public static final int title_activity_record_graph=0x7f090084;
         public static final int title_activity_settings=0x7f090036;
-        public static final int title_activity_social=0x7f090075;
-        public static final int x_axis_title_days=0x7f090076;
-        public static final int x_axis_title_month=0x7f090077;
-        public static final int x_axis_title_year=0x7f090078;
+        public static final int title_activity_social=0x7f090077;
+        public static final int x_axis_title_days=0x7f090078;
+        public static final int x_axis_title_month=0x7f090079;
+        public static final int x_axis_title_year=0x7f09007a;
     }
     public static final class style {
         /** 

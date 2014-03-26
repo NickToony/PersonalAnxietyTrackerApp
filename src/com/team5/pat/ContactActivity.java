@@ -32,8 +32,6 @@ public class ContactActivity extends Activity implements TabListener,
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_contact);
 		actionBar = getActionBar();
-		actionBar.setTitle(getResources()
-				.getString(R.string.navigation_contact));
 		handleIntent(getIntent());
 
 		addTabsToActionBar();
@@ -126,7 +124,7 @@ public class ContactActivity extends Activity implements TabListener,
 
 class ContactAdapter extends FragmentStatePagerAdapter {
 	private final int NUM_OF_TABS = 2;
-
+	
 	public ContactAdapter(FragmentManager fm) {
 		super(fm);
 	}

@@ -22,9 +22,9 @@ public class NavListAdapter extends ArrayAdapter<NavListItem> {
 	private Context context;
 	private int resource;
 	private List<NavListItem> items = new ArrayList<NavListItem>();
-
+	
 	private View myView;
-
+	
 	// Navigation Items
 	private NavListItem[] navigationItems = new NavListItem[14];
 	public final static int navigationHome = 0;
@@ -41,40 +41,26 @@ public class NavListAdapter extends ArrayAdapter<NavListItem> {
 	public final static int navigationFavourites = 11;
 	public final static int navigationMine = 12;
 	public final static int navigationNews = 13;
-
+	
 	public NavListAdapter(Context context, int resource) {
 		super(context, resource);
 		this.context = context;
 		this.resource = resource;
-
-		navigationItems[navigationHome] = new NavListItem(
-				R.drawable.ic_log_off, R.string.navigation_home);
-		navigationItems[navigationLog] = new NavListItem(R.drawable.ic_log,
-				R.string.navigation_log);
-		navigationItems[navigationTracker] = new NavListItem(
-				R.drawable.ic_tracker, R.string.navigation_tracker);
-		navigationItems[navigationExercises] = new NavListItem(
-				R.drawable.ic_exercises, R.string.navigation_exercises);
-		navigationItems[navigationDiscussion] = new NavListItem(
-				R.drawable.ic_forums2, R.string.navigation_discussion);
-		navigationItems[navigationAccount] = new NavListItem(
-				R.drawable.ic_my_account, R.string.navigation_account);
-		navigationItems[navigationContact] = new NavListItem(
-				R.drawable.ic_find_help, R.string.navigation_contact);
-		navigationItems[navigationReport] = new NavListItem(
-				R.drawable.ic_report_issue, R.string.navigation_report);
-		navigationItems[navigationLogOff] = new NavListItem(
-				R.drawable.ic_log_off, R.string.navigation_exit);
-		navigationItems[navigationBrowse] = new NavListItem(
-				R.drawable.ic_browseposts, R.string.navigation_browse);
-		navigationItems[navigationCreate] = new NavListItem(
-				R.drawable.ic_addpost, R.string.navigation_create);
-		navigationItems[navigationFavourites] = new NavListItem(
-				R.drawable.ic_favouriteposts, R.string.navigation_favourites);
-		navigationItems[navigationMine] = new NavListItem(
-				R.drawable.ic_myposts, R.string.navigation_mine);
-		navigationItems[navigationNews] = new NavListItem(
-				R.drawable.ic_favouriteposts, R.string.navigation_news);
+		
+		navigationItems[navigationHome] = new NavListItem(R.drawable.ic_log_off, R.string.navigation_home);
+		navigationItems[navigationLog] = new NavListItem(R.drawable.ic_log, R.string.navigation_log);
+		navigationItems[navigationTracker] = new NavListItem(R.drawable.ic_tracker, R.string.navigation_tracker);
+		navigationItems[navigationExercises] = new NavListItem(R.drawable.ic_exercises, R.string.navigation_exercises);
+		navigationItems[navigationDiscussion] = new NavListItem(R.drawable.ic_forums2, R.string.navigation_discussion);
+		navigationItems[navigationAccount] = new NavListItem(R.drawable.ic_my_account, R.string.navigation_account);
+		navigationItems[navigationContact] = new NavListItem(R.drawable.ic_find_help, R.string.navigation_contact);
+		navigationItems[navigationReport] = new NavListItem(R.drawable.ic_report_issue, R.string.navigation_report);
+		navigationItems[navigationLogOff] = new NavListItem(R.drawable.ic_log_off, R.string.navigation_logoff);
+		navigationItems[navigationBrowse] = new NavListItem(R.drawable.ic_browseposts, R.string.navigation_browse);
+		navigationItems[navigationCreate] = new NavListItem(R.drawable.ic_addpost, R.string.navigation_create);
+		navigationItems[navigationFavourites] = new NavListItem(R.drawable.ic_favouriteposts, R.string.navigation_favourites);
+		navigationItems[navigationMine] = new NavListItem(R.drawable.ic_myposts, R.string.navigation_mine);
+		navigationItems[navigationNews] = new NavListItem(R.drawable.ic_favouriteposts, R.string.navigation_news);
 	}
 
 	@Override
@@ -89,39 +75,37 @@ public class NavListAdapter extends ArrayAdapter<NavListItem> {
 
 		ImageView icon = (ImageView) myView.findViewById(R.id.rowImage);
 		TextView title = (TextView) myView.findViewById(R.id.rowTitle);
-		// image.setImageResource(items.get(position).getImage());
-
+		//image.setImageResource(items.get(position).getImage());
+		
 		NavListItem myItem = getItem(position);
-		icon.setImageDrawable(context.getResources().getDrawable(
-				myItem.getImage()));
-		title.setText(context.getResources().getString(myItem.getLabel()));
+		icon.setImageDrawable(context.getResources().getDrawable( myItem.getImage() ) );
+		title.setText(context.getResources().getString(myItem.getLabel() ));
 
 		return myView;
 	}
-
+	
 	@Override
-	public int getCount() {
+	public int getCount()	{
 		return items.size();
 	}
-
+	
 	@Override
-	public NavListItem getItem(int position) {
+	public NavListItem getItem(int position)	{
 		return items.get(position);
 	}
-
+	
 	@Override
-	public long getItemId(int position) {
-		for (int i = 0; i < navigationItems.length; i++) {
+	public long getItemId(int position)	{
+		for (int i = 0; i < navigationItems.length; i ++)	{
 			if (navigationItems[i] == getItem(position))
 				return i;
 		}
-
+		
 		return -1;
 	}
-
-	public void addItem(int item) {
-		// items.add(new NavListItem(context.getResources().getDrawable(
-		// navArray[0] ), label));
+	
+	public void addItem(int item)	{
+		//items.add(new NavListItem(context.getResources().getDrawable( navArray[0] ), label));
 		items.add(navigationItems[item]);
 	}
 }
