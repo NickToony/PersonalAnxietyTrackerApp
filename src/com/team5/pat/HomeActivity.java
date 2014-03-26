@@ -30,8 +30,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
@@ -287,7 +285,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 
 	}
 
-	public void setTitle(String title) {
-		actionBar.setTitle(title);
-	}
+//	public void setTitle(String title) {
+//		actionBar.setTitle(title);
+//	}
 }
