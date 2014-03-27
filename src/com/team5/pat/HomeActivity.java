@@ -87,6 +87,9 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		
 		mySocialNotifications = menu.findItem( R.id.notifications);
 		mySocialNotifications.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+		
+		if (mySocialAccount.isNotifications())
+			mySocialAccount.fixNotifications();
 		return true;
 	}
 	
@@ -208,8 +211,10 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		if (myDropDown != null)
 			myDropDown.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
 		if (mySocialNotifications != null)	{
-			if (mySocialAccount.getNotifications())
+			if (mySocialAccount.isNotifications())	{
 				mySocialNotifications.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+				mySocialAccount.updateNotifications();
+			}
 			else
 				mySocialNotifications.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
 		}

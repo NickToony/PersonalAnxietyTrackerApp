@@ -223,6 +223,8 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 				    });
 					// Make the dropdown visible
 					myActivity.getDropDown().setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+					
+					mySocialAccount.fixNotifications();
 				}
 		
 	    super.onCreateOptionsMenu(menu,inflater);
@@ -242,6 +244,10 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 		this.doActionBar = doActionBar;
 		
 		return this;
+	}
+	
+	public Fragment defineList(int postParentID, int postOwner, int postOrder, int postFavourites, boolean doActionBar) {
+		return defineList(null, postOwner, postOrder, postFavourites, doActionBar);
 	}
 	
 	class DropDownListener implements OnNavigationListener {

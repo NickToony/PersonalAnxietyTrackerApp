@@ -37,6 +37,7 @@ public class SocialAccount implements NetworkInterface {
 	private boolean socialLoggedIn = false;
 	private Map<String, String> myCookies = new HashMap<String, String>();
 	private List<Notification> myNotifications;
+	private long lastNotificationUpdate = 0;
 	
 	public final static int EVENT_SIGN_IN = 0;
 	public final static int EVENT_SIGN_OUT = 1;
@@ -78,8 +79,12 @@ public class SocialAccount implements NetworkInterface {
 		myActivity.setTitle("Discussion");
 	}
 	
-	public boolean getNotifications()	{
+	public boolean isNotifications()	{
 		return myNotifications != null;
+	}
+	
+	public List<Notification> getNotifications()	{
+		return myNotifications;
 	}
 	
 	private void popFragment()	{
@@ -110,7 +115,14 @@ public class SocialAccount implements NetworkInterface {
 	
 	private void setupNotifications()	{
 		myNotifications = new ArrayList<Notification>();
-		myActivity.getNotifications().setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+		
+		fixNotifications();
+		
+		updateNotifications();
+	}
+	
+	public void fixNotifications()	{
+			myActivity.getNotifications().setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 		
 		OnClickListener onClick = new OnClickListener()	{
 
@@ -122,7 +134,7 @@ public class SocialAccount implements NetworkInterface {
 		};
 		myActivity.getNotifications().getActionView().findViewById(R.id.social_notification_layout).setOnClickListener(onClick);
 		
-		updateNotifications();
+		setNotificationText();
 	}
 	
 	private void deleteNotifications()	{
@@ -131,8 +143,14 @@ public class SocialAccount implements NetworkInterface {
 	}
 	
 	public void updateNotifications()	{
+		long currentTime = System.currentTimeMillis() / 1000;
+		if (currentTime <= lastNotificationUpdate + 15)
+			return;
+		
 		Request r = new Request(this, "http://nick-hope.co.uk/PAT/android/notifications.php", getCookies());
 		r.start();
+		
+		lastNotificationUpdate = currentTime;
 	}
 	
 	@Override
@@ -184,6 +202,10 @@ public class SocialAccount implements NetworkInterface {
 		}
 		
 		
+		setNotificationText();
+	}
+	
+	private void setNotificationText()	{
 		TextView text = (TextView) myActivity.getNotifications().getActionView().findViewById(R.id.social_notification_text);
 		text.setText(myNotifications.size() + " Notification");
 	}
@@ -280,6 +302,16 @@ public class SocialAccount implements NetworkInterface {
 	
 	public void clearCookies()	{
 		myCookies = new HashMap<String, String>();
+	}
+
+	public void removeNotication(int position) {
+		Request r = new Request(null, "http://nick-hope.co.uk/PAT/android/deletenotification.php", getCookies());
+		r.addParameter("notification", myNotifications.get(position).notificationID + "");
+		r.start();
+		
+		myNotifications.remove(position);
+		
+		setNotificationText();
 	}
 }
 
