@@ -13,6 +13,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.team5.network.NetworkInterface;
 import com.team5.network.Request;
@@ -20,6 +21,7 @@ import com.team5.network.Response;
 import com.team5.pat.R;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -28,7 +30,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 public class ContactMapFragment extends Fragment implements NetworkInterface,
-		LocationListener {
+		LocationListener, GoogleMap.OnMarkerClickListener {
 	// Attributes for each contact
 	private List<String> names = new ArrayList<String>();
 	private List<Float> latitudes = new ArrayList<Float>();
@@ -53,6 +55,7 @@ public class ContactMapFragment extends Fragment implements NetworkInterface,
 		map.setMyLocationEnabled(true);
 		map.getUiSettings().setZoomControlsEnabled(false);
 		map.getUiSettings().setRotateGesturesEnabled(true);
+		map.setOnMarkerClickListener(this);
 
 		return view;
 	}
@@ -110,5 +113,12 @@ public class ContactMapFragment extends Fragment implements NetworkInterface,
 		LatLng latLng = new LatLng(lat, lng);
 		map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12));
 
+	}
+
+	@Override
+	public boolean onMarkerClick(Marker marker) {
+		Intent intent = new Intent(getActivity(), ContactDetailsActivity.class);
+		startActivity(intent);
+		return true;
 	}
 }

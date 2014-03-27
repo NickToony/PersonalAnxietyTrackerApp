@@ -19,8 +19,8 @@ public class ContactDetailsFragment extends Fragment {
 		View view = inflater.inflate(R.layout.contact_group_details, container,
 				false);
 		
-		name = (TextView) view.findViewById(R.id.contactDetailsName);
-		phone = (TextView) view.findViewById(R.id.contactDetailsPhone);
+		// name = (TextView) view.findViewById(R.id.contactDetailsName);
+		// phone = (TextView) view.findViewById(R.id.contactDetailsPhone);
 		name.setText("Name: Milton");
 		phone.setText("Mobile: 01234567891");
 		
