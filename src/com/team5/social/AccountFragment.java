@@ -10,6 +10,7 @@ import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
 import com.team5.pat.Session;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -137,6 +138,19 @@ public class AccountFragment extends Fragment implements
 		// Save cookies
 		mySocialAccount.setCookies(response.getCookies());
 		
+		// Get the request element
+		Element eleRequest = response.getRequest();
+		
+		// Get script status
+		int scriptStatus = Integer.parseInt(eleRequest.getElementsByTagName("status").item(0).getTextContent());
+		// script failure
+		if (scriptStatus != 0)	{
+			String errorType = eleRequest.getElementsByTagName("error").item(0).getTextContent();
+			String errorMessage = eleRequest.getElementsByTagName("message").item(0).getTextContent();
+			errorOutput.setText(errorMessage);
+			return;
+		}
+		
 		// Check logged in
 		if (!response.getLoggedIn())	{
 			mySocialAccount.handleEvent(SocialAccount.EVENT_SESSION_END);
@@ -157,6 +171,7 @@ public class AccountFragment extends Fragment implements
 			break;
 			
 		case NETWORK_DELETE_ACCOUNT:
+			networkDeleteAccount(request, response);
 			break;
 			
 		default:
@@ -165,21 +180,20 @@ public class AccountFragment extends Fragment implements
 		}
 	}
 	
+	private void networkDeleteAccount(Request request, Response response) {		
+		TextView outputChange = (TextView) myView.findViewById(R.id.social_fragment_account_deleteAccountError);
+		
+		outputChange.setText("Account Deletion Requested!");
+		
+		AlertDialog alert = new AlertDialog.Builder(myActivity).create();
+        alert.setTitle("Account Deletion");
+        alert.setMessage("You've successfully requested for your account to be deleted. Please check your email for next steps.");
+        alert.setCancelMessage(null);
+        alert.show();
+	}
+
 	private void networkStatistics(Request request, Response response)	{
 		TextView errorOutput = (TextView) myView.findViewById(R.id.social_fragment_statisticsError);
-		
-		// Get the request element
-		Element eleRequest = response.getRequest();
-		
-		// Get script status
-		int scriptStatus = Integer.parseInt(eleRequest.getElementsByTagName("status").item(0).getTextContent());
-		// script failure
-		if (scriptStatus != 0)	{
-			String errorType = eleRequest.getElementsByTagName("error").item(0).getTextContent();
-			String errorMessage = eleRequest.getElementsByTagName("message").item(0).getTextContent();
-			errorOutput.setText(errorMessage);
-			return;
-		}
 		
 		// Get the post data
 		int totalPosts = Integer.parseInt(response.getData().getElementsByTagName("total_posts").item(0).getTextContent());
