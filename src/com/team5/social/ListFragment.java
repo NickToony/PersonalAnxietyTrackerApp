@@ -246,10 +246,6 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 		return this;
 	}
 	
-	public Fragment defineList(int postParentID, int postOwner, int postOrder, int postFavourites, boolean doActionBar) {
-		return defineList(null, postOwner, postOrder, postFavourites, doActionBar);
-	}
-	
 	class DropDownListener implements OnNavigationListener {
 		@Override
 		public boolean onNavigationItemSelected(int position, long id) {

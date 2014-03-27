@@ -2,12 +2,18 @@ package com.team5.social;
 
 import java.util.List;
 
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+
+import com.team5.network.NetworkInterface;
 import com.team5.network.Request;
+import com.team5.network.Response;
 import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
 import com.team5.pat.Session;
 
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,12 +28,13 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class NotificationFragment extends Fragment implements SocialFragmentInterface {
+public class NotificationFragment extends Fragment implements SocialFragmentInterface, NetworkInterface {
 	private View myView;
 	private HomeActivity myActivity;
 	private SocialAccount mySocialAccount;
 	private ListView listView;
 	private ListAdapter listAdapter;
+	private ProgressDialog progressDialog;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
@@ -53,7 +60,11 @@ public class NotificationFragment extends Fragment implements SocialFragmentInte
 				List<Notification> notifications = mySocialAccount.getNotifications();
 				Notification notification = notifications.get(position);
 				
-				mySocialAccount.changeFragment(new ListFragment().defineList(notification.postID, -1, -1, -1, true));
+				Request r = new Request(NotificationFragment.this, "http://nick-hope.co.uk/PAT/android/fetchpost.php", mySocialAccount.getCookies());
+				r.addParameter("post", notification.postID + "" );
+				r.start();
+				
+				progressDialog = ProgressDialog.show(myActivity, "", "Finding Post...");
 				
 				mySocialAccount.removeNotication(position);
 				listAdapter.notifyDataSetChanged();
@@ -63,6 +74,85 @@ public class NotificationFragment extends Fragment implements SocialFragmentInte
 		listView.setOnItemClickListener(itemListener);
 		
 		return myView;
+	}
+	
+	@Override
+	public void eventNetworkResponse(Request from, Response response) {
+		if (progressDialog!=null) {
+            if (progressDialog.isShowing()) {
+            	progressDialog.dismiss();       
+            }
+        }
+		
+		// Find error textview
+		TextView errorOutput = (TextView) myView.findViewById(R.id.social_fragment_notificationsError);
+		errorOutput.setVisibility(View.VISIBLE);
+		
+		if (!response.isSuccess())	{
+			errorOutput.setText("Error: " + response.getMessage());
+			return;
+		}
+		
+		// Save cookies
+		mySocialAccount.setCookies(response.getCookies());
+		
+		// Check logged in
+		if (!response.getLoggedIn())	{
+			mySocialAccount.handleEvent(SocialAccount.EVENT_SESSION_END);
+			return;
+		}
+		
+		// Get the request element
+		Element eleRequest = response.getRequest();
+		
+		// Get script status
+		int scriptStatus = Integer.parseInt(eleRequest.getElementsByTagName("status").item(0).getTextContent());
+		// script failure
+		if (scriptStatus != 0)	{
+			String errorType = eleRequest.getElementsByTagName("error").item(0).getTextContent();
+			String errorMessage = eleRequest.getElementsByTagName("message").item(0).getTextContent();
+			errorOutput.setText("Error: " + errorType + ": " + errorMessage);
+			return;
+		}
+		
+		// Get the request element
+		Element eleData = response.getData();
+		
+		// Get the section elements
+		NodeList sectionList = eleData.getChildNodes();
+		
+		// Get the post element
+		Element sectionElement = (Element) sectionList.item(0);
+		
+		// Fetch the post data			
+		int postID = Integer.parseInt(sectionElement.getElementsByTagName("ID").item(0).getTextContent());
+		int postOwnerID = Integer.parseInt(sectionElement.getElementsByTagName("Owner").item(0).getTextContent());
+		String postOwner = sectionElement.getElementsByTagName("Name").item(0).getTextContent();
+		String postContent = sectionElement.getElementsByTagName("Content").item(0).getTextContent();
+		String postDate = sectionElement.getElementsByTagName("Posted").item(0).getTextContent();
+		int postResponses = Integer.parseInt(sectionElement.getElementsByTagName("Responses").item(0).getTextContent());
+		float postRating = 0;
+		try	{
+			postRating = Float.parseFloat(sectionElement.getElementsByTagName("Rating").item(0).getTextContent());
+		}	catch	(NumberFormatException e)	{
+			postRating = 0;
+		}
+		float postMyRating = 0;
+		try	{
+			postMyRating = Float.parseFloat(sectionElement.getElementsByTagName("MyRating").item(0).getTextContent());
+		}	catch	(NumberFormatException e)	{
+			postMyRating = 0;
+		}
+		int postMine = Integer.parseInt(sectionElement.getElementsByTagName("Mine").item(0).getTextContent());
+		int postFavourites = Integer.parseInt(sectionElement.getElementsByTagName("Favourites").item(0).getTextContent());
+		int postFavourited = Integer.parseInt(sectionElement.getElementsByTagName("Favourited").item(0).getTextContent());
+		
+		Post post = new Post(postID, postOwner, postDate, postContent, postResponses, postRating, postOwnerID, postMyRating, postMine, postFavourites, postFavourited);
+		
+		mySocialAccount.changeFragment(new ListFragment().defineList(post, -1, -1, -1, true));
+		
+		errorOutput.setText("");
+		errorOutput.setVisibility(View.GONE);
 	}
 	
 	class ListAdapter extends BaseAdapter	{

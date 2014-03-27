@@ -3,35 +3,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/socialBackgroundColour"
-    tools:context=".SocialAccount"
-     android:padding="10dp" >
+    android:padding="10dp"
+    tools:context=".SocialAccount" >
 
-    <TextView
-        android:id="@+id/social_fragment_notificationsTitle"
+    <LinearLayout
+        android:id="@+id/social_fragment_notificationsTop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
         android:background="@drawable/social_container"
-        android:gravity="center"
-        android:text="Notifications"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/social_fragment_notificationsError"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/social_fragment_notificationsTitle"
-        android:layout_centerHorizontal="true"
-        android:text=""
-        android:textColor="@color/social_error" />
+        <TextView
+            android:id="@+id/social_fragment_notificationsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Notifications"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/social_fragment_notificationsError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/social_error"
+            android:visibility="gone" />
+    </LinearLayout>
 
     <ListView
         android:id="@+id/social_fragment_notificationsList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/social_fragment_notificationsTitle"
+        android:layout_below="@id/social_fragment_notificationsTop"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="0dp"
