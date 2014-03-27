@@ -1,50 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColorSeekBar"
     android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.2"
-        android:orientation="vertical"
-        android:layout_marginTop="20dp" >
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
 
         <TextView
             android:id="@+id/headingTextView"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/commenttextfield1"
             android:gravity="center"
             android:padding="10dp"
             android:text="@string/feedback_heading"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/seekBarHeadingColor"
-            android:textSize="20sp" />
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
             android:id="@+id/errorType"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text=""
+            android:visibility="gone"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/centerCircleColour" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical" >
 
         <LinearLayout
@@ -86,17 +81,17 @@
             android:inputType="textEmailAddress"
             android:maxLength="100"
             android:maxLines="1"
-            android:padding="@dimen/seek_bar_text_padding" >
+            android:padding="@dimen/seek_bar_text_padding"
+            android:scrollbars="vertical" >
         </EditText>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical" >
 
         <LinearLayout
@@ -136,6 +131,7 @@
             android:gravity="top|left"
             android:maxLength="100"
             android:maxLines="1"
+            android:hint="@string/feedback_title_hint"
             android:padding="@dimen/seek_bar_text_padding"
             android:scrollbars="vertical" >
         </EditText>
@@ -146,9 +142,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_weight="2"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="3"
         android:orientation="vertical" >
 
         <LinearLayout
@@ -185,6 +182,7 @@
             android:layout_height="fill_parent"
             android:background="@drawable/commenttextfield1"
             android:ems="10"
+            android:hint="@string/feedback_comment_hint"
             android:gravity="top|left"
             android:padding="@dimen/seek_bar_text_padding"
             android:scrollbars="vertical" />
@@ -192,17 +190,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
+        android:layout_height="wrap_content"
         android:orientation="vertical" >
 
         <SeekBar
             android:id="@+id/ratingSeekBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:progressDrawable="@drawable/seekbarprogress"
@@ -212,8 +208,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp" >
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+             >
 
             <TextView
                 android:id="@+id/scaleBeginning1"
@@ -223,17 +221,17 @@
                 android:paddingLeft="14dp"
                 android:text="@string/scale_beginning"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
-
-            <TextView
+			
+            <TextView 
                 android:id="@+id/ratingError"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
-                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:gravity="center"
+                android:visibility="gone"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/centerCircleColour" />
-
+                android:textColor="@color/centerCircleColour"/>
             <TextView
                 android:id="@+id/scaleEnd1"
                 android:layout_width="0dp"
@@ -248,17 +246,17 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_weight="0.65"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal" >
 
         <FrameLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="fill_parent" >
+            android:layout_height="match_parent"
+            android:layout_weight="0.5" >
 
             <TextView
                 android:id="@+id/ratingValue"
@@ -285,8 +283,8 @@
         <Button
             android:id="@+id/submitButton"
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
             android:background="@drawable/commenttextfield1"
             android:text="@string/feedback_submit_button_label" />
     </LinearLayout>

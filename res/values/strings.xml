@@ -105,6 +105,8 @@
     <string name="feedback_email_label">e-mail</string>
     <string name="feedback_email_hint">e.g. my.mail@ncl.ac.uk</string>
     <string name="feedback_scale_end">5</string>
+    <string name="feedback_comment_hint">Write your thoughts here!..</string>
+    <string name="feedback_title_hint">Write the problem topic</string>
     
     
     <!-- Dialog box -->

@@ -127,10 +127,11 @@ public class FeedbackFragment extends Fragment implements NetworkInterface
 	@Override
 	public void eventNetworkResponse(Request from, Response response)
 	{
-
+		errorType.setVisibility(View.GONE);
 		if (!response.isSuccess())
 		{
 			errorType.setText("Failure: " + response.getMessage());
+			errorType.setVisibility(View.VISIBLE);
 			return;
 		}
 
@@ -145,6 +146,7 @@ public class FeedbackFragment extends Fragment implements NetworkInterface
 			String errorTypeString = eleRequest.getElementsByTagName("error").item(0).getTextContent();
 			String errorMessage = eleRequest.getElementsByTagName("message").item(0).getTextContent();
 			errorType.setText("Error: " + errorTypeString + ": " + errorMessage);
+			errorType.setVisibility(View.VISIBLE);
 			return;
 		}
 
@@ -174,9 +176,12 @@ public class FeedbackFragment extends Fragment implements NetworkInterface
 				success = false;
 				Log.i("OUTPUT VIEW PASSED:  ", "" + outputViews[i]);
 
+				errorType.setVisibility(View.VISIBLE);
+
 			} else
 			{
 				outputViews[i].setText("");
+				outputViews[i].setVisibility(View.GONE);
 			}
 		}
 
