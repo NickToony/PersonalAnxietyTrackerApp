@@ -231,6 +231,8 @@ public class SocialAccount implements NetworkInterface {
 			
 			new Request(null, "http://nick-hope.co.uk/logout.php");
 			
+			deleteNotifications();
+			
 			handleEvent(EVENT_EXIT);
 			break;
 			
@@ -240,6 +242,8 @@ public class SocialAccount implements NetworkInterface {
 			// resetFragments(); -- commented to allow for recovery of fragments
 			// go to login fragment
 			navigateTo();
+			
+			deleteNotifications();
 			
 			Toast.makeText(myActivity.getApplicationContext(), "Lost Connection to Session", 
 					   Toast.LENGTH_LONG).show();

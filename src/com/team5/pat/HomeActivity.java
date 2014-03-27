@@ -224,6 +224,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		switch (theItem) {
 		case NavListAdapter.navigationHome:
 			changeFragment(new HomeFragment());
+			mySocialAccount.resetFragments();
 			break;
 		case NavListAdapter.navigationLog:
 			changeFragment(new SeekBarFragment());
