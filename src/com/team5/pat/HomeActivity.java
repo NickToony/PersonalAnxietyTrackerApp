@@ -46,6 +46,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 	private SharedPreferences preference;
 	private SocialAccount mySocialAccount;
 	private MenuItem myDropDown;
+	private MenuItem mySocialNotifications;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -83,11 +84,18 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		
 		myDropDown = menu.findItem( R.id.dropdown );
 		myDropDown.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+		
+		mySocialNotifications = menu.findItem( R.id.notifications);
+		mySocialNotifications.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
 		return true;
 	}
 	
 	public MenuItem getDropDown()	{
 		return myDropDown;
+	}
+	
+	public MenuItem getNotifications()	{
+		return mySocialNotifications;
 	}
 
 	@Override
@@ -199,6 +207,12 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		//mySocialAccount.showListSpinnerAdapter(false);
 		if (myDropDown != null)
 			myDropDown.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+		if (mySocialNotifications != null)	{
+			if (mySocialAccount.getNotifications())
+				mySocialNotifications.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+			else
+				mySocialNotifications.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+		}
 	}
 
 	public void doNavigation(int theItem) {

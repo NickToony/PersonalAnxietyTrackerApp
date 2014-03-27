@@ -12,5 +12,10 @@
         android:id="@+id/dropdown"
         android:actionViewClass="android.widget.Spinner"
         android:showAsAction="never"/>
+    
+    <item
+        android:id="@+id/notifications"
+        android:showAsAction="never"
+        android:actionLayout="@layout/social_notification_bar"/>
 
 </menu>
