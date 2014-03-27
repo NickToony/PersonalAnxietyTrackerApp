@@ -202,9 +202,9 @@ public final class R {
         public static final int rowTextView=0x7f0d004f;
         public static final int rowTitle=0x7f0d002d;
         public static final int scaleBeginning=0x7f0d0057;
-        public static final int scaleBeginning1=0x7f0d0054;
+        public static final int scaleBeginning1=0x7f0d0053;
         public static final int scaleEnd=0x7f0d0058;
-        public static final int scaleEnd1=0x7f0d0053;
+        public static final int scaleEnd1=0x7f0d0054;
         public static final int secondsInput=0x7f0d0021;
         public static final int secondsLeftText=0x7f0d0022;
         public static final int seekBarSubmitButton=0x7f0d005a;
@@ -305,10 +305,10 @@ public final class R {
         /**  Start of calm down text 
  Start of calm down text 
          */
-        public static final int CalmDown=0x7f080047;
-        public static final int Ref_anxiety=0x7f080059;
-        public static final int Ref_seriousness=0x7f080058;
-        public static final int Sub_menu=0x7f080063;
+        public static final int CalmDown=0x7f080048;
+        public static final int Ref_anxiety=0x7f08005a;
+        public static final int Ref_seriousness=0x7f080059;
+        public static final int Sub_menu=0x7f080064;
         public static final int Xaxis=0x7f080002;
         public static final int Yaxis=0x7f080001;
         public static final int action_contact=0x7f080021;
@@ -320,15 +320,15 @@ public final class R {
          */
         public static final int action_settings=0x7f08001f;
         public static final int action_status=0x7f080025;
-        public static final int animation_speed=0x7f080044;
-        public static final int anxiety=0x7f080057;
+        public static final int animation_speed=0x7f080045;
+        public static final int anxiety=0x7f080058;
         public static final int anxiety_heading=0x7f080036;
         public static final int app_name=0x7f080000;
         public static final int below_menu=0x7f080005;
         public static final int blue_line=0x7f080004;
         public static final int brightness=0x7f08002d;
-        public static final int cycles=0x7f080045;
-        public static final int cyclesLabel=0x7f080046;
+        public static final int cycles=0x7f080046;
+        public static final int cyclesLabel=0x7f080047;
         public static final int dialog_accpet=0x7f08002b;
         public static final int dialog_button_message=0x7f08002a;
         public static final int dialog_cancel=0x7f08002c;
@@ -339,13 +339,13 @@ public final class R {
         public static final int dialog_title=0x7f080028;
         public static final int drawer_close=0x7f080019;
         public static final int drawer_open=0x7f080018;
-        public static final int exerciseDefaultCycles=0x7f080043;
-        public static final int exerciseDefaultDuration=0x7f080042;
-        public static final int hello_world=0x7f080068;
+        public static final int exerciseDefaultCycles=0x7f080044;
+        public static final int exerciseDefaultDuration=0x7f080043;
+        public static final int hello_world=0x7f080069;
         public static final int image_content_description=0x7f080009;
         /**  Breathing Exercise 
          */
-        public static final int instructions=0x7f08003c;
+        public static final int instructions=0x7f08003d;
         public static final int keyboard=0x7f080030;
         public static final int kiss_me=0x7f080031;
         public static final int language=0x7f080007;
@@ -366,28 +366,28 @@ public final class R {
         public static final int navigation_report=0x7f080012;
         public static final int navigation_tracker=0x7f08000d;
         public static final int network=0x7f08002e;
-        public static final int pause=0x7f080040;
+        public static final int pause=0x7f080041;
         /**  Settings Preference 
          */
-        public static final int pin_hint=0x7f080048;
-        public static final int pref_about_us_summ=0x7f080053;
-        public static final int pref_about_us_title=0x7f08004f;
-        public static final int pref_breath_exercise_countdown=0x7f080055;
-        public static final int pref_category_pat=0x7f08004a;
+        public static final int pin_hint=0x7f080049;
+        public static final int pref_about_us_summ=0x7f080054;
+        public static final int pref_about_us_title=0x7f080050;
+        public static final int pref_breath_exercise_countdown=0x7f080056;
+        public static final int pref_category_pat=0x7f08004b;
         /**  Settings Preference 
          */
-        public static final int pref_category_personalise=0x7f080049;
-        public static final int pref_language_title=0x7f08004c;
-        public static final int pref_lockscreen_summ=0x7f080052;
-        public static final int pref_lockscreen_title=0x7f08004d;
-        public static final int pref_night_mode_summ=0x7f080054;
-        public static final int pref_night_mode_title=0x7f080050;
-        public static final int pref_notification_summ=0x7f080051;
-        public static final int pref_notification_title=0x7f08004b;
-        public static final int pref_pin_title=0x7f08004e;
-        public static final int pref_update_summ=0x7f080067;
-        public static final int pref_update_title=0x7f080066;
-        public static final int rating=0x7f08005a;
+        public static final int pref_category_personalise=0x7f08004a;
+        public static final int pref_language_title=0x7f08004d;
+        public static final int pref_lockscreen_summ=0x7f080053;
+        public static final int pref_lockscreen_title=0x7f08004e;
+        public static final int pref_night_mode_summ=0x7f080055;
+        public static final int pref_night_mode_title=0x7f080051;
+        public static final int pref_notification_summ=0x7f080052;
+        public static final int pref_notification_title=0x7f08004c;
+        public static final int pref_pin_title=0x7f08004f;
+        public static final int pref_update_summ=0x7f080068;
+        public static final int pref_update_title=0x7f080067;
+        public static final int rating=0x7f08005b;
         public static final int red_line=0x7f080003;
         public static final int save_button_text=0x7f080037;
         /**  Seek bar 
@@ -397,29 +397,30 @@ public final class R {
         public static final int scale_end=0x7f080033;
         public static final int search_hint=0x7f080024;
         public static final int search_title=0x7f080023;
-        public static final int seconds=0x7f08003d;
-        public static final int secondsLabel=0x7f08003e;
-        public static final int seriousness=0x7f080056;
+        public static final int seconds=0x7f08003e;
+        public static final int secondsLabel=0x7f08003f;
+        public static final int seek_bar_title_text=0x7f08003c;
+        public static final int seriousness=0x7f080057;
         public static final int seriousness_heading=0x7f080035;
-        public static final int social_fragment_signin_buttonText=0x7f08005f;
-        public static final int social_fragment_signin_email=0x7f08005e;
+        public static final int social_fragment_signin_buttonText=0x7f080060;
+        public static final int social_fragment_signin_email=0x7f08005f;
         /**  Social Features 
          */
-        public static final int social_fragment_signin_loginText=0x7f08005d;
-        public static final int social_fragment_signup_buttonText=0x7f080062;
-        public static final int social_fragment_signup_email=0x7f080061;
-        public static final int social_fragment_signup_loginText=0x7f080060;
+        public static final int social_fragment_signin_loginText=0x7f08005e;
+        public static final int social_fragment_signup_buttonText=0x7f080063;
+        public static final int social_fragment_signup_email=0x7f080062;
+        public static final int social_fragment_signup_loginText=0x7f080061;
         public static final int sound=0x7f08002f;
-        public static final int start=0x7f08003f;
+        public static final int start=0x7f080040;
         public static final int status_comment_hint=0x7f08003b;
         public static final int status_exit=0x7f080039;
         public static final int status_save=0x7f080038;
         public static final int status_summary_hint=0x7f08003a;
-        public static final int stop=0x7f080041;
+        public static final int stop=0x7f080042;
         public static final int string_choice=0x7f080008;
         public static final int submit=0x7f080006;
         public static final int thoughts_hint=0x7f080034;
-        public static final int time=0x7f08005b;
+        public static final int time=0x7f08005c;
         public static final int title_activity_contact=0x7f08001d;
         public static final int title_activity_contact_details=0x7f08001e;
         public static final int title_activity_graph=0x7f08001c;
@@ -427,10 +428,10 @@ public final class R {
  Activities label 
          */
         public static final int title_activity_nav_list=0x7f08001a;
-        public static final int title_activity_quickPanic=0x7f080064;
-        public static final int title_activity_record_graph=0x7f080065;
+        public static final int title_activity_quickPanic=0x7f080065;
+        public static final int title_activity_record_graph=0x7f080066;
         public static final int title_activity_settings=0x7f08001b;
-        public static final int title_activity_social=0x7f08005c;
+        public static final int title_activity_social=0x7f08005d;
     }
     public static final class style {
         /** 

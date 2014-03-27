@@ -7,10 +7,19 @@
     android:background="@color/backgroundColorSeekBar"
     android:orientation="vertical" >
 
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp"
+        android:background="@drawable/commenttextfield1"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="@string/seek_bar_title_text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:orientation="vertical" >
 
         <TextView
@@ -18,7 +27,6 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:paddingTop="45dp"
             android:text="@string/seriousness_heading"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/seekBarHeadingColor"
@@ -37,25 +45,28 @@
             android:thumbOffset="10dp" />
 
         <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="fill_parent" >
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
 
             <TextView
                 android:id="@+id/scaleBeginning1"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight="0.5"
+                android:paddingLeft="19dp"
                 android:text="@string/scale_beginning"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
-            
+
             <TextView
                 android:id="@+id/scaleEnd1"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:paddingRight="19dp"
+                android:layout_weight="0.5"
                 android:gravity="right"
+                android:paddingRight="19dp"
                 android:text="@string/scale_end"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
-
         </LinearLayout>
     </LinearLayout>
 
@@ -64,7 +75,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:paddingTop="45dp"
+        android:paddingTop="25dp"
         android:text="@string/anxiety_heading"
         android:textColor="@color/seekBarHeadingColor"
         android:textSize="20sp"
@@ -81,27 +92,37 @@
         android:thumb="@drawable/circlebutton"
         android:thumbOffset="10dp" />
 
-    <TextView
-        android:id="@+id/scaleBeginning"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="19dp"
-        android:text="@string/scale_beginning"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
 
-    <TextView
-        android:id="@+id/scaleEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/scale_end"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        <TextView
+            android:id="@+id/scaleBeginning"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="left"
+            android:paddingLeft="19dp"
+            android:text="@string/scale_beginning"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/scaleEnd"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:gravity="right"
+            android:paddingRight="19dp"
+            android:text="@string/scale_end"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+    </LinearLayout>
 
     <EditText
         android:id="@+id/commentsEditText"
-        android:layout_width="270dp"
-        android:layout_height="170dp"
-        android:layout_marginBottom="43dp"
-        android:layout_marginTop="27dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="30dp"
+        android:layout_weight="1"
         android:background="@drawable/commenttextfield1"
         android:ems="10"
         android:gravity="top|left"
@@ -113,10 +134,11 @@
 
     <Button
         android:id="@+id/seekBarSubmitButton"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/commenttextfield1"
-        android:gravity="center"
         android:text="@string/save_button_text"
         android:textColor="@color/seekBarHeadingColor"
         android:textSize="20sp"
