@@ -138,7 +138,7 @@ public final class R {
         public static final int add_app_done_layout=0x7f0d006f;
         public static final int animation_speed=0x7f0d001c;
         public static final int anxietyEditText=0x7f0d004c;
-        public static final int anxietyHeading=0x7f0d0057;
+        public static final int anxietyHeading=0x7f0d0055;
         public static final int anxietySeekBar=0x7f0d0056;
         public static final int background_circle=0x7f0d0018;
         public static final int button0=0x7f0d0013;
@@ -201,8 +201,8 @@ public final class R {
         public static final int rowImage=0x7f0d0047;
         public static final int rowTextView=0x7f0d004f;
         public static final int rowTitle=0x7f0d002d;
-        public static final int scaleBeginning=0x7f0d0054;
-        public static final int scaleBeginning1=0x7f0d0055;
+        public static final int scaleBeginning=0x7f0d0057;
+        public static final int scaleBeginning1=0x7f0d0054;
         public static final int scaleEnd=0x7f0d0058;
         public static final int scaleEnd1=0x7f0d0053;
         public static final int secondsInput=0x7f0d0021;
