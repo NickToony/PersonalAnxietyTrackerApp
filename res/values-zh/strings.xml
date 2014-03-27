@@ -1,104 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">傻逼小夥伴</string>
-    <string name="action_settings">設置</string>
-    <string name="action_feedback">反饋</string>
+    <string name="app_name">減壓伴侶</string>
     <string name="Yaxis">Y</string>
     <string name="Xaxis">X</string>
-    <string name="red_line">紅線</string>
-    <string name="blue_line">藍線</string>
+    <string name="red_line">Red Line</string>
+    <string name="blue_line">Blue Line</string>
     <string name="below_menu">Sub-Menu will go here!</string>
-    <string name="submit">提交</string>
-    <string name="Sub_menu">二級菜單</string>
-    <string name="language">翻譯</string>
-    <string name="string_choice">選擇</string>
+    <string name="submit">Submit</string>
+    <string name="language">Translate</string>
+    <string name="string_choice">Choice</string>
+    <string name="image_content_description">Image</string>
+    <string name="lock_screen_information">Enter PIN number</string>
 
-    <string-array name="nav_list_icons">
-        <item>@drawable/ic_day</item>
-        <item>@drawable/ic_week</item>
-        <item>@drawable/ic_month</item>
-        <item>@drawable/ic_year</item>
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_day</item>
-        <item>@drawable/ic_week</item>
-        <item>@drawable/ic_month</item>
-        <item>@drawable/ic_year</item>
-        <item>@drawable/ic_launcher</item>
-    </string-array>
-    <string-array name="nav_list_titles">
-        <item>線形圖</item>
-        <item>圓形圖</item>
-        <item>棒形圖</item>
-        <item>圓形菜單</item>
-        <item>六邊形菜單</item>
-        <item>拖動條</item>
-        <item>記錄圖表</item>
-    </string-array>
+    <!-- Navigation labels -->
+    <string name="navigation_home">主頁</string>
+    <string name="navigation_log">歷史記錄</string>
+    <string name="navigation_tracker">圖表記錄</string>
+    <string name="navigation_exercises">瑜伽練習</string>
+    <string name="navigation_discussion">討論區</string>
+    <string name="navigation_account">我的賬號</string>
+    <string name="navigation_contact">找小伙伴</string>
+    <string name="navigation_report">舉報</string>
+    <string name="navigation_logoff">離開</string>
+    <string name="navigation_browse">瀏覽帖子</string>
+    <string name="navigation_create">新帖子</string>
+    <string name="navigation_favourites">我的最愛</string>
+    <string name="navigation_mine">我的帖子</string>
+    <string name="navigation_news">最新消息</string>
+
     <string-array name="spinner_list_items">
-        <item>日</item>
-        <item>周</item>
-        <item>月</item>
-        <item>年</item>
-        <item>年曆表</item>
+        <item>Day</item>
+        <item>Week</item>
+        <item>Month</item>
+        <item>Year</item>
+        <item>Agenda</item>
     </string-array>
 
-    <string name="drawer_open">開</string>
-    <string name="drawer_close">關</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
 
     <!-- Activities label -->
-    <string name="title_activity_nav_list">主界面</string>
-    <string name="title_activity_settings">設置</string>
-    <string name="title_activity_graph">圖標</string>
+    <string name="title_activity_nav_list">NavListActivity</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_graph">Graph</string>
+    <string name="title_activity_contact">Contact</string>
+    <string name="title_activity_contact_details">Contact Details</string>
+
+    <!-- Action bar -->
+    <string name="action_settings">Settings</string>
+    <string name="action_feedback">Feedback</string>
+    <string name="action_contact">Contact</string>
+    <string name="action_search">Search</string>
+    <string name="search_title">Search</string>
+    <string name="search_hint">Enter phone number</string>
+    <string name="action_status">Status</string>
+    <string name="action_save">Save</string>
+    <string name="action_exit">Exit</string>
+
+    <!-- Contact -->
+    <string-array name="contact_icons">
+        <item>@drawable/ic_milton1</item>
+        <item>@drawable/ic_milton2</item>
+        <item>@drawable/ic_milton3</item>
+        <item>@drawable/ic_milton4</item>
+        <item>@drawable/ic_milton5</item>
+        <item>@drawable/ic_milton6</item>
+        <item>@drawable/ic_milton7</item>
+        <item>@drawable/ic_milton5</item>
+        <item>@drawable/ic_milton3</item>
+        <item>@drawable/ic_milton1</item>
+    </string-array>
 
     <!-- Dialog box -->
-    <string name="dialog_title">未命名標題</string>
-    <string name="dialog_message">爸爸去哪兒</string>
-    <string name="dialog_button_message">按此看到對話框</string>
-    <string name="dialog_accpet">接受</string>
-    <string name="dialog_cancel">取消</string>
-    <string name="brightness">亮度</string>
-    <string name="network">網絡</string>
-    <string name="sound">聲音</string>
-    <string name="keyboard">鍵盤</string>
-    <string name="kiss_me">錫淡</string>
+    <string name="dialog_title">I am Milton Li</string>
+    <string name="dialog_message">I want to kiss you</string>
+    <string name="dialog_button_message">Click me to see a dialog box</string>
+    <string name="dialog_accpet">Accept</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="brightness">Brightness</string>
+    <string name="network">Network</string>
+    <string name="sound">Sound</string>
+    <string name="keyboard">Keyboard</string>
+    <string name="kiss_me">Kiss me baby</string>
 
     <!-- Seek bar -->
     <string name="scale_beginning">0</string>
     <string name="scale_end">10</string>
-    <string name="thoughts_hint">你諗緊乜嘢呢？</string>
-    <string name="seriousness_heading">你個病有幾嚴重？</string>
+    <string name="thoughts_hint">你諗緊乜嘢啊？</string>
+    <string name="seriousness_heading">你個病有幾嚴重啊？</string>
     <string name="anxiety_heading">你有幾焦慮呢？</string>
     <string name="save_button_text">儲存</string>
 
+    <!-- Breathing Exercise -->
+    <string name="instructions">小球擴張時吸氣\n小球收縮時呼氣</string>
+    <string name="seconds">秒:</string>
+    <string name="secondsLabel">秒</string>
+    <string name="start">開始</string>
+    <string name="pause">暫停</string>
+    <string name="stop">停止</string>
+    <string name="exerciseDefaultDuration">60</string>
+    <string name="exerciseDefaultCycles">20</string>
+    <string name="animation_speed">速度</string>
+    <string name="cycles">週期:</string>
+    <string name="cyclesLabel">週期</string>
+
+    <string-array name="countdown_options">
+        <item>秒</item>
+        <item>週期</item>
+    </string-array>
+
     <!-- Start of calm down text -->
-    <string name="CalmDown">忍一時風平浪靜，退一步海闊天空。每日暫停三分鐘，細聽少年心底夢。</string>
-    <string name="title_activity_quickPanic">慌張</string>
-    <string name="title_activity_record_graph">健康記錄</string>
+    <string name="CalmDown">Being patient is key. Take a couple seconds to cool down.
+    Slowly  take deep breaths in and deep breaths out and let it all out.</string>
 
     <!-- Settings Preference -->
+    <string name="pin_hint">Digits with max 8 characters</string>
     <string name="pref_category_personalise">個人化</string>
-    <string name="pref_category_pat">傻逼小夥伴</string>
-    <string name="pref_notification_title">提醒</string>
+    <string name="pref_category_pat">減壓伴侶</string>
+    <string name="pref_notification_title">Notification</string>
     <string name="pref_language_title">語言</string>
-    <string name="pref_update_title">檢查更新</string>
+    <string name="pref_lockscreen_title">Show lockscreen</string>
+    <string name="pref_pin_title">Lockscreen pin number</string>
     <string name="pref_about_us_title">關於我們</string>
-    <string name="pref_night_mode_title">夜間模式</string>
-    <string name="pref_notification_summ">每日提醒你好唔好？</string>
-    <string name="pref_update_summ">每日提醒你好唔好？</string>
-    <string name="pref_about_us_summ">紐卡斯爾大學</string>
-    <string name="pref_night_mode_summ">夜間模式有助保護視力</string>
+    <string name="pref_notification_summ">Notification on everyday?</string>
+    <string name="pref_lockscreen_summ">Show lockscreen on startup</string>
+    <string name="pref_about_us_summ">Newcastle University</string>
+    <string name="pref_breath_exercise_countdown">Exercise countdown type </string>
 
     <string-array name="pref_language_list_options">
-        <item>English</item>
-        <item>Chinese</item>
+        <item>英文</item>
+        <item>中文</item>
     </string-array>
     <string-array name="pref_language_list_values">
         <item>en</item>
         <item>zh</item>
     </string-array>
-
-    <string name="hello_world">Hello world!</string>
 
     <!-- Splash -->
     <string-array name="button_array">
@@ -116,10 +153,67 @@
     </string-array>
 
     <string name="seriousness">嚴重程度</string>
-    <string name="anxiety">憂慮指數</string>
-    <string name="Ref_seriousness">個人評分\n嚴重程度</string>
-    <string name="Ref_anxiety">個人評分\n憂慮指數</string>
-    <string name="rating">評分</string>
+    <string name="anxiety">憂慮程度</string>
+    <string name="Ref_seriousness">回顧\n嚴重程度</string>
+    <string name="Ref_anxiety">回顧\n憂慮程度</string>
+    <string name="rating">排行</string>
     <string name="time">時間</string>
+    <string name="title_activity_social">SocialActivity</string>
+
+    <!-- the x axis labelling for the week -->
+    <string-array name="x_axis_grid_week">
+        <item>Mon</item>
+        <item>Tue</item>
+        <item>Wed</item>
+        <item>Thu</item>
+        <item>Fri</item>
+        <item>Sat</item>
+        <item>Sun</item>
+    </string-array>
+
+    <!-- the x axis labelling for the month -->
+    <string-array name="x_axis_grid_month">
+        <item>Week 1</item>
+        <item>Week 2</item>
+        <item>Week 3</item>
+        <item>Week 4</item>
+        <item>Week 5</item>
+    </string-array>
+
+    <!-- the x axis labelling for the year -->
+    <string-array name="x_axis_grid_year">
+        <item>Jan</item>
+        <item>Feb</item>
+        <item>Mar</item>
+        <item>Apr</item>
+        <item>May</item>
+        <item>Jun</item>
+        <item>jul</item>
+        <item>Aug</item>
+        <item>Sept</item>
+        <item>Oct</item>
+        <item>Nov</item>
+        <item>Dec</item>
+        <item>Sun</item>
+    </string-array>
+
+    <string name="x_axis_title_days">DAYS OF WEEK</string>
+    <string name="x_axis_title_month">WEEKS OF MONTH</string>
+    <string name="x_axis_title_year">YEAR</string>
+
+    <!-- Social Features -->
+    <string name="social_fragment_signin_loginText">登陸賬號</string>
+    <string name="social_fragment_signin_email">\@Newcastle.ac.uk</string>
+    <string name="social_fragment_signin_buttonText">登陸</string>
+    <string name="social_fragment_signup_loginText">新建賬號</string>
+    <string name="social_fragment_signup_email">\@Newcastle.ac.uk</string>
+    <string name="social_fragment_signup_buttonText">主冊</string>
+    <string name="social_fragment_list_addPost">回覆</string>
+
+    <string-array name="social_list_items">
+        <item>最新</item>
+        <item>最舊</item>
+        <item>最高排名</item>
+    </string-array>
 
 </resources>

@@ -45,7 +45,7 @@ public class SeekBarFragment extends Fragment implements OnClickListener {
 			Bundle savedInstanceState) {
 		myView = inflater.inflate(R.layout.seek_bar_layout, container, false);
 		myActivity = (HomeActivity) getActivity();
-		myActivity.setTitle("Log");
+		myActivity.setTitle(getResources().getString(R.string.navigation_log));
 		getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		// If just started initialize to 0
@@ -153,7 +153,8 @@ public class SeekBarFragment extends Fragment implements OnClickListener {
 				.findViewById(R.id.seriousnessSeekBar);
 		seriousnessSeekBar.setProgress(seriousnessState);
 
-		commentsTextField = (EditText) myView.findViewById(R.id.commentsEditText);
+		commentsTextField = (EditText) myView
+				.findViewById(R.id.commentsEditText);
 		commentsTextField.setText(comments);
 
 		seekBarSubmitButton = (Button) myView

@@ -23,28 +23,28 @@ public final class R {
         /**  Splash 
  Splash 
          */
-        public static final int button_array=0x7f0c0007;
-        public static final int contact_icons=0x7f0c0002;
+        public static final int button_array=0x7f0c0005;
         /**  Contact 
+ Contact 
          */
-        public static final int contact_name=0x7f0c0001;
-        public static final int contact_phone_number=0x7f0c0003;
-        public static final int countdown_options=0x7f0c0004;
-        public static final int nav_list_icons=0x7f0c000c;
-        public static final int nav_list_titles=0x7f0c000d;
-        public static final int pref_language_list_options=0x7f0c0005;
-        public static final int pref_language_list_values=0x7f0c0006;
-        public static final int social_list_items=0x7f0c000b;
+        public static final int contact_icons=0x7f0c0001;
+        public static final int countdown_options=0x7f0c0002;
+        public static final int pref_language_list_options=0x7f0c0003;
+        public static final int pref_language_list_values=0x7f0c0004;
+        public static final int social_list_items=0x7f0c0009;
         public static final int spinner_list_items=0x7f0c0000;
         /**  the x axis labelling for the month
+ the x axis labelling for the month 
          */
-        public static final int x_axis_grid_month=0x7f0c0009;
+        public static final int x_axis_grid_month=0x7f0c0007;
         /**  the x axis labelling for the week 
+ the x axis labelling for the week 
          */
-        public static final int x_axis_grid_week=0x7f0c0008;
+        public static final int x_axis_grid_week=0x7f0c0006;
         /**  the x axis labelling for the year 
+ the x axis labelling for the year 
          */
-        public static final int x_axis_grid_year=0x7f0c000a;
+        public static final int x_axis_grid_year=0x7f0c0008;
     }
     public static final class attr {
         /** 
@@ -572,7 +572,6 @@ containing a value of this type.
         public static final int CalmDown=0x7f090062;
         public static final int Ref_anxiety=0x7f090074;
         public static final int Ref_seriousness=0x7f090073;
-        public static final int Sub_menu=0x7f090082;
         public static final int Xaxis=0x7f09001c;
         public static final int Yaxis=0x7f09001b;
         public static final int action_contact=0x7f09003c;
@@ -581,6 +580,7 @@ containing a value of this type.
         public static final int action_save=0x7f090041;
         public static final int action_search=0x7f09003d;
         /**  Action bar 
+ Action bar 
          */
         public static final int action_settings=0x7f09003a;
         public static final int action_status=0x7f090040;
@@ -699,9 +699,9 @@ containing a value of this type.
         public static final int drawer_open=0x7f090033;
         public static final int exerciseDefaultCycles=0x7f09005e;
         public static final int exerciseDefaultDuration=0x7f09005d;
-        public static final int hello_world=0x7f090087;
         public static final int image_content_description=0x7f090023;
         /**  Breathing Exercise 
+ Breathing Exercise 
          */
         public static final int instructions=0x7f090057;
         public static final int keyboard=0x7f09004b;
@@ -716,6 +716,7 @@ containing a value of this type.
         public static final int navigation_exercises=0x7f090028;
         public static final int navigation_favourites=0x7f090030;
         /**  Navigation labels 
+ Navigation labels 
          */
         public static final int navigation_home=0x7f090025;
         public static final int navigation_log=0x7f090026;
@@ -727,14 +728,13 @@ containing a value of this type.
         public static final int network=0x7f090049;
         public static final int pause=0x7f09005b;
         /**  Settings Preference 
+ Settings Preference 
          */
         public static final int pin_hint=0x7f090063;
         public static final int pref_about_us_summ=0x7f09006e;
         public static final int pref_about_us_title=0x7f09006a;
         public static final int pref_breath_exercise_countdown=0x7f090070;
         public static final int pref_category_pat=0x7f090065;
-        /**  Settings Preference 
-         */
         public static final int pref_category_personalise=0x7f090064;
         public static final int pref_language_title=0x7f090067;
         public static final int pref_lockscreen_summ=0x7f09006d;
@@ -744,8 +744,6 @@ containing a value of this type.
         public static final int pref_notification_summ=0x7f09006c;
         public static final int pref_notification_title=0x7f090066;
         public static final int pref_pin_title=0x7f090069;
-        public static final int pref_update_summ=0x7f090086;
-        public static final int pref_update_title=0x7f090085;
         public static final int rating=0x7f090075;
         public static final int red_line=0x7f09001d;
         public static final int save_button_text=0x7f090052;
@@ -764,6 +762,7 @@ containing a value of this type.
         public static final int social_fragment_signin_buttonText=0x7f09007d;
         public static final int social_fragment_signin_email=0x7f09007c;
         /**  Social Features 
+ Social Features 
          */
         public static final int social_fragment_signin_loginText=0x7f09007b;
         public static final int social_fragment_signup_buttonText=0x7f090080;
@@ -787,8 +786,6 @@ containing a value of this type.
  Activities label 
          */
         public static final int title_activity_nav_list=0x7f090035;
-        public static final int title_activity_quickPanic=0x7f090083;
-        public static final int title_activity_record_graph=0x7f090084;
         public static final int title_activity_settings=0x7f090036;
         public static final int title_activity_social=0x7f090077;
         public static final int x_axis_title_days=0x7f090078;

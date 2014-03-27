@@ -29,7 +29,7 @@ public class HomeFragment extends Fragment {
 		super.onCreate(savedInstanceState);
 		myView = inflater.inflate(R.layout.home_layout, container, false);
 		myActivity = (HomeActivity) getActivity();
-		myActivity.setTitle("Home");
+		myActivity.setTitle(getResources().getString(R.string.navigation_home));
 
 		// Setup icon grid
 		GridView myIconGrid = (GridView) myView.findViewById(R.id.homeGrid);

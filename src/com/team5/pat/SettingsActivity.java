@@ -46,10 +46,6 @@ public class SettingsActivity extends Activity implements
 		if (key.equals("pref_key_update")) {
 			boolean choice = preference.getBoolean("pref_key_update", true);
 			editor.putBoolean("pref_key_update", choice).commit();
-		} else if (key.equals("pref_night_mode")) {
-			// Set whether or not turn on night mode
-			boolean choice = preference.getBoolean("pref_night_mode", false);
-			editor.putBoolean("pref_night_mode", choice).commit();
 		} else if (key.equals("pref_key_pin")) {
 			String pin = preference.getString("pref_key_pin", "1234");
 			editor.putString("pref_key_pin", pin).commit();
@@ -59,7 +55,8 @@ public class SettingsActivity extends Activity implements
 			editor.putString("pref_language", choice).commit();
 		} else if (key.equals("pref_breath_exercise")) {
 			// Set the breath exercise timing type
-			String countDownChoice = preference.getString("pref_breath_exercise", "seconds");
+			String countDownChoice = preference.getString(
+					"pref_breath_exercise", "seconds");
 			editor.putString("pref_breath_exercise", countDownChoice);
 		}
 

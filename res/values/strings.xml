@@ -60,18 +60,6 @@
     <string name="action_exit">Exit</string>
 
     <!-- Contact -->
-    <string-array name="contact_name">
-        <item>Alex</item>
-        <item>Calum</item>
-        <item>David</item>
-        <item>Lara</item>
-        <item>Milton</item>
-        <item>Nick</item>
-        <item>Sophie</item>
-        <item>Milton</item>
-        <item>Milton</item>
-        <item>Milton</item>
-    </string-array>
     <string-array name="contact_icons">
         <item>@drawable/ic_milton1</item>
         <item>@drawable/ic_milton2</item>
@@ -83,18 +71,6 @@
         <item>@drawable/ic_milton5</item>
         <item>@drawable/ic_milton3</item>
         <item>@drawable/ic_milton1</item>
-    </string-array>
-    <string-array name="contact_phone_number">
-        <item>07789631579</item>
-        <item>07135764379</item>
-        <item>07132065516</item>
-        <item>07651616354</item>
-        <item>07165316512</item>
-        <item>07219841328</item>
-        <item>07106518645</item>
-        <item>07898794646</item>
-        <item>07946131313</item>
-        <item>07664678746</item>
     </string-array>
 
     <!-- Dialog box -->

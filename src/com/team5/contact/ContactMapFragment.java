@@ -8,6 +8,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -19,14 +20,16 @@ import com.team5.network.Response;
 import com.team5.pat.R;
 
 import android.app.Fragment;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-public class ContactMapFragment extends Fragment implements NetworkInterface {
-	// Atttributes for each contact
+public class ContactMapFragment extends Fragment implements NetworkInterface,
+		LocationListener {
+	// Attributes for each contact
 	private List<String> names = new ArrayList<String>();
 	private List<Float> latitudes = new ArrayList<Float>();
 	private List<Float> longitudes = new ArrayList<Float>();
@@ -48,6 +51,8 @@ public class ContactMapFragment extends Fragment implements NetworkInterface {
 		map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
 				.getMap();
 		map.setMyLocationEnabled(true);
+		map.getUiSettings().setZoomControlsEnabled(false);
+		map.getUiSettings().setRotateGesturesEnabled(true);
 
 		return view;
 	}
@@ -95,6 +100,15 @@ public class ContactMapFragment extends Fragment implements NetworkInterface {
 			Toast.makeText(getActivity(), "XML error", Toast.LENGTH_SHORT)
 					.show();
 		}
+
+	}
+
+	@Override
+	public void onLocationChanged(Location location) {
+		double lat = location.getLatitude();
+		double lng = location.getLongitude();
+		LatLng latLng = new LatLng(lat, lng);
+		map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12));
 
 	}
 }
