@@ -119,9 +119,9 @@ public class Request {
 			try {
 				// Attempt to create the URL object
 				if (usePost)
-					theUrl = new URL(myUrl);
+					theUrl = new URL(NetworkInterface.PAT_SERVER + myUrl);
 				else	{
-					theUrl = new URL(myUrl + "?" + theParameters);
+					theUrl = new URL(NetworkInterface.PAT_SERVER + myUrl + "?" + theParameters);
 				}
 			} catch (MalformedURLException e2) {
 				// Failure

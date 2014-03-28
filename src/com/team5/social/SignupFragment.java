@@ -61,7 +61,7 @@ public class SignupFragment extends Fragment implements SocialFragmentInterface,
 				networking = true;
 				progressDialog = ProgressDialog.show(myActivity, "", "Registering Account...");
 				
-				Request r = new Request(this, "http://nick-hope.co.uk/PAT/android/signup.php", mySocialAccount.getCookies());
+				Request r = new Request(this, "signup.php", mySocialAccount.getCookies());
 				r.addParameter("name", myNameView.getText().toString());
 				r.addParameter("email", myEmailView.getText() + "@newcastle.ac.uk");
 				r.addParameter("pass", myPasswordView.getText().toString());
@@ -91,6 +91,7 @@ public class SignupFragment extends Fragment implements SocialFragmentInterface,
 		TextView outputPassword = (TextView) myView.findViewById(R.id.social_fragment_signup_errorPassword);
 		
 		
+		outputSignup.setVisibility(View.VISIBLE);
 		if (!response.isSuccess())	{
 			outputSignup.setText("Failure: " + response.getMessage());
 			networking = false;
@@ -133,15 +134,17 @@ public class SignupFragment extends Fragment implements SocialFragmentInterface,
 			// Output into correct position
 			if (sectionResponse != 0)	{
 				outputViews[i].setText(sectionElement.getNodeName() + ": " + sectionMessage);
+				outputViews[i].setVisibility(View.VISIBLE);
 				success = false;
 			}	else	{
 				outputViews[i].setText("");
+				outputViews[i].setVisibility(View.GONE);
 			}
 		}
 		
 		if (success)	{
 			// do something
-			outputSignup.setText("Registered! Try logging in.");
+			outputSignup.setText("Registered! Check your email before logging in");
 		}
 				
 		networking = false;

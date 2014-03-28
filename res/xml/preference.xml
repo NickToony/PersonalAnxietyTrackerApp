@@ -9,7 +9,6 @@
             android:summary="@string/pref_lockscreen_summ"
             android:title="@string/pref_lockscreen_title" >
         </CheckBoxPreference>
-
         <EditTextPreference
             android:defaultValue="1234"
             android:hint="@string/pin_hint"
@@ -40,6 +39,16 @@
             android:summary="@string/pref_about_us_summ"
             android:title="@string/pref_about_us_title" >
         </Preference>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="pref_key_discussion"
+        android:title="Discussion" >
+        <EditTextPreference
+            android:defaultValue=""
+            android:key="prefer_key_discussions_email"
+            android:summary="The email to be remembered whenever you go to sign in"
+            android:title="Remembered Email" >
+        </EditTextPreference>
     </PreferenceCategory>
 
 </PreferenceScreen>

@@ -130,7 +130,7 @@ public class AddTopicFragment extends Fragment implements SocialFragmentInterfac
 		if (networking == false)	{
 			networking = true;
 			
-			Request r = new Request(this, "http://nick-hope.co.uk/PAT/android/post.php", mySocialAccount.getCookies());
+			Request r = new Request(this, "post.php", mySocialAccount.getCookies());
 			if (postParent != null)
 				r.addParameter("parent", "" + postParent.id);
 			r.addParameter("content", ((EditText) myView.findViewById(R.id.social_fragment_new_post_content)).getText() + "");
