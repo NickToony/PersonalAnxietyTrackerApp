@@ -9,29 +9,36 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /** Adapter for ContactGroupFragment that links layout of each row to a list **/
-public class GroupAdapter extends ArrayAdapter<GroupItem> {
+public class ContactAdapter extends BaseAdapter {
 	private Context context;
 	private int resource;
 	private ImageView icon;
 	private TextView name;
 	private TextView phoneNumber;
-	private List<GroupItem> items;
+	private List<Contact> contacts;
 
-	public GroupAdapter(Context context, int resource, List<GroupItem> items) {
-		super(context, resource, items);
+	public ContactAdapter(Context context, int resource) {
 		this.context = context;
 		this.resource = resource;
-		this.items = items;
+		this.contacts = Contact.getAll(context);
+		
+		if (this.contacts == null)
+			Toast.makeText(context, "Failed to read contacts", Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View row = convertView;
 
+		if (contacts == null)
+			return null;
+		
 		if (row == null) {
 			LayoutInflater inflater = (LayoutInflater) context
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -42,35 +49,24 @@ public class GroupAdapter extends ArrayAdapter<GroupItem> {
 		name = (TextView) row.findViewById(R.id.contact_group_name);
 		phoneNumber = (TextView) row.findViewById(R.id.contact_group_phone);
 
-		icon.setImageResource(items.get(position).getIcon());
-		name.setText(items.get(position).getName());
-		phoneNumber.setText(items.get(position).getPhoneNumber());
+		name.setText(contacts.get(position).name);
+		phoneNumber.setText(contacts.get(position).phoneNumber);
 
 		return row;
 	}
-}
 
-/** Objects shown every row **/
-class GroupItem {
-	private int icon;
-	private String name;
-	private String phoneNumber;
-
-	public GroupItem(int icon, String name, String phoneNumber) {
-		this.icon = icon;
-		this.name = name;
-		this.phoneNumber = phoneNumber;
+	@Override
+	public int getCount() {
+		return contacts.size();
 	}
 
-	public int getIcon() {
-		return icon;
+	@Override
+	public Object getItem(int position) {
+		return contacts.get(position);
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
+	@Override
+	public long getItemId(int position) {
+		return position;
 	}
 }

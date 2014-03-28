@@ -1,68 +1,50 @@
 package com.team5.contact;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
-import com.team5.network.NetworkInterface;
-import com.team5.network.Request;
-import com.team5.network.Response;
+import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
 
+import android.app.Fragment;
 import android.app.ListFragment;
-import android.content.Intent;
-import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import android.widget.Toast;
 
-public class ContactGroupFragment extends ListFragment implements
-		NetworkInterface {
-	private List<GroupItem> items;
-	private List<String> names = new ArrayList<String>();
-	private List<String> phoneNumbers = new ArrayList<String>();
+public class ContactListFragment extends Fragment { //implements NetworkInterface {
 	private View view;
-	private int size;
+	private ContactAdapter myAdapter;
+	private HomeActivity myActivity;
+	private ListView myListView;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		myActivity = (HomeActivity) getActivity();
+		myActivity.setTitle(getResources().getString(R.string.navigation_contact));
+		
 		view = inflater.inflate(R.layout.contact_group_fragment, container,
 				false);
-				
-		new Request(this, "contact.xml").start();
+		
+		//new Request(this, "contact.xml").start();
+		myAdapter = new ContactAdapter(myActivity, R.layout.contact_group_list_item);
+		myListView = (ListView) view.findViewById(R.id.contact_group_fragment_list);
+		myListView.setAdapter(myAdapter);
+		myListView.setOnItemClickListener(new OnItemClickListener()	{
+			@Override
+			public void onItemClick(AdapterView<?> adapter, View view, int position,long id) {
+				myActivity.changeFragment(new ContactDetailsFragment().definePosition(position));
+			}
+		});
+		
+		
 
 		return view;
 	}
 
-	@Override
-	public void onListItemClick(ListView l, View v, int position, long id) {
-		Intent intent = new Intent(getActivity(), ContactDetailsActivity.class);
-		startActivity(intent);
-	}
-
-	private void addItemsToTheList() {
-		items = new ArrayList<GroupItem>();
-
-		TypedArray icons = getResources().obtainTypedArray(
-				R.array.contact_icons);
-
-		for (int i = 0; i < size; i++) {
-			items.add(new GroupItem(icons.getResourceId(i, -1), names.get(i),
-					phoneNumbers.get(i)));
-		}
-
-		icons.recycle();
-	}
-
-	@Override
+	/*@Override
 	public void eventNetworkResponse(Request from, Response response) {
 		// Exit if not connected to the network
 		if (!response.isSuccess()) {
@@ -100,5 +82,5 @@ public class ContactGroupFragment extends ListFragment implements
 			Toast.makeText(getActivity(), "XML error", Toast.LENGTH_SHORT)
 					.show();
 		}
-	}
+	}*/
 }

@@ -13,6 +13,7 @@ import com.team5.navigationlist.NavListAdapter;
 import com.team5.pat.R;
 import com.team5.social.SocialAccount;
 import com.team5.social.SocialFragmentInterface;
+import com.team5.contact.ContactMapFragment;
 
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -163,7 +164,24 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 				return;
 		}
 		
+		if (getCurrentFragment() instanceof ContactMapFragment)	{
+			((ContactMapFragment) getCurrentFragment()).freeMap();
+		}
+		if (getCurrentFragment() instanceof com.team5.contact.MainFragment)	{
+			((com.team5.contact.MainFragment) getCurrentFragment()).freeMap();
+		}
+		
 		getFragmentManager().popBackStack();
+		
+		// Reset action bar
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+		actionBar.setDisplayHomeAsUpEnabled(true);
+		actionBar.setHomeButtonEnabled(true);
+		actionBar.removeAllTabs(); // get rid of all tabs - they're maintained
+									// across fragments!!
+		
+		// Fix orientation
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
 	}
 
 	/** Sync the toggle state after onRestoreInstanceState has occurred **/
@@ -188,7 +206,15 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 			if (getCurrentFragment().getClass().equals(fragment.getClass()))
 				if (!(getCurrentFragment() instanceof SocialFragmentInterface))
 					return;
-
+		if (getCurrentFragment() != null)
+			if (getCurrentFragment() instanceof ContactMapFragment)	{
+				((ContactMapFragment) getCurrentFragment()).freeMap();
+			}
+		if (getCurrentFragment() != null)
+			if (getCurrentFragment() instanceof com.team5.contact.MainFragment)	{
+				((com.team5.contact.MainFragment) getCurrentFragment()).freeMap();
+			}
+		
 		// Replace the frame with another fragment
 		FragmentManager manager = getFragmentManager();
 		FragmentTransaction transaction = manager.beginTransaction();
@@ -246,7 +272,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 			break;
 		case NavListAdapter.navigationContact:
 			// startActivity(new Intent(this, ContactActivity.class));
-			changeFragment(new com.team5.contact.MainFragment());
+			changeFragment(new com.team5.contact.ContactListFragment());
 			break;
 		case NavListAdapter.navigationLogOff:
 			finish();
@@ -310,7 +336,49 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 				getBaseContext().getResources().getDisplayMetrics());
 
 	}
+	
+	@Override
+	public void onDestroy()	{
+		if (getCurrentFragment() instanceof ContactMapFragment)	{
+			((ContactMapFragment) getCurrentFragment()).freeMap();
+		}
+		if (getCurrentFragment() instanceof com.team5.contact.MainFragment)	{
+			((com.team5.contact.MainFragment) getCurrentFragment()).freeMap();
+		}
+		
+		try	{
+			Fragment fragment = (getFragmentManager().findFragmentById(R.id.map));
+			if (fragment != null)	{
+			FragmentTransaction ft = getFragmentManager().beginTransaction();
+			ft.remove(fragment);
+			ft.commit(); }
+			}	catch (Exception e)	{
+			}
+		
+		super.onDestroy();
+	}
 
+	@Override
+	public void onPause()	{
+		if (getCurrentFragment() instanceof ContactMapFragment)	{
+			((ContactMapFragment) getCurrentFragment()).freeMap();
+		}
+		if (getCurrentFragment() instanceof com.team5.contact.MainFragment)	{
+			((com.team5.contact.MainFragment) getCurrentFragment()).freeMap();
+		}
+		
+		try	{
+			Fragment fragment = (getFragmentManager().findFragmentById(R.id.map));
+			if (fragment != null)	{
+			FragmentTransaction ft = getFragmentManager().beginTransaction();
+			ft.remove(fragment);
+			ft.commit(); }
+			}	catch (Exception e)	{
+			}
+		
+		super.onPause();
+	}
+	
 	public void setTitle(String title) {
 		actionBar.setTitle(title);
 	}

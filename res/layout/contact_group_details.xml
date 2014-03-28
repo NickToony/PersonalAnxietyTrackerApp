@@ -1,51 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColorSeekBar"
+    android:orientation="vertical"
+    android:padding="10dp" >
 
     <TextView
-        android:id="@+id/contact_details_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/commenttextfield1"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Contact Details"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginBottom="20dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="10dp"  >
+        
+        <ImageView 
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:src="@drawable/logo"
+            android:background="@drawable/social_container"/>
+        
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/social_container"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/contact_details_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Name"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/contact_details_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Phone"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/contact_details_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Email"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/contact_details_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Address"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/contact_details_postcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="PostCode"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
+    
+    <Button
+        android:id="@+id/contact_group_details_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:padding="@dimen/activity_vertical_margin"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:background="@drawable/social_button"
+        android:text="View on Map"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp" 
+        />
 
-    <TextView
-        android:id="@+id/contact_details_phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/contact_details_name"
-        android:padding="@dimen/activity_vertical_margin"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/contact_details_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/contact_details_phone"
-        android:padding="@dimen/activity_vertical_margin"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/contact_details_address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/contact_details_email"
-        android:padding="@dimen/activity_vertical_margin"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/contact_details_postcode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/contact_details_address"
-        android:padding="@dimen/activity_vertical_margin"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-</RelativeLayout>
+</LinearLayout>

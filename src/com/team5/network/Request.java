@@ -188,7 +188,7 @@ public class Request {
 				Log.i("Request", "Request.doInBackground() — wrote parameters: " + theParameters);
 			} catch (IOException e1) {
 				// Encoding issues?
-				theResponse.set(false, "Failing to attach parameters.", null);
+				theResponse.set(false, "Connection failure.", null);
 				theConnection.disconnect();
 				return theResponse;
 			}

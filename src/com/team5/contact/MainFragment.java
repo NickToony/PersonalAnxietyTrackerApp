@@ -19,20 +19,16 @@ import android.view.ViewGroup;
 
 import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
-import com.team5.social.ListFragment;
-import com.team5.social.SocialFragmentInterface;
-import com.team5.social.SocialPagerAdapter;
 
 public class MainFragment extends Fragment implements TabListener, OnPageChangeListener {
 	private View myView;
 	private HomeActivity myActivity;
-	private SocialFragmentInterface myParent;
 	private ViewPager myPager;
 	private ActionBar myActionBar;
 	private ContactsPagerAdapter myAdapter;
 	
-	private ContactGroupFragment leftFragment;
-	private ContactMapFragment rightFragment;
+	private ContactListFragment leftFragment;
+	private ContactListFragment rightFragment;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
@@ -46,8 +42,9 @@ public class MainFragment extends Fragment implements TabListener, OnPageChangeL
 			// Make an adapter for the view
 			myAdapter = new ContactsPagerAdapter(getFragmentManager());
 			// Create tabs
-			if (leftFragment == null)	leftFragment = new ContactGroupFragment();
-			if (rightFragment == null)	rightFragment = new ContactMapFragment();
+			if (leftFragment == null)	leftFragment = new ContactListFragment();
+			//if (rightFragment == null)	rightFragment = new ContactMapFragment();
+			if (rightFragment == null)	rightFragment = new ContactListFragment();
 			//Add tabs
 			myAdapter.addItem(leftFragment);
 			myAdapter.addItem(rightFragment);
@@ -133,5 +130,9 @@ public class MainFragment extends Fragment implements TabListener, OnPageChangeL
 			myFragments.clear();
 			this.notifyDataSetChanged();
 		}
+	}
+	
+	public void freeMap() {
+		//rightFragment.freeMap();
 	}
 }

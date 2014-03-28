@@ -18,49 +18,83 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.team5.network.NetworkInterface;
 import com.team5.network.Request;
 import com.team5.network.Response;
+import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
 
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.location.Location;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-public class ContactMapFragment extends Fragment implements NetworkInterface,
-		LocationListener, GoogleMap.OnMarkerClickListener {
-	// Attributes for each contact
-	private List<String> names = new ArrayList<String>();
-	private List<Float> latitudes = new ArrayList<Float>();
-	private List<Float> longitudes = new ArrayList<Float>();
-	private List<String> addresses = new ArrayList<String>();
+public class ContactMapFragment extends Fragment implements LocationListener, GoogleMap.OnMarkerClickListener {
 
 	private GoogleMap map;
-	private LatLng position;
-	private int size;
+	private ContactAdapter contactAdapter;
+	private View view;
+	private ContactAdapter myAdapter;
+	private HomeActivity myActivity;
+	private int contactPosition = -1;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.contact_map_fragment, container,
-				false);
-		new Request(this, "http://nick-hope.co.uk/PAT/android/contact.xml")
-				.start();
-
+		
+		myActivity = (HomeActivity) getActivity();
+		myActivity.setTitle(getResources().getString(R.string.navigation_contact));
+		
+		if (view == null)
+			view = inflater.inflate(R.layout.contact_map_fragment, container,false);
+		
+		if (savedInstanceState != null)	{
+			this.contactPosition = savedInstanceState.getInt("position");
+		}
+		
+		//new Request(this, "http://nick-hope.co.uk/PAT/android/contact.xml").start();
+		
 		// Get a handle to the Map Fragment
+		if (map == null)	{
 		map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
 				.getMap();
 		map.setMyLocationEnabled(true);
 		map.getUiSettings().setZoomControlsEnabled(false);
 		map.getUiSettings().setRotateGesturesEnabled(true);
 		map.setOnMarkerClickListener(this);
+		}
+		contactAdapter = new ContactAdapter(myActivity, 0);
+		
+		for (int i = 0; i < contactAdapter.getCount(); i ++)	{
+			Contact contact = (Contact) contactAdapter.getItem(i);
+			LatLng position = new LatLng(contact.latitude, contact.longitude);
+			map.addMarker(new MarkerOptions().title(contact.name).snippet(contact.email).position(position));
+			if (contactPosition == i)
+				map.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 15));
+		}
+		
+		//myActivity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		return view;
 	}
-
+	
+	public Fragment definePosition(int position)	{
+		this.contactPosition = position;
+		return this;
+	}
+	
 	@Override
+	public void onSaveInstanceState(Bundle outState) {
+	    outState.putInt("position", contactPosition);
+	    
+	    super.onSaveInstanceState(outState);
+	}
+
+	/*@Override
 	public void eventNetworkResponse(Request from, Response response) {
 		// Exit if not connected to the network
 		if (!response.isSuccess()) {
@@ -104,7 +138,7 @@ public class ContactMapFragment extends Fragment implements NetworkInterface,
 					.show();
 		}
 
-	}
+	}*/
 
 	@Override
 	public void onLocationChanged(Location location) {
@@ -117,8 +151,28 @@ public class ContactMapFragment extends Fragment implements NetworkInterface,
 
 	@Override
 	public boolean onMarkerClick(Marker marker) {
-		Intent intent = new Intent(getActivity(), ContactDetailsActivity.class);
-		startActivity(intent);
 		return true;
+	}
+	
+	@Override
+	public void onDestroy()	{
+		freeMap();
+		super.onDestroy();
+	}
+
+	public void freeMap() {
+		try	{
+		Fragment fragment = (getActivity().getFragmentManager().findFragmentById(R.id.map));
+		if (fragment != null)	{
+		FragmentTransaction ft = getActivity().getFragmentManager().beginTransaction();
+		ft.remove(fragment);
+		ft.commit(); }
+		}	catch (Exception e)	{
+		}
+	}
+	
+	public void onPause()	{
+		freeMap();
+		super.onPause();
 	}
 }
