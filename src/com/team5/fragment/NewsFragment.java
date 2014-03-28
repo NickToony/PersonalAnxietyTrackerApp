@@ -26,7 +26,7 @@ public class NewsFragment extends Fragment {
         myActivity.setTitle("Latest News");
 
         myWebView = (WebView) myView.findViewById(R.id.news_fragment_webview);
-        myWebView.loadUrl("http://nick-hope.co.uk/PAT/android/news.html");
+        myWebView.loadUrl("news.html");
         myWebView.getSettings().setJavaScriptEnabled(true);
         myWebView.getSettings().setSupportZoom(true);
         myWebView.getSettings().setBuiltInZoomControls(true);

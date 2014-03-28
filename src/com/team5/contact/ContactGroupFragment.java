@@ -37,7 +37,7 @@ public class ContactGroupFragment extends ListFragment implements
 		view = inflater.inflate(R.layout.contact_group_fragment, container,
 				false);
 
-		new Request(this, "http://nick-hope.co.uk/PAT/android/contact.xml").start();
+		new Request(this, "contact.xml").start();
 
 		return view;
 	}

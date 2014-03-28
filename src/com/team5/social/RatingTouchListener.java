@@ -45,7 +45,7 @@ class RatingTouchListener implements OnTouchListener, NetworkInterface, OnClickL
              float stars = (event.getX() / starRatingUser.getWidth()) * 5.0f;
              setMyRating(stars);
              
-             Request r = new Request(this, "http://nick-hope.co.uk/PAT/android/rate.php", mySocialAccount.getCookies());
+             Request r = new Request(this, "rate.php", mySocialAccount.getCookies());
              r.addParameter("post", post.id + "");
              r.addParameter("rating", stars + "");
              r.start();
@@ -105,7 +105,7 @@ class RatingTouchListener implements OnTouchListener, NetworkInterface, OnClickL
 	public void onClick( View v) {
 		switch (v.getId())	{
 		case R.id.social_fragment_list_buttonLeft:
-			Request r = new Request(this, "http://nick-hope.co.uk/PAT/android/favourite", mySocialAccount.getCookies());
+			Request r = new Request(this, "favourite", mySocialAccount.getCookies());
 			r.addParameter("post", "" + post.id);
 			r.start();
 			

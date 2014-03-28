@@ -55,7 +55,7 @@ public class AccountFragment extends Fragment implements
 					container, false);
 			
 			// Start the fetching of account data
-			new Request(this, "http://nick-hope.co.uk/PAT/android/account.php", mySocialAccount.getCookies()).setIdentifier(NETWORK_STATISTICS).start();
+			new Request(this, "account.php", mySocialAccount.getCookies()).setIdentifier(NETWORK_STATISTICS).start();
 		}
 		
 		usernameField = (EditText) myView.findViewById(R.id.social_fragment_account_changeUsernameField);
@@ -64,7 +64,7 @@ public class AccountFragment extends Fragment implements
 		((Button) myView.findViewById(R.id.social_fragment_account_changeUsernameButton)).setOnClickListener(new OnClickListener()	{
 			@Override
 			public void onClick(View buttonView) {
-				Request r = new Request(AccountFragment.this, "http://nick-hope.co.uk/PAT/android/changename.php", mySocialAccount.getCookies());
+				Request r = new Request(AccountFragment.this, "changename.php", mySocialAccount.getCookies());
 				r.setIdentifier(NETWORK_CHANGE_USERNAME);
 				r.addParameter("name", usernameField.getText().toString());
 				r.start();
@@ -76,7 +76,7 @@ public class AccountFragment extends Fragment implements
 		((Button) myView.findViewById(R.id.social_fragment_account_changePasswordButton)).setOnClickListener(new OnClickListener()	{
 			@Override
 			public void onClick(View buttonView) {
-				Request r = new Request(AccountFragment.this, "http://nick-hope.co.uk/PAT/android/changepass.php", mySocialAccount.getCookies());
+				Request r = new Request(AccountFragment.this, "changepass.php", mySocialAccount.getCookies());
 				r.setIdentifier(NETWORK_CHANGE_PASSWORD);
 				r.addParameter("pass", passwordField.getText().toString());
 				r.start();
@@ -88,7 +88,7 @@ public class AccountFragment extends Fragment implements
 		((Button) myView.findViewById(R.id.social_fragment_account_deleteAccountButton)).setOnClickListener(new OnClickListener()	{
 			@Override
 			public void onClick(View buttonView) {
-				Request r = new Request(AccountFragment.this, "http://nick-hope.co.uk/PAT/android/deleteaccount.php", mySocialAccount.getCookies());
+				Request r = new Request(AccountFragment.this, "deleteaccount.php", mySocialAccount.getCookies());
 				r.setIdentifier(NETWORK_DELETE_ACCOUNT);
 				r.start();
 				

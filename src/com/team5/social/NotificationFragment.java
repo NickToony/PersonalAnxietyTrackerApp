@@ -60,7 +60,7 @@ public class NotificationFragment extends Fragment implements SocialFragmentInte
 				List<Notification> notifications = mySocialAccount.getNotifications();
 				Notification notification = notifications.get(position);
 				
-				Request r = new Request(NotificationFragment.this, "http://nick-hope.co.uk/PAT/android/fetchpost.php", mySocialAccount.getCookies());
+				Request r = new Request(NotificationFragment.this, "fetchpost.php", mySocialAccount.getCookies());
 				r.addParameter("post", notification.postID + "" );
 				r.start();
 				

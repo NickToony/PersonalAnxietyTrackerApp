@@ -148,7 +148,7 @@ public class SocialAccount implements NetworkInterface {
 		if (currentTime <= lastNotificationUpdate + 15)
 			return;
 		
-		Request r = new Request(this, "http://nick-hope.co.uk/PAT/android/notifications.php", getCookies());
+		Request r = new Request(this, "notifications.php", getCookies());
 		r.start();
 		
 		lastNotificationUpdate = currentTime;
@@ -314,7 +314,7 @@ public class SocialAccount implements NetworkInterface {
 	}
 
 	public void removeNotication(int position) {
-		Request r = new Request(null, "http://nick-hope.co.uk/PAT/android/deletenotification.php", getCookies());
+		Request r = new Request(null, "deletenotification.php", getCookies());
 		r.addParameter("notification", myNotifications.get(position).notificationID + "");
 		r.start();
 		

@@ -144,7 +144,7 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 		parameters += "order=" + postOrder + "";
 		
 		
-		Request r = new Request(this, "http://nick-hope.co.uk/PAT/android/fetchposts.php", mySocialAccount.getCookies());
+		Request r = new Request(this, "fetchposts.php", mySocialAccount.getCookies());
 		if (postParent != null)
 			r.addParameter("parent", postParent.id + "");
 		r.addParameter("owner", postOwner + "");
