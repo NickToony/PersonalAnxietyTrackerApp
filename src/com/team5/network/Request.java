@@ -30,7 +30,7 @@ public class Request {
 	private NetworkInterface myTarget;
 	private Request myObject = this;
 	private Map<String, String> myCookies;
-	private boolean usePost = false;
+	private boolean usePost = true;
 	private boolean started = false;
 	private int identifier = -1;
 	
