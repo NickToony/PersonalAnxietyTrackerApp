@@ -83,6 +83,12 @@ public class NotificationFragment extends Fragment implements SocialFragmentInte
 		return myView;
 	}
 	
+	/**
+	 * Handles the receiving of the notifications target topic, and forwards on to the listfragment
+	 * 
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public void eventNetworkResponse(Request from, Response response) {
 		if (progressDialog!=null) {
@@ -162,6 +168,12 @@ public class NotificationFragment extends Fragment implements SocialFragmentInte
 		errorOutput.setVisibility(View.GONE);
 	}
 	
+	/**
+	 * ListAdapter for the notifications list
+	 * 
+	 * @author Nick
+	 *
+	 */
 	class ListAdapter extends BaseAdapter	{
 
 		@Override
@@ -198,6 +210,12 @@ public class NotificationFragment extends Fragment implements SocialFragmentInte
 		}
 	}
 	
+	/**
+	 * Basic listener that allows use of delete notification button
+	 * 
+	 * @author Nick
+	 *
+	 */
 	class DeleteClickListener implements OnClickListener	{
 		private int position;
 		

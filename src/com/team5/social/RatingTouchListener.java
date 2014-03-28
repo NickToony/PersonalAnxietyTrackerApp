@@ -43,6 +43,12 @@ class RatingTouchListener implements OnTouchListener, NetworkInterface, OnClickL
 		this.myListAdapter = myListAdapter;
 	}
 	
+	/**
+	 * Responds to the star rating being interacted with
+	 * 
+	 * @author Nick
+	 *
+	 */
     @Override
     public boolean onTouch(View v, MotionEvent event) {
     	if (ratingUserSet)
@@ -69,6 +75,12 @@ class RatingTouchListener implements OnTouchListener, NetworkInterface, OnClickL
         return true;
     }
     
+    /**
+	 * Set the average rating by users
+	 * 
+	 * @author Nick
+	 *
+	 */
     public void setOthersRating(float value)	{
 		starRatingBelow.setRating(value);
 		starRatingAbove.setRating(value);
@@ -78,6 +90,12 @@ class RatingTouchListener implements OnTouchListener, NetworkInterface, OnClickL
 		fixRating();
 	}
 	
+    /**
+	 * Set the current users rating
+	 * 
+	 * @author Nick
+	 *
+	 */
 	void setMyRating(float value)	{
 		starRatingUser.setRating(value);
 		ratingUserSet = true;
@@ -87,6 +105,12 @@ class RatingTouchListener implements OnTouchListener, NetworkInterface, OnClickL
 		fixRating();
 	}
 	
+	/**
+	 * Determine which rating to show
+	 * 
+	 * @author Nick
+	 *
+	 */
 	private void fixRating()	{
 		 if (starRatingUser.getRating() <= starRatingAbove.getRating())	{
         	 starRatingAbove.setVisibility(View.GONE);
@@ -97,17 +121,35 @@ class RatingTouchListener implements OnTouchListener, NetworkInterface, OnClickL
          }
 	}
 
+	/**
+	 * Handles event of rating. Ignored usually...
+	 * 
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public void eventNetworkResponse(Request from, Response response) {
 		if (myListAdapter != null)
 			myListAdapter.refresh();
 	}
 
+	/**
+	 * Resets rating, as to fix it in certain situations
+	 * 
+	 * @author Nick
+	 *
+	 */
 	public void resetMyRating() {
 		starRatingUser.setRating(0);
 		fixRating();
 	}
 
+	/**
+	 * Handles clicking of faovurite button or reply button
+	 * 
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public void onClick( View v) {
 		switch (v.getId())	{

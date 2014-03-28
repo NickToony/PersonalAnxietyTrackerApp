@@ -80,6 +80,13 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 	public static final int ORDER_OLD = 1;
 	public static final int ORDER_TOP = 2;
 	
+	/**
+	 * Restores state if resumed. Creates views and begins request.
+	 * Also sets up action bar if required (for sorting)
+	 * 
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
 		super.onCreate(savedInstanceState);
@@ -136,6 +143,12 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 		return myView;
 	}
 	
+	/**
+	 * Begins the request, adding on fetching parameters
+	 * 
+	 * @author Nick
+	 *
+	 */
 	private void fetchPosts()	{
 		if (networking == true)	return;
 		
@@ -164,6 +177,12 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 		networking = true;
 	}
 	
+	/**
+	 * Stores list parameters for resumed state
+	 * 
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public void onSaveInstanceState(Bundle outState) {
 		/*
@@ -184,6 +203,14 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 	    super.onSaveInstanceState(outState);
 	}
 	
+	/**
+	 * Creates the action bar (if necessary)
+	 * 
+	 * Allows sorting of posts based on rating and age
+	 * 
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 	    
@@ -237,6 +264,12 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 	    super.onCreateOptionsMenu(menu,inflater);
 	}
 	
+	/**
+	 * Define the parameters for which posts to display
+	 * 
+	 * @author Nick
+	 *
+	 */
 	public ListFragment defineList(Post postParent, int postOwner, int postOrder, int postFavourites, boolean doActionBar)	{
 		this.postParent = postParent; // fetch by post parent?
 		this.postOwner = postOwner; // fetch by owner?
@@ -253,6 +286,12 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 		return this;
 	}
 	
+	/**
+	 * Listener for the dropdown, changes sorting accordingly
+	 * 
+	 * @author Nick
+	 *
+	 */
 	class DropDownListener implements OnNavigationListener {
 		@Override
 		public boolean onNavigationItemSelected(int position, long id) {
@@ -275,6 +314,12 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 		}
 	}
 	
+	/**
+	 * Handles the receiving of the posts
+	 * 
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public void eventNetworkResponse(Request request, Response response)	{
 		networking = false;
@@ -386,10 +431,11 @@ public class ListFragment extends Fragment implements SocialFragmentInterface, N
 	
 	
 	
-	/*
-	 * ListAdapter
+	/**
+	 * Adapter for the list of topics, handles whats clickable, and how it appears.
 	 * 
-	 * Adapter for the topics list
+	 * @author Nick
+	 *
 	 */
 	private class ListAdapter extends BaseAdapter implements PostHandlerInterface {
 		private List<Post> items = new ArrayList<Post>();

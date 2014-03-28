@@ -37,7 +37,6 @@ import com.team5.pat.Session;
  * @author Nick
  *
  */
-
 public class SigninFragment extends Fragment implements SocialFragmentInterface, OnClickListener, NetworkInterface {
 	private View myView;
 	private HomeActivity myActivity;
@@ -62,6 +61,7 @@ public class SigninFragment extends Fragment implements SocialFragmentInterface,
 		myEmailView = (EditText) myView.findViewById(R.id.social_fragment_signin_Email);
 		myPasswordView = (EditText) myView.findViewById(R.id.social_fragment_signin_Password);
 		
+		// Remember password functionality
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(myActivity.getApplicationContext());
 		String emailRemembered = preferences.getString("prefer_key_discussions_email", "");
 		if (emailRemembered.contentEquals(""))	{
@@ -71,7 +71,7 @@ public class SigninFragment extends Fragment implements SocialFragmentInterface,
 			((CheckBox) myView.findViewById(R.id.social_fragment_signin_checkbox)).setChecked(true);
 		}
 		
-		
+		// Reset Pass button
 		((Button) myView.findViewById(R.id.social_fragment_forgotten_password_button)).setOnClickListener(new OnClickListener()	{
 			@Override
 			public void onClick(View v) {
@@ -82,6 +82,12 @@ public class SigninFragment extends Fragment implements SocialFragmentInterface,
 		return myView;
 	}
 
+	/**
+	 * Handles the clicking of the Sign IN button
+	 * 
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public void onClick(View theView) {
 		if (theView == myButton)	{
@@ -107,6 +113,12 @@ public class SigninFragment extends Fragment implements SocialFragmentInterface,
 		}
 	}
 
+	/**
+	 * Handles response to sign in. Displaying errors if necessary.
+	 * 
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public void eventNetworkResponse(Request from, Response response) {
 		// Get rid of dialog

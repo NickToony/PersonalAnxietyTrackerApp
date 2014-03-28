@@ -48,6 +48,12 @@ public class AccountFragment extends Fragment implements
 	
 	private ProgressDialog progressDialog;
 
+	/**
+	 * Creates the view, assigns click listeners, begins statistic requests
+	 * 
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -106,6 +112,12 @@ public class AccountFragment extends Fragment implements
 		return myView;
 	}
 
+	/**
+	 * Handles all network events. Outputs shared information, then passes to more specific methods.
+	 * 
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public void eventNetworkResponse(Request request, Response response) {	
 		if (progressDialog!=null) {
@@ -187,6 +199,12 @@ public class AccountFragment extends Fragment implements
 		}
 	}
 	
+	/**
+	 * Handles network event identified as: delete account
+	 * 
+	 * @author Nick
+	 *
+	 */
 	private void networkDeleteAccount(Request request, Response response) {		
 		TextView outputChange = (TextView) myView.findViewById(R.id.social_fragment_account_deleteAccountError);
 		
@@ -199,6 +217,12 @@ public class AccountFragment extends Fragment implements
         alert.show();
 	}
 
+	/**
+	 * Handles network event identified as: statistics received
+	 * 
+	 * @author Nick
+	 *
+	 */
 	private void networkStatistics(Request request, Response response)	{
 		TextView errorOutput = (TextView) myView.findViewById(R.id.social_fragment_statisticsError);
 		
@@ -219,6 +243,13 @@ public class AccountFragment extends Fragment implements
 		((RatingBar) myView.findViewById(R.id.social_fragment_account_highestRating)).setRating(highestRating);
 	}
 	
+	
+	/**
+	 * Handle network event identified as: change username
+	 * 
+	 * @author Nick
+	 *
+	 */
 	private void networkChangeUsername(Request request, Response response)	{				
 		// Get the request element
 		Element eleData = response.getData();
@@ -247,6 +278,12 @@ public class AccountFragment extends Fragment implements
 		outputChange.setText("Username successfully changed!");
 	}
 	
+	/**
+	 * Handle network event identified as: change password
+	 * 
+	 * @author Nick
+	 *
+	 */
 	private void networkChangePassword(Request request, Response response)	{				
 		// Get the request element
 		Element eleData = response.getData();

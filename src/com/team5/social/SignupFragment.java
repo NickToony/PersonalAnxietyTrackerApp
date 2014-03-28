@@ -33,7 +33,6 @@ import com.team5.pat.Session;
  * @author Nick
  *
  */
-
 public class SignupFragment extends Fragment implements SocialFragmentInterface, OnClickListener, NetworkInterface {
 	private View myView;
 	private HomeActivity myActivity;
@@ -62,6 +61,12 @@ public class SignupFragment extends Fragment implements SocialFragmentInterface,
 		return myView;
 	}
 	
+	/**
+	 * Handles the clicking of "Sign Up"
+	 * 
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public void onClick(View theView) {
 		if (theView == myButton)	{
@@ -83,6 +88,12 @@ public class SignupFragment extends Fragment implements SocialFragmentInterface,
 		}
 	}
 
+	/**
+	 * Handles response, displaying any errors
+	 * 
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public void eventNetworkResponse(Request from, Response response) {
 		// Dismiss dialog

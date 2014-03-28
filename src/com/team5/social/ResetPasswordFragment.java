@@ -35,7 +35,6 @@ import android.widget.AdapterView.OnItemClickListener;
  * @author Nick
  *
  */
-
 public class ResetPasswordFragment extends Fragment implements SocialFragmentInterface, NetworkInterface {
 	private View myView;
 	private HomeActivity myActivity;
@@ -69,6 +68,12 @@ public class ResetPasswordFragment extends Fragment implements SocialFragmentInt
 		return myView;
 	}
 
+	/**
+	 * Handles the reply, outputting any errors
+	 * 
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public void eventNetworkResponse(Request from, Response response) {
 		// Dismiss dialog

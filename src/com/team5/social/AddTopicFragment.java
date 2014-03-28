@@ -42,11 +42,23 @@ public class AddTopicFragment extends Fragment implements SocialFragmentInterfac
 	private ProgressDialog progressDialog;
 	private RatingTouchListener ratingListener;
 	
+	/**
+	 * Allows another fragment to define which post the user is replying to
+	 * 
+	 * @author Nick
+	 *
+	 */
 	public Fragment defineParent(Post postParent) {
 		this.postParent = postParent;
 		return this;
 	}
 	
+	/**
+	 * Creates view, display parent post (if necessary)
+	 * 
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
 		super.onCreate(savedInstanceState);
@@ -133,6 +145,12 @@ public class AddTopicFragment extends Fragment implements SocialFragmentInterfac
 		return myView;
 	}
 	
+	/**
+	 * Begins networking request to create a topic
+	 * 
+	 * @author Nick
+	 *
+	 */
 	private void createTopic()	{
 		if (networking == false)	{
 			networking = true;
@@ -147,6 +165,12 @@ public class AddTopicFragment extends Fragment implements SocialFragmentInterfac
 		}
 	}
 
+	/**
+	 * Handles response from server
+	 * 
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public void eventNetworkResponse(Request from, Response response) {
 		networking = false;
@@ -220,6 +244,12 @@ public class AddTopicFragment extends Fragment implements SocialFragmentInterfac
 		mySocialAccount.handleEvent(SocialAccount.EVENT_GO_BACK);
 	}
 
+	/**
+	 * Refreshs the view
+	 * 
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public void refresh() {
 		myView.invalidate();

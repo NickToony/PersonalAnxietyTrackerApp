@@ -38,6 +38,12 @@ public class BrowsePostsFragment extends Fragment implements SocialFragmentInter
 	private ListFragment topList;
 	private ListFragment newList;
 	
+	/**
+	 * Inflates the viewpager with other fragments.
+	 * 
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
 		super.onCreate(savedInstanceState);

@@ -67,6 +67,12 @@ public class SocialAccount implements NetworkInterface {
 		this.myActivity = (HomeActivity) c;
 	}
 	
+	/**
+	 * Method to be called for navigating to the discussion
+	 * 
+	 * @author Nick
+	 *
+	 */
 	public void navigateTo()	{
 		resetFragments();
 		
@@ -77,6 +83,12 @@ public class SocialAccount implements NetworkInterface {
 		}
 	}
 	
+	/**
+	 * SocialAccount partially manages its own fragment replacement, so can maintain backstack
+	 * 
+	 * @author Nick
+	 *
+	 */
 	public void changeFragment(Fragment theFrag)	{	
 		// Store it on the stack
 		myStack.add(theFrag);
@@ -87,14 +99,32 @@ public class SocialAccount implements NetworkInterface {
 		myActivity.setTitle("Discussion");
 	}
 	
+	/**
+	 * Are notifications turned on?
+	 * 
+	 * @author Nick
+	 *
+	 */
 	public boolean isNotifications()	{
 		return myNotifications != null;
 	}
 	
+	/**
+	 * Fetch a list of all current notifications
+	 * 
+	 * @author Nick
+	 *
+	 */
 	public List<Notification> getNotifications()	{
 		return myNotifications;
 	}
 	
+	/**
+	 * Backstack handling. Goes to previous fragment
+	 * 
+	 * @author Nick
+	 *
+	 */
 	private void popFragment()	{
 		if (myStack.size() > 1)	{
 			// Remove current item
@@ -112,6 +142,12 @@ public class SocialAccount implements NetworkInterface {
 		}
 	}
 	
+	/**
+	 * Clears the backstack
+	 * 
+	 * @author Nick
+	 *
+	 */
 	public void resetFragments()	{
 		/*for (int i = 0; i < myStack.size(); i ++)	{
 			FragmentTransaction fragmentTransaction = myActivity.getFragmentManager().beginTransaction();
@@ -121,6 +157,12 @@ public class SocialAccount implements NetworkInterface {
 		myStack.clear();
 	}
 	
+	/**
+	 * Setup the notification system
+	 * 
+	 * @author Nick
+	 *
+	 */
 	private void setupNotifications()	{
 		myNotifications = new ArrayList<Notification>();
 		
@@ -129,6 +171,12 @@ public class SocialAccount implements NetworkInterface {
 		updateNotifications();
 	}
 	
+	/**
+	 * Fixes the notification menu item, especially important when other menu items present
+	 * 
+	 * @author Nick
+	 *
+	 */
 	public void fixNotifications()	{
 			myActivity.getNotifications().setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 		
@@ -145,11 +193,23 @@ public class SocialAccount implements NetworkInterface {
 		setNotificationText();
 	}
 	
+	/**
+	 * Disables notification tracking (e.g. logging out)
+	 * 
+	 * @author Nick
+	 *
+	 */
 	private void deleteNotifications()	{
 		myNotifications = null;
 		myActivity.getNotifications().setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
 	}
 	
+	/**
+	 * Fetches the latest notifications (if not done recently)
+	 * 
+	 * @author Nick
+	 *
+	 */
 	public void updateNotifications()	{
 		long currentTime = System.currentTimeMillis() / 1000;
 		if (currentTime <= lastNotificationUpdate + 15)
@@ -161,6 +221,12 @@ public class SocialAccount implements NetworkInterface {
 		lastNotificationUpdate = currentTime;
 	}
 	
+	/**
+	 * Handles the response for the fetch notifications request
+	 * 
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public void eventNetworkResponse(Request request, Response response)	{
 		myNotifications.clear();
@@ -213,11 +279,23 @@ public class SocialAccount implements NetworkInterface {
 		setNotificationText();
 	}
 	
+	/**
+	 * Set the notification menu item text
+	 * 
+	 * @author Nick
+	 *
+	 */
 	private void setNotificationText()	{
 		TextView text = (TextView) myActivity.getNotifications().getActionView().findViewById(R.id.social_notification_text);
 		text.setText(myNotifications.size() + " Notification");
 	}
 	
+	/**
+	 * Handle a social event
+	 * 
+	 * @author Nick
+	 *
+	 */
 	public void handleEvent(int eventID)	{
 		Log.i("Social Fragment", "Triggered Event: " + eventID);
 		switch (eventID)	{
@@ -300,26 +378,62 @@ public class SocialAccount implements NetworkInterface {
 		}
 	}
 	
+	/**
+	 * Is logged In?
+	 * 
+	 * @author Nick
+	 *
+	 */
 	public boolean isLoggedIn()	{
 		return socialLoggedIn;
 	}
 	
+	/**
+	 * Set logged in
+	 * 
+	 * @author Nick
+	 *
+	 */
 	public void setLoggedIn(boolean loggedIn)	{
 		this.socialLoggedIn = loggedIn;
 	}
 	
+	/**
+	 * Sets the global cookies (as provided by the Networking classes)
+	 * 
+	 * @author Nick
+	 *
+	 */
 	public void setCookies(Map<String, String> cookieMap)	{
 		myCookies.putAll(cookieMap);
 	}
 	
+	/**
+	 * Fetches cookies to use in Networking classes
+	 * 
+	 * @author Nick
+	 *
+	 */
 	public Map<String, String> getCookies()	{
 		return myCookies;
 	}
 	
+	/**
+	 * Wipe cookies. Great for destroying a session.
+	 * 
+	 * @author Nick
+	 *
+	 */
 	public void clearCookies()	{
 		myCookies = new HashMap<String, String>();
 	}
 
+	/**
+	 * Delete a notification
+	 * 
+	 * @author Nick
+	 *
+	 */
 	public void removeNotication(int position) {
 		Request r = new Request(null, "deletenotification.php", getCookies());
 		r.addParameter("notification", myNotifications.get(position).notificationID + "");
@@ -329,9 +443,4 @@ public class SocialAccount implements NetworkInterface {
 		
 		setNotificationText();
 	}
-}
-
-class StackedFragment	{
-	public Fragment myFragment;
-	public Bundle myFragmentState;
 }
