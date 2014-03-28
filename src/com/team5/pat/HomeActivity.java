@@ -2,6 +2,7 @@ package com.team5.pat;
 
 import java.util.Locale;
 
+import com.team5.contact.MainFragment;
 import com.team5.fragment.BreathExerciseFragment;
 import com.team5.fragment.FeedbackFragment;
 import com.team5.fragment.GraphFragment;
@@ -242,11 +243,10 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 			break;
 		case NavListAdapter.navigationDiscussion:
 			((Session) getApplication()).getSocialAccount().navigateTo();
-			// changeFragment(new SocialAccount());
-			// startActivity(new Intent(this, SocialActivity.class));
 			break;
 		case NavListAdapter.navigationContact:
-			startActivity(new Intent(this, ContactActivity.class));
+			// startActivity(new Intent(this, ContactActivity.class));
+			changeFragment(new com.team5.contact.MainFragment());
 			break;
 		case NavListAdapter.navigationLogOff:
 			finish();

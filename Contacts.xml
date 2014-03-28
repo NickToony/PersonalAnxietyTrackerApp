@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<contacts>
+	<contact>
+		<name>Community Mental Health Team</name>
+		<phone>01912468655</phone>
+		<email>http://www.ntw.nhs.uk</email>
+		<latitude>54.97436</latitude>
+		<longitude>-1.64303</longitude>
+		<address>Campus for Ageing and Vitality, Westgate Road, Newcastle upon Tyne</address>
+		<postcode>NE4 6BE</postcode>
+	</contact>
+
+	<contact>
+		<name>North and East Community Team</name>
+		<phone>01912875297</phone>
+		<email>http://www.ntw.nhs.uk</email>
+		<latitude>54.97754</latitude>
+		<longitude>-1.58345</longitude>
+		<address>Molineux Street, Byker, Newcastle upon Tyne</address>
+		<postcode>NE6 1SG</postcode>
+	</contact>
+
+	<contact>
+		<name>West Community Team</name>
+		<phone>01912875060</phone>
+		<email>http://www.ntw.nhs.uk</email>
+		<latitude>54.97257</latitude>
+		<longitude>-1.64758</longitude>
+		<address>Grainger Park Road, Newcastle upon Tyne</address>
+		<postcode>NE4 8RR</postcode>
+	</contact>
+
+	<contact>
+		<name>Dryden Road Clinic</name>
+		<phone>01914416700</phone>
+		<email>http://www.ntw.nhs.uk</email>
+		<latitude>54.94794</latitude>
+		<longitude>-1.59590</longitude>
+		<address>134 Dryden Road, Gateshead, Tyne and Wear</address>
+		<postcode>NE9 5BY</postcode>
+	</contact>
+
+	<contact>
+		<name>Newcastle Talking Therapies</name>
+		<phone>01912875297</phone>
+		<email>http://www.newcastletalkingtherapies.org/</email>
+		<latitude>54.97257</latitude>
+		<longitude>-1.64758</longitude>
+		<address>Silverdale Building, Grainger Park Road, Newcastle upon Tyne</address>
+		<postcode>NE4 8RR</postcode>
+	</contact>
+
+	<contact>
+		<name>Young Minds</name>
+		<phone>02070895050</phone>
+		<email>ymenquiries@youngminds.org.uk</email>
+		<latitude>51.501712</latitude>
+		<longitude>-0.089083</longitude>
+		<address>Suite 11, Baden Place, Crosby Row, London</address>
+		<postcode>SE1 1YW</postcode>
+	</contact>
+	
+	<contact>
+		<name>PAPYRUS</name>
+		<phone>01925572444</phone>
+		<email>admin@papyrus-uk.org</email>
+		<latitude>53.392601</latitude>
+		<longitude>-2.596899</longitude>
+		<address>67 Bewsey Street WARRINGTON Cheshire</address>
+		<postcode>WA2 7JQ</postcode>
+	</contact>
+	
+	<contact>
+		<name>Anxiety UK</name>
+		<phone>08444 775 774</phone>
+		<email>http://www.anxietyuk.org.uk</email>
+		<latitude>53.466430</latitude>
+		<longitude>-2.253159</longitude>
+		<address>Zion Community Resource Centre, 339 Stretford Road, Hulme, Manchester</address>
+		<postcode>M15 4ZY</postcode>
+	</contact>
+	
+	<contact>
+		<name>Samaritans</name>
+		<phone>01912327272</phone>
+		<email>http://www.samaritans.org</email>
+		<latitude>54.982077</latitude>
+		<longitude>-1.603134</longitude>
+		<address>15 Portland Terrace, Newcastle Upon Tyne, Tyne and Wear</address>
+		<postcode>NE2 1QQ</postcode>
+	</contact>
+</contacts>
