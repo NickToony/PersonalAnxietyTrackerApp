@@ -19,6 +19,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+/**
+ * User account is a persistent object that manages local database interactions
+ * @author Nick
+ *
+ */
 public class UserAccount {
 	// Variables
 	private DatabaseHelper myDatabaseHelper;
@@ -30,6 +35,11 @@ public class UserAccount {
 	private final int maxLoginAttempts = 5;
 
 
+	/**
+	 * Initialises database
+	 * @author Nick
+	 *
+	 */
     public UserAccount(Context context){
 		// temporary
 		passKey = "1234";
@@ -41,11 +51,21 @@ public class UserAccount {
         myDatabase = myDatabaseHelper.getWritableDatabase();
     }
 
+    /**
+     * Returns whether logged in or not
+     * @author Nick
+     *
+     */
     public boolean getLoggedIn()	{
 		// return whether we are logged in
 		return loggedIn;
 	}
 	
+    /**
+     * Attempts to log the user in, granting access to local database
+     * @author Nick
+     *
+     */
 	public boolean logIn(String passKey)	{
 		// If the password is right
 		if (this.passKey.contentEquals(passKey))	{
@@ -70,6 +90,11 @@ public class UserAccount {
         return false;
 	}
 	
+	/**
+	 * Process for logging in. Allows sample data to be generated
+	 * @author Nick, David
+	 *
+	 */
 	private void logInProcess()	{
 		// We logged in
 		loggedIn = true;
@@ -222,6 +247,12 @@ public class UserAccount {
         }
 
     }
+	
+	/**
+	 * 
+	 * @author David
+	 *
+	 */
     public List<UserRecord> getRecordByMonthAverage(long from, long to)	{
         // We must be logged in
         if (!getLoggedIn())	{
@@ -318,6 +349,11 @@ public class UserAccount {
     }
 
 
+    /**
+     * 
+     * @author David
+     *
+     */
     public List<UserRecord> getRecordByYearAverage(long from, long to)	{
         // We must be logged in
         if (!getLoggedIn())	{
@@ -398,6 +434,11 @@ public class UserAccount {
     }
 
 
+    /**
+     * Add a new record to the local database
+     * @author Nick
+     *
+     */
     public boolean addRecord(UserRecord record)	{
 		// We must be logged in
 		if (!getLoggedIn())	{
@@ -421,6 +462,11 @@ public class UserAccount {
 		}
 	}
 	
+    /**
+     * Fetch a record by its ID
+     * @author Nick
+     *
+     */
 	public List<UserRecord> getRecordByID(int id)	{
 		// We must be logged in
 		if (!getLoggedIn())	{
@@ -470,7 +516,11 @@ public class UserAccount {
 //     SELECT AVG(COLUMN_ANXIETY), AVG(COLUMN_SERIOUSNESS) FROM TABLE_RECORDS WHERE (COLUMN_TIMESTAMP >= timeStart) AND (COLUMN_TIMESTAMP <= timeStart);
 
 
-
+	/**
+	 * 
+	 * @author David
+	 *
+	 */
     public List<UserRecord> getRecordByDayAverage(long from, long to)	{
         // We must be logged in
         if (!getLoggedIn())	{
@@ -555,7 +605,11 @@ public class UserAccount {
     }
 
 
-
+    /**
+     * Original record fetching script. Not used in final version
+     * @author Nick
+     *
+     */
 	public List<UserRecord> getRecordByTime(long from, long to)	{
 		// We must be logged in
 		if (!getLoggedIn())	{
@@ -605,6 +659,11 @@ public class UserAccount {
 		
 	}
 	
+	/**
+	 * Handles a basic insert
+	 * @author Nick
+	 *
+	 */
 	private boolean insert(String table, String nullPointer, ContentValues values)	{
 		// Begin a transaction
 		myDatabase.beginTransactionNonExclusive();
@@ -624,7 +683,11 @@ public class UserAccount {
 	}
 }
 
-
+/**
+ * Manages the database itself
+ * @author Nick
+ *
+ */
 class DatabaseHelper extends SQLiteOpenHelper	{
 	// Define basic database information
 	private static final String DATABASE_NAME = "mentalHealthApp_Database";
@@ -645,6 +708,11 @@ class DatabaseHelper extends SQLiteOpenHelper	{
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    /**
+     * Creation of database
+     * @author Nick
+     *
+     */
 	@Override
 	public void onCreate(SQLiteDatabase database) {
 		// Called when a brand new database is created
@@ -659,6 +727,11 @@ class DatabaseHelper extends SQLiteOpenHelper	{
 							");");
 	}
 
+	/**
+	 * Handles upgrading of the database
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
 		// Called when there is an older database present

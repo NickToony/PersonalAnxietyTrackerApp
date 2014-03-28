@@ -13,12 +13,12 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
 
-/*
- * ISSUES
- * 
- * CircleView is significantly more efficient and can be used exactly the same.
+/**
+ * Experimental menu concept as proposed by designers. Dropped due to impracticality.
+ * NOTE: CircleView is FAR more optimised, and can do exactly the same task!
+ * @author Nick
+ *
  */
-
 public class HexagonView extends View {
 	// Class variables
 	private Paint myPaint = new Paint();

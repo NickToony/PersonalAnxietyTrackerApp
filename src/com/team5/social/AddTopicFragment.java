@@ -26,6 +26,13 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
+/**
+ * Fragment allowing user to create a new topic or reply to an already existing post
+ * 
+ * All social fragments responsibility of Nick, do not modify
+ * @author Nick
+ *
+ */
 public class AddTopicFragment extends Fragment implements SocialFragmentInterface, NetworkInterface, PostHandlerInterface {
 	private Post postParent;
 	private View myView;

@@ -10,6 +10,11 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A version of the graph concept: a bar chart. Not used in final project.
+ * @author Nick
+ *
+ */
 public class BarChartView extends View {
     private List<Bar> myData = new ArrayList<Bar>();
     private float maxValue = 0;

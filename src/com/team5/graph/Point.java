@@ -1,5 +1,10 @@
 package com.team5.graph;
 
+/**
+ * Object representing a point on a line on a line graph
+ * @author David, Nick
+ *
+ */
 public class Point {
     private float x;
     private float y;

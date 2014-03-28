@@ -2,6 +2,11 @@ package com.team5.navigationlist;
 
 import android.graphics.drawable.Drawable;
 
+/**
+ * Basic object representation of an navigation item
+ * @author Nick
+ *
+ */
 public class NavListItem	{
 	public int myDrawable;
 	public int myLabel;

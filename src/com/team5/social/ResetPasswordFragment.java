@@ -28,6 +28,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
+/**
+ * Fragment allowing user to reset an account password
+ * 
+ * All social fragments responsibility of Nick, do not modify
+ * @author Nick
+ *
+ */
+
 public class ResetPasswordFragment extends Fragment implements SocialFragmentInterface, NetworkInterface {
 	private View myView;
 	private HomeActivity myActivity;

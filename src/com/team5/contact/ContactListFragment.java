@@ -13,12 +13,24 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+/**
+ * Complete rewrite by Nick
+ * Creates a list of contacts to show
+ * @author Milton, Nick
+ *
+ */
 public class ContactListFragment extends Fragment { //implements NetworkInterface {
 	private View view;
 	private ContactAdapter myAdapter;
 	private HomeActivity myActivity;
 	private ListView myListView;
 
+	
+	/**
+	 * Creates the view and handles the adapter to display contacts
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {

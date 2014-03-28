@@ -13,6 +13,11 @@ import android.webkit.WebViewClient;
 import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
 
+/**
+ * Fragment that displays a website, and manages a small in-app web browser
+ * @author Nick
+ *
+ */
 public class NewsFragment extends Fragment {
 	private View myView;
 	private HomeActivity myActivity;
@@ -36,6 +41,11 @@ public class NewsFragment extends Fragment {
 		return myView;
 	}
 
+	/**
+	 * Handles backpress so that can use backbutton to go to previous website
+	 * @author Nick
+	 *
+	 */
 	public boolean doBackPress() {
 		// If can go back in web browser
 		if (myWebView.canGoBack()) {

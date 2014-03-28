@@ -13,6 +13,11 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
 
+/**
+ * Experimental menu concept as proposed by design team.
+ * @author Nick
+ *
+ */
 public class CircleView extends View {
 	// Variables
 	private List<MenuItem> mySections = new ArrayList<MenuItem>();

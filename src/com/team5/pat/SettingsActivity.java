@@ -11,6 +11,11 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
 
+/**
+ * Handles the preferences and settings
+ * @author Milton
+ *
+ */
 public class SettingsActivity extends Activity implements
 		OnSharedPreferenceChangeListener {
 	private SharedPreferences preference;

@@ -33,6 +33,12 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+/**
+ * Displays a map with the contact locations
+ * Rewritten by Nick
+ * @author Milton, Nick
+ *
+ */
 public class ContactMapFragment extends Fragment implements LocationListener, GoogleMap.OnMarkerClickListener {
 
 	private GoogleMap map;
@@ -42,6 +48,12 @@ public class ContactMapFragment extends Fragment implements LocationListener, Go
 	private HomeActivity myActivity;
 	private int contactPosition = -1;
 
+	/**
+	 * Fetches the map, and displays in
+	 * Nick: Fixed basic functionality and changed way contacts imported.
+	 * @author Milton, Nick
+	 *
+	 */
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -82,11 +94,21 @@ public class ContactMapFragment extends Fragment implements LocationListener, Go
 		return view;
 	}
 	
+	/**
+	 * Allows other fragments to define the contact to focus on
+	 * @author Nick
+	 *
+	 */
 	public Fragment definePosition(int position)	{
 		this.contactPosition = position;
 		return this;
 	}
 	
+	/**
+	 * Allows fragment to resume its state
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public void onSaveInstanceState(Bundle outState) {
 	    outState.putInt("position", contactPosition);

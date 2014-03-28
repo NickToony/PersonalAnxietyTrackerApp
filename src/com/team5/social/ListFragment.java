@@ -48,6 +48,13 @@ import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
 import com.team5.pat.Session;
 
+/**
+ * Fragment which displays a list of posts. It will fetches posts by order, parent, owner and favourites.
+ * 
+ * All social fragments responsibility of Nick, do not modify
+ * @author Nick
+ *
+ */
 public class ListFragment extends Fragment implements SocialFragmentInterface, NetworkInterface  {
 	private View myView;
 	private HomeActivity myActivity;

@@ -18,7 +18,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-/** Splash screen shown before entering the application **/
+/**
+ * Display a splashscreen with a keypad login
+ * Significantly improved by Milton
+ * @author Nick, Milton
+ *
+ */
 public class SplashActivity extends Activity implements OnClickListener {
 	// Normal constants
 	private final int NUM_BUTTONS = 11;
@@ -57,6 +62,11 @@ public class SplashActivity extends Activity implements OnClickListener {
 	private TextView mInformation;
 	private Button[] mButtons = new Button[NUM_BUTTONS];
 
+	/**
+	 * Prepares the splashscreen, determines if should display lockscreen.
+	 * @author Milton, Nick
+	 *
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -85,6 +95,11 @@ public class SplashActivity extends Activity implements OnClickListener {
 		}
 	}
 
+	/**
+	 * 
+	 * @author Milton
+	 *
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -92,6 +107,11 @@ public class SplashActivity extends Activity implements OnClickListener {
 		return true;
 	}
 
+	/**
+	 * Significantly modified by Milton. Handles a click event on the keypad.
+	 * @author Nick, Milton
+	 *
+	 */
 	@Override
 	public void onClick(View v) {
 		currentInput = (String) ((Button) v).getText();
@@ -108,6 +128,11 @@ public class SplashActivity extends Activity implements OnClickListener {
 		handleInputPinNumber();
 	}
 
+	/**
+	 * Displays keypad views
+	 * @author Milton
+	 *
+	 */
 	private void showTextAndButtons() {
 		mLogo.setVisibility(View.VISIBLE);
 		mInformation.setVisibility(View.VISIBLE);
@@ -118,6 +143,11 @@ public class SplashActivity extends Activity implements OnClickListener {
 		}
 	}
 
+	/**
+	 * Heavily modified by Milton. Handles input on keypad, and logs in if correct.
+	 * @author Nick, Milton
+	 *
+	 */
 	private void handleInputPinNumber() {
 		if (!input.contentEquals(inputLast)) {
 			if (currentInput.equals("DEL")) {
@@ -144,6 +174,11 @@ public class SplashActivity extends Activity implements OnClickListener {
 		}
 	}
 
+	/**
+	 * Initialises views
+	 * @author Milton
+	 *
+	 */
 	private void initialiseComponentsAndSetUpAnimation() {
 		getActionBar().hide();
 
@@ -159,6 +194,11 @@ public class SplashActivity extends Activity implements OnClickListener {
 				.getDefaultSharedPreferences(getApplicationContext());
 	}
 
+	/**
+	 * Creates the keypad
+	 * @author Milton
+	 *
+	 */
 	private void setUpKeyPadButtons() {
 		int pos = 0;
 		for (int id : KEYPAD_BUTTON) {
@@ -170,6 +210,11 @@ public class SplashActivity extends Activity implements OnClickListener {
 		}
 	}
 
+	/**
+	 * Event for clicking the delete key
+	 * @author Milton
+	 *
+	 */
 	private void deletePreviousCharacter() {
 		String before = (String) mText.getText();
 		String after = before.substring(0, input.length());

@@ -3,10 +3,12 @@ package com.team5.social;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/*
- * ListItem
+/**
+ * Contains all data of a post
  * 
- * Contains data of each item in the list
+ * All social fragments responsibility of Nick, do not modify
+ * @author Nick
+ *
  */
 class Post implements Parcelable {
 	public String name;

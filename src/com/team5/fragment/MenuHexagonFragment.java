@@ -14,6 +14,11 @@ import android.view.ViewGroup;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.View.OnClickListener;
 
+/**
+ * Experimental menu concept proposed by designers. Dropped.
+ * @author Nick
+ *
+ */
 public class MenuHexagonFragment extends Fragment implements OnClickListener {
 	private HexagonView myHexagon;
 	private static final int FLING_MIN_DISTANCE = 120;

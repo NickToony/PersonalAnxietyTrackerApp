@@ -20,6 +20,11 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Toast;
 
+/**
+ * Allows user to log his status
+ * @author Aleks
+ *
+ */
 public class SeekBarFragment extends Fragment implements OnClickListener {
 	// Constants that save the state if the app is closed
 	private static final String SERIOUSNESS_STATE = "";

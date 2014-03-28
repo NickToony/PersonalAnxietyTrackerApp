@@ -12,6 +12,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * Displays the specific details of a contact.
+ * 
+ * Rewritten by Nick so it was functional.
+ * @author Milton, Nick
+ *
+ */
 public class ContactDetailsFragment extends Fragment {
 	private TextView nameView;
 	private TextView phoneView;
@@ -31,7 +38,11 @@ public class ContactDetailsFragment extends Fragment {
 	Contact myContact;
 	private HomeActivity myActivity;
 	
-	
+	/**
+	 * Create the view and output the data into it
+	 * @author Milton
+	 *
+	 */
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
 		
@@ -69,11 +80,21 @@ public class ContactDetailsFragment extends Fragment {
 		return myView;
 	}
 	
+	/**
+	 * Allows another fragment to define which contact to display
+	 * @author Nick
+	 *
+	 */
 	public Fragment definePosition(int position)	{
 		this.position = position;
 		return this;
 	}
 	
+	/**
+	 * Allows the fragment to be restored with the same values
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public void onSaveInstanceState(Bundle outState) {
 	    outState.putInt("position", position);

@@ -36,6 +36,13 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+/**
+ * Fragment that displays the graph view
+ * 
+ * Original line graph code by Nick, but hugely improved upon.
+ * @author David
+ *
+ */
 public class GraphFragment extends Fragment implements OnTouchListener {
 	private LineGraphView lineGraph;
 	private CheckBox seriousness;

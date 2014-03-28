@@ -31,6 +31,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 
+/**
+ * Persistent social account, allows a login session to be maintained
+ * 
+ * Manages cookies, notifications and social events
+ * @author Nick
+ *
+ */
 public class SocialAccount implements NetworkInterface {	
 	private HomeActivity myActivity;
 	private List<Fragment> myStack = new ArrayList<Fragment>();

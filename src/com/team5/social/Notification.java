@@ -1,5 +1,12 @@
 package com.team5.social;
 
+/**
+ * Object representing a notification
+ * 
+ * All social fragments responsibility of Nick, do not modify
+ * @author Nick
+ *
+ */
 public class Notification {
 	public int notificationID;
 	public int postID;

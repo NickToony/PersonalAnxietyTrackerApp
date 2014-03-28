@@ -26,6 +26,14 @@ import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
 import com.team5.pat.Session;
 
+/**
+ * Fragment allowing user to signup
+ * 
+ * All social fragments responsibility of Nick, do not modify
+ * @author Nick
+ *
+ */
+
 public class SignupFragment extends Fragment implements SocialFragmentInterface, OnClickListener, NetworkInterface {
 	private View myView;
 	private HomeActivity myActivity;

@@ -20,6 +20,13 @@ import android.view.ViewGroup;
 import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
 
+/**
+ * DISABLE. Too many problems caused by the map fragment.
+ * 
+ * Displayed the Contacts list and Map in ViewPager.
+ * @author Nick
+ *
+ */
 public class MainFragment extends Fragment implements TabListener, OnPageChangeListener {
 	private View myView;
 	private HomeActivity myActivity;
@@ -104,6 +111,11 @@ public class MainFragment extends Fragment implements TabListener, OnPageChangeL
 		
 	}
 	
+	/**
+	 * Contacts pager, managed the view pager
+	 * @author Nick
+	 *
+	 */
 	class ContactsPagerAdapter extends FragmentStatePagerAdapter {
 		private List<Fragment> myFragments = new ArrayList<Fragment>();
 		

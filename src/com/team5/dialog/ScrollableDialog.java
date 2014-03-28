@@ -10,6 +10,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.widget.Toast;
 
+/**
+ * Learning to use a dialog. Obsolete.
+ * @author Milton
+ *
+ */
 public class ScrollableDialog extends DialogFragment {
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {

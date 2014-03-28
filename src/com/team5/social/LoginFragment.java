@@ -18,6 +18,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+/**
+ * Handles Viewpager which contains the sign in and sign up fragments
+ * 
+ * All social fragments responsibility of Nick, do not modify
+ * @author Nick
+ *
+ */
+
 public class LoginFragment extends Fragment implements SocialFragmentInterface, TabListener, OnPageChangeListener  {
 	private View myView;
 	private HomeActivity myActivity;

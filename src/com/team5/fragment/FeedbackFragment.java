@@ -28,6 +28,11 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
+/**
+ * Provides the interface to send feedback on the app
+ * @author Aleks
+ *
+ */
 public class FeedbackFragment extends Fragment implements NetworkInterface
 {
 
@@ -124,6 +129,13 @@ public class FeedbackFragment extends Fragment implements NetworkInterface
 
 	}
 
+	/**
+	 * Handles the request response.
+	 * 
+	 * Networking code template by Nick
+	 * @author Aleks, Nick
+	 *
+	 */
 	@Override
 	public void eventNetworkResponse(Request from, Response response)
 	{

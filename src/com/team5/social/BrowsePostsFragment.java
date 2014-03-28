@@ -20,6 +20,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+/**
+ * Handles viewpager which shows two listfragments, one with top posts, one with newest.
+ * 
+ * All social fragments responsibility of Nick, do not modify
+ * @author Nick
+ *
+ */
 public class BrowsePostsFragment extends Fragment implements SocialFragmentInterface, TabListener, OnPageChangeListener  {
 	private View myView;
 	private HomeActivity myActivity;

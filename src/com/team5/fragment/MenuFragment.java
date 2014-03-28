@@ -17,6 +17,11 @@ import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
+/**
+ * Experimental menu concept proposed by designers. Dropped.
+ * @author Nick
+ *
+ */
 public class MenuFragment extends Fragment implements OnClickListener {
 	private CircleView mCircle;
 	private static final int FLING_MIN_DISTANCE = 120;

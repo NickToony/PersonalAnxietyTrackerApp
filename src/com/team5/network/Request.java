@@ -23,6 +23,11 @@ import org.xml.sax.SAXException;
 import android.os.AsyncTask;
 import android.util.Log;
 
+/**
+ * Manages connections to the web server. Responds with a Response object.
+ * @author Nick
+ *
+ */
 
 public class Request {
 	private String myUrl;
@@ -34,18 +39,33 @@ public class Request {
 	private boolean started = false;
 	private int identifier = -1;
 	
+	/**
+	 * Define the object to respond to, and the url to request
+	 * @author Nick
+	 *
+	 */
 	public Request(NetworkInterface myTarget, String myUrl)	{
 		this.myUrl = myUrl;
 		this.myTarget = myTarget;
 		this.myCookies = null;
 	}
 	
+	/**
+	 * Define the object to respond to, the url to request, and the cookies to use
+	 * @author Nick
+	 *
+	 */
 	public Request(NetworkInterface myTarget, String myUrl, Map<String, String> myCookies)	{
 		this.myUrl = myUrl;
 		this.myTarget = myTarget;
 		this.myCookies = myCookies;
 	}
 	
+	/**
+	 * Begins the request in an ASYNC task
+	 * @author Nick
+	 *
+	 */
 	public Request start()	{
 		// Start the ASYNC task
 		if (started == false)
@@ -55,15 +75,30 @@ public class Request {
 		return this;
 	}
 	
+	/**
+	 * Give the request a unique ID, helpful for identifying simulatenous requests.
+	 * @author Nick
+	 *
+	 */
 	public Request setIdentifier(int identifier)	{
 		this.identifier = identifier;
 		return this;
 	}
 	
+	/**
+	 * Fetch the requests unique ID
+	 * @author Nick
+	 *
+	 */
 	public int getIdentifier()	{
 		return identifier;
 	}
 	
+	/**
+	 * Add a parameter to the request. This will automatically encoded and attached using the correct protocol
+	 * @author Nick
+	 *
+	 */
 	public Request addParameter(String key, String value)	{
 		if (started == false)	{
 			try {
@@ -83,6 +118,11 @@ public class Request {
 		return this;
 	}
 	
+	/**
+	 * The ASYNC task that carries out the request and retrieves the response.
+	 * @author Nick
+	 *
+	 */
 	private class RequestTask  extends AsyncTask<Void, Void, Response>	{
 		@Override
 		protected Response doInBackground(Void... params) {
@@ -232,6 +272,11 @@ public class Request {
 		}
 	}
 	
+	/**
+	 * Executed when task is complete, returns the response to the target (if exists)
+	 * @author Nick
+	 *
+	 */
 	private void returnAnswer(Response response)	{
 		if (myTarget != null)
 			myTarget.eventNetworkResponse(myObject, response);

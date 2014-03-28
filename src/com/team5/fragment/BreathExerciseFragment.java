@@ -26,6 +26,11 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 
 import android.widget.TextView;
 
+/**
+ * Breathing Exercise Fragment
+ * @author Aleks
+ *
+ */
 public class BreathExerciseFragment extends Fragment implements OnClickListener {
 	// Layout components for breath exercise
 	private Button startButton;

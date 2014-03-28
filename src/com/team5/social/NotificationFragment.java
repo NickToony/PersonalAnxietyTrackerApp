@@ -28,6 +28,13 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+/**
+ * Fragment which displays all the user's current notifications
+ * 
+ * All social fragments responsibility of Nick, do not modify
+ * @author Nick
+ *
+ */
 public class NotificationFragment extends Fragment implements SocialFragmentInterface, NetworkInterface {
 	private View myView;
 	private HomeActivity myActivity;

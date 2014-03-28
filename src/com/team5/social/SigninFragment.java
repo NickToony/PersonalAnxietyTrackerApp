@@ -30,6 +30,14 @@ import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
 import com.team5.pat.Session;
 
+/**
+ * Fragment allowing user to sign in. Also handles remembering of email
+ * 
+ * All social fragments responsibility of Nick, do not modify
+ * @author Nick
+ *
+ */
+
 public class SigninFragment extends Fragment implements SocialFragmentInterface, OnClickListener, NetworkInterface {
 	private View myView;
 	private HomeActivity myActivity;

@@ -17,6 +17,11 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Toast;
 
+/**
+ * Rework of the SeekBarFragment to be more compact and displayed as a dropdown. No long used.
+ * @author Milton
+ *
+ */
 public class StatusFragment extends Fragment implements OnSeekBarChangeListener {
 	// Constants that save the state if this application is closed
 	private final String SERIOUSNESS_STATE = "serious";

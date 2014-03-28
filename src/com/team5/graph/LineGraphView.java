@@ -16,6 +16,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * The view that handles rendering of the linegraph
+ * 
+ * Original rendering concept by Nick, HUGELY improved by David
+ * @author David
+ *
+ */
 public class LineGraphView extends View {
     private List<Line> myData = new ArrayList<Line>();
     // stores the co-ordinates for each line

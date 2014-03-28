@@ -17,6 +17,14 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.AdapterView.OnItemClickListener;
 
+/**
+ * The main fragment displays a grid-layout navigation of social features
+ * 
+ * All social fragments responsibility of Nick, do not modify
+ * @author Nick
+ *
+ */
+
 public class MainFragment extends Fragment implements SocialFragmentInterface {
 	private View myView;
 	private HomeActivity myActivity;

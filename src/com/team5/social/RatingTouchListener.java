@@ -13,6 +13,13 @@ import com.team5.network.Request;
 import com.team5.network.Response;
 import com.team5.pat.R;
 
+/**
+ * Original responsible for handling the complex star rating. Also handles reply button and favouriting.
+ * 
+ * All social fragments responsibility of Nick, do not modify
+ * @author Nick
+ *
+ */
 class RatingTouchListener implements OnTouchListener, NetworkInterface, OnClickListener {
 	private RatingBar starRatingBelow;
 	private RatingBar starRatingAbove;

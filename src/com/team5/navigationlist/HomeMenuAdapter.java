@@ -6,6 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+/**
+ * Adapter for the homemenu grid layout
+ * @author Nick
+ *
+ */
 public class HomeMenuAdapter extends NavListAdapter {
 	private Context context;
 	

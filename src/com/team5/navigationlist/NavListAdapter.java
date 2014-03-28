@@ -18,6 +18,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * NavListAdapter handles all navigation in the app.
+ * 
+ * It provides the text, image and identification of all navigation items.
+ * @author Nick
+ *
+ */
 public class NavListAdapter extends ArrayAdapter<NavListItem> {
 	private Context context;
 	private int resource;
@@ -42,6 +49,11 @@ public class NavListAdapter extends ArrayAdapter<NavListItem> {
 	public final static int navigationMine = 12;
 	public final static int navigationNews = 13;
 	
+	/**
+	 * Initialises all navigation item values
+	 * @author Nick
+	 *
+	 */
 	public NavListAdapter(Context context, int resource) {
 		super(context, resource);
 		this.context = context;
@@ -94,6 +106,11 @@ public class NavListAdapter extends ArrayAdapter<NavListItem> {
 		return items.get(position);
 	}
 	
+	/**
+	 * Determines the ID depending on constants
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public long getItemId(int position)	{
 		for (int i = 0; i < navigationItems.length; i ++)	{

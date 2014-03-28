@@ -14,7 +14,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-/** Adapter for ContactGroupFragment that links layout of each row to a list **/
+/**
+ * Adapter for the Contacts. Fetches all contacts and handles them.
+ * @author Nick
+ *
+ */
 public class ContactAdapter extends BaseAdapter {
 	private Context context;
 	private int resource;

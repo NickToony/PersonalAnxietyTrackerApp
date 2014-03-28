@@ -25,6 +25,13 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Button;
 
+/**
+ * Fragment displaying account statistics, and allowing account management actions.
+ * 
+ * All social fragments responsibility of Nick, do not modify
+ * @author Nick
+ *
+ */
 public class AccountFragment extends Fragment implements
 		SocialFragmentInterface, NetworkInterface {
 	private HomeActivity myActivity;

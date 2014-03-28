@@ -16,7 +16,9 @@ import com.team5.pat.R;
 import java.util.List;
 
 /**
- * Created by DavidOyeku on 16/02/2014.
+ * Popup window allowing user to reflect upon a record
+ * @author David
+ *
  */
 public class ReflectionFragment extends Fragment implements OnClickListener {
 

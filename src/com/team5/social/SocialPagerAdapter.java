@@ -7,6 +7,12 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.support.v13.app.FragmentStatePagerAdapter;
 
+/** 
+ * The ViewPager adapter, allows tabbed views
+ * All social fragments are responsibility of Nick, do not modify
+ * @author Nick
+ *
+ */
 public class SocialPagerAdapter extends FragmentStatePagerAdapter {
 	private List<SocialFragmentInterface> myFragments = new ArrayList<SocialFragmentInterface>();
 	

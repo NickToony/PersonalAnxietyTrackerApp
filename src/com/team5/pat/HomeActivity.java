@@ -39,6 +39,11 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+/**
+ * Responsible for managing fragments and backstack. Also provides sessions.
+ * @author Nick
+ *
+ */
 public class HomeActivity extends Activity implements OnItemClickListener {
 	private final long BACK_PRESS_DURATION = 1000;
 	private long previousPress = 0;
@@ -52,6 +57,11 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 	private MenuItem myDropDown;
 	private MenuItem mySocialNotifications;
 
+	/**
+	 * Sets up the activity, side menu, preferences and session.
+	 * @author Nick, Milton
+	 *
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -81,11 +91,18 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		}
 	}
 
+	/**
+	 * Prepares menu items, such as the dropdown and notifications
+	 * @author Nick, Milton
+	 *
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.menu, menu);
+		getMenuInflater().inflate(R.menu.menu, menu); // Milton's
 		
+		
+		// Below: Nick's
 		myDropDown = menu.findItem( R.id.dropdown );
 		myDropDown.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
 		
@@ -97,14 +114,29 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		return true;
 	}
 	
+	/**
+	 * Returns the dropdown menu item
+	 * @author Nick
+	 *
+	 */
 	public MenuItem getDropDown()	{
 		return myDropDown;
 	}
 	
+	/**
+	 * Returns the notifications button menu item
+	 * @author Nick
+	 *
+	 */
 	public MenuItem getNotifications()	{
 		return mySocialNotifications;
 	}
 
+	/**
+	 * Triggered when a user selects from the options menu
+	 * @author Milton
+	 *
+	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// The action bar home/up action should open or close the drawer.
@@ -129,16 +161,30 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 
 	}
 
+	/**
+	 * Upon selecting a row from the side menu, navigation is triggered
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
 		doNavigation((int) myDrawerList.getItemIdAtPosition(pos));
 	}
 
+	/**
+	 * Fetches the current active fragment
+	 * @author Nick
+	 *
+	 */
 	private Fragment getCurrentFragment() {
 		return getFragmentManager().findFragmentById(R.id.content_frame);
 	}
 
-	/** Show a message to confirm the user really wants to exit this application **/
+	/**
+	 * Handles backstack and special cases.
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public void onBackPressed() {
 		// If social fragment
@@ -184,20 +230,33 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
 	}
 
-	/** Sync the toggle state after onRestoreInstanceState has occurred **/
+	/**
+	 * Sync the side menu
+	 * @author Milton
+	 *
+	 */
 	@Override
 	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
 		myDrawerToggle.syncState();
 	}
 
-	/** Pass any configuration change to the drawer toggles **/
+	/**
+	 * Pass any configuration changes to the side menu
+	 * @author Milton
+	 *
+	 */
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
 		myDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
+	/**
+	 * Handles fragment switches. Ensures all fragments have no unexpected items left over from previous fragment.
+	 * @author Nick
+	 *
+	 */
 	public void changeFragment(Fragment fragment) {
 		myDrawerLayout.closeDrawer(myDrawerList);
 
@@ -252,6 +311,11 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		}
 	}
 
+	/**
+	 * Responds to a navigation request, leading to a fragment switch.
+	 * @author Nick
+	 *
+	 */
 	public void doNavigation(int theItem) {
 		switch (theItem) {
 		case NavListAdapter.navigationHome:
@@ -286,19 +350,14 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		}
 	}
 
+	/**
+	 * Creates the navlsit adapter (for the side menu) and populates it
+	 * @author Nick
+	 *
+	 */
 	private void addItemsToNavList() {
 		NavListAdapter adapter = (NavListAdapter) myDrawerList.getAdapter();
-		/*
-		 * adapter.addItem(R.drawable.ic_log_off, "Home"); // 0
-		 * adapter.addItem(R.drawable.ic_log, "Log"); // 1
-		 * adapter.addItem(R.drawable.ic_tracker, "Tracker"); // 2
-		 * adapter.addItem(R.drawable.ic_exercises, "Exercises"); // 3
-		 * adapter.addItem(R.drawable.ic_forums2, "Discussion"); // 4
-		 * adapter.addItem(R.drawable.ic_my_account, "My Account"); // 5
-		 * adapter.addItem(R.drawable.ic_find_help, "Find Help"); // 6
-		 * adapter.addItem(R.drawable.ic_report_issue, "Report Issue"); // 7
-		 * adapter.addItem(R.drawable.ic_log_off, "Log Off"); // 8
-		 */
+		
 		adapter.addItem(NavListAdapter.navigationHome);
 		adapter.addItem(NavListAdapter.navigationLog);
 		adapter.addItem(NavListAdapter.navigationTracker);
@@ -310,6 +369,12 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		adapter.addItem(NavListAdapter.navigationLogOff);
 	}
 
+	/**
+	 * Creates the drawer list and sets up listener
+	 * Rewritten by Nick to use the new adapters and navigation system
+	 * @author Nick, Milton
+	 *
+	 */
 	private void createDrawerListAndAddListener() {
 		// initialise drawer components
 		myDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -325,7 +390,12 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 				R.string.drawer_open, R.string.drawer_close);
 		myDrawerLayout.setDrawerListener(myDrawerToggle);
 	}
-
+	
+	/**
+	 * Allows the language to be changed. Handles strings.
+	 * @author Milton
+	 *
+	 */
 	private void setLocale() {
 		String language = preference.getString("pref_language", "en");
 		Locale locale = new Locale(language);
@@ -337,6 +407,13 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 
 	}
 	
+	/**
+	 * Quickfix: for dealing with rotation of screen and the map
+	 * 
+	 * I am sorry for this dirty workaround!
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public void onDestroy()	{
 		if (getCurrentFragment() instanceof ContactMapFragment)	{
@@ -358,6 +435,13 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		super.onDestroy();
 	}
 
+	/**
+	 * Quickfix: for dealing with rotation of screen and the map
+	 * 
+	 * I am sorry for this dirty workaround!
+	 * @author Nick
+	 *
+	 */
 	@Override
 	public void onPause()	{
 		if (getCurrentFragment() instanceof ContactMapFragment)	{
@@ -379,6 +463,11 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		super.onPause();
 	}
 	
+	/**
+	 * Allows a fragment to set the activities title
+	 * @author Nick
+	 *
+	 */
 	public void setTitle(String title) {
 		actionBar.setTitle(title);
 	}

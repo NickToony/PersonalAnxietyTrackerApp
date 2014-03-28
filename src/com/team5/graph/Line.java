@@ -5,6 +5,11 @@ import com.team5.user.UserRecord;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * An object representation of a line for a LineGraph
+ * @author Nick
+ *
+ */
 public class Line {
     private List<UserRecord> points = new ArrayList<UserRecord>();
     private int colour;

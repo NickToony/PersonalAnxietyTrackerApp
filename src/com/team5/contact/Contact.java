@@ -15,7 +15,11 @@ import org.w3c.dom.NodeList;
 import android.content.Context;
 import android.widget.Toast;
 
-/** Objects shown every row **/
+/**
+ * Contains data of a Contact. Also reads the contacts.xml file.
+ * @author Nick
+ *
+ */
 class Contact {
 	public String name;
 	public String phoneNumber;
@@ -26,6 +30,11 @@ class Contact {
 	public String postCode;
 	Context c;
 	
+	/**
+	 * Create the Contact with all values determined
+	 * @author Nick
+	 *
+	 */
 	public Contact(String name, String phoneNumber, String email,
 			float latitude, float longitude, String address, String postCode, Context c) {
 		super();
@@ -39,6 +48,11 @@ class Contact {
 		this.c = c;
 	}
 	
+	/**
+	 * 
+	 * @author Fetch the contacts.xml and parse it, returning an array of all contacts
+	 *
+	 */
 	public static List<Contact> getAll(Context c)	{
 		List<Contact> contacts = new ArrayList<Contact>();
 		
@@ -71,6 +85,11 @@ class Contact {
 		return contacts;
 	}
 	
+	/**
+	 * Parse the contacts.xml and return a specific contact
+	 * @author Nick
+	 *
+	 */
 	public static Contact getOne(Context c, int position)	{		
 		// Read all attributes from the XML file
 		try {

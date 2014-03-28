@@ -12,6 +12,11 @@ import android.view.ViewGroup;
 
 import com.team5.pat.R;
 
+/**
+ * Learning to use dialogs. Obsolete.
+ * @author Milton
+ *
+ */
 public class ScrollableDialogFragment extends Fragment {
 	public ScrollableDialogFragment() {
 	}

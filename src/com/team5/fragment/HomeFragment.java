@@ -19,6 +19,11 @@ import com.team5.navigationlist.NavListAdapter;
 import com.team5.pat.HomeActivity;
 import com.team5.pat.R;
 
+/**
+ * Fragment that displays the grid-layout home screen.
+ * @author Nick
+ *
+ */
 public class HomeFragment extends Fragment {
 	private View myView;
 	private HomeActivity myActivity;

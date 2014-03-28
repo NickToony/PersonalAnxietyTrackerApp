@@ -15,6 +15,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+/**
+ * Demonstration of graph using the local database for points. Not used.
+ * @author Nick
+ *
+ */
 public class RecordGraphFragment extends Fragment {
 	private View myView;
 	private HomeActivity myActivity;

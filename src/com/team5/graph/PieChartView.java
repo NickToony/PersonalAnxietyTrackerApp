@@ -10,6 +10,11 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Pie chart class. Not used in final project.
+ * @author Nick
+ *
+ */
 public class PieChartView extends View {
     private List<Section> myData = new ArrayList<Section>();
     private float totalValue = 0;
