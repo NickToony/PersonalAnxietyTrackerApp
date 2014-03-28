@@ -1,7 +1,7 @@
 package com.team5.pat;
 
 import com.team5.contact.ContactGroupFragment;
-import com.team5.contact.ContactMapFragment;
+//import com.team5.contact.ContactMapFragment;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
@@ -139,7 +139,7 @@ class ContactAdapter extends FragmentStatePagerAdapter {
 			fragment = new ContactGroupFragment();
 			break;
 		case 1:
-			fragment = new ContactMapFragment();
+//			fragment = new ContactMapFragment();
 			break;
 		}
 		return fragment;

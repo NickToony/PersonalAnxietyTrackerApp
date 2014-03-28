@@ -73,6 +73,19 @@
         <item>@drawable/ic_milton1</item>
     </string-array>
 
+    <!-- Feedback -->
+    <string name="feedback_heading">Please give us any feedback</string>
+    <string name="feedback_title_label">Title</string>
+    <string name="feedback_comment_label">Comment</string>
+    <string name="feedback_submit_button_label">Submit</string>
+    <string name="feedback_rating_label">Rating:</string>
+    <string name="feedback_email_label">e-mail</string>
+    <string name="feedback_email_hint">e.g. my.mail@ncl.ac.uk</string>
+    <string name="feedback_scale_end">5</string>
+    <string name="feedback_comment_hint">Write your thoughts here!..</string>
+    <string name="feedback_title_hint">Write the problem topic</string>
+    
+    
     <!-- Dialog box -->
     <string name="dialog_title">I am Milton Li</string>
     <string name="dialog_message">I want to kiss you</string>
@@ -231,5 +244,7 @@
         <item>Oldest</item>
         <item>Top Rated</item>
     </string-array>
+    
+    
 
 </resources>

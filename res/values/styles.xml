@@ -48,5 +48,6 @@
     <color name="social_topic_outline">#929394</color>
     <color name="social_error">#FF0000</color>
     <color name="secondsEditTextBreathExercise">#ffffff</color>
+    <color name="feedback_pass_message_color">#2a6b24</color>
 
 </resources>

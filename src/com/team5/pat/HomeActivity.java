@@ -3,6 +3,7 @@ package com.team5.pat;
 import java.util.Locale;
 
 import com.team5.fragment.BreathExerciseFragment;
+import com.team5.fragment.FeedbackFragment;
 import com.team5.fragment.GraphFragment;
 import com.team5.fragment.HomeFragment;
 import com.team5.fragment.NewsFragment;
@@ -252,6 +253,9 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 			break;
 		case NavListAdapter.navigationNews:
 			changeFragment(new NewsFragment());
+			break;
+		case NavListAdapter.navigationReport:
+			changeFragment(new FeedbackFragment());
 			break;
 		}
 	}
