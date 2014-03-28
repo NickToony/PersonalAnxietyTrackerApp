@@ -246,6 +246,8 @@
     <string name="social_fragment_signup_email">\@Newcastle.ac.uk</string>
     <string name="social_fragment_signup_buttonText">Sign Up</string>
     <string name="social_fragment_list_addPost">Add Reply</string>
+    <string name="social_fragment_forgotten_password_button">Password recovery</string>
+    <string name="social_fragment_checkbox_label">Remember Email Address</string> 
     
     <string-array name="social_list_items">
         <item>Newest</item>

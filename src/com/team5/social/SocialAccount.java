@@ -50,6 +50,7 @@ public class SocialAccount implements NetworkInterface {
 	public static final int EVENT_GOTO_MINE = 8;
 	public static final int EVENT_GOTO_FAVOURITES = 9;
 	public static final int EVENT_GOTO_NOTIFICATIONS = 10;
+	protected static final int EVENT_GOTO_PASSWORD_RESET = 11;
 	
 	public SocialAccount	(Context c)	{
 		myActivity = (HomeActivity) c;
@@ -284,6 +285,10 @@ public class SocialAccount implements NetworkInterface {
 			
 		case EVENT_GOTO_NOTIFICATIONS:
 			changeFragment(new NotificationFragment());
+			break;
+			
+		case EVENT_GOTO_PASSWORD_RESET:
+			changeFragment(new ResetPasswordFragment());
 			break;
 		}
 	}

@@ -15,6 +15,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -48,6 +49,16 @@ public class SigninFragment extends Fragment implements SocialFragmentInterface,
 		
 		myEmailView = (EditText) myView.findViewById(R.id.social_fragment_signin_Email);
 		myPasswordView = (EditText) myView.findViewById(R.id.social_fragment_signin_Password);
+		
+		
+		((Button) myView.findViewById(R.id.social_fragment_forgotten_password_button)).setOnClickListener(new OnClickListener()	{
+
+			@Override
+			public void onClick(View v) {
+				mySocialAccount.handleEvent(SocialAccount.EVENT_GOTO_PASSWORD_RESET);
+			}
+			
+		}	);
 		
 		return myView;
 	}

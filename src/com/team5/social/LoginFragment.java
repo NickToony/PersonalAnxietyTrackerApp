@@ -30,9 +30,23 @@ public class LoginFragment extends Fragment implements SocialFragmentInterface, 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)	{
 		super.onCreate(savedInstanceState);
-		myView = inflater.inflate(R.layout.social_fragment_container, container, false);
-		myActivity = (HomeActivity) getActivity();
-		mySocialAccount = ((Session) myActivity.getApplication()).getSocialAccount();
+		if (myView == null){
+			myView = inflater.inflate(R.layout.social_fragment_container, container, false);
+			myActivity = (HomeActivity) getActivity();
+			mySocialAccount = ((Session) myActivity.getApplication()).getSocialAccount();
+		
+			// Get pager view
+			myPager = (ViewPager) myView.findViewById(R.id.social_fragment_login_pager);
+			// Make an adapter for the view
+			myAdapter = new SocialPagerAdapter(getFragmentManager());
+			//Add tabs
+			myAdapter.addItem(new SigninFragment());
+			myAdapter.addItem(new SignupFragment());
+			// Set the adapter to the pager view
+			myPager.setAdapter(myAdapter);
+			// Set listener
+			myPager.setOnPageChangeListener(this);
+		}
 		
 		myActionBar = myActivity.getActionBar();
 		myActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
@@ -45,18 +59,6 @@ public class LoginFragment extends Fragment implements SocialFragmentInterface, 
 
 		myActionBar.addTab(tabSignIn, 0);
 		myActionBar.addTab(tabSignUp, 1);
-		
-		// Get pager view
-		myPager = (ViewPager) myView.findViewById(R.id.social_fragment_login_pager);
-		// Make an adapter for the view
-		myAdapter = new SocialPagerAdapter(getFragmentManager());
-		//Add tabs
-		myAdapter.addItem(new SigninFragment());
-		myAdapter.addItem(new SignupFragment());
-		// Set the adapter to the pager view
-		myPager.setAdapter(myAdapter);
-		// Set listener
-		myPager.setOnPageChangeListener(this);
 		
 		return myView;
 	}
