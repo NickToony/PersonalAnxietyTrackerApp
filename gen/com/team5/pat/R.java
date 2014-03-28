@@ -335,6 +335,7 @@ containing a value of this type.
         public static final int wallpaper_03=0x7f020051;
     }
     public static final class id {
+<<<<<<< HEAD
         public static final int AnxietyCheckBox=0x7f080042;
         public static final int DialogScrollView=0x7f080035;
         public static final int RelativeLayout1=0x7f080030;
@@ -539,6 +540,144 @@ containing a value of this type.
     }
     public static final class integer {
         public static final int google_play_services_version=0x7f0a0000;
+=======
+        public static final int AnxietyCheckBox=0x7f0d003a;
+        public static final int DialogScrollView=0x7f0d002c;
+        public static final int RelativeLayout1=0x7f0d0028;
+        public static final int SeekBarLayout=0x7f0d0050;
+        public static final int SeriousnesstextView=0x7f0d004a;
+        public static final int SubMenuLayout=0x7f0d0046;
+        public static final int action_contact=0x7f0d0085;
+        public static final int action_exit=0x7f0d0086;
+        public static final int action_feedback=0x7f0d0084;
+        public static final int action_language=0x7f0d0083;
+        public static final int action_save=0x7f0d0087;
+        public static final int action_search=0x7f0d0081;
+        public static final int action_settings=0x7f0d0082;
+        public static final int add_app_done_layout=0x7f0d006f;
+        public static final int animation_speed=0x7f0d001c;
+        public static final int anxietyEditText=0x7f0d004c;
+        public static final int anxietyHeading=0x7f0d0055;
+        public static final int anxietySeekBar=0x7f0d0056;
+        public static final int background_circle=0x7f0d0018;
+        public static final int button0=0x7f0d0013;
+        public static final int button1=0x7f0d0007;
+        public static final int button2=0x7f0d0008;
+        public static final int button3=0x7f0d0009;
+        public static final int button4=0x7f0d000b;
+        public static final int button5=0x7f0d000c;
+        public static final int button6=0x7f0d000d;
+        public static final int button7=0x7f0d000f;
+        public static final int button8=0x7f0d0010;
+        public static final int button9=0x7f0d0011;
+        public static final int buttonDelete=0x7f0d0014;
+        public static final int center_circle=0x7f0d001a;
+        public static final int circularProgressBar=0x7f0d0034;
+        public static final int commentEditText=0x7f0d0080;
+        public static final int commentsEditText=0x7f0d0059;
+        public static final int contactDetailsImage=0x7f0d0025;
+        public static final int contactDetailsName=0x7f0d0026;
+        public static final int contactDetailsPhone=0x7f0d0027;
+        public static final int contactGroupIcon=0x7f0d0029;
+        public static final int contactGroupName=0x7f0d002a;
+        public static final int contactGroupPhone=0x7f0d002b;
+        public static final int content_frame=0x7f0d0002;
+        public static final int countDownType=0x7f0d001e;
+        public static final int cyclesInput=0x7f0d0023;
+        public static final int cyclesLeftText=0x7f0d0024;
+        public static final int dialog_button=0x7f0d0042;
+        public static final int drawer_layout=0x7f0d0001;
+        public static final int drawer_list=0x7f0d0003;
+        public static final int dynamic_circle=0x7f0d0019;
+        public static final int fragment_container=0x7f0d0041;
+        public static final int headingText=0x7f0d0017;
+        public static final int homeGrid=0x7f0d003f;
+        public static final int horizontalProgressBar=0x7f0d0032;
+        public static final int inhale_exhale_speed=0x7f0d001d;
+        public static final int itemRows=0x7f0d0040;
+        public static final int keypadInformation=0x7f0d0016;
+        public static final int keypadInput=0x7f0d0015;
+        public static final int keypadTable=0x7f0d0005;
+        public static final int left_drawer=0x7f0d0044;
+        public static final int logo=0x7f0d0004;
+        public static final int mainSeconds=0x7f0d001b;
+        public static final int myBarChart=0x7f0d0037;
+        public static final int myHexagon=0x7f0d003d;
+        public static final int myLineGraph=0x7f0d0035;
+        public static final int myPieChart=0x7f0d0036;
+        public static final int myReflectionLayout=0x7f0d0049;
+        public static final int newAnxietyHeading=0x7f0d007d;
+        public static final int newAnxietySeekBar=0x7f0d007e;
+        public static final int newSeriousnessHeading=0x7f0d007b;
+        public static final int newSeriousnessSeekBar=0x7f0d007c;
+        public static final int pager=0x7f0d0000;
+        public static final int quickPanicActivity=0x7f0d0048;
+        public static final int ratingBar=0x7f0d0033;
+        public static final int ref_anxietyCheckBox=0x7f0d003c;
+        public static final int ref_fragment_cancel_button=0x7f0d004d;
+        public static final int ref_seriousnessCheckBox=0x7f0d003b;
+        public static final int reflectionText=0x7f0d004e;
+        public static final int rowImage=0x7f0d0047;
+        public static final int rowTextView=0x7f0d004f;
+        public static final int rowTitle=0x7f0d002d;
+        public static final int scaleBeginning=0x7f0d0057;
+        public static final int scaleBeginning1=0x7f0d0053;
+        public static final int scaleEnd=0x7f0d0058;
+        public static final int scaleEnd1=0x7f0d0054;
+        public static final int secondsInput=0x7f0d0021;
+        public static final int secondsLeftText=0x7f0d0022;
+        public static final int seekBarSubmitButton=0x7f0d005a;
+        public static final int seriousnessCheckBox=0x7f0d0039;
+        public static final int seriousnessEditText=0x7f0d004b;
+        public static final int seriousnessHeading=0x7f0d0051;
+        public static final int seriousnessSeekBar=0x7f0d0052;
+        public static final int sideWheelActivity=0x7f0d0043;
+        public static final int social_fragment_frame=0x7f0d005b;
+        public static final int social_fragment_list_errorMessage=0x7f0d005d;
+        public static final int social_fragment_list_listView=0x7f0d005e;
+        public static final int social_fragment_list_progress=0x7f0d005f;
+        public static final int social_fragment_list_rowBottom=0x7f0d0064;
+        public static final int social_fragment_list_rowContent=0x7f0d0063;
+        public static final int social_fragment_list_rowDate=0x7f0d0062;
+        public static final int social_fragment_list_rowName=0x7f0d0061;
+        public static final int social_fragment_list_rowRating=0x7f0d0066;
+        public static final int social_fragment_list_rowReplies=0x7f0d0065;
+        public static final int social_fragment_list_rowTop=0x7f0d0060;
+        public static final int social_fragment_login_pager=0x7f0d005c;
+        public static final int social_fragment_mainGrid=0x7f0d0067;
+        public static final int social_fragment_signin_Email=0x7f0d006b;
+        public static final int social_fragment_signin_Password=0x7f0d006d;
+        public static final int social_fragment_signin_button=0x7f0d0070;
+        public static final int social_fragment_signin_emailLayout=0x7f0d006a;
+        public static final int social_fragment_signin_error=0x7f0d0069;
+        public static final int social_fragment_signin_errorEmail=0x7f0d006c;
+        public static final int social_fragment_signin_errorPassword=0x7f0d006e;
+        public static final int social_fragment_signin_loginText=0x7f0d0068;
+        public static final int social_fragment_signup_Email=0x7f0d0076;
+        public static final int social_fragment_signup_Name=0x7f0d0073;
+        public static final int social_fragment_signup_Password=0x7f0d0078;
+        public static final int social_fragment_signup_button=0x7f0d007a;
+        public static final int social_fragment_signup_emailLayout=0x7f0d0075;
+        public static final int social_fragment_signup_error=0x7f0d0072;
+        public static final int social_fragment_signup_errorEmail=0x7f0d0077;
+        public static final int social_fragment_signup_errorName=0x7f0d0074;
+        public static final int social_fragment_signup_errorPassword=0x7f0d0079;
+        public static final int social_fragment_signup_loginText=0x7f0d0071;
+        public static final int startButton=0x7f0d001f;
+        public static final int stopButton=0x7f0d0020;
+        public static final int summaryEditText=0x7f0d007f;
+        public static final int tableRow1=0x7f0d0006;
+        public static final int tableRow2=0x7f0d000a;
+        public static final int tableRow3=0x7f0d000e;
+        public static final int tableRow4=0x7f0d0012;
+        public static final int tempList=0x7f0d0045;
+        public static final int text=0x7f0d003e;
+        public static final int textView=0x7f0d0038;
+        public static final int textView2=0x7f0d002e;
+        public static final int textView3=0x7f0d002f;
+        public static final int textView4=0x7f0d0030;
+        public static final int textView5=0x7f0d0031;
+>>>>>>> refs/remotes/origin/branch_Alex
     }
     public static final class layout {
         public static final int activity_contact=0x7f030000;
@@ -594,6 +733,7 @@ containing a value of this type.
         /**  Start of calm down text 
  Start of calm down text 
          */
+<<<<<<< HEAD
         public static final int CalmDown=0x7f090062;
         public static final int Ref_anxiety=0x7f090074;
         public static final int Ref_seriousness=0x7f090073;
@@ -604,9 +744,23 @@ containing a value of this type.
         public static final int action_feedback=0x7f09003b;
         public static final int action_save=0x7f090041;
         public static final int action_search=0x7f09003d;
+=======
+        public static final int CalmDown=0x7f080048;
+        public static final int Ref_anxiety=0x7f08005a;
+        public static final int Ref_seriousness=0x7f080059;
+        public static final int Sub_menu=0x7f080064;
+        public static final int Xaxis=0x7f080002;
+        public static final int Yaxis=0x7f080001;
+        public static final int action_contact=0x7f080021;
+        public static final int action_exit=0x7f080027;
+        public static final int action_feedback=0x7f080020;
+        public static final int action_save=0x7f080026;
+        public static final int action_search=0x7f080022;
+>>>>>>> refs/remotes/origin/branch_Alex
         /**  Action bar 
  Action bar 
          */
+<<<<<<< HEAD
         public static final int action_settings=0x7f09003a;
         public static final int action_status=0x7f090040;
         public static final int animation_speed=0x7f09005f;
@@ -716,18 +870,46 @@ containing a value of this type.
         public static final int dialog_button_message=0x7f090045;
         public static final int dialog_cancel=0x7f090047;
         public static final int dialog_message=0x7f090044;
+=======
+        public static final int action_settings=0x7f08001f;
+        public static final int action_status=0x7f080025;
+        public static final int animation_speed=0x7f080045;
+        public static final int anxiety=0x7f080058;
+        public static final int anxiety_heading=0x7f080036;
+        public static final int app_name=0x7f080000;
+        public static final int below_menu=0x7f080005;
+        public static final int blue_line=0x7f080004;
+        public static final int brightness=0x7f08002d;
+        public static final int cycles=0x7f080046;
+        public static final int cyclesLabel=0x7f080047;
+        public static final int dialog_accpet=0x7f08002b;
+        public static final int dialog_button_message=0x7f08002a;
+        public static final int dialog_cancel=0x7f08002c;
+        public static final int dialog_message=0x7f080029;
+>>>>>>> refs/remotes/origin/branch_Alex
         /**  Dialog box 
  Dialog box 
          */
+<<<<<<< HEAD
         public static final int dialog_title=0x7f090043;
         public static final int drawer_close=0x7f090034;
         public static final int drawer_open=0x7f090033;
         public static final int exerciseDefaultCycles=0x7f09005e;
         public static final int exerciseDefaultDuration=0x7f09005d;
         public static final int image_content_description=0x7f090023;
+=======
+        public static final int dialog_title=0x7f080028;
+        public static final int drawer_close=0x7f080019;
+        public static final int drawer_open=0x7f080018;
+        public static final int exerciseDefaultCycles=0x7f080044;
+        public static final int exerciseDefaultDuration=0x7f080043;
+        public static final int hello_world=0x7f080069;
+        public static final int image_content_description=0x7f080009;
+>>>>>>> refs/remotes/origin/branch_Alex
         /**  Breathing Exercise 
  Breathing Exercise 
          */
+<<<<<<< HEAD
         public static final int instructions=0x7f090057;
         public static final int keyboard=0x7f09004b;
         public static final int kiss_me=0x7f09004c;
@@ -740,9 +922,24 @@ containing a value of this type.
         public static final int navigation_discussion=0x7f090029;
         public static final int navigation_exercises=0x7f090028;
         public static final int navigation_favourites=0x7f090030;
+=======
+        public static final int instructions=0x7f08003d;
+        public static final int keyboard=0x7f080030;
+        public static final int kiss_me=0x7f080031;
+        public static final int language=0x7f080007;
+        public static final int lock_screen_information=0x7f08000a;
+        public static final int navigation_account=0x7f080010;
+        public static final int navigation_browse=0x7f080014;
+        public static final int navigation_contact=0x7f080011;
+        public static final int navigation_create=0x7f080015;
+        public static final int navigation_discussion=0x7f08000f;
+        public static final int navigation_exercises=0x7f08000e;
+        public static final int navigation_favourites=0x7f080016;
+>>>>>>> refs/remotes/origin/branch_Alex
         /**  Navigation labels 
  Navigation labels 
          */
+<<<<<<< HEAD
         public static final int navigation_home=0x7f090025;
         public static final int navigation_log=0x7f090026;
         public static final int navigation_logoff=0x7f09002d;
@@ -752,9 +949,20 @@ containing a value of this type.
         public static final int navigation_tracker=0x7f090027;
         public static final int network=0x7f090049;
         public static final int pause=0x7f09005b;
+=======
+        public static final int navigation_home=0x7f08000b;
+        public static final int navigation_log=0x7f08000c;
+        public static final int navigation_logoff=0x7f080013;
+        public static final int navigation_mine=0x7f080017;
+        public static final int navigation_report=0x7f080012;
+        public static final int navigation_tracker=0x7f08000d;
+        public static final int network=0x7f08002e;
+        public static final int pause=0x7f080041;
+>>>>>>> refs/remotes/origin/branch_Alex
         /**  Settings Preference 
  Settings Preference 
          */
+<<<<<<< HEAD
         public static final int pin_hint=0x7f090063;
         public static final int pref_about_us_summ=0x7f09006e;
         public static final int pref_about_us_title=0x7f09006a;
@@ -772,9 +980,33 @@ containing a value of this type.
         public static final int rating=0x7f090075;
         public static final int red_line=0x7f09001d;
         public static final int save_button_text=0x7f090052;
+=======
+        public static final int pin_hint=0x7f080049;
+        public static final int pref_about_us_summ=0x7f080054;
+        public static final int pref_about_us_title=0x7f080050;
+        public static final int pref_breath_exercise_countdown=0x7f080056;
+        public static final int pref_category_pat=0x7f08004b;
+        /**  Settings Preference 
+         */
+        public static final int pref_category_personalise=0x7f08004a;
+        public static final int pref_language_title=0x7f08004d;
+        public static final int pref_lockscreen_summ=0x7f080053;
+        public static final int pref_lockscreen_title=0x7f08004e;
+        public static final int pref_night_mode_summ=0x7f080055;
+        public static final int pref_night_mode_title=0x7f080051;
+        public static final int pref_notification_summ=0x7f080052;
+        public static final int pref_notification_title=0x7f08004c;
+        public static final int pref_pin_title=0x7f08004f;
+        public static final int pref_update_summ=0x7f080068;
+        public static final int pref_update_title=0x7f080067;
+        public static final int rating=0x7f08005b;
+        public static final int red_line=0x7f080003;
+        public static final int save_button_text=0x7f080037;
+>>>>>>> refs/remotes/origin/branch_Alex
         /**  Seek bar 
  Seek bar 
          */
+<<<<<<< HEAD
         public static final int scale_beginning=0x7f09004d;
         public static final int scale_end=0x7f09004e;
         public static final int search_hint=0x7f09003f;
@@ -788,9 +1020,23 @@ containing a value of this type.
         public static final int social_fragment_list_addPost=0x7f090081;
         public static final int social_fragment_signin_buttonText=0x7f09007d;
         public static final int social_fragment_signin_email=0x7f09007c;
+=======
+        public static final int scale_beginning=0x7f080032;
+        public static final int scale_end=0x7f080033;
+        public static final int search_hint=0x7f080024;
+        public static final int search_title=0x7f080023;
+        public static final int seconds=0x7f08003e;
+        public static final int secondsLabel=0x7f08003f;
+        public static final int seek_bar_title_text=0x7f08003c;
+        public static final int seriousness=0x7f080057;
+        public static final int seriousness_heading=0x7f080035;
+        public static final int social_fragment_signin_buttonText=0x7f080060;
+        public static final int social_fragment_signin_email=0x7f08005f;
+>>>>>>> refs/remotes/origin/branch_Alex
         /**  Social Features 
  Social Features 
          */
+<<<<<<< HEAD
         public static final int social_fragment_signin_loginText=0x7f09007b;
         public static final int social_fragment_signup_buttonText=0x7f090080;
         public static final int social_fragment_signup_email=0x7f09007f;
@@ -809,15 +1055,43 @@ containing a value of this type.
         public static final int title_activity_contact=0x7f090038;
         public static final int title_activity_contact_details=0x7f090039;
         public static final int title_activity_graph=0x7f090037;
+=======
+        public static final int social_fragment_signin_loginText=0x7f08005e;
+        public static final int social_fragment_signup_buttonText=0x7f080063;
+        public static final int social_fragment_signup_email=0x7f080062;
+        public static final int social_fragment_signup_loginText=0x7f080061;
+        public static final int sound=0x7f08002f;
+        public static final int start=0x7f080040;
+        public static final int status_comment_hint=0x7f08003b;
+        public static final int status_exit=0x7f080039;
+        public static final int status_save=0x7f080038;
+        public static final int status_summary_hint=0x7f08003a;
+        public static final int stop=0x7f080042;
+        public static final int string_choice=0x7f080008;
+        public static final int submit=0x7f080006;
+        public static final int thoughts_hint=0x7f080034;
+        public static final int time=0x7f08005c;
+        public static final int title_activity_contact=0x7f08001d;
+        public static final int title_activity_contact_details=0x7f08001e;
+        public static final int title_activity_graph=0x7f08001c;
+>>>>>>> refs/remotes/origin/branch_Alex
         /**  Activities label 
  Activities label 
          */
+<<<<<<< HEAD
         public static final int title_activity_nav_list=0x7f090035;
         public static final int title_activity_settings=0x7f090036;
         public static final int title_activity_social=0x7f090077;
         public static final int x_axis_title_days=0x7f090078;
         public static final int x_axis_title_month=0x7f090079;
         public static final int x_axis_title_year=0x7f09007a;
+=======
+        public static final int title_activity_nav_list=0x7f08001a;
+        public static final int title_activity_quickPanic=0x7f080065;
+        public static final int title_activity_record_graph=0x7f080066;
+        public static final int title_activity_settings=0x7f08001b;
+        public static final int title_activity_social=0x7f08005d;
+>>>>>>> refs/remotes/origin/branch_Alex
     }
     public static final class style {
         /** 
