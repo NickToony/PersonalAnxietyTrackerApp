@@ -111,7 +111,7 @@ public class FeedbackFragment extends Fragment implements NetworkInterface
 			public void onClick(View v)
 			{
 
-				Request r = new Request(FeedbackFragment.this, "http://nick-hope.co.uk/PAT/android/feedback.php");
+				Request r = new Request(FeedbackFragment.this, "feedback.php");
 				// possibility for adding feedback, not really sure
 				r.addParameter("content", commentEditText.getText().toString());
 				r.addParameter("title", titleEditText.getText().toString());

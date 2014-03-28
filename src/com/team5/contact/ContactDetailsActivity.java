@@ -54,52 +54,6 @@ public class ContactDetailsActivity extends Activity {
 		// ContactDetailsFragment()).commit();
 	}
 
-
-	@Override
-	public void onPageScrolled(int arg0, float arg1, int arg2) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onPageSelected(int position) {
-		actionBar.setSelectedNavigationItem(position);
-	}
-
-	@Override
-	public void onTabReselected(Tab arg0, FragmentTransaction arg1) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onTabSelected(Tab arg0, FragmentTransaction arg1) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onTabUnselected(Tab arg0, FragmentTransaction arg1) {
-		// TODO Auto-generated method stub
-
-	}
-
-	private void addTabsToActionBar() {
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		actionBar.setDisplayHomeAsUpEnabled(true);
-		actionBar.setHomeButtonEnabled(true);
-
-		ActionBar.Tab tabGroup = actionBar.newTab().setText("Details")
-				.setTabListener(this);
-		ActionBar.Tab tabMap = actionBar.newTab().setText("Updates")
-				.setTabListener(this);
-		ActionBar.Tab tabFavourite = actionBar.newTab().setText("Gallery")
-				.setTabListener(this);
-
-		actionBar.addTab(tabGroup, 0);
-		actionBar.addTab(tabMap, 1);
-		actionBar.addTab(tabFavourite, 2);
-	}
 }
 
 class ContactDetailsAdapter extends FragmentStatePagerAdapter {
