@@ -1,6 +1,7 @@
 package com.team5.social;
 
 import java.util.Map;
+import java.util.prefs.Preferences;
 
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -8,7 +9,9 @@ import org.w3c.dom.NodeList;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,6 +19,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -50,14 +54,21 @@ public class SigninFragment extends Fragment implements SocialFragmentInterface,
 		myEmailView = (EditText) myView.findViewById(R.id.social_fragment_signin_Email);
 		myPasswordView = (EditText) myView.findViewById(R.id.social_fragment_signin_Password);
 		
+		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(myActivity.getApplicationContext());
+		String emailRemembered = preferences.getString("prefer_key_discussions_email", "");
+		if (emailRemembered.contentEquals(""))	{
+			((CheckBox) myView.findViewById(R.id.social_fragment_signin_checkbox)).setChecked(false);
+		}	else	{
+			((EditText) myView.findViewById(R.id.social_fragment_signin_Email)).setText(emailRemembered);
+			((CheckBox) myView.findViewById(R.id.social_fragment_signin_checkbox)).setChecked(true);
+		}
+		
 		
 		((Button) myView.findViewById(R.id.social_fragment_forgotten_password_button)).setOnClickListener(new OnClickListener()	{
-
 			@Override
 			public void onClick(View v) {
 				mySocialAccount.handleEvent(SocialAccount.EVENT_GOTO_PASSWORD_RESET);
 			}
-			
 		}	);
 		
 		return myView;
@@ -79,6 +90,11 @@ public class SigninFragment extends Fragment implements SocialFragmentInterface,
 					      Context.INPUT_METHOD_SERVICE);
 					imm.hideSoftInputFromWindow(myEmailView.getWindowToken(), 0);
 				((TextView) myView.findViewById(R.id.social_fragment_signin_error)).setText("Signing in ... please wait");
+				
+				if (((CheckBox) myView.findViewById(R.id.social_fragment_signin_checkbox)).isChecked())	{
+					SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(myActivity.getApplicationContext());
+					preferences.edit().putString("prefer_key_discussions_email", myEmailView.getText() + "").apply();
+				}
 			}
 		}
 	}

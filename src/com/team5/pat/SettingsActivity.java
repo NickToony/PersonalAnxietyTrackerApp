@@ -44,7 +44,7 @@ public class SettingsActivity extends Activity implements
 			String key) {
 		editor = sharedPreferences.edit();
 		if (key.equals("pref_key_update")) {
-			boolean choice = preference.getBoolean("pref_key_update", true);
+			boolean choice = preference.getBoolean("pref_key_update", false);
 			editor.putBoolean("pref_key_update", choice).commit();
 		} else if (key.equals("pref_night_mode")) {
 			// Set whether or not turn on night mode
