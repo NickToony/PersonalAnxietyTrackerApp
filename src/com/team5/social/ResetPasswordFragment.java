@@ -55,7 +55,7 @@ public class ResetPasswordFragment extends Fragment implements SocialFragmentInt
 		OnClickListener itemListener = new OnClickListener()	{
 			@Override
 			public void onClick(View view) {
-				Request r = new Request(ResetPasswordFragment.this, "http://www.nick-hope.co.uk/PAT/android/resetpassword.php", null);
+				Request r = new Request(ResetPasswordFragment.this, "resetpassword.php", null);
 				r.addParameter("email", ((EditText)myView.findViewById(R.id.social_fragment_reset_email)).getText() + "@newcastle.ac.uk");
 				r.start();
 				
