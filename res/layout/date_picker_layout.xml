@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+     <DatePicker 
+         android:id="@+id/date_picker"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"/>
+
+     <Button
+         android:id="@+id/date_picker_from_button"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentBottom="true"
+         android:layout_alignRight="@+id/date_picker"
+         android:layout_marginBottom="92dp"
+         android:text="@string/from_date" />
+
+     <Button
+         android:id="@+id/date_picker_to_button"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/date_picker_from_button"
+         android:layout_centerVertical="true"
+         android:text="@string/to_date" />
+
+     <Button
+         android:id="@+id/date_picker_ok"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignBaseline="@+id/date_picker_from_button"
+         android:layout_alignBottom="@+id/date_picker_from_button"
+         android:layout_alignParentRight="true"
+         android:layout_marginRight="34dp"
+         android:text="@string/ok" />
+
+</RelativeLayout>

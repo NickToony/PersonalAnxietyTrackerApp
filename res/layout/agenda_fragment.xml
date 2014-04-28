@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8bdbff"
+    android:orientation="vertical"
+    android:weightSum="1" >
+
+    <TextView
+        android:id="@+id/from_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/from_date_picker_edit_text"
+        android:layout_alignParentLeft="true"
+        android:text="@string/from_date"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/from_date_picker_edit_text"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:focusable="false"
+        android:ems="10"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/ok" />
+
+    <DatePicker
+        android:id="@+id/dpResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ok"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="17dp"
+        android:background="#FFFF" />
+
+    <Button
+        android:id="@+id/from_button_set"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/set" />
+
+    <TextView
+        android:id="@+id/to_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/to_date_picker_edit_text"
+        android:layout_alignParentLeft="true"
+        android:text="@string/to_date"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/to_date_picker_edit_text"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/from_date_picker_edit_text"
+        android:layout_below="@+id/from_button_set"
+        android:layout_marginTop="19dp"
+        android:ems="10"
+        android:focusable="false"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/to_button_set"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/to_date_picker_edit_text"
+        android:layout_alignParentRight="true"
+        android:text="@string/set" />
+
+</RelativeLayout>

@@ -28,6 +28,7 @@ class Contact {
 	public float longitude;
 	public String address;
 	public String postCode;
+	public String iconName;
 	Context c;
 	
 	/**
@@ -36,7 +37,7 @@ class Contact {
 	 *
 	 */
 	public Contact(String name, String phoneNumber, String email,
-			float latitude, float longitude, String address, String postCode, Context c) {
+			float latitude, float longitude, String address, String postCode, String iconName, Context c) {
 		super();
 		this.name = name;
 		this.phoneNumber = phoneNumber;
@@ -45,6 +46,7 @@ class Contact {
 		this.longitude = longitude;
 		this.address = address;
 		this.postCode = postCode;
+		this.iconName = iconName;
 		this.c = c;
 	}
 	
@@ -75,8 +77,9 @@ class Contact {
 				Float longitude = Float.parseFloat(node.getElementsByTagName("longitude").item(0).getTextContent());
 				String address = node.getElementsByTagName("address").item(0).getTextContent();
 				String postCode = node.getElementsByTagName("postcode").item(0).getTextContent();
+				String icon = node.getElementsByTagName("logo").item(0).getTextContent();
 				
-				contacts.add(new Contact(name, phoneNumber, email, latitude, longitude, address, postCode, c));
+				contacts.add(new Contact(name, phoneNumber, email, latitude, longitude, address, postCode, icon, c));
 			}
 		} catch (Exception e) {
 			return null;
@@ -107,8 +110,9 @@ class Contact {
 			Float longitude = Float.parseFloat(node.getElementsByTagName("longitude").item(0).getTextContent());
 			String address = node.getElementsByTagName("address").item(0).getTextContent();
 			String postCode = node.getElementsByTagName("postcode").item(0).getTextContent();
+			String icon = node.getElementsByTagName("logo").item(0).getTextContent();
 			
-			return new Contact(name, phoneNumber, email, latitude, longitude, address, postCode, c);
+			return new Contact(name, phoneNumber, email, latitude, longitude, address, postCode, icon, c);
 		} catch (Exception e) {
 			return null;
 		}

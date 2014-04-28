@@ -19,11 +19,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-/**
- * User account is a persistent object that manages local database interactions
- * @author Nick
- *
- */
 public class UserAccount {
 	// Variables
 	private DatabaseHelper myDatabaseHelper;
@@ -33,13 +28,9 @@ public class UserAccount {
     // Login attempts
 	private int loginAttempts = 0;
 	private final int maxLoginAttempts = 5;
+	private boolean doSampleData = true;
 
 
-	/**
-	 * Initialises database
-	 * @author Nick
-	 *
-	 */
     public UserAccount(Context context){
 		// temporary
 		passKey = "1234";
@@ -51,21 +42,11 @@ public class UserAccount {
         myDatabase = myDatabaseHelper.getWritableDatabase();
     }
 
-    /**
-     * Returns whether logged in or not
-     * @author Nick
-     *
-     */
     public boolean getLoggedIn()	{
 		// return whether we are logged in
 		return loggedIn;
 	}
 	
-    /**
-     * Attempts to log the user in, granting access to local database
-     * @author Nick
-     *
-     */
 	public boolean logIn(String passKey)	{
 		// If the password is right
 		if (this.passKey.contentEquals(passKey))	{
@@ -90,11 +71,6 @@ public class UserAccount {
         return false;
 	}
 	
-	/**
-	 * Process for logging in. Allows sample data to be generated
-	 * @author Nick, David
-	 *
-	 */
 	private void logInProcess()	{
 		// We logged in
 		loggedIn = true;
@@ -117,109 +93,110 @@ public class UserAccount {
 //            addRecord(new UserRecord(current - (60*60*24*9), 5, 2, "9 days ago"));
 //            addRecord(new UserRecord(current - (60*60*24*10), 5, 1, "10 days ago"));
 
+        	if (doSampleData ) {
             Calendar c1 = GregorianCalendar.getInstance();
             c1.setFirstDayOfWeek(Calendar.MONDAY);
 
             c1.set(Calendar.DAY_OF_MONTH, 1);
-            addRecord(new UserRecord(c1.getTimeInMillis(), 1, 10, "today"));
+            addRecord(new UserRecord(c1.getTimeInMillis(), 1, 10, "She literature discovered increasing how diminution understood. Though and highly the enough county for man. Of it up he still court alone widow seems"));
 
             Calendar c2 = GregorianCalendar.getInstance();
             c2.setFirstDayOfWeek(Calendar.MONDAY);
 
             c2.set(Calendar.DAY_OF_MONTH, 1);
-            addRecord(new UserRecord(c2.getTimeInMillis(), 7, 4, "today"));
+            addRecord(new UserRecord(c2.getTimeInMillis(), 7, 4, "Conveying or northward offending admitting perfectly my. Colonel gravity get thought fat smiling add but. Wonder twenty hunted and put income set desire expect. Am cottage calling my is mistake cousins talking up. Interested"));
 
             Calendar c3 = GregorianCalendar.getInstance();
             c3.setFirstDayOfWeek(Calendar.MONDAY);
 
             c3.set(Calendar.DAY_OF_MONTH, 3);
-            addRecord(new UserRecord(c3.getTimeInMillis(), 3, 4, "today"));
+            addRecord(new UserRecord(c3.getTimeInMillis(), 3, 4, "ested expression he my at. Respect invited request charmed me warrant to. Expect no pretty as do though so genius afraid cousin. Girl when o"));
 
             Calendar c4 = GregorianCalendar.getInstance();
             c4.setFirstDayOfWeek(Calendar.MONDAY);
 
             c4.set(Calendar.DAY_OF_MONTH, 3);
-            addRecord(new UserRecord(c4.getTimeInMillis(), 1, 1, "today"));
+            addRecord(new UserRecord(c4.getTimeInMillis(), 1, 1, "ested expression he my at. Respect invited request charmed me warrant to. Expect no pretty as do though so genius afraid cousin. Girl when o"));
 
             Calendar c5 = GregorianCalendar.getInstance();
             c5.setFirstDayOfWeek(Calendar.MONDAY);
 
             c5.set(Calendar.DAY_OF_MONTH, 5);
-            addRecord(new UserRecord(c5.getTimeInMillis(), 1, 4, "today"));
+            addRecord(new UserRecord(c5.getTimeInMillis(), 1, 4, "ested expression he my at. Respect invited request charmed me warrant to. Expect no pretty as do though so genius afraid cousin. Girl when o"));
 
             Calendar c6 = GregorianCalendar.getInstance();
             c6.setFirstDayOfWeek(Calendar.MONDAY);
             c6.set(Calendar.DAY_OF_MONTH, 9);
-            addRecord(new UserRecord(c6.getTimeInMillis(), 3, 4, "today"));
+            addRecord(new UserRecord(c6.getTimeInMillis(), 3, 4, "red increasing how diminution understood. Though and highly the enough county for man. "));
 
             Calendar c7 = GregorianCalendar.getInstance();
             c7.setFirstDayOfWeek(Calendar.MONDAY);
 
             c7.set(Calendar.DAY_OF_MONTH, 12);
-            addRecord(new UserRecord(c7.getTimeInMillis(), 9, 4, "today"));
+            addRecord(new UserRecord(c7.getTimeInMillis(), 9, 4, "red increasing how diminution understood. Though and highly the enough county for man. "));
 
             Calendar c8 = GregorianCalendar.getInstance();
             c8.setFirstDayOfWeek(Calendar.MONDAY);
 
             c8.set(Calendar.DAY_OF_MONTH, 14);
-            addRecord(new UserRecord(c8.getTimeInMillis(), 4, 8, "today"));
+            addRecord(new UserRecord(c8.getTimeInMillis(), 4, 8, "red increasing how diminution understood. Though and highly the enough county for man. "));
 
             Calendar c9 = GregorianCalendar.getInstance();
             c9.setFirstDayOfWeek(Calendar.MONDAY);
 
             c9.set(Calendar.DAY_OF_MONTH, 18);
-            addRecord(new UserRecord(c9.getTimeInMillis(), 1, 10, "today"));
+            addRecord(new UserRecord(c9.getTimeInMillis(), 1, 10, "red increasing how diminution understood. Though and highly the enough county for man. "));
 
             Calendar c10 = GregorianCalendar.getInstance();
             c10.setFirstDayOfWeek(Calendar.MONDAY);
 
             c10.set(Calendar.DAY_OF_MONTH, 18);
-            addRecord(new UserRecord(c10.getTimeInMillis(), 9, 4, "today"));
+            addRecord(new UserRecord(c10.getTimeInMillis(), 9, 4, "red increasing how diminution understood. Though and highly the enough county for man. "));
             Calendar c1gg = GregorianCalendar.getInstance();
             c10.setFirstDayOfWeek(Calendar.MONDAY);
 
             c10.set(Calendar.DAY_OF_MONTH, 19);
-            addRecord(new UserRecord(c10.getTimeInMillis(), 0, 0, "today"));
+            addRecord(new UserRecord(c10.getTimeInMillis(), 0, 0, " admitting perfectly my. Colonel gravity get thought fat smiling add but. Wonder twenty hunted and put income set desire expect"));
 
             Calendar c11 = GregorianCalendar.getInstance();
             c11.setFirstDayOfWeek(Calendar.MONDAY);
 
             c11.set(Calendar.DAY_OF_MONTH, 20);
-            addRecord(new UserRecord(c11.getTimeInMillis(), 0, 0, "today"));
+            addRecord(new UserRecord(c11.getTimeInMillis(), 0, 0, " admitting perfectly my. Colonel gravity get thought fat smiling add but. Wonder twenty hunted and put income set desire expect"));
             Calendar cafsd = GregorianCalendar.getInstance();
             c10.setFirstDayOfWeek(Calendar.MONDAY);
 
             c10.set(Calendar.DAY_OF_MONTH, 21);
-            addRecord(new UserRecord(c10.getTimeInMillis(), 0, 0, "today"));
+            addRecord(new UserRecord(c10.getTimeInMillis(), 0, 0, " admitting perfectly my. Colonel gravity get thought fat smiling add but. Wonder twenty hunted and put income set desire expect"));
 
             Calendar cgdsgdf = GregorianCalendar.getInstance();
             c10.setFirstDayOfWeek(Calendar.MONDAY);
 
             c10.set(Calendar.DAY_OF_MONTH, 22);
-            addRecord(new UserRecord(c10.getTimeInMillis(), 0, 0, "today"));
+            addRecord(new UserRecord(c10.getTimeInMillis(), 0, 0, " admitting perfectly my. Colonel gravity get thought fat smiling add but. Wonder twenty hunted and put income set desire expect"));
 
             Calendar c12 = GregorianCalendar.getInstance();
             c12.setFirstDayOfWeek(Calendar.MONDAY);
 
             c12.set(Calendar.DAY_OF_MONTH, 23);
-            addRecord(new UserRecord(c12.getTimeInMillis(), 1, 1, "today"));
+            addRecord(new UserRecord(c12.getTimeInMillis(), 1, 1, " admitting perfectly my. Colonel gravity get thought fat smiling add but. Wonder twenty hunted and put income set desire expect"));
             Calendar c13 = GregorianCalendar.getInstance();
             c13.set(Calendar.DAY_OF_MONTH, 23);
             c13.setFirstDayOfWeek(Calendar.MONDAY);
 
-            addRecord(new UserRecord(c13.getTimeInMillis(), 9, 4, "today"));
+            addRecord(new UserRecord(c13.getTimeInMillis(), 9, 4, " admitting perfectly my. Colonel gravity get thought fat smiling add but. Wonder twenty hunted and put income set desire expect"));
 
             Calendar c14 = GregorianCalendar.getInstance();
             c14.setFirstDayOfWeek(Calendar.MONDAY);
 
             c14.set(Calendar.DAY_OF_MONTH, 24);
-            addRecord(new UserRecord(c14.getTimeInMillis(), 4, 8, "today"));
+            addRecord(new UserRecord(c14.getTimeInMillis(), 4, 8, " admitting perfectly my. Colonel gravity get thought fat smiling add but. Wonder twenty hunted and put income set desire expect"));
 
             Calendar c15 = GregorianCalendar.getInstance();
             c15.setFirstDayOfWeek(Calendar.MONDAY);
 
             c15.set(Calendar.DAY_OF_MONTH, 28);
-            addRecord(new UserRecord(c15.getTimeInMillis(), 1, 10, "today"));
+            addRecord(new UserRecord(c15.getTimeInMillis(), 1, 10, " admitting perfectly my. Colonel gravity get thought fat smiling add but. Wonder twenty hunted and put income set desire expect"));
 
             Calendar c16 = GregorianCalendar.getInstance();
             c16.setFirstDayOfWeek(Calendar.MONDAY);
@@ -238,21 +215,49 @@ public class UserAccount {
 
             c18.set(Calendar.DAY_OF_MONTH, 30);
             addRecord(new UserRecord(c18.getTimeInMillis(), 1, 1, "today"));
+            Calendar c19 = GregorianCalendar.getInstance();
+            
+            //april
+            Calendar ap = GregorianCalendar.getInstance();
+            ap.setFirstDayOfWeek(Calendar.MONDAY);
 
+            ap.set(Calendar.DAY_OF_MONTH, 1);
+            ap.set(Calendar.MONTH, 4);
+            addRecord(new UserRecord(ap.getTimeInMillis(), 1, 10, "She literature discovered increasing how diminution understood. Though and highly the enough county for man. Of it up he still court alone widow seems"));
 
+            Calendar ap2 = GregorianCalendar.getInstance();
+            ap2.setFirstDayOfWeek(Calendar.MONDAY);
+            ap2.set(Calendar.MONTH, 4);
 
+            ap2.set(Calendar.DAY_OF_MONTH, 1);
+            addRecord(new UserRecord(ap2.getTimeInMillis(), 7, 4, "Conveying or northward offending admitting perfectly my. Colonel gravity get thought fat smiling add but. Wonder twenty hunted and put income set desire expect. Am cottage calling my is mistake cousins talking up. Interested"));
 
+            Calendar c31 = GregorianCalendar.getInstance();
+            c31.setFirstDayOfWeek(Calendar.MONDAY);
+            c31.set(Calendar.MONTH, 4);
 
+            c31.set(Calendar.DAY_OF_MONTH, 3);
+            addRecord(new UserRecord(c31.getTimeInMillis(), 3, 4, "ested expression he my at. Respect invited request charmed me warrant to. Expect no pretty as do though so genius afraid cousin. Girl when o"));
+
+            Calendar c41 = GregorianCalendar.getInstance();
+            c41.setFirstDayOfWeek(Calendar.MONDAY);
+            c41.set(Calendar.MONTH, 4);
+
+            c41.set(Calendar.DAY_OF_MONTH, 3);
+            addRecord(new UserRecord(c41.getTimeInMillis(), 1, 1, "ested expression he my at. Respect invited request charmed me warrant to. Expect no pretty as do though so genius afraid cousin. Girl when o"));
+
+            Calendar c51 = GregorianCalendar.getInstance();
+            c51.setFirstDayOfWeek(Calendar.MONDAY);
+            c51.set(Calendar.MONTH, 4);
+
+            c51.set(Calendar.DAY_OF_MONTH, 5);
+            addRecord(new UserRecord(c51.getTimeInMillis(), 1, 4, "ested expression he my at. Respect invited request charmed me warrant to. Expect no pretty as do though so genius afraid cousin. Girl when o"));
+
+        }
 
         }
 
     }
-	
-	/**
-	 * 
-	 * @author David
-	 *
-	 */
     public List<UserRecord> getRecordByMonthAverage(long from, long to)	{
         // We must be logged in
         if (!getLoggedIn())	{
@@ -349,11 +354,6 @@ public class UserAccount {
     }
 
 
-    /**
-     * 
-     * @author David
-     *
-     */
     public List<UserRecord> getRecordByYearAverage(long from, long to)	{
         // We must be logged in
         if (!getLoggedIn())	{
@@ -434,11 +434,6 @@ public class UserAccount {
     }
 
 
-    /**
-     * Add a new record to the local database
-     * @author Nick
-     *
-     */
     public boolean addRecord(UserRecord record)	{
 		// We must be logged in
 		if (!getLoggedIn())	{
@@ -462,11 +457,6 @@ public class UserAccount {
 		}
 	}
 	
-    /**
-     * Fetch a record by its ID
-     * @author Nick
-     *
-     */
 	public List<UserRecord> getRecordByID(int id)	{
 		// We must be logged in
 		if (!getLoggedIn())	{
@@ -516,11 +506,7 @@ public class UserAccount {
 //     SELECT AVG(COLUMN_ANXIETY), AVG(COLUMN_SERIOUSNESS) FROM TABLE_RECORDS WHERE (COLUMN_TIMESTAMP >= timeStart) AND (COLUMN_TIMESTAMP <= timeStart);
 
 
-	/**
-	 * 
-	 * @author David
-	 *
-	 */
+
     public List<UserRecord> getRecordByDayAverage(long from, long to)	{
         // We must be logged in
         if (!getLoggedIn())	{
@@ -605,11 +591,7 @@ public class UserAccount {
     }
 
 
-    /**
-     * Original record fetching script. Not used in final version
-     * @author Nick
-     *
-     */
+
 	public List<UserRecord> getRecordByTime(long from, long to)	{
 		// We must be logged in
 		if (!getLoggedIn())	{
@@ -659,11 +641,6 @@ public class UserAccount {
 		
 	}
 	
-	/**
-	 * Handles a basic insert
-	 * @author Nick
-	 *
-	 */
 	private boolean insert(String table, String nullPointer, ContentValues values)	{
 		// Begin a transaction
 		myDatabase.beginTransactionNonExclusive();
@@ -683,15 +660,11 @@ public class UserAccount {
 	}
 }
 
-/**
- * Manages the database itself
- * @author Nick
- *
- */
+
 class DatabaseHelper extends SQLiteOpenHelper	{
 	// Define basic database information
 	private static final String DATABASE_NAME = "mentalHealthApp_Database";
-    private static final int DATABASE_VERSION = 58;
+    private static final int DATABASE_VERSION = 62;
     
     // Define tables
     public static final String TABLE_RECORDS = "myRecords";
@@ -708,11 +681,6 @@ class DatabaseHelper extends SQLiteOpenHelper	{
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    /**
-     * Creation of database
-     * @author Nick
-     *
-     */
 	@Override
 	public void onCreate(SQLiteDatabase database) {
 		// Called when a brand new database is created
@@ -727,11 +695,6 @@ class DatabaseHelper extends SQLiteOpenHelper	{
 							");");
 	}
 
-	/**
-	 * Handles upgrading of the database
-	 * @author Nick
-	 *
-	 */
 	@Override
 	public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
 		// Called when there is an older database present

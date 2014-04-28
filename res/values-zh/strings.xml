@@ -4,14 +4,14 @@
     <string name="app_name">減壓伴侶</string>
     <string name="Yaxis">Y</string>
     <string name="Xaxis">X</string>
-    <string name="red_line">Red Line</string>
-    <string name="blue_line">Blue Line</string>
+    <string name="red_line">紅線</string>
+    <string name="blue_line">藍線</string>
     <string name="below_menu">Sub-Menu will go here!</string>
-    <string name="submit">Submit</string>
-    <string name="language">Translate</string>
-    <string name="string_choice">Choice</string>
-    <string name="image_content_description">Image</string>
-    <string name="lock_screen_information">Enter PIN number</string>
+    <string name="submit">提交</string>
+    <string name="language">翻譯</string>
+    <string name="string_choice">選擇</string>
+    <string name="image_content_description">照片</string>
+    <string name="lock_screen_information">請輸入PIN碼</string>
 
     <!-- Navigation labels -->
     <string name="navigation_home">主頁</string>
@@ -29,12 +29,19 @@
     <string name="navigation_mine">我的帖子</string>
     <string name="navigation_news">最新消息</string>
 
+    <!-- Agenda -->
+    <string name="from_date">由:</string> 
+    <string name="to_date">到:</string> 
+    <string name="ok">OK</string> 
+    <string name="set">設定</string> 
+
     <string-array name="spinner_list_items">
-        <item>Day</item>
-        <item>Week</item>
-        <item>Month</item>
-        <item>Year</item>
-        <item>Agenda</item>
+        <item>日</item>
+        <item>周</item>
+        <item>月</item>
+        <item>年</item>
+        <item>年曆表</item>
+        <item>新建記錄</item>
     </string-array>
 
     <string name="drawer_open">Open</string>
@@ -42,52 +49,38 @@
 
     <!-- Activities label -->
     <string name="title_activity_nav_list">NavListActivity</string>
-    <string name="title_activity_settings">Settings</string>
-    <string name="title_activity_graph">Graph</string>
-    <string name="title_activity_contact">Contact</string>
-    <string name="title_activity_contact_details">Contact Details</string>
+    <string name="title_activity_settings">設置</string>
+    <string name="title_activity_graph">圖表</string>
+    <string name="title_activity_contact">聯絡人</string>
+    <string name="title_activity_contact_details">聯絡人詳情</string>
 
     <!-- Action bar -->
-    <string name="action_settings">Settings</string>
-    <string name="action_feedback">Feedback</string>
-    <string name="action_contact">Contact</string>
-    <string name="action_search">Search</string>
-    <string name="search_title">Search</string>
-    <string name="search_hint">Enter phone number</string>
+    <string name="action_settings">設置</string>
+    <string name="action_feedback">反饋</string>
+    <string name="action_contact">聯絡人</string>
+    <string name="action_search">搜索</string>
+    <string name="search_title">搜索</string>
+    <string name="search_hint">請輸入電話號碼</string>
     <string name="action_status">Status</string>
     <string name="action_save">Save</string>
     <string name="action_exit">Exit</string>
 
-    <!-- Contact -->
-    <string-array name="contact_icons">
-        <item>@drawable/ic_milton1</item>
-        <item>@drawable/ic_milton2</item>
-        <item>@drawable/ic_milton3</item>
-        <item>@drawable/ic_milton4</item>
-        <item>@drawable/ic_milton5</item>
-        <item>@drawable/ic_milton6</item>
-        <item>@drawable/ic_milton7</item>
-        <item>@drawable/ic_milton5</item>
-        <item>@drawable/ic_milton3</item>
-        <item>@drawable/ic_milton1</item>
-    </string-array>
-
-    <!-- Dialog box -->
-    <string name="dialog_title">I am Milton Li</string>
-    <string name="dialog_message">I want to kiss you</string>
-    <string name="dialog_button_message">Click me to see a dialog box</string>
-    <string name="dialog_accpet">Accept</string>
-    <string name="dialog_cancel">Cancel</string>
-    <string name="brightness">Brightness</string>
-    <string name="network">Network</string>
-    <string name="sound">Sound</string>
-    <string name="keyboard">Keyboard</string>
-    <string name="kiss_me">Kiss me baby</string>
+    <!-- Feedback -->
+    <string name="feedback_heading">請留低閣下寶貴嘅意見</string> 
+    <string name="feedback_title_label">標題</string> 
+    <string name="feedback_comment_label">點評</string> 
+    <string name="feedback_submit_button_label">提交</string> 
+    <string name="feedback_rating_label">打分:</string> 
+    <string name="feedback_email_label">郵箱地址</string> 
+    <string name="feedback_email_hint">e.g. my.mail@ncl.ac.uk</string> 
+    <string name="feedback_scale_end">5</string> 
+    <string name="feedback_comment_hint">你的想法是......</string> 
+    <string name="feedback_title_hint">我們可以改進的地方是</string> 
 
     <!-- Seek bar -->
     <string name="scale_beginning">0</string>
     <string name="scale_end">10</string>
-    <string name="thoughts_hint">你諗緊乜嘢啊？</string>
+    <string name="thoughts_hint">你依家諗緊乜嘢呢？</string>
     <string name="seriousness_heading">你個病有幾嚴重啊？</string>
     <string name="anxiety_heading">你有幾焦慮呢？</string>
     <string name="save_button_text">儲存</string>
@@ -115,18 +108,16 @@
     Slowly  take deep breaths in and deep breaths out and let it all out.</string>
 
     <!-- Settings Preference -->
-    <string name="pin_hint">Digits with max 8 characters</string>
+    <string name="pin_hint">請輸入四位PIN碼</string>
     <string name="pref_category_personalise">個人化</string>
     <string name="pref_category_pat">減壓伴侶</string>
-    <string name="pref_notification_title">Notification</string>
     <string name="pref_language_title">語言</string>
-    <string name="pref_lockscreen_title">Show lockscreen</string>
-    <string name="pref_pin_title">Lockscreen pin number</string>
+    <string name="pref_lockscreen_title">顯示鎖屏</string>
+    <string name="pref_pin_title">鎖屏PIN碼</string>
     <string name="pref_about_us_title">關於我們</string>
-    <string name="pref_notification_summ">Notification on everyday?</string>
-    <string name="pref_lockscreen_summ">Show lockscreen on startup</string>
+    <string name="pref_lockscreen_summ">程序啟動時顯示鎖屏</string>
     <string name="pref_about_us_summ">Newcastle University</string>
-    <string name="pref_breath_exercise_countdown">Exercise countdown type </string>
+    <string name="pref_breath_exercise_countdown">瑜伽練習即時類別</string>
 
     <string-array name="pref_language_list_options">
         <item>英文</item>
@@ -162,38 +153,38 @@
 
     <!-- the x axis labelling for the week -->
     <string-array name="x_axis_grid_week">
-        <item>Mon</item>
-        <item>Tue</item>
-        <item>Wed</item>
-        <item>Thu</item>
-        <item>Fri</item>
-        <item>Sat</item>
-        <item>Sun</item>
+        <item>周一</item>
+        <item>周二</item>
+        <item>周三</item>
+        <item>周四</item>
+        <item>周五</item>
+        <item>周六</item>
+        <item>周日</item>
     </string-array>
 
     <!-- the x axis labelling for the month -->
     <string-array name="x_axis_grid_month">
-        <item>Week 1</item>
-        <item>Week 2</item>
-        <item>Week 3</item>
-        <item>Week 4</item>
-        <item>Week 5</item>
+        <item>第一周</item>
+        <item>第二周</item>
+        <item>第三周</item>
+        <item>第四周</item>
+        <item>第五周</item>
     </string-array>
 
     <!-- the x axis labelling for the year -->
     <string-array name="x_axis_grid_year">
-        <item>Jan</item>
-        <item>Feb</item>
-        <item>Mar</item>
-        <item>Apr</item>
-        <item>May</item>
-        <item>Jun</item>
-        <item>jul</item>
-        <item>Aug</item>
-        <item>Sept</item>
-        <item>Oct</item>
-        <item>Nov</item>
-        <item>Dec</item>
+        <item>一月</item>
+        <item>二月</item>
+        <item>三月</item>
+        <item>四月</item>
+        <item>五月</item>
+        <item>六月</item>
+        <item>七月</item>
+        <item>八月</item>
+        <item>九月</item>
+        <item>十月</item>
+        <item>十一月</item>
+        <item>十二月</item>
         <item>Sun</item>
     </string-array>
 
@@ -207,7 +198,7 @@
     <string name="social_fragment_signin_buttonText">登陸</string>
     <string name="social_fragment_signup_loginText">新建賬號</string>
     <string name="social_fragment_signup_email">\@Newcastle.ac.uk</string>
-    <string name="social_fragment_signup_buttonText">主冊</string>
+    <string name="social_fragment_signup_buttonText">注冊</string>
     <string name="social_fragment_list_addPost">回覆</string>
 
     <string-array name="social_list_items">

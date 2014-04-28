@@ -64,15 +64,6 @@ public class SettingsActivity extends Activity implements
 					"pref_breath_exercise", "seconds");
 			editor.putString("pref_breath_exercise", countDownChoice);
 		}
-
-		// Not yet done
-		else if (key.equals("pref_key_notification")) {
-			Toast.makeText(getApplicationContext(), "Yes, I did it.",
-					Toast.LENGTH_SHORT).show();
-		} else if (key.equals("pref_key_pat")) {
-			Toast.makeText(getApplicationContext(), "Nothing is impossible",
-					Toast.LENGTH_SHORT).show();
-		}
 	}
 }
 

@@ -111,6 +111,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 		
 		if (mySocialAccount.isNotifications())
 			mySocialAccount.fixNotifications();
+		
 		return true;
 	}
 	
@@ -153,8 +154,7 @@ public class HomeActivity extends Activity implements OnItemClickListener {
 			return true;
 
 		case R.id.action_feedback:
-			Toast.makeText(getApplicationContext(), "Feedback",
-					Toast.LENGTH_SHORT).show();
+			doNavigation(NavListAdapter.navigationReport);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

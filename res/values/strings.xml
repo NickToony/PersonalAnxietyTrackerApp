@@ -30,12 +30,22 @@
     <string name="navigation_news">Latest News</string>
     
     
+    <!-- agenda -->
+        <string name="from_date">From:</string>
+         <string name="to_date">To:</string>
+             <string name="ok">OK</string>
+                             <string name="set">SET</string>
+                
+            
+        
+    
     <string-array name="spinner_list_items">
-        <item>Day</item>
         <item>Week</item>
         <item>Month</item>
         <item>Year</item>
         <item>Agenda</item>
+                <item>Add Record</item>
+        
     </string-array>
 
     <string name="drawer_open">Open</string>
@@ -59,19 +69,6 @@
     <string name="action_save">Save</string>
     <string name="action_exit">Exit</string>
 
-    <!-- Contact -->
-    <string-array name="contact_icons">
-        <item>@drawable/ic_milton1</item>
-        <item>@drawable/ic_milton2</item>
-        <item>@drawable/ic_milton3</item>
-        <item>@drawable/ic_milton4</item>
-        <item>@drawable/ic_milton5</item>
-        <item>@drawable/ic_milton6</item>
-        <item>@drawable/ic_milton7</item>
-        <item>@drawable/ic_milton5</item>
-        <item>@drawable/ic_milton3</item>
-        <item>@drawable/ic_milton1</item>
-    </string-array>
 
     <!-- Feedback -->
     <string name="feedback_heading">Please give us any feedback</string>
@@ -135,7 +132,7 @@
     Slowly  take deep breaths in and deep breaths out and let it all out.</string>
 
     <!-- Settings Preference -->
-    <string name="pin_hint">Digits with max 8 characters</string>
+    <string name="pin_hint">Digits with max 4 characters</string>
     <string name="pref_category_personalise">Personalise</string>
     <string name="pref_category_pat">Personal Anxiety Tracker</string>
     <string name="pref_notification_title">Notification</string>

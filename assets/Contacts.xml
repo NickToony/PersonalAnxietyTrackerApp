@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <contacts>
 	<contact>
-		<name>Community Mental Health Team</name>
-		<phone>01912468655</phone>
-		<email>http://www.ntw.nhs.uk</email>
-		<latitude>54.97436</latitude>
-		<longitude>-1.64303</longitude>
-		<address>Campus for Ageing and Vitality, Westgate Road, Newcastle upon Tyne</address>
-		<postcode>NE4 6BE</postcode>
-	</contact>
-
-	<contact>
+		<logo>ic_nhs</logo>
 		<name>North and East Community Team</name>
 		<phone>01912875297</phone>
 		<email>http://www.ntw.nhs.uk</email>
@@ -21,16 +12,7 @@
 	</contact>
 
 	<contact>
-		<name>West Community Team</name>
-		<phone>01912875060</phone>
-		<email>http://www.ntw.nhs.uk</email>
-		<latitude>54.97257</latitude>
-		<longitude>-1.64758</longitude>
-		<address>Grainger Park Road, Newcastle upon Tyne</address>
-		<postcode>NE4 8RR</postcode>
-	</contact>
-
-	<contact>
+		<logo>ic_nhs</logo>
 		<name>Dryden Road Clinic</name>
 		<phone>01914416700</phone>
 		<email>http://www.ntw.nhs.uk</email>
@@ -39,8 +21,9 @@
 		<address>134 Dryden Road, Gateshead, Tyne and Wear</address>
 		<postcode>NE9 5BY</postcode>
 	</contact>
-
+	
 	<contact>
+		<logo>ic_nhs</logo>
 		<name>Newcastle Talking Therapies</name>
 		<phone>01912875297</phone>
 		<email>http://www.newcastletalkingtherapies.org/</email>
@@ -51,6 +34,18 @@
 	</contact>
 
 	<contact>
+		<logo>logo</logo>
+		<name>MESMAC</name>
+		<phone>01912331333</phone>
+		<email>all@mesmacnortheast.com</email>
+		<latitude>54.973253</latitude>
+		<longitude>-1.614547</longitude>
+		<address>3rd Floor, 11 Nelson Street, Newcastle</address>
+		<postcode>NE1 5AN</postcode>
+	</contact>
+	
+	<contact>
+		<logo>ic_young_minds</logo>
 		<name>Young Minds</name>
 		<phone>02070895050</phone>
 		<email>ymenquiries@youngminds.org.uk</email>
@@ -61,6 +56,7 @@
 	</contact>
 	
 	<contact>
+		<logo>ic_papyrus</logo>
 		<name>PAPYRUS</name>
 		<phone>01925572444</phone>
 		<email>admin@papyrus-uk.org</email>
@@ -71,6 +67,7 @@
 	</contact>
 	
 	<contact>
+		<logo>ic_anxiety_uk</logo>
 		<name>Anxiety UK</name>
 		<phone>08444 775 774</phone>
 		<email>http://www.anxietyuk.org.uk</email>
@@ -81,6 +78,7 @@
 	</contact>
 	
 	<contact>
+		<logo>ic_samaratins</logo>
 		<name>Samaritans</name>
 		<phone>01912327272</phone>
 		<email>http://www.samaritans.org</email>

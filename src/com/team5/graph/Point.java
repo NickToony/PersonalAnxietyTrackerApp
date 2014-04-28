@@ -1,7 +1,6 @@
 package com.team5.graph;
-
 /**
- * Object representing a point on a line on a line graph
+ * Simple object to represent a point on a line
  * @author David, Nick
  *
  */

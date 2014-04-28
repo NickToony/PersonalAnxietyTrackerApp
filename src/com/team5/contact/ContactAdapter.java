@@ -5,6 +5,7 @@ import java.util.List;
 import com.team5.pat.R;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,6 +56,9 @@ public class ContactAdapter extends BaseAdapter {
 
 		name.setText(contacts.get(position).name);
 		phoneNumber.setText(contacts.get(position).phoneNumber);
+		
+		int id = context.getResources().getIdentifier(contacts.get(position).iconName, "drawable", context.getPackageName());
+		icon.setImageResource(id);
 
 		return row;
 	}

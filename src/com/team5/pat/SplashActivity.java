@@ -65,7 +65,7 @@ public class SplashActivity extends Activity implements OnClickListener {
 	/**
 	 * Prepares the splashscreen, determines if should display lockscreen.
 	 * @author Milton, Nick
-	 *
+	 * 
 	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +74,7 @@ public class SplashActivity extends Activity implements OnClickListener {
 
 		initialiseComponentsAndSetUpAnimation();
 
-		if (preference.getBoolean("pref_key_lockscreen", true) == true) {
+		if (preference.getBoolean("pref_key_lockscreen", false) == true) {
 			setUpKeyPadButtons();
 			mLogo.setAnimation(animation);
 			mHandler.postDelayed(runnableWithPassword, SPLASH_DURATION);

@@ -4,18 +4,18 @@
         android:key="pref_key_personalise"
         android:title="@string/pref_category_personalise" >
         <CheckBoxPreference
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:key="pref_key_lockscreen"
             android:summary="@string/pref_lockscreen_summ"
             android:title="@string/pref_lockscreen_title" >
         </CheckBoxPreference>
         <EditTextPreference
-            android:defaultValue="1234"
+            android:defaultValue="1234" 
             android:hint="@string/pin_hint"
             android:inputType="number"
             android:key="pref_key_pin"
-            android:maxLength="8"
-            android:title="@string/pref_pin_title" >
+            android:maxLength="4"
+            android:title="@string/pref_pin_title" > 
         </EditTextPreference>
 
         <ListPreference
@@ -25,11 +25,6 @@
             android:key="pref_language"
             android:title="@string/pref_language_title" />
 
-        <Preference
-            android:key="pref_key_notification"
-            android:summary="@string/pref_notification_summ"
-            android:title="@string/pref_notification_title" >
-        </Preference>
     </PreferenceCategory>
     <PreferenceCategory
         android:key="pref_key_pat"

@@ -24,6 +24,7 @@
         android:layout_marginBottom="10dp"  >
         
         <ImageView 
+            android:id="@+id/contact_group_details_image"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:gravity="center"

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+   >
+     <TextView
+        android:id="@+id/date_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Seriousness"
+        android:background="@drawable/rounded_edges"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/anxiety_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Seriousness"
+        android:background="@drawable/rounded_edges"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+      <TextView
+        android:id="@+id/seriousness_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Anxiety"
+        android:background="@drawable/rounded_edges"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+        <TextView
+        android:id="@+id/thought_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Seriousness"
+        android:background="@drawable/rounded_edges"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginBottom="15dp" />
+        
+     <!-- <TextView
+        android:id="@+id/anxiety_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seriousness"
+        android:background="@color/seekBarHeadingColor"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+ -->
+</LinearLayout>

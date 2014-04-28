@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -63,12 +64,15 @@ public class ContactDetailsFragment extends Fragment {
 		emailView = (TextView) myView.findViewById(R.id.contact_details_email);
 		addressView = (TextView) myView.findViewById(R.id.contact_details_address);
 		postcodeView = (TextView) myView.findViewById(R.id.contact_details_postcode);
+		ImageView iconView = (ImageView) myView.findViewById(R.id.contact_group_details_image);
 
 		nameView.setText("Name: " + myContact.name);
 		phoneView.setText("Phone: " + myContact.phoneNumber);
 		emailView.setText("Email: " + myContact.email);
 		addressView.setText("Address: " + myContact.address);
 		postcodeView.setText("Post Code: " + myContact.postCode);
+		int id = myActivity.getResources().getIdentifier(myContact.iconName, "drawable", myActivity.getPackageName());
+		iconView.setImageResource(id);
 		
 		((Button) myView.findViewById(R.id.contact_group_details_button)).setOnClickListener(new OnClickListener()	{
 			@Override

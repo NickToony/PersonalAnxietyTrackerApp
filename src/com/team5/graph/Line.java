@@ -4,10 +4,9 @@ import com.team5.user.UserRecord;
 
 import java.util.ArrayList;
 import java.util.List;
-
 /**
- * An object representation of a line for a LineGraph
- * @author Nick
+ * Simple object to represent a Line
+ * @author Nick, David
  *
  */
 public class Line {

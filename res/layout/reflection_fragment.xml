@@ -11,59 +11,6 @@
     >
 
     <TextView
-        android:id="@+id/SeriousnesstextView"
-        android:layout_width="119dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.03"
-        android:text="@string/seriousness"
-        android:editable="false"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_above="@+id/anxietyEditText"
-        android:layout_toLeftOf="@+id/anxietyEditText" />
-
-    <EditText
-        android:id="@+id/seriousnessEditText"
-        android:layout_width="112dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:ems="10"
-        android:inputType="number"
-        android:layout_above="@+id/anxietyEditText"
-        android:layout_alignRight="@+id/reflectionText" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/anxiety"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_above="@+id/reflectionText"
-        android:layout_alignLeft="@+id/SeriousnesstextView"
-        android:layout_alignStart="@+id/SeriousnesstextView" />
-
-    <EditText
-        android:id="@+id/anxietyEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:editable="true"
-        android:layout_above="@+id/reflectionText"
-        android:layout_alignLeft="@+id/seriousnessEditText"
-        android:layout_alignStart="@+id/seriousnessEditText"
-        android:layout_alignRight="@+id/reflectionText" />
-
-    <Button
-        android:id="@+id/ref_fragment_cancel_button"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"
-        android:text="Cancel" />
-
-    <TextView
         android:id="@+id/reflectionText"
         android:layout_width="250dp"
         android:layout_height="120dp"
@@ -76,5 +23,71 @@
         android:layout_above="@+id/ref_fragment_cancel_button"
         android:layout_centerHorizontal="true" />
 
+    <Button
+        android:id="@+id/more_details_button"
+                style="?android:attr/buttonStyleSmall"
+        
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/reflectionText"
+        android:text="More Details" />
+
+    <Button
+        android:id="@+id/ref_fragment_cancel_button"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/reflectionText"
+        android:layout_alignParentBottom="true"
+        android:text="Cancel" />
+
+    <TextView
+        android:id="@+id/anxiety_text_view"
+        android:layout_width="119dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/seriousness_text_view"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="23dp"
+        android:layout_weight="0.03"
+        android:editable="false"
+        android:text="@string/anxiety"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/seriousness_text_view"
+        android:layout_width="119dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/seriousness_edit_text_ref"
+        android:layout_alignLeft="@+id/reflectionText"
+        android:layout_weight="0.03"
+        android:editable="false"
+        android:text="@string/seriousness"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/seriousness_edit_text_ref"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/reflectionText"
+        android:layout_alignRight="@+id/reflectionText"
+        android:layout_marginBottom="22dp"
+        android:layout_toRightOf="@+id/seriousness_text_view"
+        android:editable="true"
+        android:ems="10"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/anxiety_edit_text_ref"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/anxiety_text_view"
+        android:layout_alignRight="@+id/seriousness_edit_text_ref"
+        android:layout_toRightOf="@+id/anxiety_text_view"
+        android:ems="10"
+        android:inputType="number" >
+
+        <requestFocus />
+    </EditText>
 
 </RelativeLayout>
