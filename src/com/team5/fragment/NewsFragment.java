@@ -36,6 +36,7 @@ public class NewsFragment extends Fragment {
 		myWebView.getSettings().setJavaScriptEnabled(true);
 		myWebView.getSettings().setSupportZoom(true);
 		myWebView.getSettings().setBuiltInZoomControls(true);
+		myWebView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
 		myWebView.setWebViewClient(new WebViewClient());
 
 		return myView;
