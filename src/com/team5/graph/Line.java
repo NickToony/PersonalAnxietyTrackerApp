@@ -4,11 +4,7 @@ import com.team5.user.UserRecord;
 
 import java.util.ArrayList;
 import java.util.List;
-/**
- * Simple object to represent a Line
- * @author Nick, David
- *
- */
+
 public class Line {
     private List<UserRecord> points = new ArrayList<UserRecord>();
     private int colour;

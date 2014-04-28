@@ -15,12 +15,6 @@ import android.view.View;
 import com.team5.pat.R;
 import com.team5.user.UserRecord;
 
-
-/**
- * Original rendering concept by Nick, SIGNIFICANTLY improved and added to by David
- * @author David, Nick
- *
- */
 public class LineGraphView extends View {
     private List<Line> myData = new ArrayList<Line>();
     // stores the co-ordinates for each line
@@ -175,7 +169,7 @@ public class LineGraphView extends View {
         float height = getHeight() - canvasPadding;
         xScale = ((width) / maxXLines);
         yScale = height / rating;
-        final int circleRadius = 5;
+        final int circleRadius = 10;
         myPaint.setColor(Color.rgb(223, 240, 255));
         int scale = 1;
 
@@ -192,12 +186,11 @@ public class LineGraphView extends View {
         // set axis colour
         myPaint.setColor(Color.MAGENTA);
         myPaint.setAntiAlias(true);
-        myPaint.setStrokeWidth(1);
+        myPaint.setStrokeWidth(3);
 
         //draw the vertical grid lines
         myPaint.setColor(Color.BLACK);
         myPaint.setTextSize(30);
-        myPaint.setStrokeWidth(6);
         Line line = null;
         // For each line
         for (int lineNum = onDrawStart; lineNum < onDrawStop; lineNum++) {
@@ -232,7 +225,7 @@ public class LineGraphView extends View {
 
 
             String thought = "";
-            myPaint.setStrokeWidth(2);
+            myPaint.setStrokeWidth(4);
             myPaint.setTextSize(20);
 
             for (int i = 1; i < size; i++) {
@@ -264,7 +257,7 @@ public class LineGraphView extends View {
                 anxietyCordinates.add(use);
                 }
                 else{
-                	canvas.drawRect(lastX-10, lastY-5, lastX+5, lastY+10, myPaint);
+                	canvas.drawRect(lastX-20, lastY-10, lastX+10, lastY+20, myPaint);
                 	use= new UserRecord(line.getTimeStamp(i),nextX,nextY,(int)line.getX(i),(int)line.getY(i),line.getThought(i),line.getColour());
 
                 seriousnessCordinates.add(use);
@@ -276,7 +269,7 @@ public class LineGraphView extends View {
             // Draw final points
             // Draws circle from the lastX and lastY with radius of 15
             if(line.getColour()==Color.RED){
-        	canvas.drawRect(lastX-10, lastY-5, lastX+5, lastY+10, myPaint);
+            	canvas.drawRect(lastX-20, lastY-10, lastX+10, lastY+20, myPaint);
             }else{
                 canvas.drawCircle(lastX, lastY, circleRadius, myPaint);
             }
@@ -381,7 +374,7 @@ public class LineGraphView extends View {
 	    do
 	    {
 	        resultList.add(cal.getTime());
-	        cal.roll(Calendar.DAY_OF_MONTH, true);  //Roll one day forwards         
+	        cal.roll(Calendar.DAY_OF_YEAR, true);  //Roll one day forwards         
 	    }
 	    while(cal.getTime().before(endDate));
 

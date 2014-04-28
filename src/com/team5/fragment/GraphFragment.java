@@ -140,6 +140,7 @@ public class GraphFragment extends Fragment implements OnTouchListener {
 						fragment.setTimeStamp(p.getTimestamp(),
 								classDropDownPos);
 
+						transaction.addToBackStack(null);
 						transaction.add(android.R.id.content, fragment);
 						transaction.commit();
 						break;
@@ -319,6 +320,8 @@ public class GraphFragment extends Fragment implements OnTouchListener {
 				// take the user to the sliders page
 				((HomeActivity) getActivity())
 						.changeFragment(new SeekBarFragment());
+				Toast.makeText(getActivity(), "hheeyyy", Toast.LENGTH_SHORT)
+						.show();
 			default:
 				return false;
 			}

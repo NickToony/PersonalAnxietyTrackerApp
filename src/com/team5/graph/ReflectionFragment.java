@@ -59,8 +59,7 @@ public class ReflectionFragment extends Fragment implements OnClickListener {
 		this.thought = comment;
 
 	}
-
-	public void setThought(String thought) {
+public void setThought(String thought) {
 		this.thought = thought;
 	}
 
@@ -182,7 +181,7 @@ public class ReflectionFragment extends Fragment implements OnClickListener {
 
 		do {
 			resultList.add(cal.getTime());
-			cal.roll(Calendar.DAY_OF_MONTH, true); // Roll one day forwards
+			cal.roll(Calendar.DAY_OF_YEAR, true); // Roll one day forwards
 		} while (cal.getTime().before(endDate));
 
 		return resultList;

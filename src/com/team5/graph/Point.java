@@ -1,9 +1,5 @@
 package com.team5.graph;
-/**
- * Simple object to represent a point on a line
- * @author David, Nick
- *
- */
+
 public class Point {
     private float x;
     private float y;
