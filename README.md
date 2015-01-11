@@ -1,7 +1,7 @@
 # Personal Anxiety Tracker
 PAT is an Android app which allows students to log their anxiety levels, visualise their progress over time, while receiving help and resources tailored to them.
 
-This project was developed as part of the Newcastle Computiong Science Team Project (stage two). It was built by a team of 7:
+This project was developed as part of the Newcastle Computing Science Team Project (stage two). It was built by a team of 7:
 - <b>Aleksandar Filipov</b> (Programmer)
 - <b>Calum Thornhill</b> (Team Leader)
 - <b>David Oyeku</b> (Programmer)
