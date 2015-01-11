@@ -6,8 +6,8 @@ This project was developed as part of the Newcastle Computing Science Team Proje
 - <b>Calum Thornhill</b> (Team Leader)
 - <b>David Oyeku</b> (Programmer)
 - <b>Lara Connolly</b> (Tester)
-- <b>Nicholas Hope</b> (Lead Programmer)
 - <b>Milton Li</b> (Programmer)
+- <b>Nicholas Hope</b> (Lead Programmer)
 - <b>Sophie Buckle</b> (Designer)
 
 ## API
